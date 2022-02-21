@@ -1,9 +1,9 @@
 {
   "title": "cheqd Testnet Block Explorer",
   "network": "cheqd-testnet-4",
-  "icon": "https://avatars.githubusercontent.com/u/79901197?s=200&v=4",
+  "icon": "https://raw.githubusercontent.com/cheqd/big-dipper-assets/cheqd/cheqd/icon.svg",
   "logo": {
-    "default": "https://avatars.githubusercontent.com/u/79901197?s=200&v=4"
+    "default": "https://raw.githubusercontent.com/cheqd/big-dipper-assets/cheqd/cheqd/logo.svg"
   },
   "prefix": {
     "consensus": "cheqdvalcons",

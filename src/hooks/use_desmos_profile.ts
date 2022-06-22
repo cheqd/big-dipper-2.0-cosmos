@@ -12,7 +12,7 @@ type Options = {
   onComplete: (data: DesmosProfileQuery) => any;
 }
 
-const PROFILE_API = 'https://gql.mainnet.desmos.network/v1/graphql';
+const PROFILE_API = process.env.NEXT_PUBLIC_GRAPHQL_URL;
 
 export const useDesmosProfile = (options: Options) => {
   const [loading, setLoading] = useState(false);

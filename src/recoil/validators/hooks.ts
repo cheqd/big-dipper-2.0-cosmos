@@ -7,7 +7,7 @@ import * as R from 'ramda';
 import {
   useValidatorAddressesQuery,
   ValidatorAddressesQuery,
-} from '@graphql/types';
+} from '@graphql/types/general_types';
 import { chainConfig } from '@configs';
 import { useDesmosProfile } from '@hooks';
 import {
@@ -40,8 +40,8 @@ export const useValidatorRecoil = () => {
       // Set loading to be false
       // Set profiles and update if needed.
       // Will come back to this in the future
-      await formatAndSetValidatorsAddressList(data);
       setLoading(false);
+      formatAndSetValidatorsAddressList(data);
       setProfiles(data);
     },
   });

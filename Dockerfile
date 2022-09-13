@@ -1,4 +1,4 @@
-FROM node:14.5.0-alpine
+FROM node:18.9.0-alpine
 
 # Install git for ui and internal packages
 RUN apk add --no-cache git

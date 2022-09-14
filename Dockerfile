@@ -40,4 +40,4 @@ USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 # Run the application
-ENTRYPOINT [ "node", "dist/index.js" ]
+CMD [ "npm start" ]

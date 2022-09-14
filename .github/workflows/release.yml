@@ -11,7 +11,7 @@ jobs:
     name: "BigDipper Docker image"
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: bigdipper
+      IMAGE_NAME: cheqq/bigdipper
     
     steps:
       - uses: actions/checkout@v3
@@ -79,12 +79,12 @@ jobs:
           tags: |
             type=semver,pattern={{version}},value=${{ steps.set-version.outputs.VERSION }}
           labels: |
-            org.opencontainers.image.title="BigDipper for cheqd network"
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.description="BigDipper block explorer for cheqd network"
-            org.opencontainers.image.source="https://github.com/cheqd/bdjuno"
+            org.opencontainers.image.source="https://github.com/cheqd/big-dipper-2.0-cosmos"
             org.opencontainers.image.vendor="Cheqd Foundation Limited"
             org.opencontainers.image.created={{date 'dddd, MMMM Do YYYY, h:mm:ss a'}}
-            org.opencontainers.image.documentation="https://docs.cheqd.io/node"
+            org.opencontainers.image.documentation="https://product.cheqd.io/"
 
       - name: Build BDJuno image
         uses: docker/build-push-action@v3

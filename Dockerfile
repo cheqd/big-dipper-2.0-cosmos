@@ -1,40 +1,47 @@
-FROM node:14.5.0-alpine
+###############################################################
+###        		STAGE 1: Build BigDipper UI        			###
+###############################################################
 
-# Install git for ui and internal packages
-RUN apk add --no-cache git
+FROM node:16-alpine AS bigdipper
 
-# Set app directory
-WORKDIR /app
+# Install pre-requisite packages
+RUN apk update && apk add --no-cache git bash
 
-# Installing dependencies
-COPY package*.json ./
-RUN npm ci
+# Set user directory and details
+ARG HOME_DIR="/bigdipper"
+ARG USER="bigdipper"
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
-# Copying source files
+# Add non-root user to use in the container
+RUN addgroup --system $USER \
+    && adduser $USER --system --home $HOME_DIR --shell /bin/bash
+
+# Set working directory & bash defaults
+WORKDIR $HOME_DIR
+USER $USER
+
+# Copy source files
 COPY . .
 
-# Get env from secrets
-ARG NEXT_PUBLIC_GRAPHQL_URL
-ARG NEXT_PUBLIC_GRAPHQL_WS
-ARG NEXT_PUBLIC_URL
-ARG NEXT_PUBLIC_WS_CHAIN_URL
-ARG NEXT_PUBLIC_CHAIN_TYPE
-ARG NODE_ENV
+# Installing dependencies
+RUN npm ci
 
-# Generate env file
+# Build-time arguments
+ARG NODE_ENV="production"
+ARG PORT=8080
+
+# Run-time environment variables
 ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
 ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
 ENV NEXT_PUBLIC_URL ${NEXT_PUBLIC_URL}
 ENV NEXT_PUBLIC_WS_CHAIN_URL ${NEXT_PUBLIC_WS_CHAIN_URL}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
 ENV NODE_ENV ${NODE_ENV}
-ENV PORT 3000
+ENV PORT ${PORT}
 
-# Building app
-RUN sed -i 's|<NEXT_PUBLIC_GRAPHQL_URL>|'"$NEXT_PUBLIC_GRAPHQL_URL"'|' codegen.yml
-RUN npm run graphql:codegen
+# Build the app
 RUN npm run build
 EXPOSE ${PORT}
 
-#Run the application
-CMD ["npm", "run", "start"]
+# Run the application
+ENTRYPOINT [ "node", "dist/index.js" ]

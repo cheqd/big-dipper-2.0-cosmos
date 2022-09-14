@@ -1,36 +1,42 @@
-FROM node:14.5.0-alpine
+###############################################################
+###        STAGE 1: Runtime BigDipper container        		###
+###############################################################
 
-# Install git for ui and internal packages
-RUN apk add --no-cache git
+FROM node:16-alpine AS bigdipper
 
-# Set app directory
-WORKDIR /app
+# Install pre-requisite packages
+RUN apk update && apk add --no-cache git bash
 
-# Installing dependencies
-COPY package*.json ./
-RUN npm ci
+# Set working directory & bash defaults
+WORKDIR /home/node/app
 
-# Copying source files
+# Copy source files
 COPY . .
 
-# Get env from secrets
-ARG NEXT_PUBLIC_GRAPHQL_URL
-ARG NEXT_PUBLIC_GRAPHQL_WS
-ARG NEXT_PUBLIC_RPC_WEBSOCKET
-ARG NEXT_PUBLIC_CHAIN_TYPE
-ARG NODE_ENV
+# Installing dependencies
+RUN npm ci
 
-# Generate env file
+# Build-time arguments
+ARG NODE_ENV="production"
+ENV NODE_ENV ${NODE_ENV}
+
+# Build the app
+RUN npm run build
+
+# Run-time environment variables
 ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
 ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
 ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
 ENV NODE_ENV ${NODE_ENV}
-ENV PORT 3000
+ENV PORT ${PORT}
 
-# Building app
-RUN npm run build
+# Specify default port
 EXPOSE ${PORT}
 
-#Run the application
-CMD ["npm", "run", "start"]
+# Set user and shell
+USER node
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+
+# Run the application
+CMD [ "npm start" ]

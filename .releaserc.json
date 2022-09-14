@@ -3,7 +3,8 @@
         "chains/cheqd/mainnet",
         {
             "name": "chains/cheqd/testnet",
-            "channel": "testnet"
+            "channel": "testnet",
+            "prerelease": true
         }
     ],
     "tagFormat": "cheqd-v${version}",

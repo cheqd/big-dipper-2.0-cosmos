@@ -77,7 +77,7 @@ jobs:
             latest=auto
             prefix=${{ steps.set-network.outputs.NETWORK_NAME }}-,onlatest=true
           tags: |
-            type=semver,pattern={{version}},value=${{ needs.release-binary.outputs.VERSION }}
+            type=semver,pattern={{version}},value=${{ steps.set-version.outputs.VERSION }}
           labels: |
             org.opencontainers.image.title="BigDipper for cheqd network"
             org.opencontainers.image.description="BigDipper block explorer for cheqd network"

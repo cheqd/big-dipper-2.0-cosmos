@@ -11,7 +11,7 @@ jobs:
     name: "BigDipper Docker image"
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: cheqd/bigdipper
+      IMAGE_NAME: ${{ github.repository }}
     
     steps:
       - uses: actions/checkout@v3

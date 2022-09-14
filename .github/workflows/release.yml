@@ -11,7 +11,7 @@ jobs:
     name: "BigDipper Docker image"
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: cheqq/bigdipper
+      IMAGE_NAME: cheqd/bigdipper
     
     steps:
       - uses: actions/checkout@v3
@@ -79,7 +79,6 @@ jobs:
           tags: |
             type=semver,pattern={{version}},value=${{ steps.set-version.outputs.VERSION }}
           labels: |
-            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.description="BigDipper block explorer for cheqd network"
             org.opencontainers.image.source="https://github.com/cheqd/big-dipper-2.0-cosmos"
             org.opencontainers.image.vendor="Cheqd Foundation Limited"

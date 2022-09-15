@@ -1,0 +1,37 @@
+name: "Build & Test"
+on:
+  workflow_call:
+defaults:
+  run:
+    shell: bash
+
+
+jobs:
+
+  build:
+    name: "BigDipper frontend"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Execute JS/TS/TSX/JSX linters"
+        run: |
+          npm run type-check
+          npm run lint
+
+      - name: "Execute build"
+        run: |
+          npm run build
+      
+      - name: "Execute tests"
+        run: npm run test

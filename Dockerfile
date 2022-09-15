@@ -1,50 +1,48 @@
-FROM node:14.5.0-alpine
+###############################################################
+###        STAGE 1: Runtime BigDipper container        		###
+###############################################################
 
-ENV PORT 3000
+FROM node:16-alpine AS bigdipper
 
-# Install git for ui and internal packages
-RUN apk add --no-cache git
+# Install pre-requisite packages
+RUN apk update && apk add --no-cache git bash
 
-# Set app directory
-WORKDIR /app
+# Set working directory & bash defaults
+WORKDIR /home/node/app
 
-# Add PM2
-RUN npm install pm2 -g
-
-# Installing dependencies
-COPY package*.json ./
-RUN npm ci
-
-# Copying source files
+# Copy source files
 COPY . .
 
-# Get env from secrets
+# Installing dependencies
+RUN npm ci
+
+# Build-time arguments
+ARG NODE_ENV="production"
 ARG NEXT_PUBLIC_GRAPHQL_URL
 ARG NEXT_PUBLIC_GRAPHQL_WS
-ARG NEXT_PUBLIC_WS_CHAIN_URL
 ARG NEXT_PUBLIC_RPC_WEBSOCKET
-ARG NEXT_PUBLIC_CHAIN_STATUS
 ARG NEXT_PUBLIC_CHAIN_TYPE
-ARG NODE_ENV
-ARG PORT
-ARG NEXT_PUBLIC_MATOMO_URL
-ARG NEXT_PUBLIC_MATOMO_SITE_ID
+ARG NPM_CONFIG_LOGLEVEL
+ARG PORT=3000
 
-# Generate env file
+# Build the app
+RUN npm run build
+
+# Run-time environment variables
 ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
 ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
-ENV NEXT_PUBLIC_WS_CHAIN_URL ${NEXT_PUBLIC_WS_CHAIN_URL}
 ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
-ENV NEXT_PUBLIC_CHAIN_STATUS ${NEXT_PUBLIC_CHAIN_STATUS}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
+ENV NPM_CONFIG_LOGLEVEL ${NPM_CONFIG_LOGLEVEL}
 ENV NODE_ENV ${NODE_ENV}
 ENV PORT ${PORT}
-ENV NEXT_PUBLIC_MATOMO_URL ${NEXT_PUBLIC_MATOMO_URL}
-ENV NEXT_PUBLIC_MATOMO_SITE_ID ${NEXT_PUBLIC_MATOMO_SITE_ID}
 
-# Building app
-RUN npm run build
+# Specify default port
 EXPOSE ${PORT}
 
-# Running the app
-CMD ["pm2-runtime", "dist/index.js"]
+# Set user and shell
+USER node
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+
+# Run the application
+CMD [ "npm start" ]

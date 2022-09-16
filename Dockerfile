@@ -25,6 +25,12 @@ ARG NEXT_PUBLIC_CHAIN_TYPE
 ARG NPM_CONFIG_LOGLEVEL
 ARG PORT=3000
 
+<<<<<<< HEAD
+=======
+# Build the app
+RUN npm run build
+
+>>>>>>> chains/cheqd/mainnet
 # Run-time environment variables
 ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
 ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
@@ -34,9 +40,12 @@ ENV NPM_CONFIG_LOGLEVEL ${NPM_CONFIG_LOGLEVEL}
 ENV NODE_ENV ${NODE_ENV}
 ENV PORT ${PORT}
 
+<<<<<<< HEAD
 # Build the app
 RUN npm run build
 
+=======
+>>>>>>> chains/cheqd/mainnet
 # Specify default port
 EXPOSE ${PORT}
 

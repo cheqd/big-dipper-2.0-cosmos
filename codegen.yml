@@ -6,7 +6,11 @@ generates:
   ./src/graphql/types/general_types.tsx:
     documents:
       - 'src/graphql/general/*'
+<<<<<<< HEAD
     schema: https://testnet-gql.cheqd.io/v1/graphql
+=======
+    schema: https://explorer-gql.cheqd.io/v1/graphql
+>>>>>>> chains/cheqd/mainnet
     plugins:
       - "typescript"
       - "typescript-operations"

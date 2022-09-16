@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: ${{ github.repository }}
+    environment: ${GITHUB_REF##*/}
     
     steps:
       - uses: actions/checkout@v3

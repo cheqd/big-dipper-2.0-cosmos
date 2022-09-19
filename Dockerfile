@@ -2,7 +2,7 @@
 ###        STAGE 1: Runtime BigDipper container        		###
 ###############################################################
 
-FROM node:16-alpine AS bigdipper
+FROM node:18-alpine AS bigdipper
 
 # Install pre-requisite packages
 RUN apk update && apk add --no-cache git bash

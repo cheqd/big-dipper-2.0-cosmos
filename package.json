@@ -1,7 +1,7 @@
 {
   "name": "big-dipper-2.0-cosmos",
   "version": "1.0.0",
-  "description": "Big Dipper Explorer for cheqd network",
+  "description": "BigDipper Explorer for cheqd network",
   "license": "Apache-2.0",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
   "repository": "https://github.com/cheqd/big-dipper-2.0-cosmos.git",

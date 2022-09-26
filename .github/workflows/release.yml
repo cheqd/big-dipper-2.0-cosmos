@@ -77,6 +77,8 @@ jobs:
       - name: Push BigDipper image
         run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}
 
+      - name: Force Redeployment
+        run: doctl app create-deployment --force-rebuild ${{ secrets.APP_ID }}
 
   release-docker-mainnet:
     name: "BigDipper Docker image - Mainnet"
@@ -147,3 +149,6 @@ jobs:
 
       - name: Push BigDipper image
         run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}
+
+      - name: Force Redeployment
+        run: doctl app create-deployment --force-rebuild ${{ secrets.APP_ID }}

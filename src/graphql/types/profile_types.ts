@@ -5848,70 +5848,22 @@ export type User_Poll_Answer_Variance_Order_By = {
 };
 
 export type DesmosProfileQueryVariables = Exact<{
-  address?: Maybe<Scalars['String']>;
+  address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type DesmosProfileQuery = { profile: Array<(
-    { __typename?: 'profile' }
-    & Pick<Profile, 'address' | 'bio' | 'dtag' | 'nickname'>
-    & { profilePic: Profile['profile_pic'], coverPic: Profile['cover_pic'], creationTime: Profile['creation_time'] }
-    & { chainLinks: Array<(
-      { __typename?: 'chain_link' }
-      & { creationTime: Chain_Link['creation_time'], externalAddress: Chain_Link['external_address'] }
-      & { chainConfig: (
-        { __typename?: 'chain_link_chain_config' }
-        & Pick<Chain_Link_Chain_Config, 'name' | 'id'>
-      ) }
-    )>, applicationLinks: Array<(
-      { __typename?: 'application_link' }
-      & Pick<Application_Link, 'username' | 'application'>
-      & { creationTime: Application_Link['creation_time'] }
-    )> }
-  )> };
+export type DesmosProfileQuery = { profile: Array<{ __typename?: 'profile', address: string, bio: string, dtag: string, nickname: string, profilePic: string, coverPic: string, creationTime: any, chainLinks: Array<{ __typename?: 'chain_link', creationTime: any, externalAddress: string, chainConfig: { __typename?: 'chain_link_chain_config', name: string, id: number } }>, applicationLinks: Array<{ __typename?: 'application_link', username: string, application: string, creationTime: any }> }> };
 
 export type DesmosProfileLinkQueryVariables = Exact<{
-  address?: Maybe<Scalars['String']>;
+  address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type DesmosProfileLinkQuery = { profile: Array<(
-    { __typename?: 'profile' }
-    & Pick<Profile, 'address' | 'bio' | 'dtag' | 'nickname'>
-    & { profilePic: Profile['profile_pic'], coverPic: Profile['cover_pic'], creationTime: Profile['creation_time'] }
-    & { chainLinks: Array<(
-      { __typename?: 'chain_link' }
-      & { creationTime: Chain_Link['creation_time'], externalAddress: Chain_Link['external_address'] }
-      & { chainConfig: (
-        { __typename?: 'chain_link_chain_config' }
-        & Pick<Chain_Link_Chain_Config, 'name' | 'id'>
-      ) }
-    )>, applicationLinks: Array<(
-      { __typename?: 'application_link' }
-      & Pick<Application_Link, 'username' | 'application'>
-      & { creationTime: Application_Link['creation_time'] }
-    )> }
-  )> };
+export type DesmosProfileLinkQuery = { profile: Array<{ __typename?: 'profile', address: string, bio: string, dtag: string, nickname: string, profilePic: string, coverPic: string, creationTime: any, chainLinks: Array<{ __typename?: 'chain_link', creationTime: any, externalAddress: string, chainConfig: { __typename?: 'chain_link_chain_config', name: string, id: number } }>, applicationLinks: Array<{ __typename?: 'application_link', username: string, application: string, creationTime: any }> }> };
 
 export type DesmosProfileDtagQueryVariables = Exact<{
-  dtag?: Maybe<Scalars['String']>;
+  dtag?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type DesmosProfileDtagQuery = { profile: Array<(
-    { __typename?: 'profile' }
-    & Pick<Profile, 'address' | 'bio' | 'dtag' | 'nickname'>
-    & { profilePic: Profile['profile_pic'], coverPic: Profile['cover_pic'], creationTime: Profile['creation_time'] }
-    & { chainLinks: Array<(
-      { __typename?: 'chain_link' }
-      & { creationTime: Chain_Link['creation_time'], externalAddress: Chain_Link['external_address'] }
-      & { chainConfig: (
-        { __typename?: 'chain_link_chain_config' }
-        & Pick<Chain_Link_Chain_Config, 'name' | 'id'>
-      ) }
-    )>, applicationLinks: Array<(
-      { __typename?: 'application_link' }
-      & Pick<Application_Link, 'username' | 'application'>
-      & { creationTime: Application_Link['creation_time'] }
-    )> }
-  )> };
+export type DesmosProfileDtagQuery = { profile: Array<{ __typename?: 'profile', address: string, bio: string, dtag: string, nickname: string, profilePic: string, coverPic: string, creationTime: any, chainLinks: Array<{ __typename?: 'chain_link', creationTime: any, externalAddress: string, chainConfig: { __typename?: 'chain_link_chain_config', name: string, id: number } }>, applicationLinks: Array<{ __typename?: 'application_link', username: string, application: string, creationTime: any }> }> };

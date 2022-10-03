@@ -11173,667 +11173,297 @@ export type AccountCommissionQueryVariables = Exact<{
 }>;
 
 
-export type AccountCommissionQuery = { commission?: Maybe<(
-    { __typename?: 'ActionValidatorCommissionAmount' }
-    & Pick<ActionValidatorCommissionAmount, 'coins'>
-  )> };
+export type AccountCommissionQuery = { commission?: { __typename?: 'ActionValidatorCommissionAmount', coins?: Array<any | null> | null } | null };
 
 export type AccountWithdrawalAddressQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
 
 
-export type AccountWithdrawalAddressQuery = { withdrawalAddress: (
-    { __typename?: 'ActionAddress' }
-    & Pick<ActionAddress, 'address'>
-  ) };
+export type AccountWithdrawalAddressQuery = { withdrawalAddress: { __typename?: 'ActionAddress', address: string } };
 
 export type AccountBalancesQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
 
 
-export type AccountBalancesQuery = { accountBalances?: Maybe<(
-    { __typename?: 'ActionBalance' }
-    & Pick<ActionBalance, 'coins'>
-  )> };
+export type AccountBalancesQuery = { accountBalances?: { __typename?: 'ActionBalance', coins?: Array<any | null> | null } | null };
 
 export type AccountDelegationBalanceQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
 
 
-export type AccountDelegationBalanceQuery = { delegationBalance?: Maybe<(
-    { __typename?: 'ActionBalance' }
-    & Pick<ActionBalance, 'coins'>
-  )> };
+export type AccountDelegationBalanceQuery = { delegationBalance?: { __typename?: 'ActionBalance', coins?: Array<any | null> | null } | null };
 
 export type AccountUnbondingBalanceQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
 
 
-export type AccountUnbondingBalanceQuery = { unbondingBalance?: Maybe<(
-    { __typename?: 'ActionBalance' }
-    & Pick<ActionBalance, 'coins'>
-  )> };
+export type AccountUnbondingBalanceQuery = { unbondingBalance?: { __typename?: 'ActionBalance', coins?: Array<any | null> | null } | null };
 
 export type AccountDelegationRewardsQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
 
 
-export type AccountDelegationRewardsQuery = { delegationRewards?: Maybe<Array<Maybe<(
-    { __typename?: 'ActionDelegationReward' }
-    & Pick<ActionDelegationReward, 'coins'>
-    & { validatorAddress: ActionDelegationReward['validator_address'] }
-  )>>> };
+export type AccountDelegationRewardsQuery = { delegationRewards?: Array<{ __typename?: 'ActionDelegationReward', coins?: Array<any | null> | null, validatorAddress: string } | null> | null };
 
 export type AccountDelegationsQueryVariables = Exact<{
   address: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type AccountDelegationsQuery = { delegations?: Maybe<(
-    { __typename?: 'ActionDelegationResponse' }
-    & Pick<ActionDelegationResponse, 'delegations' | 'pagination'>
-  )> };
+export type AccountDelegationsQuery = { delegations?: { __typename?: 'ActionDelegationResponse', delegations?: Array<any | null> | null, pagination?: any | null } | null };
 
 export type AccountRedelegationsQueryVariables = Exact<{
   address: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type AccountRedelegationsQuery = { redelegations?: Maybe<(
-    { __typename?: 'ActionRedelegationResponse' }
-    & Pick<ActionRedelegationResponse, 'redelegations' | 'pagination'>
-  )> };
+export type AccountRedelegationsQuery = { redelegations?: { __typename?: 'ActionRedelegationResponse', redelegations?: Array<any | null> | null, pagination?: any | null } | null };
 
 export type AccountUndelegationsQueryVariables = Exact<{
   address: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type AccountUndelegationsQuery = { undelegations?: Maybe<(
-    { __typename?: 'ActionUnbondingDelegationResponse' }
-    & Pick<ActionUnbondingDelegationResponse, 'pagination'>
-    & { undelegations: ActionUnbondingDelegationResponse['unbonding_delegations'] }
-  )> };
+export type AccountUndelegationsQuery = { undelegations?: { __typename?: 'ActionUnbondingDelegationResponse', pagination?: any | null, undelegations?: Array<any | null> | null } | null };
 
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ActiveValidatorCountQuery = { activeTotal: (
-    { __typename?: 'validator_status_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'validator_status_aggregate_fields' }
-      & Pick<Validator_Status_Aggregate_Fields, 'count'>
-    )> }
-  ), inactiveTotal: (
-    { __typename?: 'validator_status_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'validator_status_aggregate_fields' }
-      & Pick<Validator_Status_Aggregate_Fields, 'count'>
-    )> }
-  ), total: (
-    { __typename?: 'validator_status_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'validator_status_aggregate_fields' }
-      & Pick<Validator_Status_Aggregate_Fields, 'count'>
-    )> }
-  ) };
+export type ActiveValidatorCountQuery = { activeTotal: { __typename?: 'validator_status_aggregate', aggregate?: { __typename?: 'validator_status_aggregate_fields', count: number } | null }, inactiveTotal: { __typename?: 'validator_status_aggregate', aggregate?: { __typename?: 'validator_status_aggregate_fields', count: number } | null }, total: { __typename?: 'validator_status_aggregate', aggregate?: { __typename?: 'validator_status_aggregate_fields', count: number } | null } };
 
 export type BlockDetailsQueryVariables = Exact<{
-  height?: Maybe<Scalars['bigint']>;
-  signatureHeight?: Maybe<Scalars['bigint']>;
+  height?: InputMaybe<Scalars['bigint']>;
+  signatureHeight?: InputMaybe<Scalars['bigint']>;
 }>;
 
 
-export type BlockDetailsQuery = { transaction: Array<(
-    { __typename?: 'transaction' }
-    & Pick<Transaction, 'height' | 'hash' | 'messages' | 'success' | 'logs'>
-  )>, block: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'height' | 'hash' | 'timestamp'>
-    & { txs: Block['num_txs'] }
-    & { validator?: Maybe<(
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & { operatorAddress: Validator_Info['operator_address'] }
-      )> }
-    )> }
-  )>, preCommitsAggregate: (
-    { __typename?: 'pre_commit_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'pre_commit_aggregate_fields' }
-      & { sum?: Maybe<(
-        { __typename?: 'pre_commit_sum_fields' }
-        & { votingPower: Pre_Commit_Sum_Fields['voting_power'] }
-      )> }
-    )> }
-  ), preCommits: Array<(
-    { __typename?: 'pre_commit' }
-    & { validator: (
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & { operatorAddress: Validator_Info['operator_address'] }
-      )> }
-    ) }
-  )> };
+export type BlockDetailsQuery = { transaction: Array<{ __typename?: 'transaction', height: any, hash: string, messages: any, success: boolean, logs?: any | null }>, block: Array<{ __typename?: 'block', height: any, hash: string, timestamp: any, txs?: number | null, validator?: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string } | null } | null }>, preCommitsAggregate: { __typename?: 'pre_commit_aggregate', aggregate?: { __typename?: 'pre_commit_aggregate_fields', sum?: { __typename?: 'pre_commit_sum_fields', votingPower?: any | null } | null } | null }, preCommits: Array<{ __typename?: 'pre_commit', validator: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string } | null } }> };
 
 export type LatestBlockHeightListenerSubscriptionVariables = Exact<{
-  offset?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type LatestBlockHeightListenerSubscription = { height: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'height'>
-  )> };
+export type LatestBlockHeightListenerSubscription = { height: Array<{ __typename?: 'block', height: any }> };
 
 export type AverageBlockTimeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AverageBlockTimeQuery = { averageBlockTime: Array<(
-    { __typename?: 'average_block_time_per_hour' }
-    & { averageTime: Average_Block_Time_Per_Hour['average_time'] }
-  )> };
+export type AverageBlockTimeQuery = { averageBlockTime: Array<{ __typename?: 'average_block_time_per_hour', averageTime: any }> };
 
 export type LatestBlockTimestampQueryVariables = Exact<{
-  offset?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type LatestBlockTimestampQuery = { block: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'timestamp'>
-  )> };
+export type LatestBlockTimestampQuery = { block: Array<{ __typename?: 'block', timestamp: any }> };
 
 export type BlocksListenerSubscriptionVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type BlocksListenerSubscription = { blocks: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'height' | 'hash' | 'timestamp'>
-    & { txs: Block['num_txs'] }
-    & { validator?: Maybe<(
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & { operatorAddress: Validator_Info['operator_address'] }
-      )> }
-    )> }
-  )> };
+export type BlocksListenerSubscription = { blocks: Array<{ __typename?: 'block', height: any, hash: string, timestamp: any, txs?: number | null, validator?: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string } | null } | null }> };
 
 export type BlocksQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type BlocksQuery = { blocks: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'height' | 'hash' | 'timestamp'>
-    & { txs: Block['num_txs'] }
-    & { validator?: Maybe<(
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & Pick<Validator_Info, 'self_delegate_address'>
-        & { operatorAddress: Validator_Info['operator_address'] }
-      )>, validatorDescriptions: Array<(
-        { __typename?: 'validator_description' }
-        & Pick<Validator_Description, 'moniker' | 'identity'>
-      )> }
-    )> }
-  )> };
+export type BlocksQuery = { blocks: Array<{ __typename?: 'block', height: any, hash: string, timestamp: any, txs?: number | null, validator?: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', self_delegate_address?: string | null, operatorAddress: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, identity?: string | null }> } | null }> };
 
 export type ChainIdQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ChainIdQuery = { genesis: Array<(
-    { __typename?: 'genesis' }
-    & Pick<Genesis, 'time'>
-    & { chainId: Genesis['chain_id'] }
-  )> };
+export type ChainIdQuery = { genesis: Array<{ __typename?: 'genesis', time: any, chainId: string }> };
 
 export type MarketDataQueryVariables = Exact<{
-  denom?: Maybe<Scalars['String']>;
+  denom?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type MarketDataQuery = { communityPool: Array<(
-    { __typename?: 'community_pool' }
-    & Pick<Community_Pool, 'coins'>
-  )>, inflation: Array<(
-    { __typename?: 'inflation' }
-    & Pick<Inflation, 'value'>
-  )>, tokenPrice: Array<(
-    { __typename?: 'token_price' }
-    & Pick<Token_Price, 'price'>
-    & { marketCap: Token_Price['market_cap'] }
-  )>, supply: Array<(
-    { __typename?: 'supply' }
-    & Pick<Supply, 'coins'>
-  )>, bondedTokens: Array<(
-    { __typename?: 'staking_pool' }
-    & Pick<Staking_Pool, 'bonded_tokens'>
-  )>, distributionParams: Array<(
-    { __typename?: 'distribution_params' }
-    & Pick<Distribution_Params, 'params'>
-  )> };
+export type MarketDataQuery = { communityPool: Array<{ __typename?: 'community_pool', coins: any }>, inflation: Array<{ __typename?: 'inflation', value: any }>, tokenPrice: Array<{ __typename?: 'token_price', price: any, marketCap: any }>, supply: Array<{ __typename?: 'supply', coins: any }>, bondedTokens: Array<{ __typename?: 'staking_pool', bonded_tokens: string }>, distributionParams: Array<{ __typename?: 'distribution_params', params: any }> };
 
 export type GetMessagesByAddressQueryVariables = Exact<{
-  address?: Maybe<Scalars['_text']>;
-  limit?: Maybe<Scalars['bigint']>;
-  offset?: Maybe<Scalars['bigint']>;
-  types?: Maybe<Scalars['_text']>;
+  address?: InputMaybe<Scalars['_text']>;
+  limit?: InputMaybe<Scalars['bigint']>;
+  offset?: InputMaybe<Scalars['bigint']>;
+  types?: InputMaybe<Scalars['_text']>;
 }>;
 
 
-export type GetMessagesByAddressQuery = { messagesByAddress: Array<(
-    { __typename?: 'message' }
-    & { transaction?: Maybe<(
-      { __typename?: 'transaction' }
-      & Pick<Transaction, 'height' | 'hash' | 'success' | 'messages' | 'logs'>
-      & { block: (
-        { __typename?: 'block' }
-        & Pick<Block, 'height' | 'timestamp'>
-      ) }
-    )> }
-  )> };
+export type GetMessagesByAddressQuery = { messagesByAddress: Array<{ __typename?: 'message', transaction?: { __typename?: 'transaction', height: any, hash: string, success: boolean, messages: any, logs?: any | null, block: { __typename?: 'block', height: any, timestamp: any } } | null }> };
 
 export type OnlineVotingPowerQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type OnlineVotingPowerQuery = { activeTotal: (
-    { __typename?: 'validator_status_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'validator_status_aggregate_fields' }
-      & Pick<Validator_Status_Aggregate_Fields, 'count'>
-    )> }
-  ), validatorVotingPowerAggregate: (
-    { __typename?: 'validator_voting_power_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'validator_voting_power_aggregate_fields' }
-      & { sum?: Maybe<(
-        { __typename?: 'validator_voting_power_sum_fields' }
-        & { votingPower: Validator_Voting_Power_Sum_Fields['voting_power'] }
-      )> }
-    )> }
-  ), stakingPool: Array<(
-    { __typename?: 'staking_pool' }
-    & { bonded: Staking_Pool['bonded_tokens'] }
-  )>, stakingParams: Array<(
-    { __typename?: 'staking_params' }
-    & Pick<Staking_Params, 'params'>
-  )> };
+export type OnlineVotingPowerQuery = { activeTotal: { __typename?: 'validator_status_aggregate', aggregate?: { __typename?: 'validator_status_aggregate_fields', count: number } | null }, validatorVotingPowerAggregate: { __typename?: 'validator_voting_power_aggregate', aggregate?: { __typename?: 'validator_voting_power_aggregate_fields', sum?: { __typename?: 'validator_voting_power_sum_fields', votingPower?: any | null } | null } | null }, stakingPool: Array<{ __typename?: 'staking_pool', bonded: string }>, stakingParams: Array<{ __typename?: 'staking_params', params: any }> };
 
 export type ParamsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ParamsQuery = { stakingParams: Array<(
-    { __typename?: 'staking_params' }
-    & Pick<Staking_Params, 'params'>
-  )>, slashingParams: Array<(
-    { __typename?: 'slashing_params' }
-    & Pick<Slashing_Params, 'params'>
-  )>, mintParams: Array<(
-    { __typename?: 'mint_params' }
-    & Pick<Mint_Params, 'params'>
-  )>, distributionParams: Array<(
-    { __typename?: 'distribution_params' }
-    & Pick<Distribution_Params, 'params'>
-  )>, govParams: Array<(
-    { __typename?: 'gov_params' }
-    & { depositParams: Gov_Params['deposit_params'], tallyParams: Gov_Params['tally_params'], votingParams: Gov_Params['voting_params'] }
-  )> };
+export type ParamsQuery = { stakingParams: Array<{ __typename?: 'staking_params', params: any }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }>, mintParams: Array<{ __typename?: 'mint_params', params: any }>, distributionParams: Array<{ __typename?: 'distribution_params', params: any }>, govParams: Array<{ __typename?: 'gov_params', depositParams: any, tallyParams: any, votingParams: any }> };
 
 export type ProposalDetailsQueryVariables = Exact<{
-  proposalId?: Maybe<Scalars['Int']>;
+  proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsQuery = { proposal: Array<(
-    { __typename?: 'proposal' }
-    & Pick<Proposal, 'title' | 'description' | 'status' | 'content'>
-    & { proposer: Proposal['proposer_address'], proposalId: Proposal['id'], submitTime: Proposal['submit_time'], depositEndTime: Proposal['deposit_end_time'], votingStartTime: Proposal['voting_start_time'], votingEndTime: Proposal['voting_end_time'] }
-  )> };
+export type ProposalDetailsQuery = { proposal: Array<{ __typename?: 'proposal', title: string, description: string, status?: string | null, content: any, proposer: string, proposalId: number, submitTime: any, depositEndTime?: any | null, votingStartTime?: any | null, votingEndTime?: any | null }> };
 
 export type ProposalDetailsTallyQueryVariables = Exact<{
-  proposalId?: Maybe<Scalars['Int']>;
+  proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsTallyQuery = { proposalTallyResult: Array<(
-    { __typename?: 'proposal_tally_result' }
-    & Pick<Proposal_Tally_Result, 'yes' | 'no' | 'abstain'>
-    & { noWithVeto: Proposal_Tally_Result['no_with_veto'] }
-  )>, stakingPool: Array<(
-    { __typename?: 'proposal_staking_pool_snapshot' }
-    & { bondedTokens: Proposal_Staking_Pool_Snapshot['bonded_tokens'] }
-  )>, quorum: Array<(
-    { __typename?: 'gov_params' }
-    & { tallyParams: Gov_Params['tally_params'] }
-  )> };
+export type ProposalDetailsTallyQuery = { proposalTallyResult: Array<{ __typename?: 'proposal_tally_result', yes: string, no: string, abstain: string, noWithVeto: string }>, stakingPool: Array<{ __typename?: 'proposal_staking_pool_snapshot', bondedTokens: string }>, quorum: Array<{ __typename?: 'gov_params', tallyParams: any }> };
 
 export type ProposalDetailsDepositsQueryVariables = Exact<{
-  proposalId?: Maybe<Scalars['Int']>;
+  proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<(
-    { __typename?: 'proposal_deposit' }
-    & Pick<Proposal_Deposit, 'amount'>
-    & { depositorAddress: Proposal_Deposit['depositor_address'] }
-    & { block?: Maybe<(
-      { __typename?: 'block' }
-      & Pick<Block, 'timestamp'>
-    )> }
-  )> };
+export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<{ __typename?: 'proposal_deposit', amount?: any | null, depositorAddress?: string | null, block?: { __typename?: 'block', timestamp: any } | null }> };
 
 export type ProposalDetailsVotesQueryVariables = Exact<{
-  proposalId?: Maybe<Scalars['Int']>;
+  proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsVotesQuery = { proposalVote: Array<(
-    { __typename?: 'proposal_vote' }
-    & Pick<Proposal_Vote, 'option'>
-    & { voterAddress: Proposal_Vote['voter_address'] }
-  )>, validatorStatuses: Array<(
-    { __typename?: 'proposal_validator_status_snapshot' }
-    & { validator: (
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & { selfDelegateAddress: Validator_Info['self_delegate_address'] }
-      )> }
-    ) }
-  )> };
+export type ProposalDetailsVotesQuery = { proposalVote: Array<{ __typename?: 'proposal_vote', option: string, voterAddress: string }>, validatorStatuses: Array<{ __typename?: 'proposal_validator_status_snapshot', validator: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', selfDelegateAddress?: string | null } | null } }> };
 
 export type ProposalsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalsQuery = { proposals: Array<(
-    { __typename?: 'proposal' }
-    & Pick<Proposal, 'title' | 'status' | 'description'>
-    & { proposalId: Proposal['id'] }
-  )>, total: (
-    { __typename?: 'proposal_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'proposal_aggregate_fields' }
-      & Pick<Proposal_Aggregate_Fields, 'count'>
-    )> }
-  ) };
+export type ProposalsQuery = { proposals: Array<{ __typename?: 'proposal', title: string, status?: string | null, description: string, proposalId: number }>, total: { __typename?: 'proposal_aggregate', aggregate?: { __typename?: 'proposal_aggregate_fields', count: number } | null } };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
-  denom?: Maybe<Scalars['String']>;
+  denom?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type TokenPriceListenerSubscription = { tokenPrice: Array<(
-    { __typename?: 'token_price' }
-    & Pick<Token_Price, 'id' | 'price' | 'timestamp'>
-    & { marketCap: Token_Price['market_cap'], unitName: Token_Price['unit_name'] }
-  )> };
+export type TokenPriceListenerSubscription = { tokenPrice: Array<{ __typename?: 'token_price', id: number, price: any, timestamp: any, marketCap: any, unitName: string }> };
 
 export type TokenPriceHistoryQueryVariables = Exact<{
-  denom?: Maybe<Scalars['String']>;
-  limit?: Maybe<Scalars['Int']>;
+  denom?: InputMaybe<Scalars['String']>;
+  limit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type TokenPriceHistoryQuery = { tokenPrice: Array<(
-    { __typename?: 'token_price_history' }
-    & Pick<Token_Price_History, 'price' | 'timestamp'>
-  )> };
+export type TokenPriceHistoryQuery = { tokenPrice: Array<{ __typename?: 'token_price_history', price: any, timestamp: any }> };
 
 export type TokenomicsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TokenomicsQuery = { stakingParams: Array<(
-    { __typename?: 'staking_params' }
-    & Pick<Staking_Params, 'params'>
-  )>, stakingPool: Array<(
-    { __typename?: 'staking_pool' }
-    & { bonded: Staking_Pool['bonded_tokens'], unbonded: Staking_Pool['not_bonded_tokens'] }
-  )>, supply: Array<(
-    { __typename?: 'supply' }
-    & Pick<Supply, 'coins'>
-  )> };
+export type TokenomicsQuery = { stakingParams: Array<{ __typename?: 'staking_params', params: any }>, stakingPool: Array<{ __typename?: 'staking_pool', bonded: string, unbonded: string }>, supply: Array<{ __typename?: 'supply', coins: any }> };
 
 export type TransactionDetailsQueryVariables = Exact<{
-  hash?: Maybe<Scalars['String']>;
+  hash?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type TransactionDetailsQuery = { transaction: Array<(
-    { __typename?: 'transaction' }
-    & Pick<Transaction, 'logs'>
-    & { hash: Transaction['hash'], height: Transaction['height'], fee: Transaction['fee'], gasUsed: Transaction['gas_used'], gasWanted: Transaction['gas_wanted'], success: Transaction['success'], memo: Transaction['memo'], messages: Transaction['messages'], rawLog: Transaction['raw_log'] }
-    & { block: (
-      { __typename?: 'block' }
-      & { timestamp: Block['timestamp'] }
-    ) }
-  )> };
+export type TransactionDetailsQuery = { transaction: Array<{ __typename?: 'transaction', logs?: any | null, hash: string, height: any, fee: any, gasUsed?: any | null, gasWanted?: any | null, success: boolean, memo?: string | null, messages: any, rawLog?: string | null, block: { __typename?: 'block', timestamp: any } }> };
 
 export type TransactionsListenerSubscriptionVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type TransactionsListenerSubscription = { transactions: Array<(
-    { __typename?: 'transaction' }
-    & Pick<Transaction, 'height' | 'hash' | 'success' | 'messages' | 'logs'>
-    & { block: (
-      { __typename?: 'block' }
-      & Pick<Block, 'timestamp'>
-    ) }
-  )> };
+export type TransactionsListenerSubscription = { transactions: Array<{ __typename?: 'transaction', height: any, hash: string, success: boolean, messages: any, logs?: any | null, block: { __typename?: 'block', timestamp: any } }> };
 
 export type TransactionsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type TransactionsQuery = { transactions: Array<(
-    { __typename?: 'transaction' }
-    & Pick<Transaction, 'height' | 'hash' | 'success' | 'messages' | 'logs'>
-    & { block: (
-      { __typename?: 'block' }
-      & Pick<Block, 'timestamp'>
-    ) }
-  )> };
+export type TransactionsQuery = { transactions: Array<{ __typename?: 'transaction', height: any, hash: string, success: boolean, messages: any, logs?: any | null, block: { __typename?: 'block', timestamp: any } }> };
 
 export type LastHundredBlocksSubscriptionVariables = Exact<{
-  address?: Maybe<Scalars['String']>;
+  address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type LastHundredBlocksSubscription = { block: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'height'>
-    & { validator?: Maybe<(
-      { __typename?: 'validator' }
-      & { validatorInfo?: Maybe<(
-        { __typename?: 'validator_info' }
-        & { operatorAddress: Validator_Info['operator_address'] }
-      )> }
-    )>, transactions: Array<(
-      { __typename?: 'transaction' }
-      & Pick<Transaction, 'hash'>
-    )>, precommits: Array<(
-      { __typename?: 'pre_commit' }
-      & { validatorAddress: Pre_Commit['validator_address'] }
-    )> }
-  )> };
+export type LastHundredBlocksSubscription = { block: Array<{ __typename?: 'block', height: any, validator?: { __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string } | null } | null, transactions: Array<{ __typename?: 'transaction', hash: string }>, precommits: Array<{ __typename?: 'pre_commit', validatorAddress: string }> }> };
 
 export type ValidatorLastSeenListenerSubscriptionVariables = Exact<{
-  address?: Maybe<Scalars['String']>;
+  address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ValidatorLastSeenListenerSubscription = { preCommit: Array<(
-    { __typename?: 'pre_commit' }
-    & Pick<Pre_Commit, 'height' | 'timestamp'>
-  )> };
+export type ValidatorLastSeenListenerSubscription = { preCommit: Array<{ __typename?: 'pre_commit', height: any, timestamp: any }> };
 
 export type ValidatorDetailsQueryVariables = Exact<{
-  address?: Maybe<Scalars['String']>;
+  address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ValidatorDetailsQuery = { stakingPool: Array<(
-    { __typename?: 'staking_pool' }
-    & Pick<Staking_Pool, 'height'>
-    & { bonded: Staking_Pool['bonded_tokens'] }
-  )>, validator: Array<(
-    { __typename?: 'validator' }
-    & { validatorDescriptions: Array<(
-      { __typename?: 'validator_description' }
-      & Pick<Validator_Description, 'details' | 'website'>
-    )>, validatorStatuses: Array<(
-      { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'status' | 'jailed' | 'height'>
-    )>, validatorSigningInfos: Array<(
-      { __typename?: 'validator_signing_info' }
-      & Pick<Validator_Signing_Info, 'tombstoned'>
-      & { missedBlocksCounter: Validator_Signing_Info['missed_blocks_counter'] }
-    )>, validatorInfo?: Maybe<(
-      { __typename?: 'validator_info' }
-      & { operatorAddress: Validator_Info['operator_address'], selfDelegateAddress: Validator_Info['self_delegate_address'], maxRate: Validator_Info['max_rate'] }
-    )>, validatorCommissions: Array<(
-      { __typename?: 'validator_commission' }
-      & Pick<Validator_Commission, 'commission'>
-    )>, validatorVotingPowers: Array<(
-      { __typename?: 'validator_voting_power' }
-      & Pick<Validator_Voting_Power, 'height'>
-      & { votingPower: Validator_Voting_Power['voting_power'] }
-    )> }
-  )>, slashingParams: Array<(
-    { __typename?: 'slashing_params' }
-    & Pick<Slashing_Params, 'params'>
-  )> };
+export type ValidatorDetailsQuery = { stakingPool: Array<{ __typename?: 'staking_pool', height: any, bonded: string }>, validator: Array<{ __typename?: 'validator', validatorDescriptions: Array<{ __typename?: 'validator_description', details?: string | null, website?: string | null }>, validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }>, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, maxRate: string } | null, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }>, validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', height: any, votingPower: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
 
 export type ValidatorDelegationsQueryVariables = Exact<{
   validatorAddress: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type ValidatorDelegationsQuery = { delegations?: Maybe<(
-    { __typename?: 'ActionDelegationResponse' }
-    & Pick<ActionDelegationResponse, 'delegations' | 'pagination'>
-  )> };
+export type ValidatorDelegationsQuery = { delegations?: { __typename?: 'ActionDelegationResponse', delegations?: Array<any | null> | null, pagination?: any | null } | null };
 
 export type ValidatorRedelegationsQueryVariables = Exact<{
   validatorAddress: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type ValidatorRedelegationsQuery = { redelegations?: Maybe<(
-    { __typename?: 'ActionRedelegationResponse' }
-    & Pick<ActionRedelegationResponse, 'redelegations' | 'pagination'>
-  )> };
+export type ValidatorRedelegationsQuery = { redelegations?: { __typename?: 'ActionRedelegationResponse', redelegations?: Array<any | null> | null, pagination?: any | null } | null };
 
 export type ValidatorUndelegationsQueryVariables = Exact<{
   validatorAddress: Scalars['String'];
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   pagination?: Scalars['Boolean'];
 }>;
 
 
-export type ValidatorUndelegationsQuery = { undelegations?: Maybe<(
-    { __typename?: 'ActionUnbondingDelegationResponse' }
-    & Pick<ActionUnbondingDelegationResponse, 'pagination'>
-    & { undelegations: ActionUnbondingDelegationResponse['unbonding_delegations'] }
-  )> };
+export type ValidatorUndelegationsQuery = { undelegations?: { __typename?: 'ActionUnbondingDelegationResponse', pagination?: any | null, undelegations?: Array<any | null> | null } | null };
 
 export type ValidatorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorsQuery = { stakingPool: Array<(
-    { __typename?: 'staking_pool' }
-    & { bondedTokens: Staking_Pool['bonded_tokens'] }
-  )>, validator: Array<(
-    { __typename?: 'validator' }
-    & { validatorStatuses: Array<(
-      { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'status' | 'jailed' | 'height'>
-    )>, validatorSigningInfos: Array<(
-      { __typename?: 'validator_signing_info' }
-      & Pick<Validator_Signing_Info, 'tombstoned'>
-      & { missedBlocksCounter: Validator_Signing_Info['missed_blocks_counter'] }
-    )>, validatorInfo?: Maybe<(
-      { __typename?: 'validator_info' }
-      & { operatorAddress: Validator_Info['operator_address'], selfDelegateAddress: Validator_Info['self_delegate_address'] }
-    )>, validatorVotingPowers: Array<(
-      { __typename?: 'validator_voting_power' }
-      & { votingPower: Validator_Voting_Power['voting_power'] }
-    )>, validatorCommissions: Array<(
-      { __typename?: 'validator_commission' }
-      & Pick<Validator_Commission, 'commission'>
-    )> }
-  )>, slashingParams: Array<(
-    { __typename?: 'slashing_params' }
-    & Pick<Slashing_Params, 'params'>
-  )> };
+export type ValidatorsQuery = { stakingPool: Array<{ __typename?: 'staking_pool', bondedTokens: string }>, validator: Array<{ __typename?: 'validator', validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }>, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null } | null, validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', votingPower: any }>, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
 
 export type ValidatorsAddressListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorsAddressListQuery = { validator: Array<(
-    { __typename?: 'validator' }
-    & { validatorInfo?: Maybe<(
-      { __typename?: 'validator_info' }
-      & { operatorAddress: Validator_Info['operator_address'], selfDelegateAddress: Validator_Info['self_delegate_address'], consensusAddress: Validator_Info['consensus_address'] }
-    )>, validatorDescriptions: Array<(
-      { __typename?: 'validator_description' }
-      & Pick<Validator_Description, 'moniker' | 'identity'>
-      & { avatarUrl: Validator_Description['avatar_url'] }
-    )> }
-  )> };
+export type ValidatorsAddressListQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, consensusAddress: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, identity?: string | null, avatarUrl?: string | null }> }> };
 
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorAddressesQuery = { validator: Array<(
-    { __typename?: 'validator' }
-    & { validatorInfo?: Maybe<(
-      { __typename?: 'validator_info' }
-      & { operatorAddress: Validator_Info['operator_address'], selfDelegateAddress: Validator_Info['self_delegate_address'], consensusAddress: Validator_Info['consensus_address'] }
-    )>, validatorDescriptions: Array<(
-      { __typename?: 'validator_description' }
-      & Pick<Validator_Description, 'moniker'>
-      & { avatarUrl: Validator_Description['avatar_url'] }
-    )> }
-  )> };
+export type ValidatorAddressesQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, consensusAddress: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, avatarUrl?: string | null }> }> };
 
 
 export const AccountCommissionDocument = gql`

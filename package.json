@@ -17,7 +17,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "type-check": "tsc",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --maxWorkers=1",
     "e2e": "cypress open",
     "graphql:codegen": "graphql-codegen"
   },

@@ -10,11 +10,12 @@ RUN apk update && apk add --no-cache git bash
 # Set working directory & bash defaults
 WORKDIR /home/node/app
 
-# Copy source files
-COPY . .
+# Add PM2
+RUN yarn add pm2 -g
 
 # Installing dependencies
-RUN npm ci
+COPY package*.json ./
+RUN yarn install
 
 # Build-time arguments
 ARG NODE_ENV="production"
@@ -34,15 +35,10 @@ ENV NPM_CONFIG_LOGLEVEL ${NPM_CONFIG_LOGLEVEL}
 ENV NODE_ENV ${NODE_ENV}
 ENV PORT ${PORT}
 
-# Build the app
-RUN npm run build
-
-# Specify default port
+# Building app
+RUN yarn install && yarn build
 EXPOSE ${PORT}
 
 # Set user and shell
 USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
-
-# Run the application
-CMD [ "npm start" ]

@@ -25,15 +25,15 @@ ARG NEXT_PUBLIC_CHAIN_TYPE
 ARG PORT=3000
 
 # Run-time environment variables
-ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
-ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
-ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
-ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
+ENV NEXT_PUBLIC_GRAPHQL_URL https://testnet-gql.cheqd.io/v1/graphql
+ENV NEXT_PUBLIC_GRAPHQL_WS wss://testnet-gql.cheqd.io/v1/graphql
+ENV NEXT_PUBLIC_RPC_WEBSOCKET wss://rpc.cheqd.network
+ENV NEXT_PUBLIC_CHAIN_TYPE testnet
 ENV NODE_ENV ${NODE_ENV}
 ENV PORT ${PORT}
 
 # Building app
-RUN yarn install && yarn build
+RUN yarn build
 
 # Specify default port
 EXPOSE ${PORT}
@@ -43,4 +43,4 @@ USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 # Run the application
-CMD [ "yarn start" ]
+CMD [ "yarn", "run", "start" ]

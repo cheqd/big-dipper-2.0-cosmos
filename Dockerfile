@@ -1,4 +1,4 @@
-FROM node:14.5.0-alpine
+FROM node:18.10.0-alpine
 
 ENV PORT 3000
 
@@ -9,11 +9,11 @@ RUN apk add --no-cache git
 WORKDIR /app
 
 # Add PM2
-RUN npm install pm2 -g
+RUN yarn add pm2 -g
 
 # Installing dependencies
 COPY package*.json ./
-RUN npm ci
+RUN yarn install
 
 # Copying source files
 COPY . .
@@ -29,6 +29,7 @@ ARG NODE_ENV
 ARG PORT
 ARG NEXT_PUBLIC_MATOMO_URL
 ARG NEXT_PUBLIC_MATOMO_SITE_ID
+ARG SENTRY_DSN
 
 # Generate env file
 ENV NEXT_PUBLIC_GRAPHQL_URL ${NEXT_PUBLIC_GRAPHQL_URL}
@@ -41,9 +42,10 @@ ENV NODE_ENV ${NODE_ENV}
 ENV PORT ${PORT}
 ENV NEXT_PUBLIC_MATOMO_URL ${NEXT_PUBLIC_MATOMO_URL}
 ENV NEXT_PUBLIC_MATOMO_SITE_ID ${NEXT_PUBLIC_MATOMO_SITE_ID}
+ENV SENTRY_DSN ${ENTRY_DSN}
 
 # Building app
-RUN npm run build
+RUN yarn install && yarn build
 EXPOSE ${PORT}
 
 # Running the app

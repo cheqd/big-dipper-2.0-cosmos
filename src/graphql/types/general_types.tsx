@@ -5102,6 +5102,10 @@ export type Query_Root = {
   slashing_params_aggregate: Slashing_Params_Aggregate;
   /** fetch data from the table: "slashing_params" using primary key columns */
   slashing_params_by_pk?: Maybe<Slashing_Params>;
+  /** fetch data from the table: "software_upgrade_plan" */
+  software_upgrade_plan: Array<Software_Upgrade_Plan>;
+  /** fetch aggregated fields from the table: "software_upgrade_plan" */
+  software_upgrade_plan_aggregate: Software_Upgrade_Plan_Aggregate;
   /** fetch data from the table: "staking_params" */
   staking_params: Array<Staking_Params>;
   /** fetch aggregated fields from the table: "staking_params" */
@@ -5814,6 +5818,24 @@ export type Query_RootSlashing_Params_By_PkArgs = {
 };
 
 
+export type Query_RootSoftware_Upgrade_PlanArgs = {
+  distinct_on?: Maybe<Array<Software_Upgrade_Plan_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Software_Upgrade_Plan_Order_By>>;
+  where?: Maybe<Software_Upgrade_Plan_Bool_Exp>;
+};
+
+
+export type Query_RootSoftware_Upgrade_Plan_AggregateArgs = {
+  distinct_on?: Maybe<Array<Software_Upgrade_Plan_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Software_Upgrade_Plan_Order_By>>;
+  where?: Maybe<Software_Upgrade_Plan_Bool_Exp>;
+};
+
+
 export type Query_RootStaking_ParamsArgs = {
   distinct_on?: Maybe<Array<Staking_Params_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -6314,6 +6336,169 @@ export type Smallint_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['smallint']>>;
 };
 
+/** columns and relationships of "software_upgrade_plan" */
+export type Software_Upgrade_Plan = {
+  __typename?: 'software_upgrade_plan';
+  height: Scalars['bigint'];
+  info: Scalars['String'];
+  plan_name: Scalars['String'];
+  /** An object relationship */
+  proposal?: Maybe<Proposal>;
+  proposal_id?: Maybe<Scalars['Int']>;
+  upgrade_height: Scalars['bigint'];
+};
+
+/** aggregated selection of "software_upgrade_plan" */
+export type Software_Upgrade_Plan_Aggregate = {
+  __typename?: 'software_upgrade_plan_aggregate';
+  aggregate?: Maybe<Software_Upgrade_Plan_Aggregate_Fields>;
+  nodes: Array<Software_Upgrade_Plan>;
+};
+
+/** aggregate fields of "software_upgrade_plan" */
+export type Software_Upgrade_Plan_Aggregate_Fields = {
+  __typename?: 'software_upgrade_plan_aggregate_fields';
+  avg?: Maybe<Software_Upgrade_Plan_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Software_Upgrade_Plan_Max_Fields>;
+  min?: Maybe<Software_Upgrade_Plan_Min_Fields>;
+  stddev?: Maybe<Software_Upgrade_Plan_Stddev_Fields>;
+  stddev_pop?: Maybe<Software_Upgrade_Plan_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Software_Upgrade_Plan_Stddev_Samp_Fields>;
+  sum?: Maybe<Software_Upgrade_Plan_Sum_Fields>;
+  var_pop?: Maybe<Software_Upgrade_Plan_Var_Pop_Fields>;
+  var_samp?: Maybe<Software_Upgrade_Plan_Var_Samp_Fields>;
+  variance?: Maybe<Software_Upgrade_Plan_Variance_Fields>;
+};
+
+
+/** aggregate fields of "software_upgrade_plan" */
+export type Software_Upgrade_Plan_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Software_Upgrade_Plan_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Software_Upgrade_Plan_Avg_Fields = {
+  __typename?: 'software_upgrade_plan_avg_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "software_upgrade_plan". All fields are combined with a logical 'AND'. */
+export type Software_Upgrade_Plan_Bool_Exp = {
+  _and?: Maybe<Array<Software_Upgrade_Plan_Bool_Exp>>;
+  _not?: Maybe<Software_Upgrade_Plan_Bool_Exp>;
+  _or?: Maybe<Array<Software_Upgrade_Plan_Bool_Exp>>;
+  height?: Maybe<Bigint_Comparison_Exp>;
+  info?: Maybe<String_Comparison_Exp>;
+  plan_name?: Maybe<String_Comparison_Exp>;
+  proposal?: Maybe<Proposal_Bool_Exp>;
+  proposal_id?: Maybe<Int_Comparison_Exp>;
+  upgrade_height?: Maybe<Bigint_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Software_Upgrade_Plan_Max_Fields = {
+  __typename?: 'software_upgrade_plan_max_fields';
+  height?: Maybe<Scalars['bigint']>;
+  info?: Maybe<Scalars['String']>;
+  plan_name?: Maybe<Scalars['String']>;
+  proposal_id?: Maybe<Scalars['Int']>;
+  upgrade_height?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate min on columns */
+export type Software_Upgrade_Plan_Min_Fields = {
+  __typename?: 'software_upgrade_plan_min_fields';
+  height?: Maybe<Scalars['bigint']>;
+  info?: Maybe<Scalars['String']>;
+  plan_name?: Maybe<Scalars['String']>;
+  proposal_id?: Maybe<Scalars['Int']>;
+  upgrade_height?: Maybe<Scalars['bigint']>;
+};
+
+/** Ordering options when selecting data from "software_upgrade_plan". */
+export type Software_Upgrade_Plan_Order_By = {
+  height?: Maybe<Order_By>;
+  info?: Maybe<Order_By>;
+  plan_name?: Maybe<Order_By>;
+  proposal?: Maybe<Proposal_Order_By>;
+  proposal_id?: Maybe<Order_By>;
+  upgrade_height?: Maybe<Order_By>;
+};
+
+/** select columns of table "software_upgrade_plan" */
+export enum Software_Upgrade_Plan_Select_Column {
+  /** column name */
+  Height = 'height',
+  /** column name */
+  Info = 'info',
+  /** column name */
+  PlanName = 'plan_name',
+  /** column name */
+  ProposalId = 'proposal_id',
+  /** column name */
+  UpgradeHeight = 'upgrade_height'
+}
+
+/** aggregate stddev on columns */
+export type Software_Upgrade_Plan_Stddev_Fields = {
+  __typename?: 'software_upgrade_plan_stddev_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Software_Upgrade_Plan_Stddev_Pop_Fields = {
+  __typename?: 'software_upgrade_plan_stddev_pop_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Software_Upgrade_Plan_Stddev_Samp_Fields = {
+  __typename?: 'software_upgrade_plan_stddev_samp_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Software_Upgrade_Plan_Sum_Fields = {
+  __typename?: 'software_upgrade_plan_sum_fields';
+  height?: Maybe<Scalars['bigint']>;
+  proposal_id?: Maybe<Scalars['Int']>;
+  upgrade_height?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate var_pop on columns */
+export type Software_Upgrade_Plan_Var_Pop_Fields = {
+  __typename?: 'software_upgrade_plan_var_pop_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Software_Upgrade_Plan_Var_Samp_Fields = {
+  __typename?: 'software_upgrade_plan_var_samp_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Software_Upgrade_Plan_Variance_Fields = {
+  __typename?: 'software_upgrade_plan_variance_fields';
+  height?: Maybe<Scalars['Float']>;
+  proposal_id?: Maybe<Scalars['Float']>;
+  upgrade_height?: Maybe<Scalars['Float']>;
+};
+
 /** columns and relationships of "staking_params" */
 export type Staking_Params = {
   __typename?: 'staking_params';
@@ -6720,6 +6905,10 @@ export type Subscription_Root = {
   slashing_params_aggregate: Slashing_Params_Aggregate;
   /** fetch data from the table: "slashing_params" using primary key columns */
   slashing_params_by_pk?: Maybe<Slashing_Params>;
+  /** fetch data from the table: "software_upgrade_plan" */
+  software_upgrade_plan: Array<Software_Upgrade_Plan>;
+  /** fetch aggregated fields from the table: "software_upgrade_plan" */
+  software_upgrade_plan_aggregate: Software_Upgrade_Plan_Aggregate;
   /** fetch data from the table: "staking_params" */
   staking_params: Array<Staking_Params>;
   /** fetch aggregated fields from the table: "staking_params" */
@@ -7343,6 +7532,24 @@ export type Subscription_RootSlashing_Params_AggregateArgs = {
 
 export type Subscription_RootSlashing_Params_By_PkArgs = {
   one_row_id: Scalars['Boolean'];
+};
+
+
+export type Subscription_RootSoftware_Upgrade_PlanArgs = {
+  distinct_on?: Maybe<Array<Software_Upgrade_Plan_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Software_Upgrade_Plan_Order_By>>;
+  where?: Maybe<Software_Upgrade_Plan_Bool_Exp>;
+};
+
+
+export type Subscription_RootSoftware_Upgrade_Plan_AggregateArgs = {
+  distinct_on?: Maybe<Array<Software_Upgrade_Plan_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Software_Upgrade_Plan_Order_By>>;
+  where?: Maybe<Software_Upgrade_Plan_Bool_Exp>;
 };
 
 

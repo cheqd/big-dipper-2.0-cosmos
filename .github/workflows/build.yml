@@ -23,14 +23,8 @@ jobs:
       - name: "Install dependencies"
         run: yarn install --frozen-lockfile
 
-      - name: "Execute JS/TS/TSX/JSX linters"
-        run: |
-          yarn run type-check
-          yarn run lint
-
       - name: "Execute build"
-        run: |
-          yarn build
+        run: yarn build
       
       - name: "Execute tests"
         run: yarn run test

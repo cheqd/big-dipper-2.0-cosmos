@@ -1,6 +1,6 @@
 const nextTranslate = require('next-translate');
 
-const moduleExports = nextTranslate({
+module.exports = nextTranslate({
   poweredByHeader: false,
   basePath: '',
   webpack: (config) => {

@@ -1,5 +1,4 @@
 /**
- * NOTE: This requires `@sentry/nextjs` version 7.3.0 or higher.
  *
  * NOTE: If using this with `next` version 12.2.0 or lower, uncomment the
  * penultimate line in `CustomErrorComponent`.
@@ -15,8 +14,6 @@
  *  - https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
  *  - https://reactjs.org/docs/error-boundaries.html
  */
-
-import * as Sentry from '@sentry/nextjs';
 import { NextPageContext } from 'next';
 import Error from '@screens/error';
 
@@ -24,15 +21,7 @@ const ErrorPage = () => {
   return <Error />;
 };
 
-/* It's getting the Sentry DSN from the environment variables. */
-const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
-
 ErrorPage.getInitialProps = async (contextData: NextPageContext) => {
-  if (SENTRY_DSN) {
-    // In case this is running in a serverless function, await this in order to give Sentry
-    // time to send the error before the lambda exits
-    await Sentry.captureUnderscoreErrorException(contextData);
-  }
   const {
     res, err,
   } = contextData;

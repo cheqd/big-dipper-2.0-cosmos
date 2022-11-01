@@ -30,7 +30,7 @@ jobs:
 
       - name: Build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn build
 
       - name: Perform CodeQL Analysis

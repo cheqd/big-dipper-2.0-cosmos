@@ -2,7 +2,7 @@
 ###        STAGE 1: Runtime BigDipper container        		###
 ###############################################################
 
-FROM node:16-alpine AS builder
+FROM node:18-alpine AS builder
 
 # Set working directory & bash defaults
 WORKDIR /home/node/app
@@ -11,7 +11,7 @@ WORKDIR /home/node/app
 COPY . .
 
 # Installing dependencies
-RUN yarn workspaces focus --all
+RUN yarn install --frozen-lockfile
 
 # Building app
 RUN yarn build
@@ -21,7 +21,7 @@ RUN yarn build
 ###             STAGE 2: Build Miniflare runner             ###
 ###############################################################
 
-FROM node:16-alpine AS runner
+FROM node:18-alpine AS runner
 
 # Set working directory & bash defaults
 WORKDIR /home/node/app

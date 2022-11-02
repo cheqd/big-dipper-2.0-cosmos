@@ -49,8 +49,8 @@ ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
 ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
 
-# Install Yarn depdenencies
-RUN yarn install --frozen-lockfile
+# Install Yarn depdenencies, production only
+RUN yarn workspaces focus --production
 
 # Install pre-requisite packages
 RUN chown -R node:node /home/node/app && \

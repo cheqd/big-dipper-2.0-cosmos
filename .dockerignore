@@ -1,10 +1,12 @@
 # Skip unncecessary folders
+.git
 .github
 .next
 dist
 cypress
 node_modules
 tests
+.yarn/cache
 
 # Skip unnecessary files
 **/*.md

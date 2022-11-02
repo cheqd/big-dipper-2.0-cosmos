@@ -4,9 +4,6 @@
 
 FROM node:16-alpine AS builder
 
-# Install pre-requisite packages
-RUN apk update && apk add --no-cache git bash
-
 # Set working directory & bash defaults
 WORKDIR /home/node/app
 
@@ -31,6 +28,7 @@ WORKDIR /home/node/app
 
 # Copy source/built folders
 COPY . .
+COPY --from=builder --chown=node:node /home/node/app/.next ./.next/
 COPY --from=builder --chown=node:node /home/node/app/dist ./dist/
 
 # Build-time arguments
@@ -51,9 +49,11 @@ ENV NEXT_PUBLIC_GRAPHQL_WS ${NEXT_PUBLIC_GRAPHQL_WS}
 ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
 
+# Install Yarn depdenencies
+RUN yarn install --frozen-lockfile
+
 # Install pre-requisite packages
-RUN yarn install --frozen-lockfile && \
-	chown -R node:node /home/node/app && \
+RUN chown -R node:node /home/node/app && \
     apk update && \
     apk add --no-cache bash ca-certificates
 

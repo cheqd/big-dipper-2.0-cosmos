@@ -65,4 +65,4 @@ USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 # Run the application
-CMD [ "yarn run start" ]
+CMD [ "yarn start" ]

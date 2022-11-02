@@ -9,6 +9,8 @@ tests
 # Skip unnecessary files
 **/*.md
 Dockerfile**
+docker-compose.yml
 .env
 .env.sample
+LICENSE
 npm-debug.log

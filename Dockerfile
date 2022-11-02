@@ -11,7 +11,7 @@ WORKDIR /home/node/app
 COPY . .
 
 # Installing dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn workspaces focus --all
 
 # Building app
 RUN yarn build

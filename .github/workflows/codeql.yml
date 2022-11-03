@@ -28,10 +28,11 @@ jobs:
           languages: 'javascript'
           queries: security-and-quality
 
+      - name: Install dependencies
+        run: yarn install --immutable
+
       - name: Build
-        run: |
-          npm ci
-          npm run build
+        run: yarn build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2

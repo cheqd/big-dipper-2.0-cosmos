@@ -1,4 +1,5 @@
 # Skip unncecessary folders
+.git
 .github
 .next
 dist
@@ -9,5 +10,9 @@ tests
 # Skip unnecessary files
 **/*.md
 Dockerfile**
-npm-debug.log
+docker-compose.yml
+.DS_Store
 .env
+.env.sample
+LICENSE
+npm-debug.log

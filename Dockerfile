@@ -11,7 +11,7 @@ WORKDIR /home/node/app
 COPY . .
 
 # Installing dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 # Build-time arguments
 ARG NODE_ENV="production"

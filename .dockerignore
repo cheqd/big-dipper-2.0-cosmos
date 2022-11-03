@@ -6,7 +6,6 @@ dist
 cypress
 node_modules
 tests
-.yarn/cache
 
 # Skip unnecessary files
 **/*.md

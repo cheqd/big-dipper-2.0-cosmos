@@ -12,6 +12,7 @@ tests
 **/*.md
 Dockerfile**
 docker-compose.yml
+.DS_Store
 .env
 .env.sample
 LICENSE

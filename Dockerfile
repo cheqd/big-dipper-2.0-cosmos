@@ -50,7 +50,7 @@ ENV NEXT_PUBLIC_RPC_WEBSOCKET ${NEXT_PUBLIC_RPC_WEBSOCKET}
 ENV NEXT_PUBLIC_CHAIN_TYPE ${NEXT_PUBLIC_CHAIN_TYPE}
 
 # Install Yarn depdenencies, production only
-RUN yarn workspaces focus --production
+RUN yarn workspaces focus --all --production
 
 # Install pre-requisite packages
 RUN chown -R node:node /home/node/app && \

@@ -13,6 +13,15 @@ COPY . .
 # Installing dependencies
 RUN yarn install --frozen-lockfile
 
+# Build-time arguments
+ARG NODE_ENV="production"
+ARG NPM_CONFIG_LOGLEVEL=warn
+ARG NEXT_PUBLIC_GRAPHQL_URL
+ARG NEXT_PUBLIC_GRAPHQL_WS
+ARG NEXT_PUBLIC_RPC_WEBSOCKET
+ARG NEXT_PUBLIC_CHAIN_TYPE
+ARG PORT=3000
+
 # Building app
 RUN yarn build
 
@@ -30,15 +39,6 @@ WORKDIR /home/node/app
 COPY . .
 COPY --from=builder --chown=node:node /home/node/app/.next ./.next/
 COPY --from=builder --chown=node:node /home/node/app/dist ./dist/
-
-# Build-time arguments
-ARG NODE_ENV="production"
-ARG NPM_CONFIG_LOGLEVEL=warn
-ARG NEXT_PUBLIC_GRAPHQL_URL
-ARG NEXT_PUBLIC_GRAPHQL_WS
-ARG NEXT_PUBLIC_RPC_WEBSOCKET
-ARG NEXT_PUBLIC_CHAIN_TYPE
-ARG PORT=3000
 
 # Run-time environment variables
 ENV NODE_ENV ${NODE_ENV}

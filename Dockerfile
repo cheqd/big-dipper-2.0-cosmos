@@ -10,7 +10,8 @@ WORKDIR /home/node/app
 # Copy source files
 COPY . .
 
-# Build-time arguments
+# Default build-time arguments 
+# Actual values passed via environment variables in DO Apps
 ARG NODE_ENV="production"
 ARG NPM_CONFIG_LOGLEVEL="warn"
 ARG NEXT_PUBLIC_GRAPHQL_URL="https://testnet-gql.cheqd.io/v1/graphql"

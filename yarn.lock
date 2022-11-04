@@ -22,7 +22,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.1.5":
+"@apollo/client@npm:^3.7.1":
   version: 3.7.1
   resolution: "@apollo/client@npm:3.7.1"
   dependencies:
@@ -1576,7 +1576,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/cli@npm:^2.6.1":
+"@graphql-codegen/cli@npm:^2.13.11":
   version: 2.13.11
   resolution: "@graphql-codegen/cli@npm:2.13.11"
   dependencies:
@@ -1684,7 +1684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-operations@npm:^1.17.14":
+"@graphql-codegen/typescript-operations@npm:^1.18.4":
   version: 1.18.4
   resolution: "@graphql-codegen/typescript-operations@npm:1.18.4"
   dependencies:
@@ -1699,7 +1699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-react-apollo@npm:^3.3.3":
+"@graphql-codegen/typescript-react-apollo@npm:^3.3.6":
   version: 3.3.6
   resolution: "@graphql-codegen/typescript-react-apollo@npm:3.3.6"
   dependencies:
@@ -1715,7 +1715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript@npm:^1.21.0, @graphql-codegen/typescript@npm:^1.23.0":
+"@graphql-codegen/typescript@npm:^1.23.0":
   version: 1.23.0
   resolution: "@graphql-codegen/typescript@npm:1.23.0"
   dependencies:
@@ -2546,7 +2546,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/core@npm:^4.11.3":
+"@material-ui/core@npm:^4.12.4":
   version: 4.12.4
   resolution: "@material-ui/core@npm:4.12.4"
   dependencies:
@@ -2590,7 +2590,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/styles@npm:^4.10.0, @material-ui/styles@npm:^4.11.5":
+"@material-ui/styles@npm:^4.11.5":
   version: 4.11.5
   resolution: "@material-ui/styles@npm:4.11.5"
   dependencies:
@@ -3016,7 +3016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@svgr/webpack@npm:^6.4.0":
+"@svgr/webpack@npm:^6.5.1":
   version: 6.5.1
   resolution: "@svgr/webpack@npm:6.5.1"
   dependencies:
@@ -3126,7 +3126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^11.0.2":
+"@testing-library/react@npm:^11.2.7":
   version: 11.2.7
   resolution: "@testing-library/react@npm:11.2.7"
   dependencies:
@@ -3236,10 +3236,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/big.js@npm:^6.1.2":
+"@types/big.js@npm:^6.1.6":
   version: 6.1.6
   resolution: "@types/big.js@npm:6.1.6"
   checksum: 290936fc4e9ebd9883ead8e8278126f43783b3e57bf7736b12ce6d922c62515a83b8c62cd3ef557a043508109d403cb0bd89c7556b221c2c1057fd3a1d03e683
+  languageName: node
+  linkType: hard
+
+"@types/d3-color@npm:^2":
+  version: 2.0.3
+  resolution: "@types/d3-color@npm:2.0.3"
+  checksum: b4a963b15f4fe0e7e49b0898df3e51b46392d91c21038b7ec61aef0f13e04bd7bcfebf06c9fad9ee92317c9682a105e18942c9295a7e2715855622d4d6fc415a
+  languageName: node
+  linkType: hard
+
+"@types/d3-interpolate@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "@types/d3-interpolate@npm:2.0.2"
+  dependencies:
+    "@types/d3-color": ^2
+  checksum: 78c47193da3c114a7d78580c6f8d9915f11df92ce78fe08d13052cf49fab91dcdca938895a778cdc6f9820ebf16df3e0e339c17491a8c2b1140cdd2e09553084
+  languageName: node
+  linkType: hard
+
+"@types/d3-path@npm:^2":
+  version: 2.0.2
+  resolution: "@types/d3-path@npm:2.0.2"
+  checksum: 2ab49cc87b9d2cb90c189bedf5f0fdc2b1609c3c668664dc76c679054b4bb1bcfaf44e7836e1f7d0b38102cecc269a6c52a353e0ba238c992509cb0e9d6c5c33
+  languageName: node
+  linkType: hard
+
+"@types/d3-scale@npm:^3.0.0":
+  version: 3.3.2
+  resolution: "@types/d3-scale@npm:3.3.2"
+  dependencies:
+    "@types/d3-time": ^2
+  checksum: 65dbf85f07a4d6ac26396075b0faa1930cfebb96dc248629d4b82c22457c89161d0f070f9a5554adccee80b959e2c6d7c1ef6b7355743afe91050d71014fe3cf
+  languageName: node
+  linkType: hard
+
+"@types/d3-shape@npm:^2.0.0":
+  version: 2.1.3
+  resolution: "@types/d3-shape@npm:2.1.3"
+  dependencies:
+    "@types/d3-path": ^2
+  checksum: d0855a1e2c11a4ab23367c86ef0cc104e12bf216f2c007fa5955da7179b60b0426d0e9ddbbbdf93d4342e7dd24c7bcfc3a2bc6258744e03fc44ca460a063dcc3
+  languageName: node
+  linkType: hard
+
+"@types/d3-time@npm:^2":
+  version: 2.1.1
+  resolution: "@types/d3-time@npm:2.1.1"
+  checksum: 115048d0cd312a3172ef7c03615dfbdbd8b92a93fd7b6d9ca93c49c704fcdb9575f4c57955eb54eb757b9834acaaf47fc52eae103d06246c59ae120de4559cbc
   languageName: node
   linkType: hard
 
@@ -3287,7 +3335,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^26.0.13":
+"@types/jest@npm:^26.0.24":
   version: 26.0.24
   resolution: "@types/jest@npm:26.0.24"
   dependencies:
@@ -3334,7 +3382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.8.0":
+"@types/node@npm:*, @types/node@npm:^18.11.9":
   version: 18.11.9
   resolution: "@types/node@npm:18.11.9"
   checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
@@ -3504,7 +3552,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^4.1.0":
+"@typescript-eslint/parser@npm:^4.33.0":
   version: 4.33.0
   resolution: "@typescript-eslint/parser@npm:4.33.0"
   dependencies:
@@ -4001,7 +4049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios-mock-adapter@npm:^1.19.0":
+"axios-mock-adapter@npm:^1.21.2":
   version: 1.21.2
   resolution: "axios-mock-adapter@npm:1.21.2"
   dependencies:
@@ -4048,7 +4096,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-jest@npm:^29.0.3":
+"babel-jest@npm:^29.2.2":
   version: 29.2.2
   resolution: "babel-jest@npm:29.2.2"
   dependencies:
@@ -4260,81 +4308,81 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "big-dipper-2.0-cosmos@workspace:."
   dependencies:
-    "@apollo/client": ^3.1.5
-    "@graphql-codegen/cli": ^2.6.1
+    "@apollo/client": ^3.7.1
+    "@graphql-codegen/cli": ^2.13.11
     "@graphql-codegen/fragment-matcher": ^2.0.1
-    "@graphql-codegen/typescript": ^1.21.0
-    "@graphql-codegen/typescript-operations": ^1.17.14
-    "@graphql-codegen/typescript-react-apollo": ^3.3.3
-    "@material-ui/core": ^4.11.3
+    "@graphql-codegen/typescript": ^1.23.0
+    "@graphql-codegen/typescript-operations": ^1.18.4
+    "@graphql-codegen/typescript-react-apollo": ^3.3.6
+    "@material-ui/core": ^4.12.4
     "@material-ui/icons": ^4.11.3
-    "@material-ui/styles": ^4.10.0
-    "@svgr/webpack": ^6.4.0
+    "@material-ui/styles": ^4.11.5
+    "@svgr/webpack": ^6.5.1
     "@testing-library/jest-dom": ^5.16.5
-    "@testing-library/react": ^11.0.2
+    "@testing-library/react": ^11.2.7
     "@testing-library/react-hooks": ^8.0.1
-    "@types/big.js": ^6.1.2
-    "@types/jest": ^26.0.13
-    "@types/node": ^18.8.0
-    "@types/react": ^16.9.49
+    "@types/big.js": ^6.1.6
+    "@types/jest": ^26.0.24
+    "@types/node": ^18.11.9
+    "@types/react": ^16.14.34
     "@types/testing-library__react": ^10.2.0
     "@typescript-eslint/eslint-plugin": ^4.33.0
-    "@typescript-eslint/parser": ^4.1.0
+    "@typescript-eslint/parser": ^4.33.0
     axios: ^0.27.2
-    axios-mock-adapter: ^1.19.0
-    babel-jest: ^29.0.3
+    axios-mock-adapter: ^1.21.2
+    babel-jest: ^29.2.2
     bech32: ^2.0.0
-    big.js: ^6.1.1
-    classnames: ^2.2.6
-    color: ^3.1.3
-    copy-to-clipboard: ^3.3.1
+    big.js: ^6.2.1
+    classnames: ^2.3.2
+    color: ^3.2.1
+    copy-to-clipboard: ^3.3.2
     cors: ^2.8.5
-    dayjs: ^1.10.4
+    dayjs: ^1.11.6
     dompurify: ^2.4.0
-    dotenv: ^8.2.0
+    dotenv: ^8.6.0
     eslint: ^7.32.0
-    eslint-config-airbnb: ^18.2.0
-    eslint-import-resolver-typescript: ^2.3.0
-    eslint-plugin-import: ^2.22.0
-    eslint-plugin-jsx-a11y: ^6.3.1
-    eslint-plugin-react: ^7.20.6
-    eslint-plugin-react-hooks: ^4.1.0
-    express: ^4.18.1
-    graphql: ^15.5.0
+    eslint-config-airbnb: ^18.2.1
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-react: ^7.31.10
+    eslint-plugin-react-hooks: ^4.6.0
+    express: ^4.18.2
+    graphql: ^15.8.0
     helmet: ^4.6.0
     isomorphic-ws: ^4.0.1
-    jdenticon: ^3.1.0
-    jest: ^27.3.2
-    jest-localstorage-mock: ^2.4.18
+    jdenticon: ^3.2.0
+    jest: ^27.5.1
+    jest-localstorage-mock: ^2.4.22
     jest-transform-stub: ^2.0.0
-    jest-watch-typeahead: ^0.6.1
-    markdown-to-jsx: ^7.1.2
-    mock-apollo-client: ^1.1.0
-    next: ^12.1.0
-    next-seo: ^4.26.0
-    next-translate: ^1.0.3
-    numeral: 2.0.4
+    jest-watch-typeahead: ^0.6.5
+    markdown-to-jsx: ^7.1.7
+    mock-apollo-client: ^1.2.1
+    next: ^12.3.2
+    next-seo: ^4.29.0
+    next-translate: ^1.6.0
+    numeral: 2.0.6
     qrcode.react: ^3.1.0
-    ramda: ^0.27.1
+    ramda: ^0.27.2
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-share: ^4.4.0
-    react-test-renderer: ^17.0.1
-    react-toastify: ^9.0.8
+    react-share: ^4.4.1
+    react-test-renderer: ^17.0.2
+    react-toastify: ^9.1.1
     react-virtualized-auto-sizer: ^1.0.7
-    react-window: ^1.8.6
+    react-window: ^1.8.8
     react-window-infinite-loader: ^1.0.8
-    recharts: 2.1.12
-    recoil: ^0.7.5
+    recharts: 2.1.16
+    recoil: ^0.7.6
     subscriptions-transport-ws: ^0.10.0
-    ts-jest: ^27.0.7
+    ts-jest: ^27.1.5
     ts-loader: ^9.4.1
-    ts-node: ^10.4.0
-    typescript: ^4.3.5
+    ts-node: ^10.9.1
+    typescript: ^4.8.4
   languageName: unknown
   linkType: soft
 
-"big.js@npm:^6.1.1":
+"big.js@npm:^6.2.1":
   version: 6.2.1
   resolution: "big.js@npm:6.2.1"
   checksum: 0b234a2fd56c52bed2798ed2020bcab6fef5e9523b99a05406ad071d1aed6ee97ada9fb8de9576092da74c68825c276e19015743b8d1baea269b60a5c666b0cd
@@ -4710,7 +4758,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.2":
+"classnames@npm:^2.2.5, classnames@npm:^2.3.2":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -4869,7 +4917,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color@npm:^3.1.3":
+"color@npm:^3.2.1":
   version: 3.2.1
   resolution: "color@npm:3.2.1"
   dependencies:
@@ -4985,7 +5033,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-to-clipboard@npm:^3.3.1":
+"copy-to-clipboard@npm:^3.3.2":
   version: 3.3.2
   resolution: "copy-to-clipboard@npm:3.3.2"
   dependencies:
@@ -5297,7 +5345,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.10.4":
+"dayjs@npm:^1.11.6":
   version: 1.11.6
   resolution: "dayjs@npm:1.11.6"
   checksum: 18bdfd927009b68eab08dca578e421d4a581cefcbe9337f54c5d9e0d941ffb6b221c4b2c1cab15cdd9d419940e768ac4c984531461a90bbe1c158b75fe160580
@@ -5633,7 +5681,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^8.2.0":
+"dotenv@npm:^8.6.0":
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
@@ -5899,7 +5947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-airbnb@npm:^18.2.0":
+"eslint-config-airbnb@npm:^18.2.1":
   version: 18.2.1
   resolution: "eslint-config-airbnb@npm:18.2.1"
   dependencies:
@@ -5926,7 +5974,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^2.3.0":
+"eslint-import-resolver-typescript@npm:^2.7.1":
   version: 2.7.1
   resolution: "eslint-import-resolver-typescript@npm:2.7.1"
   dependencies:
@@ -5954,7 +6002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:^2.22.0":
+"eslint-plugin-import@npm:^2.26.0":
   version: 2.26.0
   resolution: "eslint-plugin-import@npm:2.26.0"
   dependencies:
@@ -5977,7 +6025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:^6.3.1":
+"eslint-plugin-jsx-a11y@npm:^6.6.1":
   version: 6.6.1
   resolution: "eslint-plugin-jsx-a11y@npm:6.6.1"
   dependencies:
@@ -6000,7 +6048,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.1.0":
+"eslint-plugin-react-hooks@npm:^4.6.0":
   version: 4.6.0
   resolution: "eslint-plugin-react-hooks@npm:4.6.0"
   peerDependencies:
@@ -6009,7 +6057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.20.6":
+"eslint-plugin-react@npm:^7.31.10":
   version: 7.31.10
   resolution: "eslint-plugin-react@npm:7.31.10"
   dependencies:
@@ -6271,7 +6319,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.18.1":
+"express@npm:^4.18.2":
   version: 4.18.2
   resolution: "express@npm:4.18.2"
   dependencies:
@@ -6829,7 +6877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^15.5.0":
+"graphql@npm:^15.8.0":
   version: 15.8.0
   resolution: "graphql@npm:15.8.0"
   checksum: 423325271db8858428641b9aca01699283d1fe5b40ef6d4ac622569ecca927019fce8196208b91dd1d8eb8114f00263fe661d241d0eb40c10e5bfd650f86ec5e
@@ -7629,7 +7677,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jdenticon@npm:^3.1.0":
+"jdenticon@npm:^3.2.0":
   version: 3.2.0
   resolution: "jdenticon@npm:3.2.0"
   dependencies:
@@ -7932,7 +7980,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-localstorage-mock@npm:^2.4.18":
+"jest-localstorage-mock@npm:^2.4.22":
   version: 2.4.22
   resolution: "jest-localstorage-mock@npm:2.4.22"
   checksum: 34459a58e3851c353ba1e7df0b585451191bc9b81b17f441f27f1cd3287b539f797387e9608b7ee5d9ab6154a0ddf1244ff80d04d4f98c14cbe7bef4df47517a
@@ -8210,7 +8258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-watch-typeahead@npm:^0.6.1":
+"jest-watch-typeahead@npm:^0.6.5":
   version: 0.6.5
   resolution: "jest-watch-typeahead@npm:0.6.5"
   dependencies:
@@ -8265,7 +8313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^27.3.2":
+"jest@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest@npm:27.5.1"
   dependencies:
@@ -8892,7 +8940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markdown-to-jsx@npm:^7.1.2":
+"markdown-to-jsx@npm:^7.1.7":
   version: 7.1.7
   resolution: "markdown-to-jsx@npm:7.1.7"
   peerDependencies:
@@ -9124,7 +9172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mock-apollo-client@npm:^1.1.0":
+"mock-apollo-client@npm:^1.2.1":
   version: 1.2.1
   resolution: "mock-apollo-client@npm:1.2.1"
   peerDependencies:
@@ -9184,7 +9232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-seo@npm:^4.26.0":
+"next-seo@npm:^4.29.0":
   version: 4.29.0
   resolution: "next-seo@npm:4.29.0"
   peerDependencies:
@@ -9195,7 +9243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-translate@npm:^1.0.3":
+"next-translate@npm:^1.6.0":
   version: 1.6.0
   resolution: "next-translate@npm:1.6.0"
   peerDependencies:
@@ -9205,7 +9253,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^12.1.0":
+"next@npm:^12.3.2":
   version: 12.3.2
   resolution: "next@npm:12.3.2"
   dependencies:
@@ -9403,10 +9451,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"numeral@npm:2.0.4":
-  version: 2.0.4
-  resolution: "numeral@npm:2.0.4"
-  checksum: cc2fd5b18a1405d57425c4d4391fc7eaf0b8b49399d002ebac64049627b37f3696d4320514775ea0ce6a0c485b0198e12e04b213a62b957fe5ea65a3c957c051
+"numeral@npm:2.0.6":
+  version: 2.0.6
+  resolution: "numeral@npm:2.0.6"
+  checksum: 89f011116539692bf53fde380adeb0579623d00f782703c71c0062d4a8686770c404a041ff4eef454de53925a9f75bba1fa52726057b13d40473f707730b07c2
   languageName: node
   linkType: hard
 
@@ -9998,7 +10046,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ramda@npm:^0.27.1":
+"ramda@npm:^0.27.2":
   version: 0.27.2
   resolution: "ramda@npm:0.27.2"
   checksum: 28d6735dd1eea1a796c56cf6111f3673c6105bbd736e521cdd7826c46a18eeff337c2dba4668f6eed990d539b9961fd6db19aa46ccc1530ba67a396c0a9f580d
@@ -10100,7 +10148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-share@npm:^4.4.0":
+"react-share@npm:^4.4.1":
   version: 4.4.1
   resolution: "react-share@npm:4.4.1"
   dependencies:
@@ -10126,7 +10174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:^17.0.1":
+"react-test-renderer@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-test-renderer@npm:17.0.2"
   dependencies:
@@ -10140,15 +10188,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-toastify@npm:^9.0.8":
-  version: 9.1.0
-  resolution: "react-toastify@npm:9.1.0"
+"react-toastify@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "react-toastify@npm:9.1.1"
   dependencies:
     clsx: ^1.1.1
   peerDependencies:
     react: ">=16"
     react-dom: ">=16"
-  checksum: 03c366abca1492d32f30900dad752fa92b242911b97aeb71fa5e9915267bf860dfac0c83a29dc036a90cafc2586ab1bb9a3b491f24a12967c57df0995ff6e78c
+  checksum: 2039255539961a9b4d77b2656f120b20abe46cb0c699a7f3c0af23b4ef669d9c4d24dae6b8f4954b5efd83edf6d6e23614a29e94e9ee0d2647741fba9ba2db85
   languageName: node
   linkType: hard
 
@@ -10202,7 +10250,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:^1.8.6":
+"react-window@npm:^1.8.8":
   version: 1.8.8
   resolution: "react-window@npm:1.8.8"
   dependencies:
@@ -10254,10 +10302,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recharts@npm:2.1.12":
-  version: 2.1.12
-  resolution: "recharts@npm:2.1.12"
+"recharts@npm:2.1.16":
+  version: 2.1.16
+  resolution: "recharts@npm:2.1.16"
   dependencies:
+    "@types/d3-interpolate": ^2.0.0
+    "@types/d3-scale": ^3.0.0
+    "@types/d3-shape": ^2.0.0
     classnames: ^2.2.5
     d3-interpolate: ^2.0.0
     d3-scale: ^3.0.0
@@ -10270,13 +10321,14 @@ __metadata:
     recharts-scale: ^0.4.4
     reduce-css-calc: ^2.1.8
   peerDependencies:
+    prop-types: ^15.6.0
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 610917e2dd491ba863283d32ab38af2d2e2c51fbbd86a6d32bac37209d8eff29c51290864fbaa4279b80445b51286798e9ad9c337de74c2e3615ebac384ca8fa
+  checksum: 3ca97570e136da9f0383aa82a9aad6954307bda08b221e56c61e00e08185324c6660399bd5cdd609b79323725b68cd389b55ee0e039cfbedbe9f41858a2fec52
   languageName: node
   linkType: hard
 
-"recoil@npm:^0.7.5":
+"recoil@npm:^0.7.6":
   version: 0.7.6
   resolution: "recoil@npm:0.7.6"
   dependencies:
@@ -11395,7 +11447,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^27.0.7":
+"ts-jest@npm:^27.1.5":
   version: 27.1.5
   resolution: "ts-jest@npm:27.1.5"
   dependencies:
@@ -11450,7 +11502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.4.0, ts-node@npm:^10.8.1":
+"ts-node@npm:^10.8.1, ts-node@npm:^10.9.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:
@@ -11604,7 +11656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.3.5":
+"typescript@npm:^4.8.4":
   version: 4.8.4
   resolution: "typescript@npm:4.8.4"
   bin:
@@ -11614,7 +11666,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.3.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>":
   version: 4.8.4
   resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"
   bin:

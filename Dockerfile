@@ -2,7 +2,7 @@
 ###        STAGE 1: Runtime BigDipper container        		###
 ###############################################################
 
-FROM node:18-alpine AS runner
+FROM node:19-alpine AS runner
 
 # Set working directory & bash defaults
 WORKDIR /home/node/app

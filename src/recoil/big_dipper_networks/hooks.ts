@@ -36,7 +36,7 @@ export const useBigDipperNetworksRecoil = () => {
         console.error(error);
       }
       const formattedData = data
-        .map((x) => BigDipperNetwork.fromJson(x))
+        .map((x) => BigDipperNetwork.fromJSON(x))
         .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
       setNetworks(formattedData);
     };

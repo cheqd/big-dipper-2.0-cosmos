@@ -16,7 +16,7 @@ class StakingParams {
     this.maxValidators = payload.maxValidators;
   }
 
-  static fromJson(data: any) {
+  static fromJSON(data: any) {
     return new StakingParams({
       bondDenom: R.pathOr(chainConfig.primaryTokenUnit, ['bond_denom'], data),
       unbondingTime: R.pathOr(0, ['unbonding_time'], data),

@@ -17,7 +17,7 @@ class MintParams {
     this.mintDenom = payload.mintDenom;
   }
 
-  static fromJson(data: any) {
+  static fromJSON(data: any) {
     return new MintParams({
       blocksPerYear: R.pathOr(0, ['blocks_per_year'], data),
       goalBonded: R.pathOr(0, ['goal_bonded'], data),

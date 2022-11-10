@@ -13,7 +13,7 @@ class DistributionParams {
     this.withdrawAddressEnabled = payload.withdrawAddressEnabled;
   }
 
-  static fromJson(data: any) {
+  static fromJSON(data: any) {
     return new DistributionParams({
       baseProposerReward: R.pathOr(0, ['base_proposer_reward'], data),
       bonusProposerReward: R.pathOr(0, ['bonus_proposer_reward'], data),

@@ -15,7 +15,7 @@ class MsgAcknowledgement {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgAcknowledgement({
         json,
         type: json['@type'],

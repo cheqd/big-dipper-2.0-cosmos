@@ -21,7 +21,7 @@ class BigDipperNetwork {
     this.other = payload.other;
   }
 
-  static fromJson(data: any) {
+  static fromJSON(data: any) {
     const allLinks:Link[] = data?.links?.map((x) => {
       return ({
         chainId: x.chain_id,

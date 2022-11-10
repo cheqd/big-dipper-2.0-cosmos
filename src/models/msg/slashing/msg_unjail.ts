@@ -13,7 +13,7 @@ class MsgUnjail {
     this.json = payload.json;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgUnjail({
       json,
       type: json['@type'],

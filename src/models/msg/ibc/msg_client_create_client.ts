@@ -15,7 +15,7 @@ class MsgCreateClient {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgCreateClient({
         json,
         type: json['@type'],

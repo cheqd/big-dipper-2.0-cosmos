@@ -15,7 +15,7 @@ class MsgRevokeAllowance {
     this.grantee = payload.grantee;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgRevokeAllowance({
       json,
       type: json['@type'],

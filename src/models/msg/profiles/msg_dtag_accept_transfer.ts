@@ -17,7 +17,7 @@ class MsgDtagAcceptTransfer {
     this.newDtag = payload.newDtag;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgDtagAcceptTransfer({
       json,
       type: json['@type'],

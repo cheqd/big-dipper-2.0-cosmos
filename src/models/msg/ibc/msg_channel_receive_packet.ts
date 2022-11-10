@@ -17,7 +17,7 @@ class MsgReceivePacket {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgReceivePacket({
         json,
         type: json['@type'],

@@ -16,7 +16,7 @@ class MsgFundCommunityPool {
     this.json = payload.json;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgFundCommunityPool({
       json,
       type: json['@type'],

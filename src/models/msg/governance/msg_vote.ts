@@ -34,7 +34,7 @@ class MsgVote {
     return null;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgVote({
       json,
       type: json['@type'],

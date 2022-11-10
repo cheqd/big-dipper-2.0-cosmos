@@ -17,7 +17,7 @@ class MsgChannelOpenConfirm {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgChannelOpenConfirm({
         json,
         type: json['@type'],

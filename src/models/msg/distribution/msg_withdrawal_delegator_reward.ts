@@ -32,7 +32,7 @@ class MsgWithdrawDelegatorReward {
     return amounts;
   }
 
-  static fromJson(json: any, log?: any) {
+  static fromJSON(json: any, log?: any) {
     const amounts = this.getWithdrawalAmount(log);
 
     return new MsgWithdrawDelegatorReward({

@@ -131,7 +131,7 @@ export const useValidatorDetails = () => {
     // status
     // ============================
     const formatStatus = () => {
-      const slashingParams = SlashingParams.fromJson(R.pathOr({}, ['slashingParams', 0, 'params'], data));
+      const slashingParams = SlashingParams.fromJSON(R.pathOr({}, ['slashingParams', 0, 'params'], data));
       const missedBlockCounter = R.pathOr(0, ['validatorSigningInfos', 0, 'missedBlocksCounter'], data.validator[0]);
       const { signedBlockWindow } = slashingParams;
       const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);

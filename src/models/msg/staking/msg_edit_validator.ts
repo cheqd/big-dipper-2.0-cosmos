@@ -26,7 +26,7 @@ class MsgEditValidator {
     this.json = payload.json;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgEditValidator({
       json,
       type: json['@type'],

@@ -15,7 +15,7 @@ class MsgSetWithdrawAddress {
     this.withdrawalAddress = payload.withdrawalAddress;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgSetWithdrawAddress({
       json,
       type: json['@type'],

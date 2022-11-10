@@ -20,7 +20,7 @@ class MsgTransfer {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgTransfer({
         json,
         type: json['@type'],

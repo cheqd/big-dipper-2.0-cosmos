@@ -22,7 +22,7 @@ class MsgMultiSend {
     this.json = payload.json;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgMultiSend({
       json,
       type: json['@type'],

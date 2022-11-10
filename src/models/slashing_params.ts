@@ -15,7 +15,7 @@ class SlashingParams {
     this.slashFractionDowntime = payload.slashFractionDowntime;
   }
 
-  static fromJson(data: any) {
+  static fromJSON(data: any) {
     return new SlashingParams({
       downtimeJailDuration: R.pathOr(0, ['downtime_jail_duration'], data),
       minSignedPerWindow: R.pathOr(0, ['min_signed_per_window'], data),

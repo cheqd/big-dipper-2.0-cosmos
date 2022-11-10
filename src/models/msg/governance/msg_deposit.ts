@@ -19,7 +19,7 @@ class MsgDeposit {
     this.json = payload.json;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgDeposit({
       json,
       type: json['@type'],

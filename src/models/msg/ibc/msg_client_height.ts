@@ -13,7 +13,7 @@ class MsgHeight {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgHeight({
         json,
         type: json['@type'],

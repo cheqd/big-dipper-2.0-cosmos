@@ -15,7 +15,7 @@ class MsgConnectionOpenConfirm {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgConnectionOpenConfirm({
         json,
         type: json['@type'],

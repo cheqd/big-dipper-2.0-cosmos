@@ -4,11 +4,11 @@ import numeral from 'numeral';
 import dayjs, { formatDayJs } from '@utils/dayjs';
 import Link from 'next/link';
 import {
-  TRANSACTION_DETAILS,
-  BLOCK_DETAILS,
+	TRANSACTION_DETAILS,
+	BLOCK_DETAILS,
 } from '@utils/go_to_page';
 import {
-  Typography,
+	Typography,
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { VariableSizeList as List } from 'react-window';
@@ -16,14 +16,14 @@ import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { mergeRefs } from '@utils/merge_refs';
 import {
-  Loading,
-  Result,
-  Tag,
+	Loading,
+	Result,
+	Tag,
 } from '@components';
 import {
-  useList,
-  useListRow,
-  useScreenSize,
+	useList,
+	useListRow,
+	useScreenSize,
 } from '@hooks';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { getMessageByType } from '@msg';
@@ -34,119 +34,119 @@ import { TransactionsListDetailsState } from '../../types';
 import { SingleTransaction } from './components';
 
 const TransactionList: React.FC<TransactionsListDetailsState> = ({
-  className,
-  itemCount,
-  loadMoreItems,
-  isItemLoaded,
-  transactions,
+	className,
+	itemCount,
+	loadMoreItems,
+	isItemLoaded,
+	transactions,
 }) => {
-  const {
-    isMobile,
-  } = useScreenSize();
-  const { t } = useTranslation('transactions');
-  const classes = useStyles();
-  const dateFormat = useRecoilValue(readDate);
+	const {
+		isMobile,
+	} = useScreenSize();
+	const { t } = useTranslation('transactions');
+	const classes = useStyles();
+	const dateFormat = useRecoilValue(readDate);
 
-  const {
-    listRef,
-    getRowHeight,
-    setRowHeight,
-  } = useList();
+	const {
+		listRef,
+		getRowHeight,
+		setRowHeight,
+	} = useList();
 
-  const items = transactions.map((x) => ({
-    block: (
-      <Link href={BLOCK_DETAILS(x.height)} passHref>
-        <Typography variant="body1" component="a">
-          {numeral(x.height).format('0,0')}
-        </Typography>
-      </Link>
-    ),
-    hash: (
-      <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
-        <Typography variant="body1" component="a">
-          {isMobile ? (
-            getMiddleEllipsis(x.hash, {
-              beginning: 15, ending: 5,
-            })
-          ) : (
-            x.hash
-          )}
-        </Typography>
-      </Link>
-    ),
-    type: (
-      <div>
-        <Tag
-          value="txDelegateLabel"
-          theme="six"
-        />
-        {(x.messages.count > 1) && (' +')}
-      </div>
-    ),
-    result: (
-      <Result success={x.success} />
-    ),
-    time: formatDayJs(dayjs.utc(x.timestamp), dateFormat),
-    messageCount: numeral(x.messages.count).format('0,0'),
-    messages: x.messages.items.map((message) => {
-      return getMessageByType(message, false, t);
-    }),
-  }));
+	const items = transactions.map((x) => ({
+		block: (
+			<Link href={BLOCK_DETAILS(x.height)} passHref>
+				<Typography variant="body1" component="a">
+					{numeral(x.height).format('0,0')}
+				</Typography>
+			</Link>
+		),
+		hash: (
+			<Link href={TRANSACTION_DETAILS(x.hash)} passHref>
+				<Typography variant="body1" component="a">
+					{isMobile ? (
+						getMiddleEllipsis(x.hash, {
+							beginning: 15, ending: 5,
+						})
+					) : (
+						x.hash
+					)}
+				</Typography>
+			</Link>
+		),
+		type: (
+			<div>
+				<Tag
+					value={x.type ? x.type.join(',') : ''}
+					theme="six"
+				/>
+				{(x.messages.count > 1) && (' +')}
+			</div>
+		),
+		result: (
+			<Result success={x.success} />
+		),
+		time: formatDayJs(dayjs.utc(x.timestamp), dateFormat),
+		messageCount: numeral(x.messages.count).format('0,0'),
+		messages: x.messages.items.map((message) => {
+			return getMessageByType(message, false, t);
+		}),
+	}));
 
-  return (
-    <div className={classnames(className, classes.root)}>
-      <AutoSizer>
-        {({
-          height, width,
-        }) => {
-          return (
-            <InfiniteLoader
-              isItemLoaded={isItemLoaded}
-              itemCount={itemCount}
-              loadMoreItems={loadMoreItems}
-            >
-              {({
-                onItemsRendered, ref,
-              }) => (
-                <List
-                  className="List"
-                  height={height}
-                  itemCount={itemCount}
-                  itemSize={getRowHeight}
-                  onItemsRendered={onItemsRendered}
-                  ref={mergeRefs(listRef, ref)}
-                  width={width}
-                >
-                  {({
-                    index, style,
-                  }) => {
-                    const { rowRef } = useListRow(index, setRowHeight);
-                    if (!isItemLoaded(index)) {
-                      return (
-                        <div style={style}>
-                          <div ref={rowRef}>
-                            <Loading />
-                          </div>
-                        </div>
-                      );
-                    }
-                    const item = items[index];
-                    return (
-                      <div style={style}>
-                        <div ref={rowRef}>
-                          <SingleTransaction {...item} />
-                        </div>
-                      </div>
-                    );
-                  }}
-                </List>
-              )}
-            </InfiniteLoader>
-          );
-        }}
-      </AutoSizer>
-    </div>
-  );
+	return (
+		<div className={classnames(className, classes.root)}>
+			<AutoSizer>
+				{({
+					height, width,
+				}) => {
+					return (
+						<InfiniteLoader
+							isItemLoaded={isItemLoaded}
+							itemCount={itemCount}
+							loadMoreItems={loadMoreItems}
+						>
+							{({
+								onItemsRendered, ref,
+							}) => (
+								<List
+									className="List"
+									height={height}
+									itemCount={itemCount}
+									itemSize={getRowHeight}
+									onItemsRendered={onItemsRendered}
+									ref={mergeRefs(listRef, ref)}
+									width={width}
+								>
+									{({
+										index, style,
+									}) => {
+										const { rowRef } = useListRow(index, setRowHeight);
+										if (!isItemLoaded(index)) {
+											return (
+												<div style={style}>
+													<div ref={rowRef}>
+														<Loading />
+													</div>
+												</div>
+											);
+										}
+										const item = items[index];
+										return (
+											<div style={style}>
+												<div ref={rowRef}>
+													<SingleTransaction {...item} />
+												</div>
+											</div>
+										);
+									}}
+								</List>
+							)}
+						</InfiniteLoader>
+					);
+				}}
+			</AutoSizer>
+		</div>
+	);
 };
 
 export default TransactionList;

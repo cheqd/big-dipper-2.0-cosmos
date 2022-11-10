@@ -15,7 +15,7 @@ class MsgDtagRefuseTransfer {
     this.receiver = payload.receiver;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgDtagRefuseTransfer({
       json,
       type: json['@type'],

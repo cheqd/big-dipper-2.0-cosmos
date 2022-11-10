@@ -17,7 +17,7 @@ class MsgCreateRelationship {
     this.subspace = payload.subspace;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgCreateRelationship({
       json,
       type: json['@type'],

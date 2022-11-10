@@ -13,7 +13,7 @@ class MsgCounterpartyConnection {
       this.json = payload.json;
     }
 
-    static fromJson(json: any) {
+    static fromJSON(json: any) {
       return new MsgCounterpartyConnection({
         json,
         type: json['@type'],

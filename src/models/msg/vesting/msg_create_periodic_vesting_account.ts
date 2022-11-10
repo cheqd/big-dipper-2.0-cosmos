@@ -16,7 +16,7 @@ class MsgCreatePeriodicVestingAccount {
     this.toAddress = payload.toAddress;
   }
 
-  static fromJson(json: any) {
+  static fromJSON(json: any) {
     return new MsgCreatePeriodicVestingAccount({
       json,
       type: json['@type'],

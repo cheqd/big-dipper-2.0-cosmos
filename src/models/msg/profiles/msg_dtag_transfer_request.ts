@@ -8,20 +8,20 @@ class MsgDtagTransferRequest {
 	public receiver: string;
 
 	constructor(payload: any) {
-		this.category = 'profiles';
-		this.type = payload.type;
-		this.json = payload.json;
-		this.sender = payload.sender;
-		this.receiver = payload.receiver;
+	  this.category = 'profiles';
+	  this.type = payload.type;
+	  this.json = payload.json;
+	  this.sender = payload.sender;
+	  this.receiver = payload.receiver;
 	}
 
 	static fromJSON(json: any) {
-		return new MsgDtagTransferRequest({
-			json,
-			type: json['@type'],
-			sender: json.sender,
-			receiver: json.receiver,
-		});
+	  return new MsgDtagTransferRequest({
+	    json,
+	    type: json['@type'],
+	    sender: json.sender,
+	    receiver: json.receiver,
+	  });
 	}
 }
 

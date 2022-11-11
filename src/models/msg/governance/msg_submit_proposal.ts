@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import {
-	MsgTextProposal,
-	MsgSoftwareUpgradeProposal,
-	MsgParameterChangeProposal,
-	MsgCommunityPoolSpendProposal,
+  MsgTextProposal,
+  MsgSoftwareUpgradeProposal,
+  MsgParameterChangeProposal,
+  MsgCommunityPoolSpendProposal,
 } from '../..';
 import { Categories } from '../types';
 
@@ -19,53 +19,53 @@ class MsgSubmitProposal {
 	public json: any;
 
 	constructor(payload: any) {
-		this.category = 'governance';
-		this.type = payload.type;
-		this.content = payload.content;
-		this.initialDeposit = payload.initialDeposit;
-		this.proposer = payload.proposer;
-		this.json = payload.json;
+	  this.category = 'governance';
+	  this.type = payload.type;
+	  this.content = payload.content;
+	  this.initialDeposit = payload.initialDeposit;
+	  this.proposer = payload.proposer;
+	  this.json = payload.json;
 	}
 
 	static fromJSON(json: any) {
-		const contentDetailsRaw = json?.content;
-		const contentType = contentDetailsRaw?.['@type'];
-		let content = null;
+	  const contentDetailsRaw = json?.content;
+	  const contentType = contentDetailsRaw?.['@type'];
+	  let content = null;
 
-		switch (contentType) {
-			case '/cosmos.gov.v1beta1.TextProposal': {
-				content = MsgTextProposal.fromJSON(contentDetailsRaw);
-				break;
-			}
-			case '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal': {
-				content = MsgSoftwareUpgradeProposal.fromJSON(contentDetailsRaw);
-				break;
-			}
-			case '/cosmos.params.v1beta1.ParameterChangeProposal': {
-				content = MsgParameterChangeProposal.fromJSON(contentDetailsRaw);
-				break;
-			}
-			case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal': {
-				content = MsgCommunityPoolSpendProposal.fromJSON(contentDetailsRaw);
-				break;
-			}
-			default:
-				content = contentDetailsRaw;
-				break;
-		}
+	  switch (contentType) {
+	    case '/cosmos.gov.v1beta1.TextProposal': {
+	      content = MsgTextProposal.fromJSON(contentDetailsRaw);
+	      break;
+	    }
+	    case '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal': {
+	      content = MsgSoftwareUpgradeProposal.fromJSON(contentDetailsRaw);
+	      break;
+	    }
+	    case '/cosmos.params.v1beta1.ParameterChangeProposal': {
+	      content = MsgParameterChangeProposal.fromJSON(contentDetailsRaw);
+	      break;
+	    }
+	    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal': {
+	      content = MsgCommunityPoolSpendProposal.fromJSON(contentDetailsRaw);
+	      break;
+	    }
+	    default:
+	      content = contentDetailsRaw;
+	      break;
+	  }
 
-		return new MsgSubmitProposal({
-			json,
-			content,
-			type: json['@type'],
-			initialDeposit: json?.initial_deposit?.map((x) => {
-				return ({
-					denom: x?.denom,
-					amount: R.pathOr('0', ['amount'], x),
-				});
-			}) ?? [],
-			proposer: json.proposer,
-		});
+	  return new MsgSubmitProposal({
+	    json,
+	    content,
+	    type: json['@type'],
+	    initialDeposit: json?.initial_deposit?.map((x) => {
+	      return ({
+	        denom: x?.denom,
+	        amount: R.pathOr('0', ['amount'], x),
+	      });
+	    }) ?? [],
+	    proposer: json.proposer,
+	  });
 	}
 }
 

@@ -14,6 +14,12 @@ To build and run the application, you can use the [existing Docker Compose speci
 docker compose up --detach
 ```
 
+If you don't want to use Docker Compose for the build, you can also invoke this using just the Docker CLI:
+
+```bash
+docker build . --target runner -t bigdipper:local
+```
+
 To start the service, without doing a local build (for example, if you're already built an image previously), you can use:
 
 ```bash

@@ -56,7 +56,7 @@ const Messages: React.FC<{
                 onChange={props.toggleMessageDisplay}
                 color="primary"
               />
-							)}
+              )}
             label={t('raw')}
           />
         </div>
@@ -68,7 +68,7 @@ const Messages: React.FC<{
                 onChange={props.toggleMessageDisplay}
                 color="primary"
               />
-							)}
+              )}
             label={t('raw')}
           />
           <TransactionMessagesFilter
@@ -81,9 +81,9 @@ const Messages: React.FC<{
       <div className={classes.list}>
         <AutoSizer>
           {({
-						  height, width,
+              height, width,
           }) => {
-						  return (
+              return (
   <List
     className="List"
     height={height}
@@ -93,11 +93,11 @@ const Messages: React.FC<{
     width={width}
   >
     {({
-									  index, style,
+                    index, style,
     }) => {
-									  const { rowRef } = useListRow(index, setRowHeight);
-									  const selectedItem = formattedItems[index];
-									  return (
+                    const { rowRef } = useListRow(index, setRowHeight);
+                    const selectedItem = formattedItems[index];
+                    return (
   <div style={style}>
     <div ref={rowRef}>
       <div className={classes.item}>
@@ -111,10 +111,10 @@ const Messages: React.FC<{
       {index !== props.messages.length - 1 && <Divider />}
     </div>
   </div>
-									  );
+                    );
     }}
   </List>
-						  );
+              );
           }}
         </AutoSizer>
       </div>

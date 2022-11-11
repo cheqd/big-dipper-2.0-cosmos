@@ -6,17 +6,17 @@ class MsgUnknown {
   public json: JSON;
 
   constructor(payload: any) {
-	  this.category = 'others';
-	  this.type = payload.type;
-	  this.json = payload.json;
-	}
+    this.category = 'others';
+    this.type = payload.type;
+    this.json = payload.json;
+  }
 
   static fromJSON(json: any) {
-	  return new MsgUnknown({
-	    type: json['@type'] ?? '',
-	    json,
-	  });
-	}
+    return new MsgUnknown({
+      type: json['@type'] ?? '',
+      json,
+    });
+  }
 }
 
 export default MsgUnknown;

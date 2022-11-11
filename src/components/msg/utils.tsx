@@ -453,15 +453,15 @@ export const getMessageModelByType = (type: string) => {
 export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   const { type } = message;
   let results: {
-	  content: any;
-	  tagDisplay: string;
-	  tagTheme?: TagTheme;
-	  unknown?: boolean;
-	} = {
-	  content: COMPONENTS.Unknown,
-	  tagDisplay: 'txUnknownLabel',
-	  tagTheme: 'zero',
-	};
+    content: any;
+    tagDisplay: string;
+    tagTheme?: TagTheme;
+    unknown?: boolean;
+  } = {
+    content: COMPONENTS.Unknown,
+    tagDisplay: 'txUnknownLabel',
+    tagTheme: 'zero',
+  };
 
   const data = getDataByType(type);
   if (data) {
@@ -490,7 +490,7 @@ export const convertMsgsToModels = (transaction: any) => {
   const messages = R.pathOr([], ['messages'], transaction).map((msg, i) => {
     const model = getMessageModelByType(msg?.['@type']);
     if (model === MODELS.MsgWithdrawDelegatorReward
-			|| model === MODELS.MsgWithdrawValidatorCommission) {
+      || model === MODELS.MsgWithdrawValidatorCommission) {
       const log = R.pathOr(null, ['logs', i], transaction);
       const data = model.fromJSON(msg, log);
       return data;

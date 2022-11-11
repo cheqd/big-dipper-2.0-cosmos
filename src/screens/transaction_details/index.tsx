@@ -33,7 +33,7 @@ const TransactionDetails = () => {
       <NextSeo
         title={t('transactionDetails')}
         openGraph={{
-				  title: t('transactionDetails'),
+          title: t('transactionDetails'),
         }}
       />
       <Layout navTitle={t('transactionDetails')}>

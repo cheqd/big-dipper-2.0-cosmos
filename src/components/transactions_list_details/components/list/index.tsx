@@ -65,11 +65,11 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
       <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
         <Typography variant="body1" component="a">
           {isMobile ? (
-					  getMiddleEllipsis(x.hash, {
-					    beginning: 15, ending: 5,
-					  })
+            getMiddleEllipsis(x.hash, {
+              beginning: 15, ending: 5,
+            })
           ) : (
-					  x.hash
+            x.hash
           )}
         </Typography>
       </Link>
@@ -97,16 +97,16 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
     <div className={classnames(className, classes.root)}>
       <AutoSizer>
         {({
-				  height, width,
+          height, width,
         }) => {
-				  return (
+          return (
   <InfiniteLoader
     isItemLoaded={isItemLoaded}
     itemCount={itemCount}
     loadMoreItems={loadMoreItems}
   >
     {({
-							  onItemsRendered, ref,
+                onItemsRendered, ref,
     }) => (
       <List
         className="List"
@@ -118,31 +118,31 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
         width={width}
       >
         {({
-									  index, style,
+                    index, style,
         }) => {
-									  const { rowRef } = useListRow(index, setRowHeight);
-									  if (!isItemLoaded(index)) {
-									    return (
+                    const { rowRef } = useListRow(index, setRowHeight);
+                    if (!isItemLoaded(index)) {
+                      return (
   <div style={style}>
     <div ref={rowRef}>
       <Loading />
     </div>
   </div>
-									    );
-									  }
-									  const item = items[index];
-									  return (
+                      );
+                    }
+                    const item = items[index];
+                    return (
   <div style={style}>
     <div ref={rowRef}>
       <SingleTransaction {...item} />
     </div>
   </div>
-									  );
+                    );
         }}
       </List>
     )}
   </InfiniteLoader>
-				  );
+          );
         }}
       </AutoSizer>
     </div>

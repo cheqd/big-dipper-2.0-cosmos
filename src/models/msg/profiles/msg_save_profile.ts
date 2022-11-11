@@ -7,19 +7,19 @@ class MsgSaveProfile {
   public creator: string;
 
   constructor(payload: any) {
-	  this.category = 'profiles';
-	  this.type = payload.type;
-	  this.creator = payload.creator;
-	  this.json = payload.json;
-	}
+    this.category = 'profiles';
+    this.type = payload.type;
+    this.creator = payload.creator;
+    this.json = payload.json;
+  }
 
   static fromJSON(json: any) {
-	  return new MsgSaveProfile({
-	    type: json['@type'],
-	    creator: json.creator,
-	    json,
-	  });
-	}
+    return new MsgSaveProfile({
+      type: json['@type'],
+      creator: json.creator,
+      json,
+    });
+  }
 }
 
 export default MsgSaveProfile;

@@ -28,15 +28,15 @@ describe('screen: TransactionDetails/ Messages', () => {
         <MockTheme>
           <Messages
             messages={[MsgUnknown.fromJSON({
-						  '@type': '/cosmos.bank.v1beta1.MsgSend',
-						  amount: [
-						    {
-						      denom: 'udaric',
-						      amount: '1100000',
-						    },
-						  ],
-						  to_address: 'desmos1srujv22zfrwyfvu2vyyaqqq3f0z7yjeaggd9n2',
-						  from_address: 'desmos1dzn2s7l0wm9kekyazcnhapu8j95n90efmcmrad',
+              '@type': '/cosmos.bank.v1beta1.MsgSend',
+              amount: [
+                {
+                  denom: 'udaric',
+                  amount: '1100000',
+                },
+              ],
+              to_address: 'desmos1srujv22zfrwyfvu2vyyaqqq3f0z7yjeaggd9n2',
+              from_address: 'desmos1dzn2s7l0wm9kekyazcnhapu8j95n90efmcmrad',
             })]}
             viewRaw={false}
             toggleMessageDisplay={jest.fn()}

@@ -13,7 +13,7 @@ const CreateDID = (props: {
       <Trans
         i18nKey="message_contents:MsgCreateDID"
         components={[
-				  (<DID did={message.payload.id} />),
+          (<DID did={message.payload.id} />),
         ]}
       />
     </Typography>

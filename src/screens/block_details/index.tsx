@@ -28,7 +28,7 @@ const BlockDetails = () => {
       <NextSeo
         title={t('blockDetails')}
         openGraph={{
-				  title: t('blockDetails'),
+          title: t('blockDetails'),
         }}
       />
       <Layout navTitle={t('blockDetails')}>

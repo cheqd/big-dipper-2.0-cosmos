@@ -1,29 +1,29 @@
 import * as R from 'ramda';
 
 class GovParams {
-	public depositParams: {
-		minDeposit: {
-			denom: string;
-			amount: string;
+  public depositParams: {
+	  minDeposit: {
+		  denom: string;
+		  amount: string;
 		}[];
-		maxDepositPeriod: number;
+	  maxDepositPeriod: number;
 	};
-	public tallyParams: {
-		quorum: string;
-		threshold: string;
-		vetoThreshold: string;
+  public tallyParams: {
+	  quorum: string;
+	  threshold: string;
+	  vetoThreshold: string;
 	};
-	public votingParams: {
-		votingPeriod: number;
+  public votingParams: {
+	  votingPeriod: number;
 	};
 
-	constructor(payload: any) {
+  constructor(payload: any) {
 	  this.depositParams = payload.depositParams;
 	  this.tallyParams = payload.tallyParams;
 	  this.votingParams = payload.votingParams;
 	}
 
-	static fromJSON(data: any) {
+  static fromJSON(data: any) {
 	  return new GovParams({
 	    depositParams: {
 	      minDeposit: R.pathOr([], ['depositParams', 'min_deposit'], data).map((x) => ({

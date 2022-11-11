@@ -4,7 +4,7 @@ import DID from '@src/components/did';
 import Trans from 'next-translate/Trans';
 
 const CreateDID = (props: {
-	message: MsgCreateDid;
+  message: MsgCreateDid;
 }) => {
   const { message } = props;
 

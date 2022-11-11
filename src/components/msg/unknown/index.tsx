@@ -3,7 +3,7 @@ import { MsgUnknown } from '@models';
 import { useGetStyles } from './styles';
 
 const Unknown = (props: {
-	message: MsgUnknown;
+  message: MsgUnknown;
 }) => {
   const { message } = props;
 

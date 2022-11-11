@@ -21,11 +21,11 @@ import { getMessageByType } from '@msg';
 import { useStyles } from './styles';
 
 const Messages: React.FC<{
-	className?: string;
-	messages: any[];
-	viewRaw: boolean;
-	toggleMessageDisplay: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	onMessageFilterCallback: (value: string) => void;
+  className?: string;
+  messages: any[];
+  viewRaw: boolean;
+  toggleMessageDisplay: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onMessageFilterCallback: (value: string) => void;
 }> = ({
   className, ...props
 }) => {

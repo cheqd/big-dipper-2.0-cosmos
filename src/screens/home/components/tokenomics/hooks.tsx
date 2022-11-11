@@ -10,11 +10,11 @@ import { formatToken } from '@utils/format_token';
 
 export const useTokenomics = () => {
   const [state, setState] = useState<{
-		bonded: number;
-		unbonded: number;
-		unbonding: number;
-		total: number;
-		denom: string;
+	  bonded: number;
+	  unbonded: number;
+	  unbonding: number;
+	  total: number;
+	  denom: string;
 	}>({
 	  bonded: 0,
 	  unbonded: 0,

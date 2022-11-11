@@ -2,13 +2,13 @@ import * as R from 'ramda';
 import { Categories } from '../types';
 
 class MsgCreatePeriodicVestingAccount {
-	public category: Categories;
-	public type: string;
-	public json: any;
-	public fromAddress: string;
-	public toAddress: string;
+  public category: Categories;
+  public type: string;
+  public json: any;
+  public fromAddress: string;
+  public toAddress: string;
 
-	constructor(payload: any) {
+  constructor(payload: any) {
 	  this.category = 'vesting';
 	  this.type = payload.type;
 	  this.json = payload.json;
@@ -16,7 +16,7 @@ class MsgCreatePeriodicVestingAccount {
 	  this.toAddress = payload.toAddress;
 	}
 
-	static fromJSON(json: any) {
+  static fromJSON(json: any) {
 	  return new MsgCreatePeriodicVestingAccount({
 	    json,
 	    type: json['@type'],

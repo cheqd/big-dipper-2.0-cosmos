@@ -14,7 +14,7 @@ query ProposalDetails($proposalId: Int) {
 }
 
 query ProposalDetailsTally($proposalId: Int) {
-	proposalTallyResult: proposal_tally_result(where: {proposal_id: {_eq: $proposalId}}) {
+  proposalTallyResult: proposal_tally_result(where: {proposal_id: {_eq: $proposalId}}) {
     yes
     no
     noWithVeto: no_with_veto

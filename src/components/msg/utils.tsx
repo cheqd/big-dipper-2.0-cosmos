@@ -453,10 +453,10 @@ export const getMessageModelByType = (type: string) => {
 export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   const { type } = message;
   let results: {
-		content: any;
-		tagDisplay: string;
-		tagTheme?: TagTheme;
-		unknown?: boolean;
+	  content: any;
+	  tagDisplay: string;
+	  tagTheme?: TagTheme;
+	  unknown?: boolean;
 	} = {
 	  content: COMPONENTS.Unknown,
 	  tagDisplay: 'txUnknownLabel',

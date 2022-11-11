@@ -2,15 +2,15 @@ import * as R from 'ramda';
 import { Categories } from '../types';
 
 class MsgRedelegate {
-	public category: Categories;
-	public type: string;
-	public delegatorAddress: string;
-	public validatorSrcAddress: string;
-	public validatorDstAddress: string;
-	public amount: MsgCoin
-	public json: any;
+  public category: Categories;
+  public type: string;
+  public delegatorAddress: string;
+  public validatorSrcAddress: string;
+  public validatorDstAddress: string;
+  public amount: MsgCoin
+  public json: any;
 
-	constructor(payload: any) {
+  constructor(payload: any) {
 	  this.category = 'staking';
 	  this.type = payload.type;
 	  this.delegatorAddress = payload.delegatorAddress;
@@ -20,7 +20,7 @@ class MsgRedelegate {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+  static fromJSON(json: any) {
 	  return new MsgRedelegate({
 	    json,
 	    type: json['@type'],

@@ -8,17 +8,17 @@ import {
 import { Categories } from '../types';
 
 class MsgSubmitProposal {
-	public category: Categories;
-	public type: string;
-	public content: MsgTextProposal
+  public category: Categories;
+  public type: string;
+  public content: MsgTextProposal
 		| MsgSoftwareUpgradeProposal
 		| MsgParameterChangeProposal
 		| MsgCommunityPoolSpendProposal;
-	public initialDeposit: MsgCoin[]
-	public proposer: string;
-	public json: any;
+  public initialDeposit: MsgCoin[]
+  public proposer: string;
+  public json: any;
 
-	constructor(payload: any) {
+  constructor(payload: any) {
 	  this.category = 'governance';
 	  this.type = payload.type;
 	  this.content = payload.content;
@@ -27,7 +27,7 @@ class MsgSubmitProposal {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+  static fromJSON(json: any) {
 	  const contentDetailsRaw = json?.content;
 	  const contentType = contentDetailsRaw?.['@type'];
 	  let content = null;

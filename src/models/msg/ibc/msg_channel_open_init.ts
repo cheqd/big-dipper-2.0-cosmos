@@ -1,14 +1,14 @@
 import { Categories } from '../types';
 
 class MsgChannelOpenInit {
-	public category: Categories;
-	public type: string;
-	public signer: string;
-	public channelId: string;
-	public portId: string;
-	public json: any;
+  public category: Categories;
+  public type: string;
+  public signer: string;
+  public channelId: string;
+  public portId: string;
+  public json: any;
 
-	constructor(payload: any) {
+  constructor(payload: any) {
 	  this.category = 'ibc';
 	  this.type = payload.type;
 	  this.signer = payload.signer;
@@ -17,7 +17,7 @@ class MsgChannelOpenInit {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+  static fromJSON(json: any) {
 	  return new MsgChannelOpenInit({
 	    json,
 	    type: json['@type'],

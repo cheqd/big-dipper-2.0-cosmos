@@ -1,5 +1,5 @@
 ###############################################################
-###        STAGE 1: Runtime BigDipper container                ###
+###        STAGE 1: Runtime BigDipper container        		###
 ###############################################################
 
 FROM node:18-alpine AS runner

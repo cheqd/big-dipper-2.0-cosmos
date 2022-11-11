@@ -2,169 +2,169 @@ import { useState } from 'react';
 import numeral from 'numeral';
 import * as R from 'ramda';
 import {
-    useParamsQuery,
-    ParamsQuery,
+	useParamsQuery,
+	ParamsQuery,
 } from '@graphql/types/general_types';
 import { formatToken } from '@utils/format_token';
 import { chainConfig } from '@configs';
 import {
-    StakingParams,
-    SlashingParams,
-    MintParams,
-    DistributionParams,
-    GovParams,
+	StakingParams,
+	SlashingParams,
+	MintParams,
+	DistributionParams,
+	GovParams,
 } from '@models';
 import {
-    ParamsState,
+	ParamsState,
 } from './types';
 
 const initialState = {
-    loading: true,
-    exists: true,
-    staking: null,
-    slashing: null,
-    minting: null,
-    distribution: null,
-    gov: null,
+	loading: true,
+	exists: true,
+	staking: null,
+	slashing: null,
+	minting: null,
+	distribution: null,
+	gov: null,
 };
 
 export const useParams = () => {
-    const [state, setState] = useState<ParamsState>(initialState);
+	const [state, setState] = useState<ParamsState>(initialState);
 
-    const handleSetState = (stateChange: any) => {
-        setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
-    };
+	const handleSetState = (stateChange: any) => {
+		setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
+	};
 
-    // ================================
-    // param query
-    // ================================
-    useParamsQuery({
-        onError: () => {
-            handleSetState({
-                loading: false,
-            });
-        },
-        onCompleted: (data) => {
-            handleSetState({
-                loading: false,
-                ...formatParam(data),
-            });
-        },
-    });
+	// ================================
+	// param query
+	// ================================
+	useParamsQuery({
+		onError: () => {
+			handleSetState({
+				loading: false,
+			});
+		},
+		onCompleted: (data) => {
+			handleSetState({
+				loading: false,
+				...formatParam(data),
+			});
+		},
+	});
 
-    const formatParam = (data: ParamsQuery) => {
-        const results: any = {};
+	const formatParam = (data: ParamsQuery) => {
+		const results: any = {};
 
-        // ================================
-        // staking
-        // ================================
-        const formatStaking = () => {
-            if (data.stakingParams.length) {
-                const stakingParamsRaw = StakingParams.fromJSON(R.pathOr({}, ['stakingParams', 0, 'params'], data));
-                return {
-                    bondDenom: stakingParamsRaw.bondDenom,
-                    unbondingTime: stakingParamsRaw.unbondingTime,
-                    maxEntries: stakingParamsRaw.maxEntries,
-                    historicalEntries: stakingParamsRaw.historicalEntries,
-                    maxValidators: stakingParamsRaw.maxValidators,
-                };
-            }
+		// ================================
+		// staking
+		// ================================
+		const formatStaking = () => {
+			if (data.stakingParams.length) {
+				const stakingParamsRaw = StakingParams.fromJSON(R.pathOr({}, ['stakingParams', 0, 'params'], data));
+				return {
+					bondDenom: stakingParamsRaw.bondDenom,
+					unbondingTime: stakingParamsRaw.unbondingTime,
+					maxEntries: stakingParamsRaw.maxEntries,
+					historicalEntries: stakingParamsRaw.historicalEntries,
+					maxValidators: stakingParamsRaw.maxValidators,
+				};
+			}
 
-            return null;
-        };
+			return null;
+		};
 
-        results.staking = formatStaking();
+		results.staking = formatStaking();
 
-        // ================================
-        // slashing
-        // ================================
-        const formatSlashing = () => {
-            if (data.slashingParams.length) {
-                const slashingParamsRaw = SlashingParams.fromJSON(R.pathOr({}, ['slashingParams', 0, 'params'], data));
-                return {
-                    downtimeJailDuration: slashingParamsRaw.downtimeJailDuration,
-                    minSignedPerWindow: slashingParamsRaw.minSignedPerWindow,
-                    signedBlockWindow: slashingParamsRaw.signedBlockWindow,
-                    slashFractionDoubleSign: slashingParamsRaw.slashFractionDoubleSign,
-                    slashFractionDowntime: slashingParamsRaw.slashFractionDowntime,
-                };
-            }
-            return null;
-        };
+		// ================================
+		// slashing
+		// ================================
+		const formatSlashing = () => {
+			if (data.slashingParams.length) {
+				const slashingParamsRaw = SlashingParams.fromJSON(R.pathOr({}, ['slashingParams', 0, 'params'], data));
+				return {
+					downtimeJailDuration: slashingParamsRaw.downtimeJailDuration,
+					minSignedPerWindow: slashingParamsRaw.minSignedPerWindow,
+					signedBlockWindow: slashingParamsRaw.signedBlockWindow,
+					slashFractionDoubleSign: slashingParamsRaw.slashFractionDoubleSign,
+					slashFractionDowntime: slashingParamsRaw.slashFractionDowntime,
+				};
+			}
+			return null;
+		};
 
-        results.slashing = formatSlashing();
+		results.slashing = formatSlashing();
 
-        // ================================
-        // minting
-        // ================================
-        const formatMint = () => {
-            if (data.mintParams.length) {
-                const mintParamsRaw = MintParams.fromJSON(R.pathOr({}, ['mintParams', 0, 'params'], data));
+		// ================================
+		// minting
+		// ================================
+		const formatMint = () => {
+			if (data.mintParams.length) {
+				const mintParamsRaw = MintParams.fromJSON(R.pathOr({}, ['mintParams', 0, 'params'], data));
 
-                return {
-                    blocksPerYear: mintParamsRaw.blocksPerYear,
-                    goalBonded: mintParamsRaw.goalBonded,
-                    inflationMax: mintParamsRaw.inflationMax,
-                    inflationMin: mintParamsRaw.inflationMin,
-                    inflationRateChange: mintParamsRaw.inflationRateChange,
-                    mintDenom: mintParamsRaw.mintDenom,
-                };
-            }
+				return {
+					blocksPerYear: mintParamsRaw.blocksPerYear,
+					goalBonded: mintParamsRaw.goalBonded,
+					inflationMax: mintParamsRaw.inflationMax,
+					inflationMin: mintParamsRaw.inflationMin,
+					inflationRateChange: mintParamsRaw.inflationRateChange,
+					mintDenom: mintParamsRaw.mintDenom,
+				};
+			}
 
-            return null;
-        };
+			return null;
+		};
 
-        results.minting = formatMint();
+		results.minting = formatMint();
 
-        // ================================
-        // distribution
-        // ================================
+		// ================================
+		// distribution
+		// ================================
 
-        const formatDistribution = () => {
-            if (data.distributionParams.length) {
-                const distributionParamsRaw = DistributionParams.fromJSON(R.pathOr({}, ['distributionParams', 0, 'params'], data));
-                return {
-                    baseProposerReward: distributionParamsRaw.baseProposerReward,
-                    bonusProposerReward: distributionParamsRaw.bonusProposerReward,
-                    communityTax: distributionParamsRaw.communityTax,
-                    withdrawAddressEnabled: distributionParamsRaw.withdrawAddressEnabled,
-                };
-            }
+		const formatDistribution = () => {
+			if (data.distributionParams.length) {
+				const distributionParamsRaw = DistributionParams.fromJSON(R.pathOr({}, ['distributionParams', 0, 'params'], data));
+				return {
+					baseProposerReward: distributionParamsRaw.baseProposerReward,
+					bonusProposerReward: distributionParamsRaw.bonusProposerReward,
+					communityTax: distributionParamsRaw.communityTax,
+					withdrawAddressEnabled: distributionParamsRaw.withdrawAddressEnabled,
+				};
+			}
 
-            return null;
-        };
+			return null;
+		};
 
-        results.distribution = formatDistribution();
+		results.distribution = formatDistribution();
 
-        // ================================
-        // distribution
-        // ================================
+		// ================================
+		// distribution
+		// ================================
 
-        const formatGov = () => {
-            if (data.govParams.length) {
-                const govParamsRaw = GovParams.fromJSON(R.pathOr({}, ['govParams', 0], data));
-                return {
-                    minDeposit: formatToken(
-                        R.pathOr(0, [0, 'amount'], govParamsRaw.depositParams.minDeposit),
-                        R.pathOr(chainConfig.primaryTokenUnit, [0, 'denom'], govParamsRaw.depositParams.minDeposit),
-                    ),
-                    maxDepositPeriod: govParamsRaw.depositParams.maxDepositPeriod,
-                    quorum: numeral(numeral(govParamsRaw.tallyParams.quorum).format('0.[00]')).value(),
-                    threshold: numeral(numeral(govParamsRaw.tallyParams.threshold).format('0.[00]')).value(),
-                    vetoThreshold: numeral(numeral(govParamsRaw.tallyParams.vetoThreshold).format('0.[00]')).value(),
-                    votingPeriod: govParamsRaw.votingParams.votingPeriod,
-                };
-            }
+		const formatGov = () => {
+			if (data.govParams.length) {
+				const govParamsRaw = GovParams.fromJSON(R.pathOr({}, ['govParams', 0], data));
+				return {
+					minDeposit: formatToken(
+						R.pathOr(0, [0, 'amount'], govParamsRaw.depositParams.minDeposit),
+						R.pathOr(chainConfig.primaryTokenUnit, [0, 'denom'], govParamsRaw.depositParams.minDeposit),
+					),
+					maxDepositPeriod: govParamsRaw.depositParams.maxDepositPeriod,
+					quorum: numeral(numeral(govParamsRaw.tallyParams.quorum).format('0.[00]')).value(),
+					threshold: numeral(numeral(govParamsRaw.tallyParams.threshold).format('0.[00]')).value(),
+					vetoThreshold: numeral(numeral(govParamsRaw.tallyParams.vetoThreshold).format('0.[00]')).value(),
+					votingPeriod: govParamsRaw.votingParams.votingPeriod,
+				};
+			}
 
-            return null;
-        };
+			return null;
+		};
 
-        results.gov = formatGov();
+		results.gov = formatGov();
 
-        return results;
-    };
+		return results;
+	};
 
-    return {
-        state,
-    };
+	return {
+		state,
+	};
 };

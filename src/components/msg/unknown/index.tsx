@@ -3,21 +3,21 @@ import { MsgUnknown } from '@models';
 import { useGetStyles } from './styles';
 
 const Unknown = (props: {
-    message: MsgUnknown;
+	message: MsgUnknown;
 }) => {
-    const { message } = props;
+	const { message } = props;
 
-    // our(cheqd) messages don't have "json" field
-    const data = message.json ?? message
+	// our(cheqd) messages don't have "json" field
+	const data = message.json ?? message
 
-    const { classes } = useGetStyles();
-    return (
-        <pre className={classes.root}>
-            <code>
-                {JSON.stringify(data, null, '\t')}
-            </code>
-        </pre>
-    );
+	const { classes } = useGetStyles();
+	return (
+		<pre className={classes.root}>
+			<code>
+				{JSON.stringify(data, null, '\t')}
+			</code>
+		</pre>
+	);
 };
 
 export default Unknown;

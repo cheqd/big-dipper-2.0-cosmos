@@ -4,20 +4,20 @@ import DID from '@src/components/did';
 import Trans from 'next-translate/Trans';
 
 const CreateDID = (props: {
-    message: MsgCreateDid;
+	message: MsgCreateDid;
 }) => {
-    const { message } = props;
+	const { message } = props;
 
-    return (
-        <Typography>
-            <Trans
-                i18nKey="message_contents:MsgCreateDID"
-                components={[
-                    (<DID did={message.payload.id} />),
-                ]}
-            />
-        </Typography>
-    );
+	return (
+		<Typography>
+			<Trans
+				i18nKey="message_contents:MsgCreateDID"
+				components={[
+					(<DID did={message.payload.id} />),
+				]}
+			/>
+		</Typography>
+	);
 };
 
 export default CreateDID;

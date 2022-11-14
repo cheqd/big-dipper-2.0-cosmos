@@ -4,10 +4,11 @@ import {
   Tag,
 } from '@components';
 import {
-  MsgCreateDid, MsgUpdateDid,
+  MsgUpdateDid,
 } from '@cheqd/ts-proto/cheqd/v1/tx';
 import { MsgCreateResource } from '@cheqd/ts-proto/resource/v1/tx';
 import * as COMPONENTS from '@msg';
+import { MsgCreateDid } from '../../models/msg/cheqd/msg_create_did';
 
 const getDataByType = (type: string) => {
   // =====================================

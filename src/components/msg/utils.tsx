@@ -3,10 +3,10 @@ import * as R from 'ramda';
 import {
   Tag,
 } from '@components';
-import { MsgCreateResource } from '@cheqd/ts-proto/resource/v1/tx';
 import * as COMPONENTS from '@msg';
 import { MsgCreateDid } from '../../models/msg/cheqd/msg_create_did';
 import { MsgUpdateDid } from '../../models/msg/cheqd/msg_update_did';
+import { MsgCreateResource } from '../../models/msg/cheqd/resources/msg_create_resource';
 
 const getDataByType = (type: string) => {
   // =====================================

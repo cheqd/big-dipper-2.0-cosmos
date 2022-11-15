@@ -13,7 +13,7 @@ class MsgTimeout {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgTimeout({
         json,
         type: json['@type'],

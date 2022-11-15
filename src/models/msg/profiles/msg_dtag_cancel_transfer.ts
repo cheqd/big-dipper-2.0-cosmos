@@ -15,7 +15,7 @@ class MsgDtagCancelTransfer {
     this.receiver = payload.receiver;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgDtagCancelTransfer({
       json,
       type: json['@type'],

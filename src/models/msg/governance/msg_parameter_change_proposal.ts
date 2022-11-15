@@ -15,7 +15,7 @@ class MsgParameterChangeProposal {
     this.changes = payload.changes;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgParameterChangeProposal({
       type: json['@type'],
       title: json.title,

@@ -27,26 +27,26 @@ class MsgSubmitProposal {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+	static fromJson(json: any) {
 	  const contentDetailsRaw = json?.content;
 	  const contentType = contentDetailsRaw?.['@type'];
 	  let content = null;
 
 	  switch (contentType) {
 	    case '/cosmos.gov.v1beta1.TextProposal': {
-	      content = MsgTextProposal.fromJSON(contentDetailsRaw);
+	      content = MsgTextProposal.fromJson(contentDetailsRaw);
 	      break;
 	    }
 	    case '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal': {
-	      content = MsgSoftwareUpgradeProposal.fromJSON(contentDetailsRaw);
+	      content = MsgSoftwareUpgradeProposal.fromJson(contentDetailsRaw);
 	      break;
 	    }
 	    case '/cosmos.params.v1beta1.ParameterChangeProposal': {
-	      content = MsgParameterChangeProposal.fromJSON(contentDetailsRaw);
+	      content = MsgParameterChangeProposal.fromJson(contentDetailsRaw);
 	      break;
 	    }
 	    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal': {
-	      content = MsgCommunityPoolSpendProposal.fromJSON(contentDetailsRaw);
+	      content = MsgCommunityPoolSpendProposal.fromJson(contentDetailsRaw);
 	      break;
 	    }
 	    default:

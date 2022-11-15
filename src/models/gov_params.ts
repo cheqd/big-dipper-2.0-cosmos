@@ -23,7 +23,7 @@ class GovParams {
 	  this.votingParams = payload.votingParams;
 	}
 
-	static fromJSON(data: any) {
+	static fromJson(data: any) {
 	  return new GovParams({
 	    depositParams: {
 	      minDeposit: R.pathOr([], ['depositParams', 'min_deposit'], data).map((x) => ({

@@ -13,7 +13,7 @@ class MsgChannel {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgChannel({
         json,
         type: json['@type'],

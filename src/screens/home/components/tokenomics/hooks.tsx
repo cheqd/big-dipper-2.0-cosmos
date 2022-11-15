@@ -31,7 +31,7 @@ export const useTokenomics = () => {
 
   const formatTokenomics = (data: TokenomicsQuery) => {
     const results = { ...state };
-    const stakingParams = StakingParams.fromJSON(R.pathOr({}, ['stakingParams', 0, 'params'], data));
+    const stakingParams = StakingParams.fromJson(R.pathOr({}, ['stakingParams', 0, 'params'], data));
     results.denom = stakingParams.bondDenom;
 
     const [total] = R.pathOr([], [

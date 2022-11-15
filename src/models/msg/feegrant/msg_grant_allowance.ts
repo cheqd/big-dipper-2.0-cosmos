@@ -15,7 +15,7 @@ class MsgGrantAllowance {
     this.grantee = payload.grantee;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgGrantAllowance({
       json,
       type: json['@type'],

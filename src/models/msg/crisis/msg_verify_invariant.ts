@@ -17,7 +17,7 @@ class MsgVerifyInvariant {
     this.invariantRoute = payload.invariantRoute;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgVerifyInvariant({
       json,
       type: json['@type'],

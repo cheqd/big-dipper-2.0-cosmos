@@ -17,7 +17,7 @@ class MsgChannelOpenInit {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+	static fromJson(json: any) {
 	  return new MsgChannelOpenInit({
 	    json,
 	    type: json['@type'],

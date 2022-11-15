@@ -13,7 +13,7 @@ class MsgPacket {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgPacket({
         json,
         type: json['@type'],

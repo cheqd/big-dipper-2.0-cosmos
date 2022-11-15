@@ -40,7 +40,7 @@ class MsgCreateValidator {
     this.json = payload.json;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgCreateValidator({
       json,
       type: json['@type'],

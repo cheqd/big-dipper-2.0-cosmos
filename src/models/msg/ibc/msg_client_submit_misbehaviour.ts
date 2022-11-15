@@ -15,7 +15,7 @@ class MsgSubmitMisbehaviour {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgSubmitMisbehaviour({
         json,
         type: json['@type'],

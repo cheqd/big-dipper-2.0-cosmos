@@ -21,7 +21,7 @@ class MsgChannelCloseInit {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgChannelCloseInit({
         json,
         type: json['@type'],

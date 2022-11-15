@@ -27,7 +27,7 @@ describe('screen: TransactionDetails/ Messages', () => {
       <RecoilRoot>
         <MockTheme>
           <Messages
-            messages={[MsgUnknown.fromJSON({
+            messages={[MsgUnknown.fromJson({
 						  '@type': '/cosmos.bank.v1beta1.MsgSend',
 						  amount: [
 						    {

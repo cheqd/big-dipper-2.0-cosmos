@@ -60,7 +60,7 @@ export const useParams = () => {
     // ================================
     const formatStaking = () => {
       if (data.stakingParams.length) {
-        const stakingParamsRaw = StakingParams.fromJSON(R.pathOr({}, ['stakingParams', 0, 'params'], data));
+        const stakingParamsRaw = StakingParams.fromJson(R.pathOr({}, ['stakingParams', 0, 'params'], data));
         return {
           bondDenom: stakingParamsRaw.bondDenom,
           unbondingTime: stakingParamsRaw.unbondingTime,
@@ -80,7 +80,7 @@ export const useParams = () => {
     // ================================
     const formatSlashing = () => {
       if (data.slashingParams.length) {
-        const slashingParamsRaw = SlashingParams.fromJSON(R.pathOr({}, ['slashingParams', 0, 'params'], data));
+        const slashingParamsRaw = SlashingParams.fromJson(R.pathOr({}, ['slashingParams', 0, 'params'], data));
         return {
           downtimeJailDuration: slashingParamsRaw.downtimeJailDuration,
           minSignedPerWindow: slashingParamsRaw.minSignedPerWindow,
@@ -99,7 +99,7 @@ export const useParams = () => {
     // ================================
     const formatMint = () => {
       if (data.mintParams.length) {
-        const mintParamsRaw = MintParams.fromJSON(R.pathOr({}, ['mintParams', 0, 'params'], data));
+        const mintParamsRaw = MintParams.fromJson(R.pathOr({}, ['mintParams', 0, 'params'], data));
 
         return {
           blocksPerYear: mintParamsRaw.blocksPerYear,
@@ -122,7 +122,7 @@ export const useParams = () => {
 
     const formatDistribution = () => {
       if (data.distributionParams.length) {
-        const distributionParamsRaw = DistributionParams.fromJSON(R.pathOr({}, ['distributionParams', 0, 'params'], data));
+        const distributionParamsRaw = DistributionParams.fromJson(R.pathOr({}, ['distributionParams', 0, 'params'], data));
         return {
           baseProposerReward: distributionParamsRaw.baseProposerReward,
           bonusProposerReward: distributionParamsRaw.bonusProposerReward,
@@ -142,7 +142,7 @@ export const useParams = () => {
 
     const formatGov = () => {
       if (data.govParams.length) {
-        const govParamsRaw = GovParams.fromJSON(R.pathOr({}, ['govParams', 0], data));
+        const govParamsRaw = GovParams.fromJson(R.pathOr({}, ['govParams', 0], data));
         return {
           minDeposit: formatToken(
             R.pathOr(0, [0, 'amount'], govParamsRaw.depositParams.minDeposit),

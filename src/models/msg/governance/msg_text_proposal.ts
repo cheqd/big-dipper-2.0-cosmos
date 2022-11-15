@@ -9,7 +9,7 @@ class MsgTextProposal {
     this.description = payload.description;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgTextProposal({
       type: json['@type'],
       title: json.title,

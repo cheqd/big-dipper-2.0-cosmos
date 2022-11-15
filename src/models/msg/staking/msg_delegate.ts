@@ -18,7 +18,7 @@ class MsgDelegate {
     this.json = payload.json;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgDelegate({
       json,
       type: json['@type'],

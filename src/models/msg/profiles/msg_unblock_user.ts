@@ -18,7 +18,7 @@ class MsgUnblockUser {
     this.subspace = payload.subspace;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgUnblockUser({
       json,
       type: json['@type'],

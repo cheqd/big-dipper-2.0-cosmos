@@ -13,7 +13,7 @@ class MsgConnectionEnd {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgConnectionEnd({
         json,
         type: json['@type'],

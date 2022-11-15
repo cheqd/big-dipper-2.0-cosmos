@@ -11,7 +11,7 @@ class MsgUnknown {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+	static fromJson(json: any) {
 	  return new MsgUnknown({
 	    type: json['@type'] ?? '',
 	    json,

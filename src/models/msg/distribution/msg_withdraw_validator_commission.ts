@@ -30,7 +30,7 @@ class MsgWithdrawValidatorCommission {
     return amounts;
   }
 
-  static fromJSON(json: any, log?: any) {
+  static fromJson(json: any, log?: any) {
     const amounts = this.getWithdrawalAmount(log);
 
     return new MsgWithdrawValidatorCommission({

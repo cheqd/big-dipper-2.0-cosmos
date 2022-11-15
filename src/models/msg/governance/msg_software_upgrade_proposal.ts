@@ -19,7 +19,7 @@ class MsgSoftwareUpgradeProposal {
     this.plan = payload.plan;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgSoftwareUpgradeProposal({
       type: json['@type'],
       title: json.title,

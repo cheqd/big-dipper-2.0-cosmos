@@ -13,7 +13,7 @@ class MsgSaveProfile {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+	static fromJson(json: any) {
 	  return new MsgSaveProfile({
 	    type: json['@type'],
 	    creator: json.creator,

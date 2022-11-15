@@ -17,7 +17,7 @@ class MsgConnectionOpenInit {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgConnectionOpenInit({
         json,
         type: json['@type'],

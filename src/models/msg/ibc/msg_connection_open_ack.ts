@@ -17,7 +17,7 @@ class MsgConnectionOpenAck {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgConnectionOpenAck({
         json,
         type: json['@type'],

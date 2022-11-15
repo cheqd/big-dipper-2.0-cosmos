@@ -48,7 +48,7 @@ export const useValidators = () => {
   // Parse data
   // ==========================
   const formatValidators = (data: ValidatorsQuery) => {
-    const slashingParams = SlashingParams.fromJSON(R.pathOr({}, ['slashingParams', 0, 'params'], data));
+    const slashingParams = SlashingParams.fromJson(R.pathOr({}, ['slashingParams', 0, 'params'], data));
     const votingPowerOverall = numeral(formatToken(
       R.pathOr(0, ['stakingPool', 0, 'bondedTokens'], data),
       chainConfig.votingPowerTokenUnit,

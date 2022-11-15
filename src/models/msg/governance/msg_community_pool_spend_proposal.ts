@@ -15,7 +15,7 @@ class MsgCommunityPoolSpendProposal {
     this.amount = payload.amount;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgCommunityPoolSpendProposal({
       type: json['@type'],
       title: json.title,

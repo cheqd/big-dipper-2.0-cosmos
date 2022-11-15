@@ -18,7 +18,7 @@ class MsgUndelegate {
     this.json = payload.json;
   }
 
-  static fromJSON(json: any) {
+  static fromJson(json: any) {
     return new MsgUndelegate({
       json,
       type: json['@type'],

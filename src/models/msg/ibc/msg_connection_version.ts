@@ -13,7 +13,7 @@ class MsgVersion {
       this.json = payload.json;
     }
 
-    static fromJSON(json: any) {
+    static fromJson(json: any) {
       return new MsgVersion({
         json,
         type: json['@type'],

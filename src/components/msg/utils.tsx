@@ -491,10 +491,10 @@ export const convertMsgsToModels = (transaction: any) => {
     if (model === MODELS.MsgWithdrawDelegatorReward
 			|| model === MODELS.MsgWithdrawValidatorCommission) {
       const log = R.pathOr(null, ['logs', i], transaction);
-      const data = model.fromJSON(msg, log);
+      const data = model.fromJson(msg, log);
       return data;
     }
-    const data = model.fromJSON(msg);
+    const data = model.fromJson(msg);
     // IDK why do we need to do this
     data.type = msg['@type'];
     return data;

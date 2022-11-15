@@ -20,7 +20,7 @@ class MsgRedelegate {
 	  this.json = payload.json;
 	}
 
-	static fromJSON(json: any) {
+	static fromJson(json: any) {
 	  return new MsgRedelegate({
 	    json,
 	    type: json['@type'],

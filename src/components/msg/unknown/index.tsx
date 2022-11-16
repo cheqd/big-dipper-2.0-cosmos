@@ -2,8 +2,7 @@ import React from 'react';
 import { MsgUnknown } from '@models';
 import { useGetStyles } from './styles';
 
-const Unknown = (props: {
-	message: MsgUnknown;
+const Unknown = (props: { message: MsgUnknown;
 }) => {
   const { message } = props;
 

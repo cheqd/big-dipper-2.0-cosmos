@@ -10,22 +10,20 @@ import {
   FormControlLabel,
 } from '@material-ui/core';
 import {
-  useList,
-  useListRow,
+  useList, useListRow,
 } from '@hooks';
 import {
-  Box,
-  TransactionMessagesFilter,
+  Box, TransactionMessagesFilter,
 } from '@components';
 import { getMessageByType } from '@msg';
 import { useStyles } from './styles';
 
 const Messages: React.FC<{
-	className?: string;
-	messages: any[];
-	viewRaw: boolean;
-	toggleMessageDisplay: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	onMessageFilterCallback: (value: string) => void;
+  className?: string;
+  messages: any[];
+  viewRaw: boolean;
+  toggleMessageDisplay: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onMessageFilterCallback: (value: string) => void;
 }> = ({
   className, ...props
 }) => {
@@ -33,9 +31,7 @@ const Messages: React.FC<{
   const classes = useStyles();
 
   const {
-    listRef,
-    getRowHeight,
-    setRowHeight,
+    listRef, getRowHeight, setRowHeight,
   } = useList();
 
   const formattedItems = props.messages.map((x) => {
@@ -46,9 +42,7 @@ const Messages: React.FC<{
     <Box className={classnames(className, classes.root)}>
       <div className={classes.header}>
         <div className={classes.mobileOptions}>
-          <Typography variant="h2">
-            {t('messages')}
-          </Typography>
+          <Typography variant="h2">{t('messages')}</Typography>
           <FormControlLabel
             control={(
               <Switch
@@ -56,7 +50,7 @@ const Messages: React.FC<{
                 onChange={props.toggleMessageDisplay}
                 color="primary"
               />
-							)}
+            )}
             label={t('raw')}
           />
         </div>
@@ -68,7 +62,7 @@ const Messages: React.FC<{
                 onChange={props.toggleMessageDisplay}
                 color="primary"
               />
-							)}
+            )}
             label={t('raw')}
           />
           <TransactionMessagesFilter
@@ -81,40 +75,38 @@ const Messages: React.FC<{
       <div className={classes.list}>
         <AutoSizer>
           {({
-						  height, width,
+            height, width,
           }) => {
-						  return (
-  <List
-    className="List"
-    height={height}
-    itemCount={props.messages.length}
-    itemSize={getRowHeight}
-    ref={listRef}
-    width={width}
-  >
-    {({
-									  index, style,
-    }) => {
-									  const { rowRef } = useListRow(index, setRowHeight);
-									  const selectedItem = formattedItems[index];
-									  return (
-  <div style={style}>
-    <div ref={rowRef}>
-      <div className={classes.item}>
-        <div className={classes.tags}>
-          {selectedItem.type}
-        </div>
-        <span className="msg">
-          {selectedItem.message}
-        </span>
-      </div>
-      {index !== props.messages.length - 1 && <Divider />}
-    </div>
-  </div>
-									  );
-    }}
-  </List>
-						  );
+            return (
+              <List
+                className="List"
+                height={height}
+                itemCount={props.messages.length}
+                itemSize={getRowHeight}
+                ref={listRef}
+                width={width}
+              >
+                {({
+                  index, style,
+                }) => {
+                  const { rowRef } = useListRow(index, setRowHeight);
+                  const selectedItem = formattedItems[index];
+                  return (
+                    <div style={style}>
+                      <div ref={rowRef}>
+                        <div className={classes.item}>
+                          <div className={classes.tags}>
+                            {selectedItem.type}
+                          </div>
+                          <span className="msg">{selectedItem.message}</span>
+                        </div>
+                        {index !== props.messages.length - 1 && <Divider />}
+                      </div>
+                    </div>
+                  );
+                }}
+              </List>
+            );
           }}
         </AutoSizer>
       </div>

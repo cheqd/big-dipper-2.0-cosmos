@@ -1,8 +1,6 @@
 import * as MODELS from '@models';
 import * as R from 'ramda';
-import {
-  Tag,
-} from '@components';
+import { Tag } from '@components';
 import * as COMPONENTS from '@msg';
 import { MsgCreateDid } from '../../models/msg/cheqd/msg_create_did';
 import { MsgUpdateDid } from '../../models/msg/cheqd/msg_update_did';
@@ -424,7 +422,6 @@ const getDataByType = (type: string) => {
       tagTheme: 'four',
       tagDisplay: 'txUnblockUserLabel',
     },
-
   };
 
   if (defaultTypeToModel[type]) return defaultTypeToModel[type];
@@ -452,15 +449,15 @@ export const getMessageModelByType = (type: string) => {
 export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   const { type } = message;
   let results: {
-		content: any;
-		tagDisplay: string;
-		tagTheme?: TagTheme;
-		unknown?: boolean;
-	} = {
-	  content: COMPONENTS.Unknown,
-	  tagDisplay: 'txUnknownLabel',
-	  tagTheme: 'zero',
-	};
+    content: any;
+    tagDisplay: string;
+    tagTheme?: TagTheme;
+    unknown?: boolean;
+  } = {
+    content: COMPONENTS.Unknown,
+    tagDisplay: 'txUnknownLabel',
+    tagTheme: 'zero',
+  };
 
   const data = getDataByType(type);
   if (data) {
@@ -477,10 +474,12 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   }
 
   return {
-    type: <Tag
-      value={t(`message_labels:${results.tagDisplay}`)}
-      theme={results.tagTheme}
-    />,
+    type: (
+      <Tag
+        value={t(`message_labels:${results.tagDisplay}`)}
+        theme={results.tagTheme}
+      />
+    ),
     message: <results.content message={message} />,
   };
 };
@@ -488,8 +487,10 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
 export const convertMsgsToModels = (transaction: any) => {
   const messages = R.pathOr([], ['messages'], transaction).map((msg, i) => {
     const model = getMessageModelByType(msg?.['@type']);
-    if (model === MODELS.MsgWithdrawDelegatorReward
-			|| model === MODELS.MsgWithdrawValidatorCommission) {
+    if (
+      model === MODELS.MsgWithdrawDelegatorReward
+      || model === MODELS.MsgWithdrawValidatorCommission
+    ) {
       const log = R.pathOr(null, ['logs', i], transaction);
       const data = model.fromJson(msg, log);
       return data;

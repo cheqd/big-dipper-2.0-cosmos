@@ -5,10 +5,7 @@ import { Typography } from '@material-ui/core';
 import { DID_RESOLVER_URL } from '@utils/go_to_page';
 import { useStyles } from './styles';
 
-const DID: React.FC<{
-	className?: string;
-	did: string;
-	href?: (did: string) => string;
+const DID: React.FC<{ className?: string; did: string; href?: (did: string) => string;
 }> = ({
   className, did, href = DID_RESOLVER_URL,
 }) => {

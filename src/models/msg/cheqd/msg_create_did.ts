@@ -1,7 +1,9 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable max-classes-per-file */
 
-import { Service, SignInfo, VerificationMethod } from './commons';
+import {
+  Service, SignInfo, VerificationMethod,
+} from './commons';
 
 export class MsgCreateDid {
   public type: string;
@@ -162,5 +164,3 @@ static fromJson(object: any): MsgCreateDidPayload {
   return message;
 }
 }
-
-

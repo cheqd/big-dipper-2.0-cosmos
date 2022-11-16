@@ -1,49 +1,46 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable max-classes-per-file */
 export class SignInfo {
-    public verificationMethodId: string;
-    public signature: string;
+  public verificationMethodId: string;
+  public signature: string;
 
-    constructor(verificationMethodId: string,
-      signature: string) {
-      this.verificationMethodId = verificationMethodId;
-      this.signature = signature;
-    }
+  constructor(verificationMethodId: string, signature: string) {
+    this.verificationMethodId = verificationMethodId;
+    this.signature = signature;
+  }
 
-    static fromJson(object: any): SignInfo {
-      const message = { } as SignInfo;
-      if (
-        object.verificationMethodId !== undefined
-        && object.verificationMethodId !== null
-      ) {
-        message.verificationMethodId = String(object.verificationMethodId);
-      } else {
-        message.verificationMethodId = '';
-      }
-      if (object.signature !== undefined && object.signature !== null) {
-        message.signature = String(object.signature);
-      } else {
-        message.signature = '';
-      }
-      return message;
+  static fromJson(object: any): SignInfo {
+    const message = {} as SignInfo;
+    if (
+      object.verificationMethodId !== undefined
+      && object.verificationMethodId !== null
+    ) {
+      message.verificationMethodId = String(object.verificationMethodId);
+    } else {
+      message.verificationMethodId = '';
     }
+    if (object.signature !== undefined && object.signature !== null) {
+      message.signature = String(object.signature);
+    } else {
+      message.signature = '';
+    }
+    return message;
+  }
 }
-
 
 export class Service {
   public id: string;
   public type: string;
   public serviceEndpoint: string;
 
-  constructor(id: string,
-    type: string,
-    serviceEndpoint: string) {
+  constructor(id: string, type: string, serviceEndpoint: string) {
     this.id = id;
     this.type = type;
     this.serviceEndpoint = serviceEndpoint;
   }
 
   static fromJson(object: any): Service {
-    const message = { } as Service;
+    const message = {} as Service;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -66,26 +63,28 @@ export class Service {
   }
 }
 export class VerificationMethod {
-public id: string;
-public type: string;
-public controller: string;
+  public id: string;
+  public type: string;
+  public controller: string;
   /** optional */
   public publicKeyJwk: KeyValuePair[];
   /** optional */
   public publicKeyMultibase: string;
 
-  constructor(id: string,
+  constructor(
+    id: string,
     type: string,
     controller: string,
     publicKeyJwk: KeyValuePair[],
-    publicKeyMultibase: string) {
+    publicKeyMultibase: string,
+  ) {
     this.type = type;
     this.controller = controller;
     this.publicKeyJwk = publicKeyJwk;
     this.publicKeyMultibase = publicKeyMultibase;
   }
   static fromJson(object: any): VerificationMethod {
-    const message = { } as VerificationMethod;
+    const message = {} as VerificationMethod;
     message.publicKeyJwk = [];
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
@@ -129,7 +128,7 @@ class KeyValuePair {
   }
 
   static fromJson(object: any): KeyValuePair {
-    const message = { } as KeyValuePair;
+    const message = {} as KeyValuePair;
     if (object.key !== undefined && object.key !== null) {
       message.key = String(object.key);
     } else {

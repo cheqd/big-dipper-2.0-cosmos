@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-
 import { SignInfo } from '../commons';
 
 export class MsgCreateResource {
@@ -12,7 +10,7 @@ export class MsgCreateResource {
     type: string,
     json: any,
     signatures: SignInfo[],
-    payload?: MsgCreateResourcePayload
+    payload?: MsgCreateResourcePayload,
   ) {
     this.type = type;
     this.json = json;
@@ -31,6 +29,7 @@ export class MsgCreateResource {
       message.payload = undefined;
     }
     if (object.signatures !== undefined && object.signatures !== null) {
+      // eslint-disable-next-line no-restricted-syntax
       for (const e of object.signatures) {
         message.signatures.push(e);
       }

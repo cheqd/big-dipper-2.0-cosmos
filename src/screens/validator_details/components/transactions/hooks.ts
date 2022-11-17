@@ -6,8 +6,8 @@ import {
   useGetMessagesByAddressQuery,
   GetMessagesByAddressQuery,
 } from '@graphql/types/general_types';
-import { TransactionState } from './types';
 import { convertMsgType } from '@src/utils/convert_msg_type';
+import { TransactionState } from './types';
 
 const LIMIT = 50;
 

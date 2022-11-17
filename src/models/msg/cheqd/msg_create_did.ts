@@ -1,6 +1,6 @@
-/* eslint-disable no-restricted-syntax */
-
-import { Service, SignInfo, VerificationMethod } from './commons';
+import {
+  Service, SignInfo, VerificationMethod,
+} from './commons';
 
 export class MsgCreateDid {
   public type: string;
@@ -12,7 +12,7 @@ export class MsgCreateDid {
     type: string,
     json: any,
     payload: MsgCreateDidPayload,
-    signatures: SignInfo[]
+    signatures: SignInfo[],
   ) {
     this.type = type;
     this.json = json;
@@ -32,6 +32,7 @@ export class MsgCreateDid {
       message.payload = undefined;
     }
     if (object.signatures !== undefined && object.signatures !== null) {
+      // eslint-disable-next-line no-restricted-syntax
       for (const e of object.signatures) {
         message.signatures.push(e);
       }

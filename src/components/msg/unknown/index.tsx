@@ -7,7 +7,7 @@ const Unknown = (props: { message: MsgUnknown;
   const { message } = props;
 
   // our(cheqd) messages don't have "json" field
-  const data = message.json ?? message;
+  const data = message.json;
 
   const { classes } = useGetStyles();
   return (

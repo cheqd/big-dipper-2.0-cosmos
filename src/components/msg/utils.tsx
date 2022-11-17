@@ -496,8 +496,6 @@ export const convertMsgsToModels = (transaction: any) => {
       return data;
     }
     const data = model.fromJson(msg);
-    // IDK why do we need to do this
-    data.type = msg['@type'];
     return data;
   });
 

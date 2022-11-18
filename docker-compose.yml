@@ -2,6 +2,12 @@ version: '3.8'
 
 services:
   bigdipper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      tags:
+        - bigdipper:local
     image: bigdipper:local
     user: node
     working_dir: /home/node/app
@@ -13,7 +19,6 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - NPM_CONFIG_LOGLEVEL=warn
       - NEXT_PUBLIC_GRAPHQL_URL=https://explorer-gql.cheqd.io/v1/graphql
       - NEXT_PUBLIC_GRAPHQL_WS=wss://explorer-gql.cheqd.io/v1/graphql
       - NEXT_PUBLIC_RPC_WEBSOCKET=wss://rpc.cheqd.net/websocket

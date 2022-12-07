@@ -14,10 +14,10 @@ COPY . .
 # Actual values passed via environment variables in DO Apps
 ARG NODE_ENV="production"
 ARG NPM_CONFIG_LOGLEVEL="warn"
-ARG NEXT_PUBLIC_GRAPHQL_URL="https://testnet-gql.cheqd.io/v1/graphql"
-ARG NEXT_PUBLIC_GRAPHQL_WS="wss://testnet-gql.cheqd.io/v1/graphql"
-ARG NEXT_PUBLIC_RPC_WEBSOCKET="wss://rpc.cheqd.network/websocket"
-ARG NEXT_PUBLIC_CHAIN_TYPE="testnet"
+ARG NEXT_PUBLIC_GRAPHQL_URL="https://explorer-gql.cheqd.io/v1/graphql"
+ARG NEXT_PUBLIC_GRAPHQL_WS="wss://explorer-gql.cheqd.io/v1/graphql"
+ARG NEXT_PUBLIC_RPC_WEBSOCKET="wss://rpc.cheqd.net/websocket"
+ARG NEXT_PUBLIC_CHAIN_TYPE="mainnet"
 ARG PORT=3000
 
 # Run-time environment variables

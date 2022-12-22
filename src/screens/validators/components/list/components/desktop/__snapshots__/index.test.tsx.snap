@@ -585,7 +585,7 @@ exports[`screen: Validators/Desktop matches snapshot with active validator 1`] =
           className="MuiTypography-root MuiTypography-body1"
         >
           <div
-            content="20"
+            content="0"
             id="VotingPower"
             percentDisplay="0%"
             percentage={20}

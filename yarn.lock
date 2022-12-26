@@ -4441,7 +4441,7 @@ __metadata:
     isomorphic-ws: ^5.0.0
     jdenticon: ^3.1.0
     jest: ^27.3.2
-    jest-localstorage-mock: ^2.4.18
+    jest-localstorage-mock: ^2.4.25
     jest-transform-stub: ^2.0.0
     jest-watch-typeahead: ^0.6.1
     markdown-to-jsx: ^7.1.2
@@ -8157,10 +8157,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-localstorage-mock@npm:^2.4.18":
-  version: 2.4.22
-  resolution: "jest-localstorage-mock@npm:2.4.22"
-  checksum: 34459a58e3851c353ba1e7df0b585451191bc9b81b17f441f27f1cd3287b539f797387e9608b7ee5d9ab6154a0ddf1244ff80d04d4f98c14cbe7bef4df47517a
+"jest-localstorage-mock@npm:^2.4.25":
+  version: 2.4.25
+  resolution: "jest-localstorage-mock@npm:2.4.25"
+  checksum: 83d7ec985165f6e7713c0bf6a5cb95aa0ebacbb73d1894915c7466731a7dce97d58d29a92cb9e86d619d2e47773c595f2766675020f6390b4c210909d22fdd3a
   languageName: node
   linkType: hard
 

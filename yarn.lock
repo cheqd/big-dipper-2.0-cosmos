@@ -22,9 +22,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.1.5":
-  version: 3.7.1
-  resolution: "@apollo/client@npm:3.7.1"
+"@apollo/client@npm:^3.7.8":
+  version: 3.7.9
+  resolution: "@apollo/client@npm:3.7.9"
   dependencies:
     "@graphql-typed-document-node/core": ^3.1.1
     "@wry/context": ^0.7.0
@@ -54,7 +54,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 95bb1f226fa8771a3e1a782743a31d76c42c470e4105cd023d7d3925a99c8d49f3a453995e6591a9cb960c42ce7baf8d168eded1c8dc9430a1765898ebbe6290
+  checksum: 7b75634747bb14079e63bae36f5ff9fd469ec1a8904f20fb896baf3962c2aaefe1219558c10c15bdf93df780777c5526e331296f01b686d9c0f3bd744afd1c86
   languageName: node
   linkType: hard
 
@@ -4395,7 +4395,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "big-dipper-2.0-cosmos@workspace:."
   dependencies:
-    "@apollo/client": ^3.1.5
+    "@apollo/client": ^3.7.8
     "@cheqd/ts-proto": ^1.0.15
     "@graphql-codegen/cli": ^2.6.1
     "@graphql-codegen/fragment-matcher": ^3.3.1

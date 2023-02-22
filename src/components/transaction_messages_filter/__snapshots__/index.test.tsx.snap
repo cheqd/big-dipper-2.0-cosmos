@@ -200,5 +200,19 @@ exports[`component: TransactionMessagesFilter it renders 1`] = `
       others
     </div>
   </div>
+  <div
+    className="makeStyles-item"
+    id="MenuItem"
+    onClick={[Function]}
+    value="cheqd"
+  >
+    <div
+      id="Typography"
+      noWrap={true}
+      variant="body1"
+    >
+      cheqd
+    </div>
+  </div>
 </div>
 `;

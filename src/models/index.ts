@@ -70,6 +70,14 @@ import MsgRevokeAllowance from './msg/feegrant/msg_revoke_allowance';
 import MsgCreateVestingAccount from './msg/vesting/msg_create_vesting_account';
 import MsgCreatePeriodicVestingAccount from './msg/vesting/msg_create_periodic_vesting_account';
 
+// =========================
+// Cheqd
+// =========================
+import MsgCreateDIDDoc from './msg/cheqd/did/msg_create_did_doc';
+import MsgUpdateDIDDoc from './msg/cheqd/did/msg_update_did_doc';
+import MsgDeactivateDIDDoc from './msg/cheqd/did/msg_deactivate_did_doc';
+import MsgCreateResource from './msg/cheqd/resource/msg_create_resource';
+
 export {
   BigDipperNetwork,
   StakingParams,
@@ -142,4 +150,8 @@ export {
   MsgRevokeAllowance,
   MsgCreateVestingAccount,
   MsgCreatePeriodicVestingAccount,
+  MsgCreateDIDDoc,
+  MsgUpdateDIDDoc,
+  MsgDeactivateDIDDoc,
+  MsgCreateResource,
 };

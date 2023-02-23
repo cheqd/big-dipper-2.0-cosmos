@@ -1,7 +1,14 @@
 // =========================
+// Cheqd
+// =========================
+import CreateDIDDoc from './cheqd/did/create_did_doc';
+import UpdateDIDDoc from './cheqd/did/update_did_doc';
+import DeactivateDIDDoc from './cheqd/did/deactivate_did_doc';
+import CreateResource from './cheqd/resource';
+
+// =========================
 // utils
 // =========================
-import CreateDID from '@src/models/msg/dids/create_did';
 import {
   getMessageModelByType,
   getMessageByType,
@@ -135,5 +142,8 @@ export {
   RevokeAllowance,
   CreateVestingAccount,
   CreatePeriodicVestingAccount,
-  CreateDID,
+  CreateDIDDoc,
+  UpdateDIDDoc,
+  DeactivateDIDDoc,
+  CreateResource,
 };

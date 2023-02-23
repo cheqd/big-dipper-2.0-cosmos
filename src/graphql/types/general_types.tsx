@@ -185,6 +185,8 @@ export type Account = {
   proposals: Array<Proposal>;
   /** An aggregate relationship */
   proposals_aggregate: Proposal_Aggregate;
+  /** An object relationship */
+  top_account?: Maybe<Top_Accounts>;
   /** An array relationship */
   validator_infos: Array<Validator_Info>;
   /** An object relationship */
@@ -263,6 +265,7 @@ export type Account_Bool_Exp = {
   proposal_votes?: Maybe<Proposal_Vote_Bool_Exp>;
   proposals?: Maybe<Proposal_Bool_Exp>;
   proposals_aggregate?: Maybe<Proposal_Aggregate_Bool_Exp>;
+  top_account?: Maybe<Top_Accounts_Bool_Exp>;
   validator_infos?: Maybe<Validator_Info_Bool_Exp>;
   vesting_account?: Maybe<Vesting_Account_Bool_Exp>;
   vesting_accounts?: Maybe<Vesting_Account_Bool_Exp>;
@@ -274,6 +277,7 @@ export type Account_Order_By = {
   proposal_deposits_aggregate?: Maybe<Proposal_Deposit_Aggregate_Order_By>;
   proposal_votes_aggregate?: Maybe<Proposal_Vote_Aggregate_Order_By>;
   proposals_aggregate?: Maybe<Proposal_Aggregate_Order_By>;
+  top_account?: Maybe<Top_Accounts_Order_By>;
   validator_infos_aggregate?: Maybe<Validator_Info_Aggregate_Order_By>;
   vesting_account?: Maybe<Vesting_Account_Order_By>;
   vesting_accounts_aggregate?: Maybe<Vesting_Account_Aggregate_Order_By>;
@@ -3131,6 +3135,10 @@ export type Query_Root = {
   token_price_history: Array<Token_Price_History>;
   /** fetch data from the table: "token_unit" */
   token_unit: Array<Token_Unit>;
+  /** fetch data from the table: "top_accounts" */
+  top_accounts: Array<Top_Accounts>;
+  /** fetch data from the table: "top_accounts" using primary key columns */
+  top_accounts_by_pk?: Maybe<Top_Accounts>;
   /** fetch data from the table: "transaction" */
   transaction: Array<Transaction>;
   /** fetch data from the table: "validator" */
@@ -3624,6 +3632,20 @@ export type Query_RootToken_UnitArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Token_Unit_Order_By>>;
   where?: Maybe<Token_Unit_Bool_Exp>;
+};
+
+
+export type Query_RootTop_AccountsArgs = {
+  distinct_on?: Maybe<Array<Top_Accounts_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Top_Accounts_Order_By>>;
+  where?: Maybe<Top_Accounts_Bool_Exp>;
+};
+
+
+export type Query_RootTop_Accounts_By_PkArgs = {
+  address: Scalars['String'];
 };
 
 
@@ -4281,6 +4303,12 @@ export type Subscription_Root = {
   token_unit: Array<Token_Unit>;
   /** fetch data from the table in a streaming manner: "token_unit" */
   token_unit_stream: Array<Token_Unit>;
+  /** fetch data from the table: "top_accounts" */
+  top_accounts: Array<Top_Accounts>;
+  /** fetch data from the table: "top_accounts" using primary key columns */
+  top_accounts_by_pk?: Maybe<Top_Accounts>;
+  /** fetch data from the table in a streaming manner: "top_accounts" */
+  top_accounts_stream: Array<Top_Accounts>;
   /** fetch data from the table: "transaction" */
   transaction: Array<Transaction>;
   /** fetch data from the table in a streaming manner: "transaction" */
@@ -4939,6 +4967,27 @@ export type Subscription_RootToken_Unit_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<Maybe<Token_Unit_Stream_Cursor_Input>>;
   where?: Maybe<Token_Unit_Bool_Exp>;
+};
+
+
+export type Subscription_RootTop_AccountsArgs = {
+  distinct_on?: Maybe<Array<Top_Accounts_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Top_Accounts_Order_By>>;
+  where?: Maybe<Top_Accounts_Bool_Exp>;
+};
+
+
+export type Subscription_RootTop_Accounts_By_PkArgs = {
+  address: Scalars['String'];
+};
+
+
+export type Subscription_RootTop_Accounts_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<Maybe<Top_Accounts_Stream_Cursor_Input>>;
+  where?: Maybe<Top_Accounts_Bool_Exp>;
 };
 
 
@@ -5725,6 +5774,84 @@ export type Token_Unit_Var_Samp_Order_By = {
 /** order by variance() on columns of table "token_unit" */
 export type Token_Unit_Variance_Order_By = {
   exponent?: Maybe<Order_By>;
+};
+
+/** columns and relationships of "top_accounts" */
+export type Top_Accounts = {
+  __typename?: 'top_accounts';
+  /** An object relationship */
+  account: Account;
+  address: Scalars['String'];
+  available?: Maybe<Scalars['bigint']>;
+  delegation?: Maybe<Scalars['bigint']>;
+  redelegation?: Maybe<Scalars['bigint']>;
+  reward?: Maybe<Scalars['bigint']>;
+  sum: Scalars['bigint'];
+  unbonding?: Maybe<Scalars['bigint']>;
+};
+
+/** Boolean expression to filter rows from the table "top_accounts". All fields are combined with a logical 'AND'. */
+export type Top_Accounts_Bool_Exp = {
+  _and?: Maybe<Array<Top_Accounts_Bool_Exp>>;
+  _not?: Maybe<Top_Accounts_Bool_Exp>;
+  _or?: Maybe<Array<Top_Accounts_Bool_Exp>>;
+  account?: Maybe<Account_Bool_Exp>;
+  address?: Maybe<String_Comparison_Exp>;
+  available?: Maybe<Bigint_Comparison_Exp>;
+  delegation?: Maybe<Bigint_Comparison_Exp>;
+  redelegation?: Maybe<Bigint_Comparison_Exp>;
+  reward?: Maybe<Bigint_Comparison_Exp>;
+  sum?: Maybe<Bigint_Comparison_Exp>;
+  unbonding?: Maybe<Bigint_Comparison_Exp>;
+};
+
+/** Ordering options when selecting data from "top_accounts". */
+export type Top_Accounts_Order_By = {
+  account?: Maybe<Account_Order_By>;
+  address?: Maybe<Order_By>;
+  available?: Maybe<Order_By>;
+  delegation?: Maybe<Order_By>;
+  redelegation?: Maybe<Order_By>;
+  reward?: Maybe<Order_By>;
+  sum?: Maybe<Order_By>;
+  unbonding?: Maybe<Order_By>;
+};
+
+/** select columns of table "top_accounts" */
+export enum Top_Accounts_Select_Column {
+  /** column name */
+  Address = 'address',
+  /** column name */
+  Available = 'available',
+  /** column name */
+  Delegation = 'delegation',
+  /** column name */
+  Redelegation = 'redelegation',
+  /** column name */
+  Reward = 'reward',
+  /** column name */
+  Sum = 'sum',
+  /** column name */
+  Unbonding = 'unbonding'
+}
+
+/** Streaming cursor of the table "top_accounts" */
+export type Top_Accounts_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Top_Accounts_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: Maybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Top_Accounts_Stream_Cursor_Value_Input = {
+  address?: Maybe<Scalars['String']>;
+  available?: Maybe<Scalars['bigint']>;
+  delegation?: Maybe<Scalars['bigint']>;
+  redelegation?: Maybe<Scalars['bigint']>;
+  reward?: Maybe<Scalars['bigint']>;
+  sum?: Maybe<Scalars['bigint']>;
+  unbonding?: Maybe<Scalars['bigint']>;
 };
 
 /** columns and relationships of "transaction" */

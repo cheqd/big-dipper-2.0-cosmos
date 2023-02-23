@@ -1,31 +1,32 @@
-import {
-  Service, SignInfo, VerificationMethod,
-} from './commons';
+import { SignInfo } from '../commons';
+import { Categories } from '../../types';
 
-export class MsgCreateDid {
+export class MsgDeactivateDidDoc {
+  public category: Categories;
   public type: string;
   public json: any;
-  public payload?: MsgCreateDidPayload;
+  public payload?: MsgDeactivateDidDocPayload;
   public signatures: SignInfo[];
 
   constructor(
     type: string,
     json: any,
-    payload: MsgCreateDidPayload,
+    payload: MsgDeactivateDidDocPayload,
     signatures: SignInfo[],
   ) {
+    this.category = 'cheqd';
     this.type = type;
     this.json = json;
     this.payload = payload;
     this.signatures = signatures;
   }
 
-  static fromJson(object: any): MsgCreateDid {
-    const message = {} as MsgCreateDid;
+  static fromJson(object: any): MsgDeactivateDidDoc {
+    const message = {} as MsgDeactivateDidDoc;
+    message.category = 'cheqd';
     message.signatures = [];
     message.json = object;
     message.type = object['@type'];
-
     if (object.payload !== undefined && object.payload !== null) {
       message.payload = object.payload;
     } else {
@@ -41,16 +42,9 @@ export class MsgCreateDid {
   }
 }
 
-type MsgCreateDidPayload = {
-  context: string[];
+type MsgDeactivateDidDocPayload = {
   id: string;
-  controller: string[];
-  verificationMethod: VerificationMethod[];
-  authentication: string[];
-  assertionMethod: string[];
-  capabilityInvocation: string[];
-  capabilityDelegation: string[];
-  keyAgreement: string[];
-  alsoKnownAs: string[];
-  service: Service[];
+  versionId: string;
 };
+
+export default MsgDeactivateDidDoc;

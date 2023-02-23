@@ -1,27 +1,31 @@
 import {
   Service, SignInfo, VerificationMethod,
-} from './commons';
+} from '../commons';
+import { Categories } from '../../types';
 
-export class MsgUpdateDid {
+export class MsgUpdateDidDoc {
+  public category: Categories;
   public type: string;
   public json: any;
-  public payload?: MsgUpdateDidPayload;
+  public payload?: MsgUpdateDidDocPayload;
   public signatures: SignInfo[];
 
   constructor(
     type: string,
     json: any,
-    payload: MsgUpdateDidPayload,
+    payload: MsgUpdateDidDocPayload,
     signatures: SignInfo[],
   ) {
+    this.category = 'cheqd';
     this.type = type;
     this.json = json;
     this.payload = payload;
     this.signatures = signatures;
   }
 
-  static fromJson(object: any): MsgUpdateDid {
-    const message = {} as MsgUpdateDid;
+  static fromJson(object: any): MsgUpdateDidDoc {
+    const message = {} as MsgUpdateDidDoc;
+    message.category = 'cheqd';
     message.signatures = [];
     message.json = object;
     message.type = object['@type'];
@@ -40,7 +44,7 @@ export class MsgUpdateDid {
   }
 }
 
-type MsgUpdateDidPayload = {
+type MsgUpdateDidDocPayload = {
   context: string[];
   id: string;
   controller: string[];
@@ -54,3 +58,5 @@ type MsgUpdateDidPayload = {
   service: Service[];
   versionId: string;
 };
+
+export default MsgUpdateDidDoc;

@@ -21,9 +21,7 @@ jobs:
 
       - name: Set network name
         id: set-network
-        run: |
-          NETWORK_NAME=${GITHUB_REF##*/}
-          echo ::set-output name=NETWORK_NAME::"$NETWORK_NAME"
+        run: echo NETWORK_NAME="${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2

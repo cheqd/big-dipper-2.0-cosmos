@@ -2,9 +2,6 @@ import * as MODELS from '@models';
 import * as R from 'ramda';
 import { Tag } from '@components';
 import * as COMPONENTS from '@msg';
-import { MsgCreateDid } from '../../models/msg/cheqd/msg_create_did';
-import { MsgUpdateDid } from '../../models/msg/cheqd/msg_update_did';
-import { MsgCreateResource } from '../../models/msg/cheqd/resources/msg_create_resource';
 
 const getDataByType = (type: string) => {
   // =====================================
@@ -348,21 +345,27 @@ const getDataByType = (type: string) => {
     // =========================
     // Decentralised Identifiers
     // =========================
-    '/cheqdid.cheqdnode.cheqd.v1.MsgCreateDid': {
-      model: MsgCreateDid,
-      content: COMPONENTS.CreateDID,
+    '/cheqd.did.v2.MsgCreateDidDoc': {
+      model: MODELS.MsgCreateDIDDoc,
+      content: COMPONENTS.CreateDIDDoc,
       tagTheme: 'four',
-      tagDisplay: 'MsgCreateDid',
+      tagDisplay: 'MsgCreateDIDDoc',
     },
-    '/cheqdid.cheqdnode.cheqd.v1.MsgUpdateDid': {
-      model: MsgUpdateDid,
-      content: COMPONENTS.CreateDID,
+    '/cheqd.did.v2.MsgUpdateDidDoc': {
+      model: MODELS.MsgUpdateDIDDoc,
+      content: COMPONENTS.UpdateDIDDoc,
       tagTheme: 'four',
-      tagDisplay: 'MsgUpdateDID',
+      tagDisplay: 'MsgUpdateDIDDoc',
     },
-    '/cheqdid.cheqdnode.resource.v1.MsgCreateResource': {
-      model: MsgCreateResource,
-      content: COMPONENTS.CreateDID,
+    '/cheqd.did.v2.MsgDeactivateDidDoc': {
+      model: MODELS.MsgDeactivateDIDDoc,
+      content: COMPONENTS.DeactivateDIDDoc,
+      tagTheme: 'four',
+      tagDisplay: 'MsgDeactivateDIDDoc',
+    },
+    '/cheqd.resource.v2.MsgCreateResource': {
+      model: MODELS.MsgCreateResource,
+      content: COMPONENTS.CreateResource,
       tagTheme: 'four',
       tagDisplay: 'MsgCreateResource',
     },

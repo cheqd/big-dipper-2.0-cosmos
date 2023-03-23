@@ -1,5 +1,7 @@
 import { chainConfig } from '@configs';
 
+const method = process.env.NEXT_PUBLIC_CHAIN_TYPE;
+
 export const HOME = '/';
 export const BLOCKS = '/blocks';
 export const BLOCK_DETAILS = (slot:string | number): string => `/blocks/${slot}`;
@@ -22,3 +24,5 @@ export const ADDRESS_DETAILS = (address: string) => (address.includes(chainConfi
   ? VALIDATOR_DETAILS(address) : ACCOUNT_DETAILS(address));
 
 export const DID_RESOLVER_URL = (did: string) => (`https://resolver.cheqd.net/1.0/identifiers/${did}`);
+
+export const RESOURCE_URL = (collection: string, id: string) => (`https://resolver.cheqd.net/1.0/identifiers/did:cheqd:${method}:${collection}/resources/${id}`);

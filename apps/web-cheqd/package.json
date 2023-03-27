@@ -1,0 +1,41 @@
+{
+  "name": "web-cheqd",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "graphql:codegen": "pnpify graphql-codegen"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@types/node": "18.15.7",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@yarnpkg/pnpify": "^4.0.0-rc.39",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-ws": "^5.11.3",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tsconfig": "workspace:*",
+    "typescript": "5.0.2",
+    "ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.2",
+    "@graphql-codegen/client-preset": "^2.0.0",
+    "@graphql-codegen/fragment-matcher": "^4.0.0",
+    "@graphql-codegen/typescript": "^3.0.0",
+    "@graphql-codegen/typescript-operations": "^3.0.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-tools/mock": "^8.7.18",
+    "@graphql-tools/schema": "^9.0.16",
+    "@types/eslint": "^8"
+  }
+}

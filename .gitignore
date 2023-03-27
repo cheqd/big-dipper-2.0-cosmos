@@ -48,6 +48,7 @@ vercel.json
 .idea/
 
 # Yarn Berry
+.yarn
 .yarn/*
 !.yarn/cache
 !.yarn/patches

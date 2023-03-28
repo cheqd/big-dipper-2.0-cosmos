@@ -57,7 +57,7 @@
   "MsgCreateVestingAccount": "Vesting account created for <0>{{toAddress}}</0>",
   "MsgCreatePeriodicVestingAccount": "Periodic vesting account created for <0>{{toAddress}}</0>",
   "MsgCreateDidDoc": "DID document created <0>{{did}}</0>",
-  "MsgUpdateDIDDoc": "DID document updated <0>{{did}}</0>",
-  "MsgDeactivateDIDDoc": "DID document deactivated <0>{{did}}</0>",
+  "MsgUpdateDidDoc": "DID document updated <0>{{did}}</0>",
+  "MsgDeactivateDidDoc": "DID document deactivated <0>{{did}}</0>",
   "MsgCreateResource": "Resource created <0>{{resource}}</0>"
 }

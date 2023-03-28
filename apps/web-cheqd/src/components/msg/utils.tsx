@@ -368,6 +368,12 @@ const customTypeToModel = {
     tagTheme: 'four',
     tagDisplay: 'MsgDeactivateDIDDoc',
   },
+  '/cheqd.resource.v2.MsgCreateResource': {
+    model: MODELS.MsgCreateResource,
+    content: COMPONENTS.MsgCreateResource,
+    tagTheme: 'four',
+    tagDisplay: 'MsgCreateResource',
+  },
 };
 
 type CustomTypeToModel = typeof customTypeToModel;

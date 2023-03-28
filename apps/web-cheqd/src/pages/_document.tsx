@@ -1,13 +1,12 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document from 'next/document';
+import DocumentComponent, { getInitialProps, DocumentComponentProps } from 'ui/pages/_document';
 
-export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+class MyDocument extends Document<DocumentComponentProps> {
+  render() {
+    return <DocumentComponent emotionStyleTags={this.props.emotionStyleTags} />;
+  }
 }
+
+MyDocument.getInitialProps = getInitialProps;
+
+export default MyDocument;

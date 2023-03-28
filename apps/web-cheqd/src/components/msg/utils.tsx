@@ -351,10 +351,10 @@ const customTypeToModel = {
   // Decentralised Identifiers
   // =========================
   '/cheqd.did.v2.MsgCreateDidDoc': {
-    model: MODELS.MsgCreateDIDDoc,
+    model: MODELS.MsgCreateDidDoc,
     content: COMPONENTS.MsgCreateDidDoc,
     tagTheme: 'four',
-    tagDisplay: 'MsgCreateDIDDoc',
+    tagDisplay: 'MsgCreateDidDoc',
   },
   '/cheqd.did.v2.MsgUpdateDidDoc': {
     model: MODELS.MsgUpdateDIDDoc,

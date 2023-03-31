@@ -20,5 +20,5 @@ jobs:
         uses: snnaplab/delete-branch-cache-action@v1.0.0
         with:
           # Specify explicitly because the ref at the time of merging will be a branch name such as 'main', 'develop'
-          ref: refs/pull/${{ github.event.number }}/merge
+          ref: ${{ github.head_ref }}}
           github-token: ${{ secrets.GITHUB_TOKEN }}

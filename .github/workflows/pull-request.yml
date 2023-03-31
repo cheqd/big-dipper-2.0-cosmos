@@ -2,7 +2,7 @@ name: "PR Title Check"
 on:
   pull_request_target:
     branches:
-      - chains/cheqd/**
+      - legacy/cheqd/**
     types:
       - opened
       - reopened

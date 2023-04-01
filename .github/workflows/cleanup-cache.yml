@@ -1,0 +1,23 @@
+name: "Cache Cleanup"
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Dry run only?"
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+
+  delete-caches:
+    name: "Delete Actions caches"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Wipe Github Actions cache"
+        uses: easimon/wipe-cache@v2
+        with:
+          dry-run: ${{ github.event.inputs.dry-run }}

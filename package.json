@@ -21,7 +21,7 @@
     "graphql:codegen": "graphql-codegen"
   },
   "dependencies": {
-    "@apollo/client": "^3.1.5",
+    "@apollo/client": "^3.7.11",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/styles": "^4.10.0",
@@ -62,12 +62,12 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^2.6.1",
     "@graphql-codegen/fragment-matcher": "^3.3.1",
-    "@graphql-codegen/typescript": "^1.21.0",
+    "@graphql-codegen/typescript": "^3.0.2",
     "@graphql-codegen/typescript-operations": "^1.17.14",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@svgr/webpack": "^6.4.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^11.0.2",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/big.js": "^6.1.2",
     "@types/jest": "^26.0.13",
@@ -86,7 +86,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.1.0",
     "jest": "^27.3.2",
-    "jest-localstorage-mock": "^2.4.18",
+    "jest-localstorage-mock": "^2.4.26",
     "jest-transform-stub": "^2.0.0",
     "jest-watch-typeahead": "^0.6.1",
     "react-test-renderer": "^17.0.1",

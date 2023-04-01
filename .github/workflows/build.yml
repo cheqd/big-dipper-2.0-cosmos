@@ -8,54 +8,8 @@ defaults:
 
 jobs:
 
-  build-docker:
-    # Doing a build at this stage will create reusable cache layers for release workflow
-    name: "BigDipper Docker image"
-    runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: ${{ github.repository }}
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-        id: buildx
-        with:
-          install: true
-          version: latest
-      
-      - name: Configure Docker image metadata
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: registry.digitalocean.com/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=raw,value=bigdipper-build
-            type=sha,format=long
-
-      - name: Build image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: Dockerfile
-          platforms: linux/amd64
-          load: true
-          target: runner
-          tags: ${{ steps.meta.outputs.tags }}
-          outputs: type=docker,dest=/tmp/bigdipper-build.tar
-          cache-from: type=gha
-          cache-to: type=gha,mode=min
-
-      - name: Upload Docker test image
-        uses: actions/upload-artifact@v3
-        with:
-          name: bigdipper-build.tar
-          path: /tmp/bigdipper-build.tar
-
   run-tests:
-    name: "Run tests"
+    name: "Yarn Build & Test"
     runs-on: ubuntu-latest
     
     steps:

@@ -3,12 +3,6 @@ on:
   schedule:
     - cron: "0 0 * * 0"
   workflow_dispatch:
-    inputs:
-      dry-run:
-        description: "Dry run only?"
-        required: true
-        type: boolean
-        default: false
 
 jobs:
 
@@ -19,5 +13,3 @@ jobs:
     steps:
       - name: "Wipe Github Actions cache"
         uses: easimon/wipe-cache@v2
-        with:
-          dry-run: ${{ github.event.inputs.dry-run }}

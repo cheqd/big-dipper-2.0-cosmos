@@ -67,7 +67,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@svgr/webpack": "^6.4.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^11.0.2",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/big.js": "^6.1.2",
     "@types/jest": "^26.0.13",

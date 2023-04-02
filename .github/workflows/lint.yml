@@ -51,7 +51,7 @@ jobs:
         uses: github/super-linter/slim@v4
         env:
           IGNORE_GITIGNORED_FILES: true
-          DEFAULT_BRANCH: "chains/cheqd/testnet"
+          DEFAULT_BRANCH: "legacy/cheqd/testnet"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: '.github/linters'
           LOG_LEVEL: WARN

@@ -4460,7 +4460,7 @@ __metadata:
     mock-apollo-client: ^1.1.0
     next: ^12.1.0
     next-seo: ^4.26.0
-    next-translate: ^1.0.3
+    next-translate: ^2.0.4
     numeral: 2.0.4
     qrcode.react: ^3.1.0
     ramda: ^0.28.0
@@ -9479,13 +9479,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-translate@npm:^1.0.3":
-  version: 1.6.0
-  resolution: "next-translate@npm:1.6.0"
+"next-translate@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "next-translate@npm:2.0.4"
   peerDependencies:
     next: ">= 10.0.0"
     react: ">= 16.8.0"
-  checksum: 766475bc7362fc8b6a5409586d6248e0c03405d71b5ced2274fefc275803eb68137225952ed9d1651d8bd396fec14fad42ad63b4eca64e2b038dbcc7926a3ddc
+  checksum: a3452b07fd50c2709411fbe0648f0adcfb2b8b78f76fab3f84b6cca2ec1b4569e0fc6ca04b870a0a04b1c3313d4c838fd28fde988f4d5b1e6fb3878586ee6585
   languageName: node
   linkType: hard
 

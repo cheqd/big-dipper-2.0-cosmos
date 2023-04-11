@@ -1,0 +1,64 @@
+name: "Lint"
+on:
+  workflow_call:
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  md-link-check:
+    name: "Broken Markdown links"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Markdown link check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: '.github/linters/mlc_config.json'
+          use-quiet-mode: 'yes'
+
+  yarn-lint:
+    name: "Yarn lint"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      
+      - name: "Install dependencies"
+        run: yarn install --immutable
+
+      - name: "Execute JS/TS/TSX/JSX linters"
+        run: yarn lint
+
+  super-lint:
+    name: "Super Linter"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required to fetch version
+
+      - name: Run Super Linter
+        uses: github/super-linter/slim@v4
+        env:
+          IGNORE_GITIGNORED_FILES: true
+          DEFAULT_BRANCH: "chains/cheqd/testnet"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: '.github/linters'
+          LOG_LEVEL: WARN
+          VALIDATE_ALL_CODEBASE: true
+          MULTI_STATUS: true
+
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_XML: true
+          VALIDATE_YAML: true

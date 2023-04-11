@@ -20,7 +20,7 @@ FROM starter AS pruner
 
 COPY ./ ./
 
-ARG PROJECT_NAME
+ARG PROJECT_NAME=web-cheqd
 RUN yarn config set nodeLinker node-modules \
   && yarn config set supportedArchitectures --json '{}' \
   && turbo prune --scope=${PROJECT_NAME} --docker
@@ -36,10 +36,10 @@ COPY .yarn/ ./.yarn/
 COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
 
 ## Setting up the environment variables for the docker container.
-ARG PROJECT_NAME
+ARG PROJECT_NAME=web-cheqd
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ARG BASE_PATH
+ARG BASE_PATH=/
 ENV BASE_PATH=${BASE_PATH}
 ENV CI=1
 ENV HUSKY=0
@@ -67,18 +67,18 @@ RUN yarn node packages/shared-utils/configs/sentry/install.js \
 FROM ${BASE_IMAGE} AS runner
  
 # Copying the files from the builder stage to the runner stage.
-ARG PROJECT_NAME
+ARG PROJECT_NAME=web-cheqd
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ARG NEXT_PUBLIC_CHAIN_TYPE
+ARG NEXT_PUBLIC_CHAIN_TYPE=testnet
 ENV NEXT_PUBLIC_CHAIN_TYPE=${NEXT_PUBLIC_CHAIN_TYPE}
-ARG NEXT_PUBLIC_GRAPHQL_URL
+ARG NEXT_PUBLIC_GRAPHQL_URL=https://testnet-gql.cheqd.io/v1/graphql
 ENV NEXT_PUBLIC_GRAPHQL_URL=${NEXT_PUBLIC_GRAPHQL_URL}
-ARG NEXT_PUBLIC_GRAPHQL_WS
+ARG NEXT_PUBLIC_GRAPHQL_WS=wss://testnet-gql.cheqd.io/v1/graphql
 ENV NEXT_PUBLIC_GRAPHQL_WS=${NEXT_PUBLIC_GRAPHQL_WS}
-ARG NEXT_PUBLIC_RPC_WEBSOCKET
+ARG NEXT_PUBLIC_RPC_WEBSOCKET=wss://rpc.cheqd.network/websocket
 ENV NEXT_PUBLIC_RPC_WEBSOCKET=${NEXT_PUBLIC_RPC_WEBSOCKET}
-ARG PORT
+ARG PORT=3000
 ENV PORT=${PORT:-3000}
 
 WORKDIR /app/apps/${PROJECT_NAME}

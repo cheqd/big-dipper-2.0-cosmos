@@ -7,6 +7,7 @@ import assetmantleIconDark from 'shared-utils/assets/icons/assetmantle-dark.svg?
 import bandIconDark from 'shared-utils/assets/icons/band-dark.svg?url';
 import baseIconLight from 'shared-utils/assets/icons/base-light.svg?url';
 import bitsongIconDark from 'shared-utils/assets/icons/bitsong-dark.svg?url';
+import cheqdIconLight from 'shared-utils/assets/logos/cheqd-dark.svg?url';
 import comdexIconDark from 'shared-utils/assets/icons/comdex-dark.svg?url';
 import comdexIconLight from 'shared-utils/assets/icons/comdex-light.svg?url';
 import cosmosIconLight from 'shared-utils/assets/icons/cosmosHub-light.svg?url';
@@ -41,6 +42,8 @@ import bandLogoDark from 'shared-utils/assets/logos/band-dark.svg?url';
 import baseLogoLight from 'shared-utils/assets/logos/base-light.svg?url';
 import bitsongLogoDark from 'shared-utils/assets/logos/bitsong-dark.svg?url';
 import comdexLogoDark from 'shared-utils/assets/logos/comdex-dark.svg?url';
+import cheqdLogoDark from 'shared-utils/assets/logos/cheqd-dark.svg?url';
+import cheqdLogoLight from 'shared-utils/assets/logos/cheqd-dark.svg?url';
 import cosmosLogoDark from 'shared-utils/assets/logos/cosmos-dark.svg?url';
 import cosmosLogoLight from 'shared-utils/assets/logos/cosmos-light.svg?url';
 import crescentLogoDark from 'shared-utils/assets/logos/crescent-dark.svg?url';
@@ -108,6 +111,10 @@ const ChainIcon = ({
     case 'bitsong':
       [iconDark, iconLight] =
         type === 'icon' ? [bitsongIconDark, bitsongIconDark] : [bitsongLogoDark, bitsongLogoDark];
+      break;
+    case 'cheqd':
+      [iconDark, iconLight] =
+        type === 'icon' ? [cheqdIconLight, cheqdIconLight] : [cheqdLogoDark, cheqdLogoDark];
       break;
     case 'cosmos':
       [iconDark, iconLight] =

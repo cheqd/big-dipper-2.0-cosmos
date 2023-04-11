@@ -1,4 +1,3 @@
-ARG BASE_IMAGE=node:18
 ARG PROJECT_NAME=web-cheqd
 
 # This is a multiple stage Dockerfile.
@@ -11,7 +10,10 @@ ARG PROJECT_NAME=web-cheqd
 # - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
-FROM ${BASE_IMAGE} AS starter
+FROM node:18 AS starter
+
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+
 WORKDIR /app
 RUN npm i -g turbo
 
@@ -64,7 +66,7 @@ RUN yarn node packages/shared-utils/configs/sentry/install.js \
 ################################################################################
 
 # Stage: runner
-FROM ${BASE_IMAGE} AS runner
+FROM node:18 AS runner
  
 # Copying the files from the builder stage to the runner stage.
 ARG PROJECT_NAME=web-cheqd
@@ -132,4 +134,4 @@ NEXT_PUBLIC_RPC_WEBSOCKET\
 # Don't run production as root
 USER nextjs
 
-CMD node ./inject.js && yarn node ./server.js
+CMD ["/bin/bash", "-c","node ./inject.js && yarn node ./server.js"]

@@ -6,9 +6,6 @@ exports[`screen: Nav/Network it renders 1`] = `
   background: #FFFFFF;
   color: #414141;
   border-radius: 4px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -30,9 +27,6 @@ exports[`screen: Nav/Network it renders 1`] = `
 .emotion-1 {
   width: 24px;
   margin-right: 8px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
@@ -90,7 +84,7 @@ exports[`screen: Nav/Network it renders 1`] = `
 }
 
 <div
-  aria-label="desmos-mainnet"
+  aria-label="morpheus-apollo-3"
   className="emotion-0"
   onClick={[MockFunction]}
   role="button"
@@ -137,7 +131,7 @@ exports[`screen: Nav/Network it renders 1`] = `
   <p
     className="MuiTypography-root MuiTypography-body1 emotion-4"
   >
-    desmos-mainnet
+    morpheus-apollo-3
   </p>
   <svg
     aria-hidden={true}

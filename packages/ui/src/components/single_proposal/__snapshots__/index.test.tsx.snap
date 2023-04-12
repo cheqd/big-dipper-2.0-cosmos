@@ -14,9 +14,6 @@ exports[`component: SingleProposal matches snapshot 1`] = `
 }
 
 .emotion-1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -58,8 +55,6 @@ exports[`component: SingleProposal matches snapshot 1`] = `
   border-radius: 4px;
   padding: 4px 8px;
   display: inline-block;
-  color: #E8E8E8;
-  background: rgba(232, 232, 232, 0.2);
   color: #E8E8E8;
   background: rgba(232, 232, 232, 0.2);
 }

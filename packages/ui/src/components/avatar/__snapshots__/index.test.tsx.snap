@@ -9,9 +9,6 @@ exports[`component: Avatar matches snapshot 1`] = `
   border-radius: 50%;
   overflow: hidden;
   background: #F8F8F8;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -50,9 +47,6 @@ exports[`component: Avatar matches snapshot with imageUrl 1`] = `
   border-radius: 50%;
   overflow: hidden;
   background: #F8F8F8;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

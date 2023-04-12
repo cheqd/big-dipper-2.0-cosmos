@@ -9,9 +9,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
   background: #FFFFFF;
   height: 50px;
   padding: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -54,9 +51,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
   background: #FFFFFF;
   height: 50px;
   padding: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

@@ -2,9 +2,6 @@
 
 exports[`component: TransactionMessagesFilter it renders 1`] = `
 .emotion-0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
   background: #F8F8F8;
@@ -26,9 +23,6 @@ exports[`component: TransactionMessagesFilter it renders 1`] = `
 
 @media (min-width:1280px) {
   .emotion-0 {
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
     display: inline-flex;
   }
 }

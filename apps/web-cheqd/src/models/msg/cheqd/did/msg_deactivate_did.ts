@@ -1,6 +1,7 @@
-import { SignInfo } from '../commons';
 import { Categories } from '@/models/types';
+import { SignInfo } from '../commons';
 
+/* eslint-disable */
 type MsgDeactivateDidDocPayload = {
   id: string;
   versionId: string;
@@ -42,7 +43,6 @@ export class MsgDeactivateDidDoc {
       message.payload = undefined;
     }
     if (object.signatures !== undefined && object.signatures !== null) {
-      // eslint-disable-next-line no-restricted-syntax
       for (const e of object.signatures) {
         message.signatures.push(e);
       }
@@ -50,5 +50,6 @@ export class MsgDeactivateDidDoc {
     return message;
   }
 }
+/* eslint-enable */
 
 export default MsgDeactivateDidDoc;

@@ -3,9 +3,6 @@
 exports[`screen: _app matches snapshot 1`] = `
 [
   .emotion-0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -28,9 +25,6 @@ exports[`screen: _app matches snapshot 1`] = `
 
 .emotion-1 {
   width: 275px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
@@ -68,9 +62,6 @@ exports[`screen: _app matches snapshot 1`] = `
 }
 
 .emotion-5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -225,7 +216,7 @@ exports[`screen: _app matches snapshot 1`] = `
     <h2
       className="MuiTypography-root MuiTypography-h2 emotion-17"
     >
-      desmos-mainnet
+      morpheus-apollo-3
     </h2>
   </div>,
   <div

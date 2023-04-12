@@ -14,4 +14,5 @@ override:
     - DL3008
     - DL3018
     - DL3027
+    - DL4006
   style:

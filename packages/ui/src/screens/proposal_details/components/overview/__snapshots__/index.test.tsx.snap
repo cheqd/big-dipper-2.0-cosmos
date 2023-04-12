@@ -12,9 +12,6 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
 
 @media (min-width:1280px) {
   .emotion-0 .content {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
   }
 }

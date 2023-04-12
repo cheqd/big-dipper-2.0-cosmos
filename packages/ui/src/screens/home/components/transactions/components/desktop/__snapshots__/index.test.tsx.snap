@@ -382,7 +382,6 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
             <span
               aria-label={null}
               aria-labelledby={null}
-              data-mui-internal-clone-element={true}
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}

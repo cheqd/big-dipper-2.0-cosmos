@@ -5,8 +5,6 @@ exports[`components: Tag matches snapshot 1`] = `
   border-radius: 4px;
   padding: 4px 8px;
   display: inline-block;
-  color: #E8E8E8;
-  background: rgba(232, 232, 232, 0.2);
   color: #2460FA;
   background: rgba(36, 96, 250, 0.2);
 }

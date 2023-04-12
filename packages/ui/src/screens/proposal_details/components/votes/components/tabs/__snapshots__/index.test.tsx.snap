@@ -2,9 +2,6 @@
 
 exports[`screen: Validators/Tabs matches snapshot 1`] = `
 .emotion-0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -19,9 +16,6 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
   overflow: hidden;
   min-height: 48px;
   -webkit-overflow-scrolling: touch;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -77,16 +71,10 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
 }
 
 .emotion-4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .emotion-5 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -104,7 +92,7 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
   border: 0;
   margin: 0;
   border-radius: 0;
-  padding: 0;
+  padding: 12px 16px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -115,7 +103,7 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
   -webkit-appearance: none;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
+  color: #414141;
   font-size: 0.875rem;
   letter-spacing: 1.25px;
   text-transform: none;
@@ -124,19 +112,16 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
   line-height: 1.25;
   max-width: 360px;
   min-width: 90px;
-  position: relative;
   min-height: 48px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  padding: 12px 16px;
   overflow: hidden;
   white-space: normal;
   text-align: center;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  color: #414141;
 }
 
 .emotion-5::-moz-focus-inner {

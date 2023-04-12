@@ -6,9 +6,6 @@ exports[`screen: Validators/VotingPower matches snapshot 1`] = `
 }
 
 .emotion-1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -41,9 +38,6 @@ exports[`screen: Validators/VotingPower matches snapshot 1`] = `
 }
 
 .emotion-4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   height: 2px;
   border-radius: 4px;
@@ -87,9 +81,6 @@ exports[`screen: Validators/VotingPower matches snapshot with topVotingPower set
 }
 
 .emotion-1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -122,9 +113,6 @@ exports[`screen: Validators/VotingPower matches snapshot with topVotingPower set
 }
 
 .emotion-4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   height: 2px;
   border-radius: 4px;

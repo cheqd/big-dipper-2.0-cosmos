@@ -40,7 +40,7 @@ describe('screen: Nav/Network', () => {
   it('it calls toggle on click', () => {
     renderer.act(() => {
       component.root
-        .findByProps({ role: 'button', 'aria-label': 'desmos-mainnet' })
+        .findByProps({ role: 'button', 'aria-label': 'morpheus-apollo-3' })
         .props.onClick();
     });
     expect(mockToggleNetwork).toHaveBeenCalledTimes(1);

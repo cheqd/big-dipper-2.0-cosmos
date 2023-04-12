@@ -1,6 +1,7 @@
-import { Service, SignInfo, VerificationMethod } from '../commons';
 import { Categories } from '@/models/types';
+import { Service, SignInfo, VerificationMethod } from '../commons';
 
+/* eslint-disable */
 type MsgCreateDidDocPayload = {
   context: string[];
   id: string;
@@ -47,7 +48,6 @@ export class MsgCreateDidDoc {
       message.payload = undefined;
     }
     if (object.signatures !== undefined && object.signatures !== null) {
-      // eslint-disable-next-line no-restricted-syntax
       for (const e of object.signatures) {
         message.signatures.push(e);
       }
@@ -55,5 +55,6 @@ export class MsgCreateDidDoc {
     return message;
   }
 }
+/* eslint-enable */
 
 export default MsgCreateDidDoc;

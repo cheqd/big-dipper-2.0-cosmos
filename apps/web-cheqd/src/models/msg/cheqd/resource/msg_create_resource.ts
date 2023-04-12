@@ -1,6 +1,7 @@
-import { SignInfo } from '../commons';
 import { Categories } from '@/models/types';
+import { SignInfo } from '../commons';
 
+/* eslint-disable */
 export class MsgCreateResource {
   public category: Categories;
   public type: string;
@@ -28,7 +29,6 @@ export class MsgCreateResource {
       message.payload = undefined;
     }
     if (object.signatures !== undefined && object.signatures !== null) {
-      // eslint-disable-next-line no-restricted-syntax
       for (const e of object.signatures) {
         message.signatures.push(e);
       }
@@ -37,7 +37,6 @@ export class MsgCreateResource {
   }
 }
 
-/* eslint-disable */
 type MsgCreateResourcePayload = {
   collection_id: string;
   id: string;
@@ -45,5 +44,5 @@ type MsgCreateResourcePayload = {
   resource_Type: string;
   data: Uint8Array;
 };
-
+/* eslint-enable  */
 export default MsgCreateResource;

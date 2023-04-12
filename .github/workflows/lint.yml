@@ -35,8 +35,10 @@ jobs:
       - name: "Install dependencies"
         run: yarn install --immutable
 
-      - name: "Execute JS/TS/TSX/JSX linters"
+      - name: "Yarn Lint"
         run: yarn lint
+        env:
+          PROJECT_NAME: web-cheqd
 
   super-lint:
     name: "Super Linter"

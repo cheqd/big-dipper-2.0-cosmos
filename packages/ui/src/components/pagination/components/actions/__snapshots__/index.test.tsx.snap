@@ -2,9 +2,6 @@
 
 exports[`components: Pagination/Actions matches snapshot 1`] = `
 .emotion-0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -46,9 +43,6 @@ exports[`components: Pagination/Actions matches snapshot 1`] = `
   width: 30px;
   border-radius: 4px;
   padding: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -78,9 +72,6 @@ exports[`components: Pagination/Actions matches snapshot 1`] = `
   width: 30px;
   border-radius: 4px;
   padding: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

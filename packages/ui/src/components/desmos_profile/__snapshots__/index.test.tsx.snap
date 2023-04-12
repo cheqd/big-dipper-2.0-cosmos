@@ -57,9 +57,6 @@ exports[`component: DesmosProfile matches snapshot 1`] = `
 .emotion-2 {
   position: relative;
   width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -89,16 +86,13 @@ exports[`component: DesmosProfile matches snapshot 1`] = `
 }
 
 .emotion-3 {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  min-height: 28px;
+  width: 75px;
+  height: 75px;
+  min-width: 75px;
+  min-height: 75px;
   border-radius: 50%;
   overflow: hidden;
   background: #F8F8F8;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -109,10 +103,6 @@ exports[`component: DesmosProfile matches snapshot 1`] = `
   -webkit-justify-content: center;
   justify-content: center;
   position: absolute;
-  width: 75px;
-  height: 75px;
-  min-height: 75px;
-  min-width: 75px;
   border: solid 3px #FFFFFF;
   top: -32px;
   left: 0;

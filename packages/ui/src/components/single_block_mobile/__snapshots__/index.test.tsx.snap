@@ -42,9 +42,6 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
 }
 
 .emotion-11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

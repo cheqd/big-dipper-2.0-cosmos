@@ -2,9 +2,6 @@
 
 exports[`components: Result matches snapshot 1`] = `
 .emotion-0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -79,9 +76,6 @@ exports[`components: Result matches snapshot 1`] = `
 
 exports[`components: Result matches snapshot success 1`] = `
 .emotion-0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

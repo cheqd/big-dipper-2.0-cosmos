@@ -6,9 +6,6 @@ exports[`screen: Nav/Network it renders 1`] = `
   background: #FFFFFF;
   color: #414141;
   border-radius: 4px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -30,9 +27,6 @@ exports[`screen: Nav/Network it renders 1`] = `
 .emotion-1 {
   width: 24px;
   margin-right: 8px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 

@@ -39,9 +39,6 @@ exports[`components: BoxDetails matches snapshot 1`] = `
 
 @media (min-width:768px) {
   .emotion-1 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;
@@ -93,9 +90,6 @@ exports[`components: BoxDetails matches snapshot 1`] = `
 
 @media (min-width:768px) {
   .emotion-3 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;
@@ -203,9 +197,6 @@ exports[`components: BoxDetails matches snapshot with title actions 1`] = `
 
 @media (min-width:768px) {
   .emotion-1 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;
@@ -257,9 +248,6 @@ exports[`components: BoxDetails matches snapshot with title actions 1`] = `
 
 @media (min-width:768px) {
   .emotion-3 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;

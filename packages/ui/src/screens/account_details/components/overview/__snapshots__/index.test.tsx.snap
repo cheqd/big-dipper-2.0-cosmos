@@ -14,9 +14,6 @@ exports[`screen: AccountDetails/Overview matches snapshot 1`] = `
 }
 
 .emotion-1 .detail {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

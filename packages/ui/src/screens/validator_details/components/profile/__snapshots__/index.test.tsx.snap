@@ -2,16 +2,10 @@
 
 exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
 .emotion-0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .emotion-0 .bio__header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
@@ -51,9 +45,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
 }
 
 .emotion-2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -71,9 +62,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
 
 @media (min-width:1280px) {
   .emotion-2 .header__content {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;
@@ -115,7 +103,7 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
 }
 
 .emotion-5 {
-  margin: 0;
+  margin: 16px 0px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -123,7 +111,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
   border-style: solid;
   border-color: #E8E8E8;
   border-bottom-width: thin;
-  margin: 16px 0px;
 }
 
 @media (min-width:1280px) {
@@ -142,9 +129,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
 }
 
 .emotion-6 .label.condition {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;

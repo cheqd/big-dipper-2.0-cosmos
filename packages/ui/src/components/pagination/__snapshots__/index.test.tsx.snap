@@ -55,18 +55,14 @@ exports[`components: Pagination matches snapshot 1`] = `
 
 .emotion-1 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   padding-left: 16px;
-  padding-right: 16px;
-  min-height: 52px;
   padding-right: 2px;
+  min-height: 52px;
 }
 
 @media (min-width:375px) {
@@ -132,9 +128,6 @@ exports[`components: Pagination matches snapshot 1`] = `
 
 @media (min-width:768px) {
   .emotion-5 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
   }
 }

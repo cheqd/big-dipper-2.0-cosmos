@@ -555,7 +555,7 @@ exports[`component: layout/footer matches snapshot 1`] = `
           target="_blank"
           title="LICENSE"
         />
-        {"name":"Forbole"}
+        {"name":"Cheqd Foundation Limited"}
       </span>
        
       2017
@@ -568,11 +568,11 @@ exports[`component: layout/footer matches snapshot 1`] = `
         i18nKey="common:maintainBy"
       >
         <a
-          href="https://forbole.com"
+          href="https://cheqd.io"
           rel="noreferrer"
           target="_blank"
         />
-        {"name":"Forbole"}
+        {"name":"Cheqd Foundation Limited"}
       </span>
     </p>
   </div>

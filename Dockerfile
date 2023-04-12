@@ -38,16 +38,18 @@ COPY .yarn/ ./.yarn/
 COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
 
 ## Setting up the environment variables for the docker container.
-ARG PROJECT_NAME=web-cheqd
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+ARG PROJECT_NAME="web-cheqd"
+ARG NODE_ENV=production
+ARG NEXT_TELEMETRY_DISABLED=1
 ARG BASE_PATH=/
-ENV BASE_PATH=${BASE_PATH}
 ENV CI=1
 ENV HUSKY=0
 ENV BUILD_STANDALONE=1
 
 # add placeholder for env variables to be injected in runner stage
+ENV NODE_ENV=${NODE_ENV}
+ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
+ENV BASE_PATH=${BASE_PATH}
 ENV NEXT_PUBLIC_CHAIN_TYPE={{NEXT_PUBLIC_CHAIN_TYPE}}
 ENV NEXT_PUBLIC_GRAPHQL_URL={{NEXT_PUBLIC_GRAPHQL_URL}}
 ENV NEXT_PUBLIC_GRAPHQL_WS={{NEXT_PUBLIC_GRAPHQL_WS}}

@@ -4469,7 +4469,7 @@ __metadata:
     react-share: ^4.4.0
     react-test-renderer: ^17.0.1
     react-toastify: ^9.1.1
-    react-virtualized-auto-sizer: ^1.0.7
+    react-virtualized-auto-sizer: ^1.0.14
     react-window: ^1.8.6
     react-window-infinite-loader: ^1.0.8
     recharts: 2.1.12
@@ -10488,13 +10488,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-virtualized-auto-sizer@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "react-virtualized-auto-sizer@npm:1.0.7"
+"react-virtualized-auto-sizer@npm:^1.0.14":
+  version: 1.0.14
+  resolution: "react-virtualized-auto-sizer@npm:1.0.14"
   peerDependencies:
     react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
     react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
-  checksum: 7f2f013c422771828c6613c7890f792aa90a033ea2b41c489c67ca2c6793eefa94d25232c1050fdf69cdd626fad9e3821c5003d45fa6fc831184cd09232023c2
+  checksum: bbd4c8fafba87e74c04316aaae717d487a7657257c40b395e619ee360803004b37a0d61760e8af93ff526eb3df06ae89774a4f3b38701782332a977467adb576
   languageName: node
   linkType: hard
 

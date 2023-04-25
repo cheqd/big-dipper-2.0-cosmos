@@ -1,9 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-// }
-
-// module.exports = nextConfig
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { readFileSync } = require('fs');
 const { i18n } = require('./next-i18next.config');

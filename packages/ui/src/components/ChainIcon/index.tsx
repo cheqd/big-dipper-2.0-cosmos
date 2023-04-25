@@ -10,6 +10,7 @@ import bitsongIconDark from 'shared-utils/assets/icons/bitsong-dark.svg?url';
 import cheqdIconLight from 'shared-utils/assets/icons/cheqd-light.svg?url';
 import comdexIconDark from 'shared-utils/assets/icons/comdex-dark.svg?url';
 import comdexIconLight from 'shared-utils/assets/icons/comdex-light.svg?url';
+import cheqdIconTransparent from 'shared-utils/assets/icons/cheqd-transparent.svg?url';
 import cosmosIconLight from 'shared-utils/assets/icons/cosmosHub-light.svg?url';
 import crescentIconDark from 'shared-utils/assets/icons/crescent-dark.svg?url';
 import cryptoorgIconLight from 'shared-utils/assets/icons/cryptoorgChain-light.svg?url';
@@ -46,6 +47,8 @@ import cheqdLogoDark from 'shared-utils/assets/logos/cheqd-dark.svg?url';
 import cosmosLogoDark from 'shared-utils/assets/logos/cosmos-dark.svg?url';
 import cosmosLogoLight from 'shared-utils/assets/logos/cosmos-light.svg?url';
 import crescentLogoDark from 'shared-utils/assets/logos/crescent-dark.svg?url';
+import cheqdLogoDark from 'shared-utils/assets/logos/cheqd-dark.svg?url';
+import cheqdLogoLight from 'shared-utils/assets/logos/cheqd-light.svg?url';
 import emoneyLogoDark from 'shared-utils/assets/logos/emoney-dark.svg?url';
 import evmosLogoLight from 'shared-utils/assets/logos/evmos-light.svg?url';
 import flowLogoLight from 'shared-utils/assets/logos/flow-light.svg?url';
@@ -131,6 +134,12 @@ const ChainIcon = ({
       break;
     case 'cryptoorg':
       [iconDark, iconLight] = [cryptoorgIconLight, cryptoorgIconLight];
+      break;
+    case 'cheqd':
+      [iconDark, iconLight] =
+        type === 'icon'
+          ? [cheqdIconTransparent, cheqdIconTransparent]
+          : [cheqdLogoDark, cheqdLogoLight];
       break;
     case 'desmos':
       break;

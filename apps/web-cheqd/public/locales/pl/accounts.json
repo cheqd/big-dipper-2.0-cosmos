@@ -33,5 +33,12 @@
   "creationTime": "Czas utworzenia",
   "bio": "Bio",
   "status": "Status",
-  "completionTime": "Czas realizacji"
+  "completionTime": "Czas realizacji",
+  "topAccounts": "Najlepsze konta",
+  "top_rank": "Ranga",
+  "top_address": "Adres",
+  "top_dtag": "DTag",
+  "top_balance": "Saldo tokenów",
+  "top_percentage": "Odsetek",
+  "refresh_delay_notice": "Proszę zauważyć, że najlepsze konto odświeża dane tylko o godzinie 00:00 GMT."
 }

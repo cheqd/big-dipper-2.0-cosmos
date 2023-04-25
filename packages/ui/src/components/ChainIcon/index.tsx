@@ -47,7 +47,6 @@ import cheqdLogoDark from 'shared-utils/assets/logos/cheqd-dark.svg?url';
 import cosmosLogoDark from 'shared-utils/assets/logos/cosmos-dark.svg?url';
 import cosmosLogoLight from 'shared-utils/assets/logos/cosmos-light.svg?url';
 import crescentLogoDark from 'shared-utils/assets/logos/crescent-dark.svg?url';
-import cheqdLogoDark from 'shared-utils/assets/logos/cheqd-dark.svg?url';
 import cheqdLogoLight from 'shared-utils/assets/logos/cheqd-light.svg?url';
 import emoneyLogoDark from 'shared-utils/assets/logos/emoney-dark.svg?url';
 import evmosLogoLight from 'shared-utils/assets/logos/evmos-light.svg?url';

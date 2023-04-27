@@ -7,7 +7,7 @@ import assetmantleIconDark from 'shared-utils/assets/icons/assetmantle-dark.svg?
 import bandIconDark from 'shared-utils/assets/icons/band-dark.svg?url';
 import baseIconLight from 'shared-utils/assets/icons/base-light.svg?url';
 import bitsongIconDark from 'shared-utils/assets/icons/bitsong-dark.svg?url';
-import cheqdIconLight from 'shared-utils/assets/icons/cheqd-light.svg?url';
+// import cheqdIconLight from 'shared-utils/assets/icons/cheqd-light.svg?url';
 import comdexIconDark from 'shared-utils/assets/icons/comdex-dark.svg?url';
 import comdexIconLight from 'shared-utils/assets/icons/comdex-light.svg?url';
 import cheqdIconTransparent from 'shared-utils/assets/icons/cheqd-transparent.svg?url';
@@ -114,10 +114,6 @@ const ChainIcon = ({
     case 'bitsong':
       [iconDark, iconLight] =
         type === 'icon' ? [bitsongIconDark, bitsongIconDark] : [bitsongLogoDark, bitsongLogoDark];
-      break;
-    case 'cheqd':
-      [iconDark, iconLight] =
-        type === 'icon' ? [cheqdIconLight, cheqdIconLight] : [cheqdLogoDark, cheqdLogoDark];
       break;
     case 'cosmos':
       [iconDark, iconLight] =

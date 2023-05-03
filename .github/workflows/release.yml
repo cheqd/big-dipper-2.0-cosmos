@@ -15,6 +15,7 @@ jobs:
       IMAGE_NAME: ${{ github.repository }}
 
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
@@ -22,6 +23,13 @@ jobs:
       - name: Set network name
         id: set-network
         run: echo NETWORK_NAME="${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
+=======
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: corepack enable
+>>>>>>> 5f0d972432a8e1bd5463f82ad10c91f25ad6eb86
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -42,6 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
+<<<<<<< HEAD
           images: registry.digitalocean.com/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ steps.set-network.outputs.NETWORK_NAME }}-latest
@@ -68,3 +77,10 @@ jobs:
 
       - name: Push BigDipper image
         run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}
+=======
+          version: yarn changeset version
+          publish: yarn changeset tag
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+>>>>>>> 5f0d972432a8e1bd5463f82ad10c91f25ad6eb86

@@ -1,0 +1,99 @@
+name: Publish
+on:
+  workflow_dispatch:
+    inputs:
+       projects:
+        description: "Publish Workspaces (to DockerHub)"
+        required: true
+       chain_type:
+        description: "Select Chain Type"
+        required: false
+       confirm:
+        description: "enter \"CONFIRM\" to process"
+        required: true
+concurrency:
+  group: docker-publish
+  cancel-in-progress: true
+defaults:
+  run:
+    shell: bash
+jobs:
+  validate-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Extract projects
+        run: |
+          export ALL_PROJECTS=$(yarn workspaces list --json | jq -csr '[ .[].name | select(. | startswith("web-") ) ]')
+          node <<EOF | tee -a $GITHUB_OUTPUT $GITHUB_STEP_SUMMARY
+          const allProjects = JSON.parse(process.env.ALL_PROJECTS);
+          const projects = process.env.PROJECTS === '*' ? null : process.env.PROJECTS.split(/,/).map(p => p.trim()).filter(p => p);
+          console.log('projects=' + JSON.stringify(allProjects.filter(a => !projects || projects.includes(a))));
+          EOF
+        id: extract-projects
+        env:
+          PROJECTS: ${{ github.event.inputs.projects }}
+    outputs:
+      projects: ${{ steps.extract-projects.outputs.projects }}
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: validate-projects
+    if: ${{ needs.validate-projects.outputs.projects != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJSON(needs.validate-projects.outputs.projects) }}
+    name: Publish ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Assign chain type
+        run: |
+          node <<EOF | tee -a $GITHUB_OUTPUT
+          const chainType = process.env.NEXT_PUBLIC_CHAIN_TYPE?.toLowerCase() || 'mainnet';
+          const chainJson = require('./apps/' + process.env.PROJECT_NAME + '/src/chain.json');
+          const { chains, ...settings } = chainJson;
+          let chain = chains.find((c) => c.chainType?.toLowerCase() === chainType);
+          if (!chain && chainType !== 'testnet') {
+            chain = chains.find((c) => c.chainType?.toLowerCase() === 'testnet');
+          }
+          if (!chain) [chain] = chains;
+          if (!chain?.chainType || process.env.NEXT_PUBLIC_CHAIN_TYPE && process.env.NEXT_PUBLIC_CHAIN_TYPE.toLowerCase() !== chain.chainType.toLowerCase())
+            throw new Error('Chain type ' + process.env.NEXT_PUBLIC_CHAIN_TYPE + ' not found in chain.json');
+          console.log('chain_type=' + chain.chainType.toLowerCase());
+          EOF
+          echo 'sha_short='$(git rev-parse --short HEAD) | tee -a $GITHUB_OUTPUT
+        id: assign-chain-type
+        continue-on-error: true
+        env:
+          PROJECT_NAME: ${{ matrix.project }}
+          NEXT_PUBLIC_CHAIN_TYPE: ${{ github.event.inputs.chain_type }}
+      - name: Set up QEMU
+        if: ${{ steps.assign-chain-type.outputs.chain_type != '' }}
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        if: ${{ steps.assign-chain-type.outputs.chain_type != '' }}
+        uses: docker/setup-buildx-action@v2
+      - name: Login to DockerHub 👤
+        if: ${{ steps.assign-chain-type.outputs.chain_type != '' }}
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push Docker image
+        if: ${{ steps.assign-chain-type.outputs.chain_type != '' }}
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          build-args: |
+            PROJECT_NAME=${{ matrix.project }}
+            NEXT_PUBLIC_CHAIN_TYPE=${{ steps.assign-chain-type.outputs.chain_type }}
+            NEXT_PUBLIC_BANNERS_JSON=${{ secrets.BANNERS_JSON }}
+            NEXT_PUBLIC_COINZILLA_ZONE=${{ secrets.COINZILLA_ZONE }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+          target: runner
+          tags: |
+            forbole/big-dipper-2.0-cosmos:monorepo-${{ matrix.project }}-${{ steps.assign-chain-type.outputs.chain_type }}-${{ steps.assign-chain-type.outputs.sha_short }}
+            forbole/big-dipper-2.0-cosmos:monorepo-${{ matrix.project }}-${{ steps.assign-chain-type.outputs.chain_type }}-latest

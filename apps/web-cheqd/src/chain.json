@@ -206,6 +206,36 @@
       "endpoints": {
         "graphql": "https://localhost:8080/v1/graphql",
         "graphqlWebsocket": "wss://localhost:8080/v1/graphql",
+        "publicRpcWebsocket": "wss://rpc.cheqd.forbole.com/websocket"
+      },
+      "marketing": {
+        "matomoURL": "https://analytics.bigdipper.live",
+        "matomoSiteID": "8"
+      }
+    },
+    {
+      "network": "cheqd-testnet-4",
+      "chainType": "Testnet",
+      "genesis": {
+        "time": "2021-09-24T14:47:05",
+        "height": 1
+      },
+      "prefix": {
+        "consensus": "cheqdvalcons",
+        "validator": "cheqdvaloper",
+        "account": "cheqd"
+      },
+      "primaryTokenUnit": "ucheq",
+      "votingPowerTokenUnit": "ucheq",
+      "tokenUnits": {
+        "ucheq": {
+          "display": "cheq",
+          "exponent": 9
+        }
+      },
+      "endpoints": {
+        "graphql": "https://testnet-gql.cheqd.io/v1/graphql",
+        "graphqlWebsocket": "wss://testnet-gql.cheqd.io/v1/graphql",
         "publicRpcWebsocket": "wss://rpc.cheqd.network/websocket"
       },
       "marketing": {

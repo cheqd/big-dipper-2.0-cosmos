@@ -8224,7 +8224,7 @@ export type TopAccountsQueryVariables = Exact<{
 }>;
 
 
-export type TopAccountsQuery = { top_accounts: Array<{ __typename?: 'top_accounts', address: string, available?: any | null, delegation?: any | null, redelegation?: any | null, unbonding?: any | null, reward?: any | null, sum: any }> };
+export type TopAccountsQuery = { top_accounts: Array<{ __typename?: 'top_accounts', address: string, available?: any | null, delegation?: any | null, redelegation?: any | null, unbonding?: any | null, reward?: any | null, sum: any, type?: string | null }> };
 
 export type TopAccountsParamsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -9549,6 +9549,7 @@ export const TopAccountsDocument = gql`
     unbonding
     reward
     sum
+    type
   }
 }
     `;

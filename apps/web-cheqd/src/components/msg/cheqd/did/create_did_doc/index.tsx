@@ -1,10 +1,10 @@
-import { MsgCreateDidDoc } from '@/models/msg/cheqd/did/msg_create_did';
+import { MsgCreateDidDoc } from '@/models/msg/cheqd/did/create_did';
 import Typography from '@mui/material/Typography';
 import DID from '@/components/did';
 import { Trans } from 'next-i18next';
 import React from 'react';
 
-const CreateDIDDoc = (props: { message: MsgCreateDidDoc }) => {
+const CreateDidDoc = (props: { message: MsgCreateDidDoc }) => {
   const { message } = props;
 
   return (
@@ -17,4 +17,4 @@ const CreateDIDDoc = (props: { message: MsgCreateDidDoc }) => {
   );
 };
 
-export default CreateDIDDoc;
+export default CreateDidDoc;

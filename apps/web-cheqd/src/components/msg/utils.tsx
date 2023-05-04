@@ -357,16 +357,16 @@ const customTypeToModel = {
     tagDisplay: 'MsgCreateDidDoc',
   },
   '/cheqd.did.v2.MsgUpdateDidDoc': {
-    model: MODELS.MsgUpdateDIDDoc,
+    model: MODELS.MsgUpdateDidDoc,
     content: COMPONENTS.MsgUpdateDidDoc,
     tagTheme: 'four',
-    tagDisplay: 'MsgUpdateDIDDoc',
+    tagDisplay: 'MsgUpdateDidDoc',
   },
   '/cheqd.did.v2.MsgDeactivateDidDoc': {
-    model: MODELS.MsgDeactivateDIDDoc,
+    model: MODELS.MsgDeactivateDidDoc,
     content: COMPONENTS.MsgDeactivateDidDoc,
     tagTheme: 'four',
-    tagDisplay: 'MsgDeactivateDIDDoc',
+    tagDisplay: 'MsgDeactivateDidDoc',
   },
   '/cheqd.resource.v2.MsgCreateResource': {
     model: MODELS.MsgCreateResource,

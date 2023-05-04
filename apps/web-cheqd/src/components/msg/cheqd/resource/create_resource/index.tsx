@@ -1,4 +1,4 @@
-import { MsgCreateResource } from '@/models/msg/cheqd/resource/msg_create_resource';
+import { MsgCreateResource } from '@/models/msg/cheqd/resource/create_resource';
 import Typography from '@mui/material/Typography';
 import Resource from '@/components/resource';
 import { Trans } from 'next-i18next';

@@ -56,8 +56,8 @@
   "MsgRevokeAllowance": "Revoke Allowance",
   "MsgCreateVestingAccount": "Create Vesting Account",
   "MsgCreatePeriodicVestingAccount": "Create Periodic Vesting Account",
-  "MsgCreateDIDDoc": "Create DID Document",
-  "MsgUpdateDIDDoc": "Update DID Document",
-  "MsgDeactivateDIDDoc": "Deactivate DID Document",
+  "MsgCreateDidDoc": "Create DID Document",
+  "MsgUpdateDidDoc": "Update DID Document",
+  "MsgDeactivateDidDoc": "Deactivate DID Document",
   "MsgCreateResource": "Create Resource"
 }

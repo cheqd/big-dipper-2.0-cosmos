@@ -1,4 +1,4 @@
-import { MsgDeactivateDidDoc } from '@/models/msg/cheqd/did/msg_deactivate_did';
+import { MsgDeactivateDidDoc } from '@/models/msg/cheqd/did/deactivate_did';
 import Typography from '@mui/material/Typography';
 import DID from '@/components/did';
 import { Trans } from 'next-i18next';

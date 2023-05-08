@@ -10,7 +10,7 @@ ARG PROJECT_NAME=web-cheqd
 # - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
-FROM node:18 AS starter
+FROM node:20 AS starter
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
@@ -68,7 +68,7 @@ RUN yarn node packages/shared-utils/configs/sentry/install.js \
 ################################################################################
 
 # Stage: runner
-FROM node:18 AS runner
+FROM node:20 AS runner
  
 # Copying the files from the builder stage to the runner stage.
 ARG PROJECT_NAME=web-cheqd

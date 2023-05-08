@@ -1823,6 +1823,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/cache@npm:^11.11.0":
+  version: 11.11.0
+  resolution: "@emotion/cache@npm:11.11.0"
+  dependencies:
+    "@emotion/memoize": ^0.8.1
+    "@emotion/sheet": ^1.2.2
+    "@emotion/utils": ^1.2.1
+    "@emotion/weak-memoize": ^0.3.1
+    stylis: 4.2.0
+  checksum: 8eb1dc22beaa20c21a2e04c284d5a2630a018a9d51fb190e52de348c8d27f4e8ca4bbab003d68b4f6cd9cc1c569ca747a997797e0f76d6c734a660dc29decf08
+  languageName: node
+  linkType: hard
+
 "@emotion/css-prettifier@npm:^1.1.1":
   version: 1.1.1
   resolution: "@emotion/css-prettifier@npm:1.1.1"
@@ -1893,6 +1906,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/memoize@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@emotion/memoize@npm:0.8.1"
+  checksum: a19cc01a29fcc97514948eaab4dc34d8272e934466ed87c07f157887406bc318000c69ae6f813a9001c6a225364df04249842a50e692ef7a9873335fbcc141b0
+  languageName: node
+  linkType: hard
+
 "@emotion/react@npm:^11.10.6":
   version: 11.10.6
   resolution: "@emotion/react@npm:11.10.6"
@@ -1951,6 +1971,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/sheet@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@emotion/sheet@npm:1.2.2"
+  checksum: d973273c9c15f1c291ca2269728bf044bd3e92a67bca87943fa9ec6c3cd2b034f9a6bfe95ef1b5d983351d128c75b547b43ff196a00a3875f7e1d269793cecfe
+  languageName: node
+  linkType: hard
+
 "@emotion/styled@npm:^11.10.6":
   version: 11.10.6
   resolution: "@emotion/styled@npm:11.10.6"
@@ -1994,10 +2021,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/utils@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@emotion/utils@npm:1.2.1"
+  checksum: e0b44be0705b56b079c55faff93952150be69e79b660ae70ddd5b6e09fc40eb1319654315a9f34bb479d7f4ec94be6068c061abbb9e18b9778ae180ad5d97c73
+  languageName: node
+  linkType: hard
+
 "@emotion/weak-memoize@npm:^0.3.0":
   version: 0.3.0
   resolution: "@emotion/weak-memoize@npm:0.3.0"
   checksum: f43ef4c8b7de70d9fa5eb3105921724651e4188e895beb71f0c5919dc899a7b8743e1fdd99d38b9092dd5722c7be2312ebb47fbdad0c4e38bea58f6df5885cc0
+  languageName: node
+  linkType: hard
+
+"@emotion/weak-memoize@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@emotion/weak-memoize@npm:0.3.1"
+  checksum: b2be47caa24a8122622ea18cd2d650dbb4f8ad37b636dc41ed420c2e082f7f1e564ecdea68122b546df7f305b159bf5ab9ffee872abd0f052e687428459af594
   languageName: node
   linkType: hard
 
@@ -13429,6 +13470,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"stylis@npm:4.2.0":
+  version: 4.2.0
+  resolution: "stylis@npm:4.2.0"
+  checksum: 0eb6cc1b866dc17a6037d0a82ac7fa877eba6a757443e79e7c4f35bacedbf6421fadcab4363b39667b43355cbaaa570a3cde850f776498e5450f32ed2f9b7584
+  languageName: node
+  linkType: hard
+
 "subscriptions-transport-ws@npm:^0.11.0":
   version: 0.11.0
   resolution: "subscriptions-transport-ws@npm:0.11.0"
@@ -14100,7 +14148,7 @@ __metadata:
   resolution: "ui@workspace:packages/ui"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -14506,7 +14554,7 @@ __metadata:
   resolution: "web-agoric@workspace:apps/web-agoric"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -14621,7 +14669,7 @@ __metadata:
   resolution: "web-akash@workspace:apps/web-akash"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -14736,7 +14784,7 @@ __metadata:
   resolution: "web-assetmantle@workspace:apps/web-assetmantle"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -14851,7 +14899,7 @@ __metadata:
   resolution: "web-band@workspace:apps/web-band"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -14966,7 +15014,7 @@ __metadata:
   resolution: "web-bitsong@workspace:apps/web-bitsong"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15081,7 +15129,7 @@ __metadata:
   resolution: "web-cheqd@workspace:apps/web-cheqd"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15197,7 +15245,7 @@ __metadata:
   resolution: "web-comdex@workspace:apps/web-comdex"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15315,7 +15363,7 @@ __metadata:
   resolution: "web-cosmos@workspace:apps/web-cosmos"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15430,7 +15478,7 @@ __metadata:
   resolution: "web-crescent@workspace:apps/web-crescent"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15545,7 +15593,7 @@ __metadata:
   resolution: "web-desmos@workspace:apps/web-desmos"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15660,7 +15708,7 @@ __metadata:
   resolution: "web-emoney@workspace:apps/web-emoney"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15775,7 +15823,7 @@ __metadata:
   resolution: "web-evmos@workspace:apps/web-evmos"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -15890,7 +15938,7 @@ __metadata:
   resolution: "web-likecoin@workspace:apps/web-likecoin"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16005,7 +16053,7 @@ __metadata:
   resolution: "web-multiversx@workspace:apps/web-multiversx"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16114,7 +16162,7 @@ __metadata:
   resolution: "web-nomic@workspace:apps/web-nomic"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16229,7 +16277,7 @@ __metadata:
   resolution: "web-nym@workspace:apps/web-nym"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16344,7 +16392,7 @@ __metadata:
   resolution: "web-osmosis@workspace:apps/web-osmosis"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16459,7 +16507,7 @@ __metadata:
   resolution: "web-persistence@workspace:apps/web-persistence"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16577,7 +16625,7 @@ __metadata:
   resolution: "web-provenance@workspace:apps/web-provenance"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16692,7 +16740,7 @@ __metadata:
   resolution: "web-quasar@workspace:apps/web-quasar"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16807,7 +16855,7 @@ __metadata:
   resolution: "web-quicksilver@workspace:apps/web-quicksilver"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -16922,7 +16970,7 @@ __metadata:
   resolution: "web-regen@workspace:apps/web-regen"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -17037,7 +17085,7 @@ __metadata:
   resolution: "web-rizon@workspace:apps/web-rizon"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -17152,7 +17200,7 @@ __metadata:
   resolution: "web-shentu@workspace:apps/web-shentu"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -17281,7 +17329,7 @@ __metadata:
   resolution: "web-stride@workspace:apps/web-stride"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -17396,7 +17444,7 @@ __metadata:
   resolution: "web-wormhole@workspace:apps/web-wormhole"
   dependencies:
     "@apollo/client": ^3.7.11
-    "@emotion/cache": ^11.10.5
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0
@@ -17511,7 +17559,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@apollo/client": ^3.7.12
-    "@emotion/cache": ^11.10.7
+    "@emotion/cache": ^11.11.0
     "@emotion/jest": ^11.10.5
     "@emotion/react": ^11.10.6
     "@emotion/server": ^11.10.0

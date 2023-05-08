@@ -65,7 +65,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@emotion/cache": "^11.10.7",
+    "@emotion/cache": "^11.11.0",
     "@emotion/jest": "^11.10.5",
     "@jest/globals": "^29.5.0",
     "@next/eslint-plugin-next": "^13.3.0",

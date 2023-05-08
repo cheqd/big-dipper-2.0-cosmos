@@ -1,4 +1,4 @@
-import { MsgCreateDidDoc } from '@/models/msg/cheqd/did/create_did';
+import { MsgCreateDidDoc } from '@/models/msg/cheqd/did/msg_create_did';
 import Typography from '@mui/material/Typography';
 import DID from '@/components/did';
 import { Trans } from 'next-i18next';

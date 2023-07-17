@@ -3479,7 +3479,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.3.1, @next/eslint-plugin-next@npm:^13.2.4, @next/eslint-plugin-next@npm:^13.3.0":
+"@next/eslint-plugin-next@npm:13.4.10":
+  version: 13.4.10
+  resolution: "@next/eslint-plugin-next@npm:13.4.10"
+  dependencies:
+    glob: 7.1.7
+  checksum: f14b99eb5d33b6ede9666ffafb596ee6be52157fc87b59d10d94e44b1e9836099ad450a67558c2aecf09c84b55f65a33c9254ab72df33f55f7cc9f4abee7b38c
+  languageName: node
+  linkType: hard
+
+"@next/eslint-plugin-next@npm:^13.2.4, @next/eslint-plugin-next@npm:^13.3.0":
   version: 13.3.1
   resolution: "@next/eslint-plugin-next@npm:13.3.1"
   dependencies:
@@ -5717,7 +5726,7 @@ __metadata:
     dotenv-cli: ^7.2.1
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -7455,7 +7464,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.58.0
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -7472,11 +7481,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"eslint-config-next@npm:^13.2.4, eslint-config-next@npm:^13.3.0":
-  version: 13.3.1
-  resolution: "eslint-config-next@npm:13.3.1"
+"eslint-config-next@npm:^13.4.10":
+  version: 13.4.10
+  resolution: "eslint-config-next@npm:13.4.10"
   dependencies:
-    "@next/eslint-plugin-next": 13.3.1
+    "@next/eslint-plugin-next": 13.4.10
     "@rushstack/eslint-patch": ^1.1.3
     "@typescript-eslint/parser": ^5.42.0
     eslint-import-resolver-node: ^0.3.6
@@ -7484,14 +7493,14 @@ __metadata:
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.5.1
     eslint-plugin-react: ^7.31.7
-    eslint-plugin-react-hooks: ^4.5.0
+    eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705
   peerDependencies:
     eslint: ^7.23.0 || ^8.0.0
     typescript: ">=3.3.1"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 942c8a914fd08959388416f28c73acf9e1deffee3db21eabad008f4a85e960df9905fa35e286951dc52935c4449cc5a524483464ee8dbf69d70444d8f91c1a6f
+  checksum: d555e077e5045f045e5bdab58429b2245993a0e28d3030209766558a6d32ae165496030cafbab8e6aaf714947d895ee30d1ecdb49263abdb23b6889a333ea714
   languageName: node
   linkType: hard
 
@@ -7610,7 +7619,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.5.0, eslint-plugin-react-hooks@npm:^4.6.0":
+"eslint-plugin-react-hooks@npm:5.0.0-canary-7118f5dd7-20230705":
+  version: 5.0.0-canary-7118f5dd7-20230705
+  resolution: "eslint-plugin-react-hooks@npm:5.0.0-canary-7118f5dd7-20230705"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+  checksum: 20e334e60bf5e56cf9f760598411847525c3ff826e6ae7757c8efdc60b33d47a97ddbe1b94ce95956ea9f7bbef37995b19c716be50bd44e6a1e789cba08b6224
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react-hooks@npm:^4.6.0":
   version: 4.6.0
   resolution: "eslint-plugin-react-hooks@npm:4.6.0"
   peerDependencies:
@@ -12856,7 +12874,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -14151,7 +14169,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -14557,7 +14575,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -14672,7 +14690,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -14787,7 +14805,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -14902,7 +14920,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15017,7 +15035,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15133,7 +15151,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15249,7 +15267,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15366,7 +15384,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15481,7 +15499,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15596,7 +15614,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15711,7 +15729,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15826,7 +15844,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -15941,7 +15959,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16050,7 +16068,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16165,7 +16183,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16280,7 +16298,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16395,7 +16413,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16511,7 +16529,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16628,7 +16646,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16743,7 +16761,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16858,7 +16876,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -16973,7 +16991,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -17088,7 +17106,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -17203,7 +17221,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -17332,7 +17350,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5
@@ -17447,7 +17465,7 @@ __metadata:
     eslint: ^8.37.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.2.4
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.8.8
     eslint-import-resolver-typescript: ^3.5.4
@@ -17562,7 +17580,7 @@ __metadata:
     eslint: ^8.38.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-custom: "workspace:*"
-    eslint-config-next: ^13.3.0
+    eslint-config-next: ^13.4.10
     eslint-config-prettier: ^8.8.0
     eslint-config-turbo: ^1.9.1
     eslint-import-resolver-typescript: ^3.5.5

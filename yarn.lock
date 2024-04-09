@@ -16458,6 +16458,7 @@ __metadata:
     apollo-link-rest: ^0.9.0
     bech32: ^2.0.0
     big.js: ^6.2.1
+    classnames: ^2.3.1
     color: ^4.2.3
     copy-to-clipboard: ^3.3.3
     csstype: ^3.1.2
@@ -17086,7 +17087,6 @@ __metadata:
     apollo-link-rest: ^0.9.0
     bech32: ^2.0.0
     big.js: ^6.2.1
-    classnames: ^2.3.1
     color: ^4.2.3
     copy-to-clipboard: ^3.3.3
     csstype: ^3.1.2

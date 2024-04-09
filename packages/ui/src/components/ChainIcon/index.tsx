@@ -37,6 +37,14 @@ import solanaIconDark from 'shared-utils/assets/icons/solana-dark.svg?url';
 import solanaIconLight from 'shared-utils/assets/icons/solana-light.svg?url';
 import strideIconDark from 'shared-utils/assets/icons/stride-dark.svg?url';
 import wormholeIconDark from 'shared-utils/assets/icons/wormhole.svg?url';
+import celestiaIconDark from 'shared-utils/assets/icons/celestia-both.svg?url';
+import coreumIconBoth from 'shared-utils/assets/icons/coreum-both.svg?url';
+import kyveIconBoth from 'shared-utils/assets/icons/kyve-both.svg?url';
+import humansaiIconDark from 'shared-utils/assets/icons/humansai-both.svg?url';
+import gitopiaIconDark from 'shared-utils/assets/icons/gitopia-both.svg?url';
+import neutronIconBoth from 'shared-utils/assets/icons/neutron-both.svg?url';
+import jackalIconBoth from 'shared-utils/assets/icons/jackal-both.svg?url';
+import archwayIconBoth from 'shared-utils/assets/icons/archway-both.svg?url';
 import agoricLogoLight from 'shared-utils/assets/logos/agoric-light.png';
 import akashLogoDark from 'shared-utils/assets/logos/akash-dark.svg?url';
 import assetmantleLogoDark from 'shared-utils/assets/logos/assetmantle-dark.svg?url';
@@ -72,6 +80,21 @@ import quicksilverLogoDark from 'shared-utils/assets/logos/quicksilver-dark.svg?
 import multiversxLogoLight from 'shared-utils/assets/logos/multiversx-light.svg?url';
 import multiversxLogoDark from 'shared-utils/assets/logos/multiversx-dark.svg?url';
 import wormholeLogoDark from 'shared-utils/assets/logos/wormhole.svg?url';
+import celestiaLogoDark from 'shared-utils/assets/logos/celestia-dark.svg?url';
+import celestiaLogoLight from 'shared-utils/assets/logos/celestia-light.svg?url';
+import coreumLogoDark from 'shared-utils/assets/logos/coreum-dark.svg?url';
+import coreumLogoLight from 'shared-utils/assets/logos/coreum-light.svg?url';
+import kyveLogoDark from 'shared-utils/assets/logos/kyve-dark.svg?url';
+import kyveLogoLight from 'shared-utils/assets/logos/kyve-light.svg?url';
+import humansaiLogoDark from 'shared-utils/assets/logos/humansai-dark.svg?url';
+import gitopiaLogoDark from 'shared-utils/assets/logos/gitopia-dark.svg?url';
+import gitopiaLogoLight from 'shared-utils/assets/logos/gitopia-light.svg?url';
+import neutronLogoDark from 'shared-utils/assets/logos/neutron-dark.svg?url';
+import neutronLogoLight from 'shared-utils/assets/logos/neutron-light.svg?url';
+import jackalLogoDark from 'shared-utils/assets/logos/jackal-dark.svg?url';
+import jackalLogoLight from 'shared-utils/assets/logos/jackal-light.svg?url';
+import archwayLogoDark from 'shared-utils/assets/logos/archway-dark.svg?url';
+import archwayLogoLight from 'shared-utils/assets/logos/archway-light.svg?url';
 
 interface IconProps extends Omit<ImageProps, 'id' | 'src'> {
   type: 'icon' | 'logo';
@@ -237,6 +260,42 @@ const ChainIcon = ({
         type === 'icon'
           ? [wormholeIconDark, wormholeIconDark]
           : [wormholeLogoDark, wormholeLogoDark];
+      break;
+    case 'celestia':
+      [iconDark, iconLight] =
+        type === 'icon'
+          ? [celestiaIconDark, celestiaIconDark]
+          : [celestiaLogoDark, celestiaLogoLight];
+      break;
+    case 'coreum':
+      [iconDark, iconLight] =
+        type === 'icon' ? [coreumIconBoth, coreumIconBoth] : [coreumLogoDark, coreumLogoLight];
+      break;
+    case 'kyve':
+      [iconDark, iconLight] =
+        type === 'icon' ? [kyveIconBoth, kyveIconBoth] : [kyveLogoDark, kyveLogoLight];
+      break;
+    case 'humansai':
+      [iconDark, iconLight] =
+        type === 'icon'
+          ? [humansaiIconDark, humansaiIconDark]
+          : [humansaiLogoDark, humansaiLogoDark];
+      break;
+    case 'gitopia':
+      [iconDark, iconLight] =
+        type === 'icon' ? [gitopiaIconDark, gitopiaIconDark] : [gitopiaLogoDark, gitopiaLogoLight];
+      break;
+    case 'neutron':
+      [iconDark, iconLight] =
+        type === 'icon' ? [neutronIconBoth, neutronIconBoth] : [neutronLogoDark, neutronLogoLight];
+      break;
+    case 'jackal':
+      [iconDark, iconLight] =
+        type === 'icon' ? [jackalIconBoth, jackalIconBoth] : [jackalLogoDark, jackalLogoLight];
+      break;
+    case 'archway':
+      [iconDark, iconLight] =
+        type === 'icon' ? [archwayIconBoth, archwayIconBoth] : [archwayLogoDark, archwayLogoLight];
       break;
     default:
       throw new Error(`chain ${chainName} not supported`);

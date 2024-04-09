@@ -1,12 +1,13 @@
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import numeral from 'numeral';
 import { FC } from 'react';
 import SingleBlock from '@/screens/home/components/data_blocks/components/single_block';
 import { useDataBlocks } from '@/screens/home/components/data_blocks/hooks';
 import useStyles from '@/screens/home/components/data_blocks/styles';
+import CoinGeckoIcon from 'shared-utils/assets/icon-coingecko.svg';
 
 const DataBlocks: FC<ComponentDefault> = ({ className }) => {
-  const { t } = useTranslation('home');
+  const { t } = useAppTranslation('home');
   const { classes, cx } = useStyles();
   const { state } = useDataBlocks();
   const data = [
@@ -23,6 +24,8 @@ const DataBlocks: FC<ComponentDefault> = ({ className }) => {
     {
       key: t('price'),
       value: state.price !== null ? `$${numeral(state.price).format('0.000')}` : 'N/A',
+      description: t('dataFrom'),
+      Icon: <CoinGeckoIcon />,
       className: classes.price,
     },
     {
@@ -44,6 +47,7 @@ const DataBlocks: FC<ComponentDefault> = ({ className }) => {
           value={x.value}
           description={x.description}
           className={x.className}
+          Icon={x.Icon}
         />
       ))}
     </div>

@@ -6,9 +6,9 @@ import Pagination from '@/components/pagination';
 import { useProfilesRecoil } from '@/recoil/profiles/hooks';
 import { useAccounts } from '@/screens/accounts/components/list/hooks';
 import useStyles from '@/screens/accounts/components/list/styles';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import dynamic from 'next/dynamic';
 import React, { ComponentProps, useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const Desktop = dynamic(() => import('@/screens/accounts/components/list/components/desktop'));
 const Mobile = dynamic(() => import('@/screens/accounts/components/list/components/mobile'));
@@ -19,7 +19,7 @@ type Props = {
 
 const List: React.FC<Props> = ({ className }) => {
   const { classes, cx } = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
   const { items, loading, exists, page, setPage, rowsPerPage, setRowsPerPage } = useAccounts();
   const addresses = useMemo(() => items?.map((x) => x.address ?? '') ?? [], [items]);
   const dataProfiles = useProfilesRecoil(addresses).profiles;

@@ -1,23 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { basename, resolve } = require('path');
+const { basename } = require('path');
 
 function getBaseConfig(basePath, chainName) {
   const config = {
     reactStrictMode: true,
     experimental: {
-      ...(process.env.BUILD_STANDALONE
-        ? {
-            // this includes files from the monorepo base two directories up
-            outputFileTracingRoot: resolve(__dirname, '../../'),
-          }
-        : {}),
       esmExternals: 'loose',
     },
-    ...(process.env.BUILD_STANDALONE
-      ? {
-          output: 'standalone',
-        }
-      : {}),
     poweredByHeader: false,
     basePath,
     webpack: webpackConfig,
@@ -101,7 +90,9 @@ function getNextConfig(dir) {
   // each chain has its own chains/<chainName>.json
   const [_match, chainName] = /web-(.+)$/.exec(basename(dir)) ?? ['', 'base'];
   const basePath = (process.env.BASE_PATH || `${`/${chainName}`}`).replace(/^(\/|\/base)$/, '');
-  return getBaseConfig(basePath, chainName);
+  const config = getBaseConfig(basePath, chainName);
+  config.env.NEXT_PUBLIC_APP_NAME = dir.replace(/-/g, '_');
+  return config;
 }
 
 module.exports = getNextConfig;

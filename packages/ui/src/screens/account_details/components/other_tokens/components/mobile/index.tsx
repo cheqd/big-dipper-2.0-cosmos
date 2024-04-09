@@ -1,6 +1,6 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC, Fragment } from 'react';
 import { formatNumber } from '@/utils/format_token';
 import type { OtherTokenType } from '@/screens/account_details/types';
@@ -13,13 +13,15 @@ type MobileProps = {
 
 const Mobile: FC<MobileProps> = ({ className, items }) => {
   const { classes } = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
   return (
     <div className={className}>
       {items?.map((x, i) => {
         const available = formatNumber(x.available.value, x.available.exponent);
         const reward = x.reward ? formatNumber(x.reward.value, x.reward.exponent) : '';
-        const commission = formatNumber(x.commission.value, x.commission.exponent);
+        const commission = x.commission
+          ? formatNumber(x.commission.value, x.commission.exponent)
+          : '';
         const isLast = !items || i === items.length - 1;
         return (
           // eslint-disable-next-line react/no-array-index-key

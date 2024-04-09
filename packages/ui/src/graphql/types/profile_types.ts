@@ -18,6 +18,19 @@ export type Scalars = {
   timestamp: any;
 };
 
+/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+export type Boolean_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['Boolean']>;
+  _gt?: InputMaybe<Scalars['Boolean']>;
+  _gte?: InputMaybe<Scalars['Boolean']>;
+  _in?: InputMaybe<Array<Scalars['Boolean']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Boolean']>;
+  _lte?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Scalars['Boolean']>;
+  _nin?: InputMaybe<Array<Scalars['Boolean']>>;
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['Int']>;
@@ -605,11 +618,21 @@ export type Profile = {
   bio: Scalars['String'];
   /** An array relationship */
   chain_links: Array<Chain_Link>;
+  /** An object relationship */
+  counters?: Maybe<Profile_Counters>;
   cover_pic: Scalars['String'];
   creation_time: Scalars['timestamp'];
   dtag: Scalars['String'];
+  /** Computed field that tells whether the current Hasura user has blocked this profile */
+  has_user_blocked?: Maybe<Scalars['Boolean']>;
   /** An array relationship */
   incoming_dtag_transfer_requests: Array<Dtag_Transfer_Requests>;
+  /** Computed field that tells whether the given profile has blocked the current Hasura user */
+  is_user_blocked_by?: Maybe<Scalars['Boolean']>;
+  /** A computed field that tells whether the given Hasura user is followed by this profile */
+  is_user_followed_by?: Maybe<Scalars['Boolean']>;
+  /** A computed field that tells whether the current Hasura user is following this profile */
+  is_user_following?: Maybe<Scalars['Boolean']>;
   nickname: Scalars['String'];
   /** An array relationship */
   outgoing_dtag_transfer_requests: Array<Dtag_Transfer_Requests>;
@@ -656,6 +679,28 @@ export type ProfileOutgoing_Dtag_Transfer_RequestsArgs = {
   where?: InputMaybe<Dtag_Transfer_Requests_Bool_Exp>;
 };
 
+/** aggregated selection of "profile" */
+export type Profile_Aggregate = {
+  __typename?: 'profile_aggregate';
+  aggregate?: Maybe<Profile_Aggregate_Fields>;
+  nodes: Array<Profile>;
+};
+
+/** aggregate fields of "profile" */
+export type Profile_Aggregate_Fields = {
+  __typename?: 'profile_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Profile_Max_Fields>;
+  min?: Maybe<Profile_Min_Fields>;
+};
+
+
+/** aggregate fields of "profile" */
+export type Profile_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Profile_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
 /** Boolean expression to filter rows from the table "profile". All fields are combined with a logical 'AND'. */
 export type Profile_Bool_Exp = {
   _and?: InputMaybe<Array<Profile_Bool_Exp>>;
@@ -665,13 +710,87 @@ export type Profile_Bool_Exp = {
   applications_links?: InputMaybe<Application_Link_Bool_Exp>;
   bio?: InputMaybe<String_Comparison_Exp>;
   chain_links?: InputMaybe<Chain_Link_Bool_Exp>;
+  counters?: InputMaybe<Profile_Counters_Bool_Exp>;
   cover_pic?: InputMaybe<String_Comparison_Exp>;
   creation_time?: InputMaybe<Timestamp_Comparison_Exp>;
   dtag?: InputMaybe<String_Comparison_Exp>;
+  has_user_blocked?: InputMaybe<Boolean_Comparison_Exp>;
   incoming_dtag_transfer_requests?: InputMaybe<Dtag_Transfer_Requests_Bool_Exp>;
+  is_user_blocked_by?: InputMaybe<Boolean_Comparison_Exp>;
+  is_user_followed_by?: InputMaybe<Boolean_Comparison_Exp>;
+  is_user_following?: InputMaybe<Boolean_Comparison_Exp>;
   nickname?: InputMaybe<String_Comparison_Exp>;
   outgoing_dtag_transfer_requests?: InputMaybe<Dtag_Transfer_Requests_Bool_Exp>;
   profile_pic?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** columns and relationships of "profile_counters" */
+export type Profile_Counters = {
+  __typename?: 'profile_counters';
+  application_links_count: Scalars['bigint'];
+  blocks_count: Scalars['bigint'];
+  chain_links_count: Scalars['bigint'];
+  profile_address: Scalars['String'];
+  relationships_count: Scalars['bigint'];
+};
+
+/** Boolean expression to filter rows from the table "profile_counters". All fields are combined with a logical 'AND'. */
+export type Profile_Counters_Bool_Exp = {
+  _and?: InputMaybe<Array<Profile_Counters_Bool_Exp>>;
+  _not?: InputMaybe<Profile_Counters_Bool_Exp>;
+  _or?: InputMaybe<Array<Profile_Counters_Bool_Exp>>;
+  application_links_count?: InputMaybe<Bigint_Comparison_Exp>;
+  blocks_count?: InputMaybe<Bigint_Comparison_Exp>;
+  chain_links_count?: InputMaybe<Bigint_Comparison_Exp>;
+  profile_address?: InputMaybe<String_Comparison_Exp>;
+  relationships_count?: InputMaybe<Bigint_Comparison_Exp>;
+};
+
+/** Ordering options when selecting data from "profile_counters". */
+export type Profile_Counters_Order_By = {
+  application_links_count?: InputMaybe<Order_By>;
+  blocks_count?: InputMaybe<Order_By>;
+  chain_links_count?: InputMaybe<Order_By>;
+  profile_address?: InputMaybe<Order_By>;
+  relationships_count?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "profile_counters" */
+export enum Profile_Counters_Select_Column {
+  /** column name */
+  ApplicationLinksCount = 'application_links_count',
+  /** column name */
+  BlocksCount = 'blocks_count',
+  /** column name */
+  ChainLinksCount = 'chain_links_count',
+  /** column name */
+  ProfileAddress = 'profile_address',
+  /** column name */
+  RelationshipsCount = 'relationships_count'
+}
+
+/** aggregate max on columns */
+export type Profile_Max_Fields = {
+  __typename?: 'profile_max_fields';
+  address?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  cover_pic?: Maybe<Scalars['String']>;
+  creation_time?: Maybe<Scalars['timestamp']>;
+  dtag?: Maybe<Scalars['String']>;
+  nickname?: Maybe<Scalars['String']>;
+  profile_pic?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Profile_Min_Fields = {
+  __typename?: 'profile_min_fields';
+  address?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  cover_pic?: Maybe<Scalars['String']>;
+  creation_time?: Maybe<Scalars['timestamp']>;
+  dtag?: Maybe<Scalars['String']>;
+  nickname?: Maybe<Scalars['String']>;
+  profile_pic?: Maybe<Scalars['String']>;
 };
 
 /** Ordering options when selecting data from "profile". */
@@ -680,10 +799,15 @@ export type Profile_Order_By = {
   applications_links_aggregate?: InputMaybe<Application_Link_Aggregate_Order_By>;
   bio?: InputMaybe<Order_By>;
   chain_links_aggregate?: InputMaybe<Chain_Link_Aggregate_Order_By>;
+  counters?: InputMaybe<Profile_Counters_Order_By>;
   cover_pic?: InputMaybe<Order_By>;
   creation_time?: InputMaybe<Order_By>;
   dtag?: InputMaybe<Order_By>;
+  has_user_blocked?: InputMaybe<Order_By>;
   incoming_dtag_transfer_requests_aggregate?: InputMaybe<Dtag_Transfer_Requests_Aggregate_Order_By>;
+  is_user_blocked_by?: InputMaybe<Order_By>;
+  is_user_followed_by?: InputMaybe<Order_By>;
+  is_user_following?: InputMaybe<Order_By>;
   nickname?: InputMaybe<Order_By>;
   outgoing_dtag_transfer_requests_aggregate?: InputMaybe<Dtag_Transfer_Requests_Aggregate_Order_By>;
   profile_pic?: InputMaybe<Order_By>;
@@ -756,10 +880,20 @@ export type Query_Root = {
   dtag_transfer_requests: Array<Dtag_Transfer_Requests>;
   /** fetch data from the table: "profile" */
   profile: Array<Profile>;
+  /** fetch aggregated fields from the table: "profile" */
+  profile_aggregate: Profile_Aggregate;
   /** fetch data from the table: "profile" using primary key columns */
   profile_by_pk?: Maybe<Profile>;
+  /** fetch data from the table: "profile_counters" */
+  profile_counters: Array<Profile_Counters>;
   /** fetch data from the table: "profiles_params" */
   profiles_params: Array<Profiles_Params>;
+  /** fetch data from the table: "user_block" */
+  user_block: Array<User_Block>;
+  /** fetch data from the table: "user_relationship" */
+  user_relationship: Array<User_Relationship>;
+  /** fetch aggregated fields from the table: "user_relationship" */
+  user_relationship_aggregate: User_Relationship_Aggregate;
 };
 
 
@@ -835,8 +969,26 @@ export type Query_RootProfileArgs = {
 };
 
 
+export type Query_RootProfile_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Profile_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Profile_Order_By>>;
+  where?: InputMaybe<Profile_Bool_Exp>;
+};
+
+
 export type Query_RootProfile_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Query_RootProfile_CountersArgs = {
+  distinct_on?: InputMaybe<Array<Profile_Counters_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Profile_Counters_Order_By>>;
+  where?: InputMaybe<Profile_Counters_Bool_Exp>;
 };
 
 
@@ -846,6 +998,33 @@ export type Query_RootProfiles_ParamsArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Profiles_Params_Order_By>>;
   where?: InputMaybe<Profiles_Params_Bool_Exp>;
+};
+
+
+export type Query_RootUser_BlockArgs = {
+  distinct_on?: InputMaybe<Array<User_Block_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Block_Order_By>>;
+  where?: InputMaybe<User_Block_Bool_Exp>;
+};
+
+
+export type Query_RootUser_RelationshipArgs = {
+  distinct_on?: InputMaybe<Array<User_Relationship_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Relationship_Order_By>>;
+  where?: InputMaybe<User_Relationship_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Relationship_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Relationship_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Relationship_Order_By>>;
+  where?: InputMaybe<User_Relationship_Bool_Exp>;
 };
 
 export type Subscription_Root = {
@@ -866,10 +1045,20 @@ export type Subscription_Root = {
   dtag_transfer_requests: Array<Dtag_Transfer_Requests>;
   /** fetch data from the table: "profile" */
   profile: Array<Profile>;
+  /** fetch aggregated fields from the table: "profile" */
+  profile_aggregate: Profile_Aggregate;
   /** fetch data from the table: "profile" using primary key columns */
   profile_by_pk?: Maybe<Profile>;
+  /** fetch data from the table: "profile_counters" */
+  profile_counters: Array<Profile_Counters>;
   /** fetch data from the table: "profiles_params" */
   profiles_params: Array<Profiles_Params>;
+  /** fetch data from the table: "user_block" */
+  user_block: Array<User_Block>;
+  /** fetch data from the table: "user_relationship" */
+  user_relationship: Array<User_Relationship>;
+  /** fetch aggregated fields from the table: "user_relationship" */
+  user_relationship_aggregate: User_Relationship_Aggregate;
 };
 
 
@@ -945,8 +1134,26 @@ export type Subscription_RootProfileArgs = {
 };
 
 
+export type Subscription_RootProfile_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Profile_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Profile_Order_By>>;
+  where?: InputMaybe<Profile_Bool_Exp>;
+};
+
+
 export type Subscription_RootProfile_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Subscription_RootProfile_CountersArgs = {
+  distinct_on?: InputMaybe<Array<Profile_Counters_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Profile_Counters_Order_By>>;
+  where?: InputMaybe<Profile_Counters_Bool_Exp>;
 };
 
 
@@ -956,6 +1163,33 @@ export type Subscription_RootProfiles_ParamsArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Profiles_Params_Order_By>>;
   where?: InputMaybe<Profiles_Params_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_BlockArgs = {
+  distinct_on?: InputMaybe<Array<User_Block_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Block_Order_By>>;
+  where?: InputMaybe<User_Block_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_RelationshipArgs = {
+  distinct_on?: InputMaybe<Array<User_Relationship_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Relationship_Order_By>>;
+  where?: InputMaybe<User_Relationship_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Relationship_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Relationship_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Relationship_Order_By>>;
+  where?: InputMaybe<User_Relationship_Bool_Exp>;
 };
 
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
@@ -969,6 +1203,191 @@ export type Timestamp_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['timestamp']>;
   _neq?: InputMaybe<Scalars['timestamp']>;
   _nin?: InputMaybe<Array<Scalars['timestamp']>>;
+};
+
+/** columns and relationships of "user_block" */
+export type User_Block = {
+  __typename?: 'user_block';
+  /** An object relationship */
+  blocked?: Maybe<Profile>;
+  blocked_address?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  blocker?: Maybe<Profile>;
+  blocker_address?: Maybe<Scalars['String']>;
+  reason?: Maybe<Scalars['String']>;
+  subspace_id: Scalars['bigint'];
+};
+
+/** Boolean expression to filter rows from the table "user_block". All fields are combined with a logical 'AND'. */
+export type User_Block_Bool_Exp = {
+  _and?: InputMaybe<Array<User_Block_Bool_Exp>>;
+  _not?: InputMaybe<User_Block_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Block_Bool_Exp>>;
+  blocked?: InputMaybe<Profile_Bool_Exp>;
+  blocked_address?: InputMaybe<String_Comparison_Exp>;
+  blocker?: InputMaybe<Profile_Bool_Exp>;
+  blocker_address?: InputMaybe<String_Comparison_Exp>;
+  reason?: InputMaybe<String_Comparison_Exp>;
+  subspace_id?: InputMaybe<Bigint_Comparison_Exp>;
+};
+
+/** Ordering options when selecting data from "user_block". */
+export type User_Block_Order_By = {
+  blocked?: InputMaybe<Profile_Order_By>;
+  blocked_address?: InputMaybe<Order_By>;
+  blocker?: InputMaybe<Profile_Order_By>;
+  blocker_address?: InputMaybe<Order_By>;
+  reason?: InputMaybe<Order_By>;
+  subspace_id?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "user_block" */
+export enum User_Block_Select_Column {
+  /** column name */
+  BlockedAddress = 'blocked_address',
+  /** column name */
+  BlockerAddress = 'blocker_address',
+  /** column name */
+  Reason = 'reason',
+  /** column name */
+  SubspaceId = 'subspace_id'
+}
+
+/** columns and relationships of "user_relationship" */
+export type User_Relationship = {
+  __typename?: 'user_relationship';
+  /** An object relationship */
+  counterparty?: Maybe<Profile>;
+  counterparty_address: Scalars['String'];
+  /** An object relationship */
+  creator?: Maybe<Profile>;
+  creator_address: Scalars['String'];
+  subspace_id: Scalars['bigint'];
+};
+
+/** aggregated selection of "user_relationship" */
+export type User_Relationship_Aggregate = {
+  __typename?: 'user_relationship_aggregate';
+  aggregate?: Maybe<User_Relationship_Aggregate_Fields>;
+  nodes: Array<User_Relationship>;
+};
+
+/** aggregate fields of "user_relationship" */
+export type User_Relationship_Aggregate_Fields = {
+  __typename?: 'user_relationship_aggregate_fields';
+  avg?: Maybe<User_Relationship_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<User_Relationship_Max_Fields>;
+  min?: Maybe<User_Relationship_Min_Fields>;
+  stddev?: Maybe<User_Relationship_Stddev_Fields>;
+  stddev_pop?: Maybe<User_Relationship_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<User_Relationship_Stddev_Samp_Fields>;
+  sum?: Maybe<User_Relationship_Sum_Fields>;
+  var_pop?: Maybe<User_Relationship_Var_Pop_Fields>;
+  var_samp?: Maybe<User_Relationship_Var_Samp_Fields>;
+  variance?: Maybe<User_Relationship_Variance_Fields>;
+};
+
+
+/** aggregate fields of "user_relationship" */
+export type User_Relationship_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<User_Relationship_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type User_Relationship_Avg_Fields = {
+  __typename?: 'user_relationship_avg_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "user_relationship". All fields are combined with a logical 'AND'. */
+export type User_Relationship_Bool_Exp = {
+  _and?: InputMaybe<Array<User_Relationship_Bool_Exp>>;
+  _not?: InputMaybe<User_Relationship_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Relationship_Bool_Exp>>;
+  counterparty?: InputMaybe<Profile_Bool_Exp>;
+  counterparty_address?: InputMaybe<String_Comparison_Exp>;
+  creator?: InputMaybe<Profile_Bool_Exp>;
+  creator_address?: InputMaybe<String_Comparison_Exp>;
+  subspace_id?: InputMaybe<Bigint_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type User_Relationship_Max_Fields = {
+  __typename?: 'user_relationship_max_fields';
+  counterparty_address?: Maybe<Scalars['String']>;
+  creator_address?: Maybe<Scalars['String']>;
+  subspace_id?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate min on columns */
+export type User_Relationship_Min_Fields = {
+  __typename?: 'user_relationship_min_fields';
+  counterparty_address?: Maybe<Scalars['String']>;
+  creator_address?: Maybe<Scalars['String']>;
+  subspace_id?: Maybe<Scalars['bigint']>;
+};
+
+/** Ordering options when selecting data from "user_relationship". */
+export type User_Relationship_Order_By = {
+  counterparty?: InputMaybe<Profile_Order_By>;
+  counterparty_address?: InputMaybe<Order_By>;
+  creator?: InputMaybe<Profile_Order_By>;
+  creator_address?: InputMaybe<Order_By>;
+  subspace_id?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "user_relationship" */
+export enum User_Relationship_Select_Column {
+  /** column name */
+  CounterpartyAddress = 'counterparty_address',
+  /** column name */
+  CreatorAddress = 'creator_address',
+  /** column name */
+  SubspaceId = 'subspace_id'
+}
+
+/** aggregate stddev on columns */
+export type User_Relationship_Stddev_Fields = {
+  __typename?: 'user_relationship_stddev_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type User_Relationship_Stddev_Pop_Fields = {
+  __typename?: 'user_relationship_stddev_pop_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type User_Relationship_Stddev_Samp_Fields = {
+  __typename?: 'user_relationship_stddev_samp_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type User_Relationship_Sum_Fields = {
+  __typename?: 'user_relationship_sum_fields';
+  subspace_id?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate var_pop on columns */
+export type User_Relationship_Var_Pop_Fields = {
+  __typename?: 'user_relationship_var_pop_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type User_Relationship_Var_Samp_Fields = {
+  __typename?: 'user_relationship_var_samp_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type User_Relationship_Variance_Fields = {
+  __typename?: 'user_relationship_variance_fields';
+  subspace_id?: Maybe<Scalars['Float']>;
 };
 
 export type DesmosProfileQueryVariables = Exact<{

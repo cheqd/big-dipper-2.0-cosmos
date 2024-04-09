@@ -3,11 +3,9 @@ ARG PROJECT_NAME=web-cheqd
 # This is a multiple stage Dockerfile.
 # - Stage 1: starter (base image with Node.js 18 and the turbo package installed globally)
 
-# - Stage 2: pruner (copies all necessary files and sets up yarn configurations, runs turbo prune)
+# - Stage 2: builder (adds dependencies, environment variables, and builds the project using yarn)
 
-# - Stage 3: builder (adds dependencies, environment variables, and builds the project using yarn)
-
-# - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
+# - Stage 3: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
 FROM node:18 AS starter
@@ -33,9 +31,7 @@ RUN yarn config set nodeLinker node-modules \
 FROM starter AS builder
 
 ### First install the dependencies (as they change less often)
-COPY .yarnrc.yml ./
-COPY .yarn/ ./.yarn/
-COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
+COPY . .
 
 ## Setting up the environment variables for the docker container.
 ARG PROJECT_NAME="web-cheqd"
@@ -98,7 +94,7 @@ COPY --chown=nextjs:nodejs --from=builder \
   /app/.yarn/ \
   ../../.yarn/
 COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/.next/apps/${PROJECT_NAME}/server.js /app/apps/${PROJECT_NAME}/package.json \
+  /app/apps/${PROJECT_NAME}/ /app/apps/${PROJECT_NAME}/ \
   ./
 COPY --chown=nextjs:nodejs --from=builder \
   /app/apps/${PROJECT_NAME}/public/ \
@@ -136,4 +132,4 @@ NEXT_PUBLIC_RPC_WEBSOCKET\
 # Don't run production as root
 USER nextjs
 
-CMD ["/bin/bash", "-c","node ./inject.js && yarn node ./server.js"]
+CMD yarn next start -p ${PORT}

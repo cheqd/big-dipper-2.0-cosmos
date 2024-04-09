@@ -1,6 +1,6 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC, Fragment } from 'react';
 import { useRecoilValue } from 'recoil';
 import AvatarName from '@/components/avatar_name';
@@ -21,7 +21,7 @@ const RedelegationsItem: FC<RedelegationsItemProps> = ({ i, item, isLast }) => {
   const { address, imageUrl, name } = useProfileRecoil(item.address);
   const { address: toAddress, imageUrl: toImageUrl, name: toName } = useProfileRecoil(item.to);
   const { classes } = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
   const dateFormat = useRecoilValue(readDate);
   const timeFormat = useRecoilValue(readTimeFormat);
   return (
@@ -31,13 +31,23 @@ const RedelegationsItem: FC<RedelegationsItemProps> = ({ i, item, isLast }) => {
           <Typography variant="h4" className="label">
             {t('address')}
           </Typography>
-          <AvatarName address={address} imageUrl={imageUrl} name={name} />
+          <AvatarName
+            address={address}
+            imageUrl={imageUrl}
+            name={name}
+            location="redelegationRow"
+          />
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
             {t('to')}
           </Typography>
-          <AvatarName address={toAddress} imageUrl={toImageUrl} name={toName} />
+          <AvatarName
+            address={toAddress}
+            imageUrl={toImageUrl}
+            name={toName}
+            location="redelegationRow"
+          />
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">

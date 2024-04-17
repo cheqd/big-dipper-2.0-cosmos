@@ -1,18 +1,24 @@
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import numeral from 'numeral';
 import { FC } from 'react';
+import chainConfig from '@/chainConfig';
 import useStyles from '@/screens/home/components/hero/components/online_voting_power/styles';
 import { useOnlineVotingPower } from '@/screens/home/components/hero/components/online_voting_power/hooks';
 
 const OnlineVotingPower: FC<ComponentDefault> = () => {
-  const { t } = useTranslation('home');
-  const { state } = useOnlineVotingPower();
+  const { t } = useAppTranslation('home');
+  const { onlineVPstate } = useOnlineVotingPower();
+
+  const { chainName } = chainConfig();
 
   const votingPowerPercent =
-    state.totalVotingPower === 0
+    // eslint-disable-next-line no-nested-ternary
+    chainName === 'wormhole'
+      ? numeral((onlineVPstate.activeValidators / onlineVPstate.votingPower) * 100)
+      : onlineVPstate.totalVotingPower === 0
       ? numeral(0)
-      : numeral((state.votingPower / state.totalVotingPower) * 100);
+      : numeral((onlineVPstate.votingPower / onlineVPstate.totalVotingPower) * 100);
 
   const { classes } = useStyles({ percentage: votingPowerPercent.format('0') });
 
@@ -24,8 +30,10 @@ const OnlineVotingPower: FC<ComponentDefault> = () => {
           {`${votingPowerPercent.format('0,0.00', (n) => Math.floor(n))}%`}
         </Typography>
         <Typography variant="body1">
-          {numeral(state.votingPower).format('0,0')} /{' '}
-          {numeral(state.totalVotingPower).format('0,0')}
+          {numeral(onlineVPstate.votingPower).format('0,0')} /{' '}
+          {onlineVPstate.totalVotingPower === 0
+            ? numeral(onlineVPstate.votingPower).format('0,0')
+            : numeral(onlineVPstate.totalVotingPower).format('0,0')}
         </Typography>
       </div>
       <div className={classes.chart}>
@@ -37,7 +45,7 @@ const OnlineVotingPower: FC<ComponentDefault> = () => {
             {t('validators')}
           </Typography>
           <Typography variant="body1" className="value">
-            {numeral(state.activeValidators).format('0,0')}
+            {numeral(onlineVPstate.activeValidators).format('0,0')}
           </Typography>
         </div>
         <div className={classes.item}>
@@ -53,17 +61,19 @@ const OnlineVotingPower: FC<ComponentDefault> = () => {
             {t('votingPower')}
           </Typography>
           <Typography variant="body1" className="value">
-            {numeral(state.votingPower).format('0,0')}
+            {numeral(onlineVPstate.votingPower).format('0,0')}
           </Typography>
         </div>
-        <div className={classes.item}>
-          <Typography variant="h4" className="label">
-            {t('totalVotingPower')}
-          </Typography>
-          <Typography variant="body1" className="value">
-            {numeral(state.totalVotingPower).format('0,0')}
-          </Typography>
-        </div>
+        {onlineVPstate.totalVotingPower === 0 ? null : (
+          <div className={classes.item}>
+            <Typography variant="h4" className="label">
+              {t('totalVotingPower')}
+            </Typography>
+            <Typography variant="body1" className="value">
+              {numeral(onlineVPstate.totalVotingPower).format('0,0')}
+            </Typography>
+          </div>
+        )}
       </div>
     </div>
   );

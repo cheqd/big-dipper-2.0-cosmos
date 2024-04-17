@@ -1,3 +1,4 @@
+# hadolint global ignore=DL3025
 ARG PROJECT_NAME=web-cheqd
 
 # This is a multiple stage Dockerfile.
@@ -10,9 +11,7 @@ ARG PROJECT_NAME=web-cheqd
 # - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
-FROM node:18 AS starter
-
-SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+FROM node:18-alpine3.18 AS starter
 
 WORKDIR /app
 RUN npm i -g turbo
@@ -23,6 +22,7 @@ FROM starter AS pruner
 COPY ./ ./
 
 ARG PROJECT_NAME=web-cheqd
+ENV PROJECT_NAME=${PROJECT_NAME}
 RUN yarn config set nodeLinker node-modules \
   && yarn config set supportedArchitectures --json '{}' \
   && turbo prune --scope=${PROJECT_NAME} --docker
@@ -38,22 +38,27 @@ COPY .yarn/ ./.yarn/
 COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
 
 ## Setting up the environment variables for the docker container.
-ARG PROJECT_NAME="web-cheqd"
 ARG NODE_ENV=production
 ARG NEXT_TELEMETRY_DISABLED=1
 ARG BASE_PATH=/
 ENV CI=1
 ENV HUSKY=0
 ENV BUILD_STANDALONE=1
+ARG PROJECT_NAME=web-cheqd
+ENV PROJECT_NAME=${PROJECT_NAME}
 
 # add placeholder for env variables to be injected in runner stage
-ENV NODE_ENV=${NODE_ENV}
+ENV NODE_ENV={{NODE_ENV}}
 ENV NEXT_TELEMETRY_DISABLED=${NEXT_TELEMETRY_DISABLED}
 ENV BASE_PATH=${BASE_PATH}
-ENV NEXT_PUBLIC_CHAIN_TYPE={{NEXT_PUBLIC_CHAIN_TYPE}}
-ENV NEXT_PUBLIC_GRAPHQL_URL={{NEXT_PUBLIC_GRAPHQL_URL}}
-ENV NEXT_PUBLIC_GRAPHQL_WS={{NEXT_PUBLIC_GRAPHQL_WS}}
-ENV NEXT_PUBLIC_RPC_WEBSOCKET={{NEXT_PUBLIC_RPC_WEBSOCKET}}
+ARG NEXT_PUBLIC_CHAIN_TYPE
+ENV NEXT_PUBLIC_CHAIN_TYPE=${NEXT_PUBLIC_CHAIN_TYPE}
+ARG NEXT_PUBLIC_GRAPHQL_URL
+ENV NEXT_PUBLIC_GRAPHQL_URL=${NEXT_PUBLIC_GRAPHQL_URL}
+ARG NEXT_PUBLIC_GRAPHQL_WS
+ENV NEXT_PUBLIC_GRAPHQL_WS=${NEXT_PUBLIC_GRAPHQL_WS}
+ARG NEXT_PUBLIC_RPC_WEBSOCKET
+ENV NEXT_PUBLIC_RPC_WEBSOCKET=${NEXT_PUBLIC_RPC_WEBSOCKET}
 
 RUN corepack enable && yarn -v \
   && yarn config set supportedArchitectures --json '{}' \
@@ -68,22 +73,28 @@ RUN yarn node packages/shared-utils/configs/sentry/install.js \
 ################################################################################
 
 # Stage: runner
-FROM node:18 AS runner
+FROM node:18-alpine3.18 AS runner
  
-# Copying the files from the builder stage to the runner stage.
-ARG PROJECT_NAME=web-cheqd
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ARG NEXT_PUBLIC_CHAIN_TYPE=testnet
+ARG NEXT_PUBLIC_CHAIN_TYPE
 ENV NEXT_PUBLIC_CHAIN_TYPE=${NEXT_PUBLIC_CHAIN_TYPE}
-ARG NEXT_PUBLIC_GRAPHQL_URL=https://testnet-gql.cheqd.io/v1/graphql
+ARG NEXT_PUBLIC_GRAPHQL_URL
 ENV NEXT_PUBLIC_GRAPHQL_URL=${NEXT_PUBLIC_GRAPHQL_URL}
-ARG NEXT_PUBLIC_GRAPHQL_WS=wss://testnet-gql.cheqd.io/v1/graphql
+ARG NEXT_PUBLIC_GRAPHQL_WS
 ENV NEXT_PUBLIC_GRAPHQL_WS=${NEXT_PUBLIC_GRAPHQL_WS}
-ARG NEXT_PUBLIC_RPC_WEBSOCKET=wss://rpc.cheqd.network/websocket
+ARG NEXT_PUBLIC_RPC_WEBSOCKET
 ENV NEXT_PUBLIC_RPC_WEBSOCKET=${NEXT_PUBLIC_RPC_WEBSOCKET}
+ARG BASE_PATH
+ENV BASE_PATH=${BASE_PATH}
+ENV CI=1
+ENV HUSKY=0
+ENV BUILD_STANDALONE=1
 ARG PORT=3000
-ENV PORT=${PORT:-3000}
+ENV PORT=${PORT}
+ARG PROJECT_NAME=web-cheqd
+ENV PROJECT_NAME=${PROJECT_NAME}
+
 
 WORKDIR /app/apps/${PROJECT_NAME}
 
@@ -98,42 +109,13 @@ COPY --chown=nextjs:nodejs --from=builder \
   /app/.yarn/ \
   ../../.yarn/
 COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/.next/apps/${PROJECT_NAME}/server.js /app/apps/${PROJECT_NAME}/package.json \
+  /app/apps/${PROJECT_NAME}/ /app/apps/${PROJECT_NAME}/ \
   ./
 COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/public/ \
-  ./public/
-COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/.next/apps/${PROJECT_NAME}/.next/ \
-  ./.next/
-COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/.next/static/ \
-  ./.next/static/
-
-# reference: https://github.com/vercel/next.js/discussions/34894
-RUN printf 'const { readFileSync, writeFileSync } = require("fs");\n\
-function inject(file) {\n\
-  const code = readFileSync(file, "utf8").replace(/(['\
-"'"\
-'"`])[{][{](\
-NEXT_PUBLIC_CHAIN_TYPE|\
-NEXT_PUBLIC_GRAPHQL_URL|\
-NEXT_PUBLIC_GRAPHQL_WS|\
-NEXT_PUBLIC_RPC_WEBSOCKET\
-)[}][}]\\1/gi, (match, quote, name) => {\n\
-  console.log(`inject ${match} with ${JSON.stringify(process.env[name.toUpperCase()])} in ${file}`);\n\
-  return JSON.stringify(process.env[name] ?? "")\n\
-});\n\
-  writeFileSync(file, code, "utf8");\n\
-}\n' > ./inject.js \
-  && egrep -ilr '[{][{](\
-NEXT_PUBLIC_CHAIN_TYPE|\
-NEXT_PUBLIC_GRAPHQL_URL|\
-NEXT_PUBLIC_GRAPHQL_WS|\
-NEXT_PUBLIC_RPC_WEBSOCKET\
-)[}][}]' ./.next | xargs -I{} printf 'inject("'{}'");\n' | tee -a ./inject.js;
+  /app/packages/ /app/packages/
+COPY --chown=nextjs:nodejs --from=builder /app/node_modules/ /app/node_modules/
 
 # Don't run production as root
 USER nextjs
 
-CMD ["/bin/bash", "-c","node ./inject.js && yarn node ./server.js"]
+CMD yarn next start -p ${PORT}

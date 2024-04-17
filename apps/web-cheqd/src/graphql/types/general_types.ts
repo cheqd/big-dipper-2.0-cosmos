@@ -1445,27 +1445,13 @@ export type Genesis_Stream_Cursor_Value_Input = {
 /** columns and relationships of "gov_params" */
 export type Gov_Params = {
   __typename?: 'gov_params';
-  deposit_params: Scalars['jsonb'];
   height: Scalars['bigint'];
-  tally_params: Scalars['jsonb'];
-  voting_params: Scalars['jsonb'];
+  params: Scalars['jsonb'];
 };
 
 
 /** columns and relationships of "gov_params" */
-export type Gov_ParamsDeposit_ParamsArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "gov_params" */
-export type Gov_ParamsTally_ParamsArgs = {
-  path?: InputMaybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "gov_params" */
-export type Gov_ParamsVoting_ParamsArgs = {
+export type Gov_ParamsParamsArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
 
@@ -1474,30 +1460,22 @@ export type Gov_Params_Bool_Exp = {
   _and?: InputMaybe<Array<Gov_Params_Bool_Exp>>;
   _not?: InputMaybe<Gov_Params_Bool_Exp>;
   _or?: InputMaybe<Array<Gov_Params_Bool_Exp>>;
-  deposit_params?: InputMaybe<Jsonb_Comparison_Exp>;
   height?: InputMaybe<Bigint_Comparison_Exp>;
-  tally_params?: InputMaybe<Jsonb_Comparison_Exp>;
-  voting_params?: InputMaybe<Jsonb_Comparison_Exp>;
+  params?: InputMaybe<Jsonb_Comparison_Exp>;
 };
 
 /** Ordering options when selecting data from "gov_params". */
 export type Gov_Params_Order_By = {
-  deposit_params?: InputMaybe<Order_By>;
   height?: InputMaybe<Order_By>;
-  tally_params?: InputMaybe<Order_By>;
-  voting_params?: InputMaybe<Order_By>;
+  params?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "gov_params" */
 export enum Gov_Params_Select_Column {
   /** column name */
-  DepositParams = 'deposit_params',
-  /** column name */
   Height = 'height',
   /** column name */
-  TallyParams = 'tally_params',
-  /** column name */
-  VotingParams = 'voting_params'
+  Params = 'params'
 }
 
 /** Streaming cursor of the table "gov_params" */
@@ -1510,10 +1488,8 @@ export type Gov_Params_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Gov_Params_Stream_Cursor_Value_Input = {
-  deposit_params?: InputMaybe<Scalars['jsonb']>;
   height?: InputMaybe<Scalars['bigint']>;
-  tally_params?: InputMaybe<Scalars['jsonb']>;
-  voting_params?: InputMaybe<Scalars['jsonb']>;
+  params?: InputMaybe<Scalars['jsonb']>;
 };
 
 /** columns and relationships of "inflation" */
@@ -1666,8 +1642,70 @@ export type Message_Stream_Cursor_Value_Input = {
   value?: InputMaybe<Scalars['jsonb']>;
 };
 
+/** columns and relationships of "message_type" */
+export type Message_Type = {
+  __typename?: 'message_type';
+  height: Scalars['bigint'];
+  label: Scalars['String'];
+  module: Scalars['String'];
+  type: Scalars['String'];
+};
+
+/** Boolean expression to filter rows from the table "message_type". All fields are combined with a logical 'AND'. */
+export type Message_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Message_Type_Bool_Exp>>;
+  _not?: InputMaybe<Message_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Message_Type_Bool_Exp>>;
+  height?: InputMaybe<Bigint_Comparison_Exp>;
+  label?: InputMaybe<String_Comparison_Exp>;
+  module?: InputMaybe<String_Comparison_Exp>;
+  type?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** Ordering options when selecting data from "message_type". */
+export type Message_Type_Order_By = {
+  height?: InputMaybe<Order_By>;
+  label?: InputMaybe<Order_By>;
+  module?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "message_type" */
+export enum Message_Type_Select_Column {
+  /** column name */
+  Height = 'height',
+  /** column name */
+  Label = 'label',
+  /** column name */
+  Module = 'module',
+  /** column name */
+  Type = 'type'
+}
+
+/** Streaming cursor of the table "message_type" */
+export type Message_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Message_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Message_Type_Stream_Cursor_Value_Input = {
+  height?: InputMaybe<Scalars['bigint']>;
+  label?: InputMaybe<Scalars['String']>;
+  module?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+};
+
 export type Messages_By_Address_Args = {
   addresses?: InputMaybe<Scalars['_text']>;
+  limit?: InputMaybe<Scalars['bigint']>;
+  offset?: InputMaybe<Scalars['bigint']>;
+  types?: InputMaybe<Scalars['_text']>;
+};
+
+export type Messages_By_Type_Args = {
   limit?: InputMaybe<Scalars['bigint']>;
   offset?: InputMaybe<Scalars['bigint']>;
   types?: InputMaybe<Scalars['_text']>;
@@ -2077,14 +2115,13 @@ export type Proposal = {
   deposit_end_time?: Maybe<Scalars['timestamp']>;
   description: Scalars['String'];
   id: Scalars['Int'];
+  metadata: Scalars['String'];
   /** An array relationship */
   proposal_deposits: Array<Proposal_Deposit>;
-  proposal_route: Scalars['String'];
   /** An object relationship */
   proposal_tally_result?: Maybe<Proposal_Tally_Result>;
   /** An array relationship */
   proposal_tally_results: Array<Proposal_Tally_Result>;
-  proposal_type: Scalars['String'];
   /** An array relationship */
   proposal_votes: Array<Proposal_Vote>;
   /** An object relationship */
@@ -2223,11 +2260,10 @@ export type Proposal_Bool_Exp = {
   deposit_end_time?: InputMaybe<Timestamp_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
+  metadata?: InputMaybe<String_Comparison_Exp>;
   proposal_deposits?: InputMaybe<Proposal_Deposit_Bool_Exp>;
-  proposal_route?: InputMaybe<String_Comparison_Exp>;
   proposal_tally_result?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
   proposal_tally_results?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
-  proposal_type?: InputMaybe<String_Comparison_Exp>;
   proposal_votes?: InputMaybe<Proposal_Vote_Bool_Exp>;
   proposer?: InputMaybe<Account_Bool_Exp>;
   proposer_address?: InputMaybe<String_Comparison_Exp>;
@@ -2399,8 +2435,7 @@ export type Proposal_Max_Fields = {
   deposit_end_time?: Maybe<Scalars['timestamp']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
-  proposal_route?: Maybe<Scalars['String']>;
-  proposal_type?: Maybe<Scalars['String']>;
+  metadata?: Maybe<Scalars['String']>;
   proposer_address?: Maybe<Scalars['String']>;
   status?: Maybe<Scalars['String']>;
   submit_time?: Maybe<Scalars['timestamp']>;
@@ -2414,8 +2449,7 @@ export type Proposal_Max_Order_By = {
   deposit_end_time?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  proposal_route?: InputMaybe<Order_By>;
-  proposal_type?: InputMaybe<Order_By>;
+  metadata?: InputMaybe<Order_By>;
   proposer_address?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
   submit_time?: InputMaybe<Order_By>;
@@ -2430,8 +2464,7 @@ export type Proposal_Min_Fields = {
   deposit_end_time?: Maybe<Scalars['timestamp']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
-  proposal_route?: Maybe<Scalars['String']>;
-  proposal_type?: Maybe<Scalars['String']>;
+  metadata?: Maybe<Scalars['String']>;
   proposer_address?: Maybe<Scalars['String']>;
   status?: Maybe<Scalars['String']>;
   submit_time?: Maybe<Scalars['timestamp']>;
@@ -2445,8 +2478,7 @@ export type Proposal_Min_Order_By = {
   deposit_end_time?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  proposal_route?: InputMaybe<Order_By>;
-  proposal_type?: InputMaybe<Order_By>;
+  metadata?: InputMaybe<Order_By>;
   proposer_address?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
   submit_time?: InputMaybe<Order_By>;
@@ -2461,11 +2493,10 @@ export type Proposal_Order_By = {
   deposit_end_time?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  metadata?: InputMaybe<Order_By>;
   proposal_deposits_aggregate?: InputMaybe<Proposal_Deposit_Aggregate_Order_By>;
-  proposal_route?: InputMaybe<Order_By>;
   proposal_tally_result?: InputMaybe<Proposal_Tally_Result_Order_By>;
   proposal_tally_results_aggregate?: InputMaybe<Proposal_Tally_Result_Aggregate_Order_By>;
-  proposal_type?: InputMaybe<Order_By>;
   proposal_votes_aggregate?: InputMaybe<Proposal_Vote_Aggregate_Order_By>;
   proposer?: InputMaybe<Account_Order_By>;
   proposer_address?: InputMaybe<Order_By>;
@@ -2489,9 +2520,7 @@ export enum Proposal_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  ProposalRoute = 'proposal_route',
-  /** column name */
-  ProposalType = 'proposal_type',
+  Metadata = 'metadata',
   /** column name */
   ProposerAddress = 'proposer_address',
   /** column name */
@@ -2613,8 +2642,7 @@ export type Proposal_Stream_Cursor_Value_Input = {
   deposit_end_time?: InputMaybe<Scalars['timestamp']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
-  proposal_route?: InputMaybe<Scalars['String']>;
-  proposal_type?: InputMaybe<Scalars['String']>;
+  metadata?: InputMaybe<Scalars['String']>;
   proposer_address?: InputMaybe<Scalars['String']>;
   status?: InputMaybe<Scalars['String']>;
   submit_time?: InputMaybe<Scalars['timestamp']>;
@@ -3001,6 +3029,7 @@ export type Proposal_Vote = {
   proposal_id: Scalars['Int'];
   timestamp?: Maybe<Scalars['timestamp']>;
   voter_address: Scalars['String'];
+  weight: Scalars['String'];
 };
 
 /** order by aggregate values of table "proposal_vote" */
@@ -3037,6 +3066,7 @@ export type Proposal_Vote_Bool_Exp = {
   proposal_id?: InputMaybe<Int_Comparison_Exp>;
   timestamp?: InputMaybe<Timestamp_Comparison_Exp>;
   voter_address?: InputMaybe<String_Comparison_Exp>;
+  weight?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** order by max() on columns of table "proposal_vote" */
@@ -3046,6 +3076,7 @@ export type Proposal_Vote_Max_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** order by min() on columns of table "proposal_vote" */
@@ -3055,6 +3086,7 @@ export type Proposal_Vote_Min_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "proposal_vote". */
@@ -3067,6 +3099,7 @@ export type Proposal_Vote_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "proposal_vote" */
@@ -3080,7 +3113,9 @@ export enum Proposal_Vote_Select_Column {
   /** column name */
   Timestamp = 'timestamp',
   /** column name */
-  VoterAddress = 'voter_address'
+  VoterAddress = 'voter_address',
+  /** column name */
+  Weight = 'weight'
 }
 
 /** order by stddev() on columns of table "proposal_vote" */
@@ -3116,6 +3151,7 @@ export type Proposal_Vote_Stream_Cursor_Value_Input = {
   proposal_id?: InputMaybe<Scalars['Int']>;
   timestamp?: InputMaybe<Scalars['timestamp']>;
   voter_address?: InputMaybe<Scalars['String']>;
+  weight?: InputMaybe<Scalars['String']>;
 };
 
 /** order by sum() on columns of table "proposal_vote" */
@@ -3194,8 +3230,12 @@ export type Query_Root = {
   inflation: Array<Inflation>;
   /** fetch data from the table: "message" */
   message: Array<Message>;
+  /** fetch data from the table: "message_type" */
+  message_type: Array<Message_Type>;
   /** execute function "messages_by_address" which returns "message" */
   messages_by_address: Array<Message>;
+  /** execute function "messages_by_type" which returns "message" */
+  messages_by_type: Array<Message>;
   /** fetch data from the table: "mint_params" */
   mint_params: Array<Mint_Params>;
   /** fetch data from the table: "modules" */
@@ -3544,8 +3584,27 @@ export type Query_RootMessageArgs = {
 };
 
 
+export type Query_RootMessage_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Message_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Message_Type_Order_By>>;
+  where?: InputMaybe<Message_Type_Bool_Exp>;
+};
+
+
 export type Query_RootMessages_By_AddressArgs = {
   args: Messages_By_Address_Args;
+  distinct_on?: InputMaybe<Array<Message_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Message_Order_By>>;
+  where?: InputMaybe<Message_Bool_Exp>;
+};
+
+
+export type Query_RootMessages_By_TypeArgs = {
+  args: Messages_By_Type_Args;
   distinct_on?: InputMaybe<Array<Message_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -4472,8 +4531,14 @@ export type Subscription_Root = {
   message: Array<Message>;
   /** fetch data from the table in a streaming manner: "message" */
   message_stream: Array<Message>;
+  /** fetch data from the table: "message_type" */
+  message_type: Array<Message_Type>;
+  /** fetch data from the table in a streaming manner: "message_type" */
+  message_type_stream: Array<Message_Type>;
   /** execute function "messages_by_address" which returns "message" */
   messages_by_address: Array<Message>;
+  /** execute function "messages_by_type" which returns "message" */
+  messages_by_type: Array<Message>;
   /** fetch data from the table: "mint_params" */
   mint_params: Array<Mint_Params>;
   /** fetch data from the table in a streaming manner: "mint_params" */
@@ -4910,8 +4975,34 @@ export type Subscription_RootMessage_StreamArgs = {
 };
 
 
+export type Subscription_RootMessage_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Message_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Message_Type_Order_By>>;
+  where?: InputMaybe<Message_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootMessage_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Message_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Message_Type_Bool_Exp>;
+};
+
+
 export type Subscription_RootMessages_By_AddressArgs = {
   args: Messages_By_Address_Args;
+  distinct_on?: InputMaybe<Array<Message_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Message_Order_By>>;
+  where?: InputMaybe<Message_Bool_Exp>;
+};
+
+
+export type Subscription_RootMessages_By_TypeArgs = {
+  args: Messages_By_Type_Args;
   distinct_on?: InputMaybe<Array<Message_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -6111,7 +6202,6 @@ export type Top_Accounts = {
   available?: Maybe<Scalars['bigint']>;
   delegation?: Maybe<Scalars['bigint']>;
   height: Scalars['bigint'];
-  redelegation?: Maybe<Scalars['bigint']>;
   reward?: Maybe<Scalars['bigint']>;
   sum: Scalars['bigint'];
   type?: Maybe<Scalars['String']>;
@@ -6128,7 +6218,6 @@ export type Top_Accounts_Bool_Exp = {
   available?: InputMaybe<Bigint_Comparison_Exp>;
   delegation?: InputMaybe<Bigint_Comparison_Exp>;
   height?: InputMaybe<Bigint_Comparison_Exp>;
-  redelegation?: InputMaybe<Bigint_Comparison_Exp>;
   reward?: InputMaybe<Bigint_Comparison_Exp>;
   sum?: InputMaybe<Bigint_Comparison_Exp>;
   type?: InputMaybe<String_Comparison_Exp>;
@@ -6142,7 +6231,6 @@ export type Top_Accounts_Order_By = {
   available?: InputMaybe<Order_By>;
   delegation?: InputMaybe<Order_By>;
   height?: InputMaybe<Order_By>;
-  redelegation?: InputMaybe<Order_By>;
   reward?: InputMaybe<Order_By>;
   sum?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -6204,8 +6292,6 @@ export enum Top_Accounts_Select_Column {
   /** column name */
   Height = 'height',
   /** column name */
-  Redelegation = 'redelegation',
-  /** column name */
   Reward = 'reward',
   /** column name */
   Sum = 'sum',
@@ -6229,7 +6315,6 @@ export type Top_Accounts_Stream_Cursor_Value_Input = {
   available?: InputMaybe<Scalars['bigint']>;
   delegation?: InputMaybe<Scalars['bigint']>;
   height?: InputMaybe<Scalars['bigint']>;
-  redelegation?: InputMaybe<Scalars['bigint']>;
   reward?: InputMaybe<Scalars['bigint']>;
   sum?: InputMaybe<Scalars['bigint']>;
   type?: InputMaybe<Scalars['String']>;
@@ -8142,6 +8227,36 @@ export type MarketDataQueryVariables = Exact<{
 
 export type MarketDataQuery = { communityPool: Array<{ __typename?: 'community_pool', coins: any }>, inflation: Array<{ __typename?: 'inflation', value: any }>, tokenPrice: Array<{ __typename?: 'token_price', price: any, marketCap: any }>, supply: Array<{ __typename?: 'supply', coins: any }>, bondedTokens: Array<{ __typename?: 'staking_pool', bonded_tokens: string }>, distributionParams: Array<{ __typename?: 'distribution_params', params: any }> };
 
+export type MessageTypesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MessageTypesQuery = { msgTypes: Array<{ __typename?: 'message_type', type: string, module: string, label: string }> };
+
+export type MsgTypesByAddressQueryVariables = Exact<{
+  addresses?: InputMaybe<Scalars['_text']>;
+}>;
+
+
+export type MsgTypesByAddressQuery = { msgTypes: Array<{ __typename?: 'message', type: string, value: any, involved_accounts_addresses: any }> };
+
+export type MessagesByTypesListenerSubscriptionVariables = Exact<{
+  types?: InputMaybe<Scalars['_text']>;
+  limit?: InputMaybe<Scalars['bigint']>;
+  offset?: InputMaybe<Scalars['bigint']>;
+}>;
+
+
+export type MessagesByTypesListenerSubscription = { messagesByTypes: Array<{ __typename?: 'message', transaction?: { __typename?: 'transaction', height: any, hash: string, success: boolean, messages: any, logs?: any | null, block: { __typename?: 'block', height: any, timestamp: any } } | null }> };
+
+export type MessagesByTypesQueryVariables = Exact<{
+  types?: InputMaybe<Scalars['_text']>;
+  limit?: InputMaybe<Scalars['bigint']>;
+  offset?: InputMaybe<Scalars['bigint']>;
+}>;
+
+
+export type MessagesByTypesQuery = { messagesByTypes: Array<{ __typename?: 'message', transaction?: { __typename?: 'transaction', height: any, hash: string, success: boolean, messages: any, logs?: any | null, block: { __typename?: 'block', height: any, timestamp: any } } | null }> };
+
 export type GetMessagesByAddressQueryVariables = Exact<{
   address?: InputMaybe<Scalars['_text']>;
   limit?: InputMaybe<Scalars['bigint']>;
@@ -8160,21 +8275,21 @@ export type OnlineVotingPowerQuery = { activeTotal: { __typename?: 'validator_st
 export type ParamsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ParamsQuery = { stakingParams: Array<{ __typename?: 'staking_params', params: any }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }>, mintParams: Array<{ __typename?: 'mint_params', params: any }>, distributionParams: Array<{ __typename?: 'distribution_params', params: any }>, govParams: Array<{ __typename?: 'gov_params', depositParams: any, tallyParams: any, votingParams: any }> };
+export type ParamsQuery = { stakingParams: Array<{ __typename?: 'staking_params', params: any }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }>, mintParams: Array<{ __typename?: 'mint_params', params: any }>, distributionParams: Array<{ __typename?: 'distribution_params', params: any }>, govParams: Array<{ __typename?: 'gov_params', params: any }> };
 
 export type ProposalDetailsQueryVariables = Exact<{
   proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsQuery = { proposal: Array<{ __typename?: 'proposal', title: string, description: string, status?: string | null, content: any, proposer: string, proposalId: number, submitTime: any, proposalType: string, depositEndTime?: any | null, votingStartTime?: any | null, votingEndTime?: any | null }> };
+export type ProposalDetailsQuery = { proposal: Array<{ __typename?: 'proposal', title: string, description: string, status?: string | null, content: any, proposer: string, proposalId: number, submitTime: any, depositEndTime?: any | null, votingStartTime?: any | null, votingEndTime?: any | null }> };
 
 export type ProposalDetailsTallyQueryVariables = Exact<{
   proposalId?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type ProposalDetailsTallyQuery = { proposalTallyResult: Array<{ __typename?: 'proposal_tally_result', yes: string, no: string, abstain: string, noWithVeto: string }>, stakingPool: Array<{ __typename?: 'proposal_staking_pool_snapshot', bondedTokens: string }>, quorum: Array<{ __typename?: 'gov_params', tallyParams: any }> };
+export type ProposalDetailsTallyQuery = { proposalTallyResult: Array<{ __typename?: 'proposal_tally_result', yes: string, no: string, abstain: string, noWithVeto: string }>, stakingPool: Array<{ __typename?: 'proposal_staking_pool_snapshot', bondedTokens: string }> };
 
 export type ProposalDetailsDepositsQueryVariables = Exact<{
   proposalId?: InputMaybe<Scalars['Int']>;
@@ -8224,7 +8339,7 @@ export type TopAccountsQueryVariables = Exact<{
 }>;
 
 
-export type TopAccountsQuery = { top_accounts: Array<{ __typename?: 'top_accounts', address: string, available?: any | null, delegation?: any | null, redelegation?: any | null, unbonding?: any | null, reward?: any | null, sum: any, type?: string | null }> };
+export type TopAccountsQuery = { top_accounts: Array<{ __typename?: 'top_accounts', address: string, available?: any | null, delegation?: any | null, unbonding?: any | null, reward?: any | null, sum: any, type?: string | null }> };
 
 export type TopAccountsParamsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -8268,12 +8383,54 @@ export type ValidatorLastSeenListenerSubscriptionVariables = Exact<{
 
 export type ValidatorLastSeenListenerSubscription = { preCommit: Array<{ __typename?: 'pre_commit', height: any, timestamp: any }> };
 
-export type ValidatorDetailsQueryVariables = Exact<{
+export type ValidatorDescriptionQueryVariables = Exact<{
   address?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ValidatorDetailsQuery = { stakingPool: Array<{ __typename?: 'staking_pool', height: any, bonded: string }>, validator: Array<{ __typename?: 'validator', validatorDescriptions: Array<{ __typename?: 'validator_description', details?: string | null, website?: string | null }>, validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }>, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, maxRate: string } | null, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }>, validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', height: any, votingPower: string }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
+export type ValidatorDescriptionQuery = { validator: Array<{ __typename?: 'validator', validatorDescriptions: Array<{ __typename?: 'validator_description', details?: string | null, website?: string | null }> }> };
+
+export type ValidatorStatusesQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorStatusesQuery = { validator: Array<{ __typename?: 'validator', validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
+
+export type ValidatorSigningInfosQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorSigningInfosQuery = { validator: Array<{ __typename?: 'validator', validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }> }> };
+
+export type ValidatorInfoQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorInfoQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, maxRate: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', details?: string | null, website?: string | null }>, validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }>, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
+
+export type ValidatorCommissionQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorCommissionQuery = { validator: Array<{ __typename?: 'validator', validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }> }> };
+
+export type ValidatorVotingPowersQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorVotingPowersQuery = { validator: Array<{ __typename?: 'validator', validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', height: any, votingPower: string }>, validatorStatuses: Array<{ __typename?: 'validator_status', status: number }> }>, stakingPool: Array<{ __typename?: 'staking_pool', height: any, bonded: string }> };
+
+export type ValidatorAddressQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ValidatorAddressQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null } | null }> };
 
 export type ValidatorDelegationsQueryVariables = Exact<{
   validatorAddress: Scalars['String'];
@@ -8309,11 +8466,6 @@ export type ValidatorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ValidatorsQuery = { stakingPool: Array<{ __typename?: 'staking_pool', bondedTokens: string }>, validator: Array<{ __typename?: 'validator', validatorStatuses: Array<{ __typename?: 'validator_status', status: number, jailed: boolean, height: any }>, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null } | null, validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', votingPower: string }>, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
-
-export type ValidatorsAddressListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ValidatorsAddressListQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, consensusAddress: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, identity?: string | null, avatarUrl?: string | null }> }> };
 
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -9056,6 +9208,172 @@ export function useMarketDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type MarketDataQueryHookResult = ReturnType<typeof useMarketDataQuery>;
 export type MarketDataLazyQueryHookResult = ReturnType<typeof useMarketDataLazyQuery>;
 export type MarketDataQueryResult = Apollo.QueryResult<MarketDataQuery, MarketDataQueryVariables>;
+export const MessageTypesDocument = gql`
+    query MessageTypes {
+  msgTypes: message_type {
+    type
+    module
+    label
+  }
+}
+    `;
+
+/**
+ * __useMessageTypesQuery__
+ *
+ * To run a query within a React component, call `useMessageTypesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMessageTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMessageTypesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMessageTypesQuery(baseOptions?: Apollo.QueryHookOptions<MessageTypesQuery, MessageTypesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MessageTypesQuery, MessageTypesQueryVariables>(MessageTypesDocument, options);
+      }
+export function useMessageTypesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MessageTypesQuery, MessageTypesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MessageTypesQuery, MessageTypesQueryVariables>(MessageTypesDocument, options);
+        }
+export type MessageTypesQueryHookResult = ReturnType<typeof useMessageTypesQuery>;
+export type MessageTypesLazyQueryHookResult = ReturnType<typeof useMessageTypesLazyQuery>;
+export type MessageTypesQueryResult = Apollo.QueryResult<MessageTypesQuery, MessageTypesQueryVariables>;
+export const MsgTypesByAddressDocument = gql`
+    query MsgTypesByAddress($addresses: _text = "{}") {
+  msgTypes: messages_by_address(args: {addresses: $addresses}) {
+    type
+    value
+    involved_accounts_addresses
+  }
+}
+    `;
+
+/**
+ * __useMsgTypesByAddressQuery__
+ *
+ * To run a query within a React component, call `useMsgTypesByAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMsgTypesByAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMsgTypesByAddressQuery({
+ *   variables: {
+ *      addresses: // value for 'addresses'
+ *   },
+ * });
+ */
+export function useMsgTypesByAddressQuery(baseOptions?: Apollo.QueryHookOptions<MsgTypesByAddressQuery, MsgTypesByAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MsgTypesByAddressQuery, MsgTypesByAddressQueryVariables>(MsgTypesByAddressDocument, options);
+      }
+export function useMsgTypesByAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MsgTypesByAddressQuery, MsgTypesByAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MsgTypesByAddressQuery, MsgTypesByAddressQueryVariables>(MsgTypesByAddressDocument, options);
+        }
+export type MsgTypesByAddressQueryHookResult = ReturnType<typeof useMsgTypesByAddressQuery>;
+export type MsgTypesByAddressLazyQueryHookResult = ReturnType<typeof useMsgTypesByAddressLazyQuery>;
+export type MsgTypesByAddressQueryResult = Apollo.QueryResult<MsgTypesByAddressQuery, MsgTypesByAddressQueryVariables>;
+export const MessagesByTypesListenerDocument = gql`
+    subscription MessagesByTypesListener($types: _text = "{}", $limit: bigint = 7, $offset: bigint = 0) {
+  messagesByTypes: messages_by_type(
+    args: {types: $types, limit: $limit, offset: $offset}
+  ) {
+    transaction {
+      height
+      hash
+      success
+      messages
+      logs
+      block {
+        height
+        timestamp
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useMessagesByTypesListenerSubscription__
+ *
+ * To run a query within a React component, call `useMessagesByTypesListenerSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useMessagesByTypesListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMessagesByTypesListenerSubscription({
+ *   variables: {
+ *      types: // value for 'types'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useMessagesByTypesListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<MessagesByTypesListenerSubscription, MessagesByTypesListenerSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<MessagesByTypesListenerSubscription, MessagesByTypesListenerSubscriptionVariables>(MessagesByTypesListenerDocument, options);
+      }
+export type MessagesByTypesListenerSubscriptionHookResult = ReturnType<typeof useMessagesByTypesListenerSubscription>;
+export type MessagesByTypesListenerSubscriptionResult = Apollo.SubscriptionResult<MessagesByTypesListenerSubscription>;
+export const MessagesByTypesDocument = gql`
+    query MessagesByTypes($types: _text = "{}", $limit: bigint = 7, $offset: bigint = 0) {
+  messagesByTypes: messages_by_type(
+    args: {types: $types, limit: $limit, offset: $offset}
+  ) {
+    transaction {
+      height
+      hash
+      success
+      messages
+      logs
+      block {
+        height
+        timestamp
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useMessagesByTypesQuery__
+ *
+ * To run a query within a React component, call `useMessagesByTypesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMessagesByTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMessagesByTypesQuery({
+ *   variables: {
+ *      types: // value for 'types'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useMessagesByTypesQuery(baseOptions?: Apollo.QueryHookOptions<MessagesByTypesQuery, MessagesByTypesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MessagesByTypesQuery, MessagesByTypesQueryVariables>(MessagesByTypesDocument, options);
+      }
+export function useMessagesByTypesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MessagesByTypesQuery, MessagesByTypesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MessagesByTypesQuery, MessagesByTypesQueryVariables>(MessagesByTypesDocument, options);
+        }
+export type MessagesByTypesQueryHookResult = ReturnType<typeof useMessagesByTypesQuery>;
+export type MessagesByTypesLazyQueryHookResult = ReturnType<typeof useMessagesByTypesLazyQuery>;
+export type MessagesByTypesQueryResult = Apollo.QueryResult<MessagesByTypesQuery, MessagesByTypesQueryVariables>;
 export const GetMessagesByAddressDocument = gql`
     query GetMessagesByAddress($address: _text, $limit: bigint = 50, $offset: bigint = 0, $types: _text = "{}") {
   messagesByAddress: messages_by_address(
@@ -9163,9 +9481,7 @@ export const ParamsDocument = gql`
     params
   }
   govParams: gov_params(limit: 1, order_by: {height: desc}) {
-    depositParams: deposit_params
-    tallyParams: tally_params
-    votingParams: voting_params
+    params
   }
 }
     `;
@@ -9206,7 +9522,6 @@ export const ProposalDetailsDocument = gql`
     content
     proposalId: id
     submitTime: submit_time
-    proposalType: proposal_type
     depositEndTime: deposit_end_time
     votingStartTime: voting_start_time
     votingEndTime: voting_end_time
@@ -9255,9 +9570,6 @@ export const ProposalDetailsTallyDocument = gql`
     where: {proposal_id: {_eq: $proposalId}}
   ) {
     bondedTokens: bonded_tokens
-  }
-  quorum: gov_params(limit: 1, order_by: {height: desc}) {
-    tallyParams: tally_params
   }
 }
     `;
@@ -9545,7 +9857,6 @@ export const TopAccountsDocument = gql`
     address
     available
     delegation
-    redelegation
     unbonding
     reward
     sum
@@ -9830,13 +10141,138 @@ export function useValidatorLastSeenListenerSubscription(baseOptions?: Apollo.Su
       }
 export type ValidatorLastSeenListenerSubscriptionHookResult = ReturnType<typeof useValidatorLastSeenListenerSubscription>;
 export type ValidatorLastSeenListenerSubscriptionResult = Apollo.SubscriptionResult<ValidatorLastSeenListenerSubscription>;
-export const ValidatorDetailsDocument = gql`
-    query ValidatorDetails($address: String) {
-  stakingPool: staking_pool(order_by: {height: desc}, limit: 1, offset: 0) {
-    height
-    bonded: bonded_tokens
-  }
+export const ValidatorDescriptionDocument = gql`
+    query ValidatorDescription($address: String) {
   validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorDescriptions: validator_descriptions(
+      order_by: {height: desc}
+      limit: 1
+    ) {
+      details
+      website
+    }
+  }
+}
+    `;
+
+/**
+ * __useValidatorDescriptionQuery__
+ *
+ * To run a query within a React component, call `useValidatorDescriptionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorDescriptionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorDescriptionQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorDescriptionQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorDescriptionQuery, ValidatorDescriptionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorDescriptionQuery, ValidatorDescriptionQueryVariables>(ValidatorDescriptionDocument, options);
+      }
+export function useValidatorDescriptionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorDescriptionQuery, ValidatorDescriptionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorDescriptionQuery, ValidatorDescriptionQueryVariables>(ValidatorDescriptionDocument, options);
+        }
+export type ValidatorDescriptionQueryHookResult = ReturnType<typeof useValidatorDescriptionQuery>;
+export type ValidatorDescriptionLazyQueryHookResult = ReturnType<typeof useValidatorDescriptionLazyQuery>;
+export type ValidatorDescriptionQueryResult = Apollo.QueryResult<ValidatorDescriptionQuery, ValidatorDescriptionQueryVariables>;
+export const ValidatorStatusesDocument = gql`
+    query ValidatorStatuses($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
+      status
+      jailed
+      height
+    }
+  }
+  slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
+    params
+  }
+}
+    `;
+
+/**
+ * __useValidatorStatusesQuery__
+ *
+ * To run a query within a React component, call `useValidatorStatusesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorStatusesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorStatusesQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorStatusesQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorStatusesQuery, ValidatorStatusesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorStatusesQuery, ValidatorStatusesQueryVariables>(ValidatorStatusesDocument, options);
+      }
+export function useValidatorStatusesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorStatusesQuery, ValidatorStatusesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorStatusesQuery, ValidatorStatusesQueryVariables>(ValidatorStatusesDocument, options);
+        }
+export type ValidatorStatusesQueryHookResult = ReturnType<typeof useValidatorStatusesQuery>;
+export type ValidatorStatusesLazyQueryHookResult = ReturnType<typeof useValidatorStatusesLazyQuery>;
+export type ValidatorStatusesQueryResult = Apollo.QueryResult<ValidatorStatusesQuery, ValidatorStatusesQueryVariables>;
+export const ValidatorSigningInfosDocument = gql`
+    query ValidatorSigningInfos($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorSigningInfos: validator_signing_infos(
+      order_by: {height: desc}
+      limit: 1
+    ) {
+      missedBlocksCounter: missed_blocks_counter
+      tombstoned
+    }
+  }
+}
+    `;
+
+/**
+ * __useValidatorSigningInfosQuery__
+ *
+ * To run a query within a React component, call `useValidatorSigningInfosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorSigningInfosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorSigningInfosQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorSigningInfosQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>(ValidatorSigningInfosDocument, options);
+      }
+export function useValidatorSigningInfosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>(ValidatorSigningInfosDocument, options);
+        }
+export type ValidatorSigningInfosQueryHookResult = ReturnType<typeof useValidatorSigningInfosQuery>;
+export type ValidatorSigningInfosLazyQueryHookResult = ReturnType<typeof useValidatorSigningInfosLazyQuery>;
+export type ValidatorSigningInfosQueryResult = Apollo.QueryResult<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>;
+export const ValidatorInfoDocument = gql`
+    query ValidatorInfo($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorInfo: validator_info {
+      operatorAddress: operator_address
+      selfDelegateAddress: self_delegate_address
+      maxRate: max_rate
+    }
     validatorDescriptions: validator_descriptions(
       order_by: {height: desc}
       limit: 1
@@ -9856,21 +10292,8 @@ export const ValidatorDetailsDocument = gql`
       missedBlocksCounter: missed_blocks_counter
       tombstoned
     }
-    validatorInfo: validator_info {
-      operatorAddress: operator_address
-      selfDelegateAddress: self_delegate_address
-      maxRate: max_rate
-    }
     validatorCommissions: validator_commissions(order_by: {height: desc}, limit: 1) {
       commission
-    }
-    validatorVotingPowers: validator_voting_powers(
-      offset: 0
-      limit: 1
-      order_by: {height: desc}
-    ) {
-      height
-      votingPower: voting_power
     }
   }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
@@ -9880,32 +10303,156 @@ export const ValidatorDetailsDocument = gql`
     `;
 
 /**
- * __useValidatorDetailsQuery__
+ * __useValidatorInfoQuery__
  *
- * To run a query within a React component, call `useValidatorDetailsQuery` and pass it any options that fit your needs.
- * When your component renders, `useValidatorDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useValidatorInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useValidatorDetailsQuery({
+ * const { data, loading, error } = useValidatorInfoQuery({
  *   variables: {
  *      address: // value for 'address'
  *   },
  * });
  */
-export function useValidatorDetailsQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorDetailsQuery, ValidatorDetailsQueryVariables>) {
+export function useValidatorInfoQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorInfoQuery, ValidatorInfoQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ValidatorDetailsQuery, ValidatorDetailsQueryVariables>(ValidatorDetailsDocument, options);
+        return Apollo.useQuery<ValidatorInfoQuery, ValidatorInfoQueryVariables>(ValidatorInfoDocument, options);
       }
-export function useValidatorDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorDetailsQuery, ValidatorDetailsQueryVariables>) {
+export function useValidatorInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorInfoQuery, ValidatorInfoQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ValidatorDetailsQuery, ValidatorDetailsQueryVariables>(ValidatorDetailsDocument, options);
+          return Apollo.useLazyQuery<ValidatorInfoQuery, ValidatorInfoQueryVariables>(ValidatorInfoDocument, options);
         }
-export type ValidatorDetailsQueryHookResult = ReturnType<typeof useValidatorDetailsQuery>;
-export type ValidatorDetailsLazyQueryHookResult = ReturnType<typeof useValidatorDetailsLazyQuery>;
-export type ValidatorDetailsQueryResult = Apollo.QueryResult<ValidatorDetailsQuery, ValidatorDetailsQueryVariables>;
+export type ValidatorInfoQueryHookResult = ReturnType<typeof useValidatorInfoQuery>;
+export type ValidatorInfoLazyQueryHookResult = ReturnType<typeof useValidatorInfoLazyQuery>;
+export type ValidatorInfoQueryResult = Apollo.QueryResult<ValidatorInfoQuery, ValidatorInfoQueryVariables>;
+export const ValidatorCommissionDocument = gql`
+    query ValidatorCommission($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorCommissions: validator_commissions(order_by: {height: desc}, limit: 1) {
+      commission
+    }
+  }
+}
+    `;
+
+/**
+ * __useValidatorCommissionQuery__
+ *
+ * To run a query within a React component, call `useValidatorCommissionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorCommissionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorCommissionQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorCommissionQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>(ValidatorCommissionDocument, options);
+      }
+export function useValidatorCommissionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>(ValidatorCommissionDocument, options);
+        }
+export type ValidatorCommissionQueryHookResult = ReturnType<typeof useValidatorCommissionQuery>;
+export type ValidatorCommissionLazyQueryHookResult = ReturnType<typeof useValidatorCommissionLazyQuery>;
+export type ValidatorCommissionQueryResult = Apollo.QueryResult<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>;
+export const ValidatorVotingPowersDocument = gql`
+    query ValidatorVotingPowers($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorVotingPowers: validator_voting_powers(
+      offset: 0
+      limit: 1
+      order_by: {height: desc}
+    ) {
+      height
+      votingPower: voting_power
+    }
+    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
+      status
+    }
+  }
+  stakingPool: staking_pool(order_by: {height: desc}, limit: 1, offset: 0) {
+    height
+    bonded: bonded_tokens
+  }
+}
+    `;
+
+/**
+ * __useValidatorVotingPowersQuery__
+ *
+ * To run a query within a React component, call `useValidatorVotingPowersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorVotingPowersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorVotingPowersQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorVotingPowersQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorVotingPowersQuery, ValidatorVotingPowersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorVotingPowersQuery, ValidatorVotingPowersQueryVariables>(ValidatorVotingPowersDocument, options);
+      }
+export function useValidatorVotingPowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorVotingPowersQuery, ValidatorVotingPowersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorVotingPowersQuery, ValidatorVotingPowersQueryVariables>(ValidatorVotingPowersDocument, options);
+        }
+export type ValidatorVotingPowersQueryHookResult = ReturnType<typeof useValidatorVotingPowersQuery>;
+export type ValidatorVotingPowersLazyQueryHookResult = ReturnType<typeof useValidatorVotingPowersLazyQuery>;
+export type ValidatorVotingPowersQueryResult = Apollo.QueryResult<ValidatorVotingPowersQuery, ValidatorVotingPowersQueryVariables>;
+export const ValidatorAddressDocument = gql`
+    query ValidatorAddress($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+    validatorInfo: validator_info {
+      operatorAddress: operator_address
+      selfDelegateAddress: self_delegate_address
+    }
+  }
+}
+    `;
+
+/**
+ * __useValidatorAddressQuery__
+ *
+ * To run a query within a React component, call `useValidatorAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useValidatorAddressQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorAddressQuery, ValidatorAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorAddressQuery, ValidatorAddressQueryVariables>(ValidatorAddressDocument, options);
+      }
+export function useValidatorAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorAddressQuery, ValidatorAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorAddressQuery, ValidatorAddressQueryVariables>(ValidatorAddressDocument, options);
+        }
+export type ValidatorAddressQueryHookResult = ReturnType<typeof useValidatorAddressQuery>;
+export type ValidatorAddressLazyQueryHookResult = ReturnType<typeof useValidatorAddressLazyQuery>;
+export type ValidatorAddressQueryResult = Apollo.QueryResult<ValidatorAddressQuery, ValidatorAddressQueryVariables>;
 export const ValidatorDelegationsDocument = gql`
     query ValidatorDelegations($validatorAddress: String!, $offset: Int = 0, $limit: Int = 10, $pagination: Boolean! = true) {
   delegations: action_validator_delegations(
@@ -10109,52 +10656,6 @@ export function useValidatorsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type ValidatorsQueryHookResult = ReturnType<typeof useValidatorsQuery>;
 export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQuery>;
 export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
-export const ValidatorsAddressListDocument = gql`
-    query ValidatorsAddressList {
-  validator {
-    validatorInfo: validator_info {
-      operatorAddress: operator_address
-      selfDelegateAddress: self_delegate_address
-      consensusAddress: consensus_address
-    }
-    validatorDescriptions: validator_descriptions(
-      limit: 1
-      order_by: {height: desc}
-    ) {
-      moniker
-      identity
-      avatarUrl: avatar_url
-    }
-  }
-}
-    `;
-
-/**
- * __useValidatorsAddressListQuery__
- *
- * To run a query within a React component, call `useValidatorsAddressListQuery` and pass it any options that fit your needs.
- * When your component renders, `useValidatorsAddressListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useValidatorsAddressListQuery({
- *   variables: {
- *   },
- * });
- */
-export function useValidatorsAddressListQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorsAddressListQuery, ValidatorsAddressListQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ValidatorsAddressListQuery, ValidatorsAddressListQueryVariables>(ValidatorsAddressListDocument, options);
-      }
-export function useValidatorsAddressListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorsAddressListQuery, ValidatorsAddressListQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ValidatorsAddressListQuery, ValidatorsAddressListQueryVariables>(ValidatorsAddressListDocument, options);
-        }
-export type ValidatorsAddressListQueryHookResult = ReturnType<typeof useValidatorsAddressListQuery>;
-export type ValidatorsAddressListLazyQueryHookResult = ReturnType<typeof useValidatorsAddressListLazyQuery>;
-export type ValidatorsAddressListQueryResult = Apollo.QueryResult<ValidatorsAddressListQuery, ValidatorsAddressListQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
   validator(

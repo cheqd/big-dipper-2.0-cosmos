@@ -10,13 +10,14 @@ import { getMiddleEllipsis } from '@/utils/get_middle_ellipsis';
 import { BLOCK_DETAILS } from '@/utils/go_to_page';
 import { mergeRefs } from '@/utils/merge_refs';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import Link from 'next/link';
 import numeral from 'numeral';
 import { ComponentProps, CSSProperties, FC, LegacyRef, ReactNode } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
+import { resolveProfile } from '@/screens/blocks/utils';
 
 type BlockItemProps = {
   item: ItemType;
@@ -27,7 +28,8 @@ type BlockItemProps = {
 };
 
 const BlockItem: FC<BlockItemProps> = ({ item, rowIndex, column, style, align }) => {
-  const { name, address, imageUrl } = useProfileRecoil(item.proposer);
+  const profile = useProfileRecoil(item.proposer);
+  const { address, imageUrl, name } = resolveProfile(item, profile);
   const { classes, cx } = useStyles();
   let formattedItem: ReactNode | null = null;
   switch (column) {
@@ -85,7 +87,7 @@ const Desktop: FC<DesktopProps> = ({
   loadMoreItems,
   isItemLoaded,
 }) => {
-  const { t } = useTranslation('blocks');
+  const { t } = useAppTranslation('blocks');
   const { classes, cx } = useStyles();
   const { gridRef, columnRef, onResize, getColumnWidth, getRowHeight } = useGrid(columns);
 

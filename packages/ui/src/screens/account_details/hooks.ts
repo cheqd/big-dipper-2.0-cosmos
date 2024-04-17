@@ -5,9 +5,12 @@ import { useCallback, useEffect, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import { useDesmosProfile } from '@/hooks/use_desmos_profile';
 import type {
-  AccountDetailState,
   BalanceType,
   OtherTokenType,
+  AccountWithdrawalAddressState,
+  AccountDesmosProfileState,
+  AccountBalanceState,
+  AccountRewardsState,
 } from '@/screens/account_details/types';
 import {
   useAccountWithdrawalAddress,
@@ -29,14 +32,9 @@ const defaultTokenUnit: TokenUnit = {
   exponent: 0,
 };
 
-const initialState: AccountDetailState = {
+const balanceInitialState: AccountBalanceState = {
   loading: true,
   exists: true,
-  desmosProfile: null,
-  overview: {
-    address: '',
-    withdrawalAddress: '',
-  },
   otherTokens: {
     count: 0,
     data: [],
@@ -52,6 +50,25 @@ const initialState: AccountDetailState = {
   rewards: {},
 };
 
+const desmosProfileInitialState: AccountDesmosProfileState = {
+  loading: true,
+  exists: true,
+  desmosProfile: null,
+};
+
+const withdrawalAddrInitialState: AccountWithdrawalAddressState = {
+  loading: true,
+  overview: {
+    address: '',
+    withdrawalAddress: '',
+  },
+};
+
+const rewardsInitialState: AccountRewardsState = {
+  loading: true,
+  rewards: {},
+};
+
 type Data = {
   delegationRewards?: ReturnType<typeof useRewards>['delegationRewards'];
   accountBalances?: ReturnType<typeof useAvailableBalances>['accountBalances'];
@@ -60,10 +77,14 @@ type Data = {
   commission?: ReturnType<typeof useCommission>['commission'];
 };
 
+type RewardsData = {
+  delegationRewards?: ReturnType<typeof useRewards>['delegationRewards'];
+};
+
 // ============================
-// rewards
+// Format rewards
 // ============================
-const formatRewards = (data: Data) => {
+const formatRewards = (data: Data | RewardsData) => {
   const rewardsDict: { [key: string]: TokenUnit } = {};
   // log all the rewards
   data?.delegationRewards?.forEach((x) => {
@@ -77,7 +98,7 @@ const formatRewards = (data: Data) => {
 };
 
 // ============================
-// balance
+// Format balance
 // ============================
 const formatBalance = (data: Data): BalanceType => {
   const available = getDenom(R.pathOr([], ['accountBalances', 'coins'], data), primaryTokenUnit);
@@ -99,7 +120,7 @@ const formatBalance = (data: Data): BalanceType => {
   const rewardsAmount = formatToken(rewards, primaryTokenUnit);
 
   const commission = getDenom(
-    R.pathOr<NonNullable<NonNullable<typeof data['commission']>['coins']>>(
+    R.pathOr<NonNullable<NonNullable<(typeof data)['commission']>['coins']>>(
       [],
       ['commission', 'coins'],
       data
@@ -133,7 +154,7 @@ const formatBalance = (data: Data): BalanceType => {
 };
 
 // ============================
-// other tokens
+// Format other tokens
 // ============================
 const formatOtherTokens = (data: Data) => {
   // Loop through balance and delegation to figure out what the other tokens are
@@ -169,7 +190,7 @@ const formatOtherTokens = (data: Data) => {
     const availableRawAmount = getDenom(available, x);
     const availableAmount = formatToken(availableRawAmount.amount, x);
     const rewardsRawAmount = rewards.reduce((a, b) => {
-      const coins = R.pathOr<NonNullable<typeof b['coins']>>([], ['coins'], b);
+      const coins = R.pathOr<NonNullable<(typeof b)['coins']>>([], ['coins'], b);
       const denom = getDenom(coins, x);
       return Big(a).plus(denom.amount).toPrecision();
     }, '0');
@@ -192,10 +213,10 @@ const formatOtherTokens = (data: Data) => {
 };
 
 // ==========================
-// Format Data
+// Format Balance Data
 // ==========================
 const formatAllBalance = (data: Data) => {
-  const stateChange: Partial<AccountDetailState> = {
+  const stateChange: Partial<AccountBalanceState> = {
     loading: false,
   };
 
@@ -203,26 +224,15 @@ const formatAllBalance = (data: Data) => {
 
   stateChange.balance = formatBalance(data);
 
-  formatOtherTokens(data);
-
   stateChange.otherTokens = formatOtherTokens(data);
 
   return stateChange;
 };
 
-export const useAccountDetails = () => {
+export const useAccountProfileDetails = () => {
   const router = useRouter();
-  const [state, setState] = useState<AccountDetailState>(initialState);
+  const [state, setState] = useState<AccountDesmosProfileState>(desmosProfileInitialState);
 
-  const handleSetState = useCallback(
-    (stateChange: (prevState: AccountDetailState) => AccountDetailState) => {
-      setState((prevState) => {
-        const newState = stateChange(prevState);
-        return R.equals(prevState, newState) ? prevState : newState;
-      });
-    },
-    []
-  );
   const address = Array.isArray(router.query.address)
     ? router.query.address[0]
     : router.query.address ?? '';
@@ -235,9 +245,34 @@ export const useAccountDetails = () => {
     skip: !extra.profile || !address,
   });
   useEffect(
-    () => setState((prevState) => ({ ...prevState, desmosProfile: dataDesmosProfile?.[0] })),
-    [dataDesmosProfile]
+    () =>
+      setState((prevState) => ({
+        ...prevState,
+        desmosProfile: dataDesmosProfile?.[0],
+        loading: loadingDesmosProfile,
+      })),
+    [dataDesmosProfile, loadingDesmosProfile]
   );
+
+  return { profileState: state };
+};
+
+export const useAccountBalance = () => {
+  const router = useRouter();
+  const [state, setState] = useState<AccountBalanceState>(balanceInitialState);
+
+  const handleSetState = useCallback(
+    (stateChange: (prevState: AccountBalanceState) => AccountBalanceState) => {
+      setState((prevState) => {
+        const newState = stateChange(prevState);
+        return R.equals(prevState, newState) ? prevState : newState;
+      });
+    },
+    []
+  );
+  const address = Array.isArray(router.query.address)
+    ? router.query.address[0]
+    : router.query.address ?? '';
 
   const commission = useCommission(address);
   const available = useAvailableBalances(address);
@@ -247,11 +282,11 @@ export const useAccountDetails = () => {
 
   useEffect(() => {
     const formattedRawData: {
-      commission?: typeof commission['commission'];
-      accountBalances?: typeof available['accountBalances'];
-      delegationBalance?: typeof delegation['delegationBalance'];
-      unbondingBalance?: typeof unbonding['unbondingBalance'];
-      delegationRewards?: typeof rewards['delegationRewards'];
+      commission?: (typeof commission)['commission'];
+      accountBalances?: (typeof available)['accountBalances'];
+      delegationBalance?: (typeof delegation)['delegationBalance'];
+      unbondingBalance?: (typeof unbonding)['unbondingBalance'];
+      delegationRewards?: (typeof rewards)['delegationRewards'];
     } = {};
     formattedRawData.commission = R.pathOr({ coins: [] }, ['commission'], commission);
     formattedRawData.accountBalances = R.pathOr({ coins: [] }, ['accountBalances'], available);
@@ -259,8 +294,36 @@ export const useAccountDetails = () => {
     formattedRawData.unbondingBalance = R.pathOr({ coins: [] }, ['unbondingBalance'], unbonding);
     formattedRawData.delegationRewards = R.pathOr([], ['delegationRewards'], rewards);
 
-    handleSetState((prevState) => ({ ...prevState, ...formatAllBalance(formattedRawData) }));
+    const formatAccountBalance = formatAllBalance(formattedRawData);
+
+    if (Object.keys(formatAccountBalance).length > 0) {
+      handleSetState((prevState) => ({
+        ...prevState,
+        ...formatAccountBalance,
+        loading: false,
+      }));
+    }
   }, [commission, available, delegation, unbonding, rewards, handleSetState]);
+
+  return { state };
+};
+
+export const useAccountWithdrawalAddr = () => {
+  const router = useRouter();
+  const [state, setState] = useState<AccountWithdrawalAddressState>(withdrawalAddrInitialState);
+
+  const handleSetState = useCallback(
+    (stateChange: (prevState: AccountWithdrawalAddressState) => AccountWithdrawalAddressState) => {
+      setState((prevState) => {
+        const newState = stateChange(prevState);
+        return R.equals(prevState, newState) ? prevState : newState;
+      });
+    },
+    []
+  );
+  const address = Array.isArray(router.query.address)
+    ? router.query.address[0]
+    : router.query.address ?? '';
 
   // ==========================
   // Fetch Data
@@ -269,6 +332,7 @@ export const useAccountDetails = () => {
   useEffect(() => {
     handleSetState((prevState) => ({
       ...prevState,
+      loading: false,
       overview: {
         address: address ?? '',
         withdrawalAddress: withdrawalAddress.withdrawalAddress?.address ?? '',
@@ -276,10 +340,43 @@ export const useAccountDetails = () => {
     }));
   }, [handleSetState, address, withdrawalAddress.withdrawalAddress?.address]);
 
-  if (loadingDesmosProfile) state.loading = true;
+  return { state };
+};
+
+export const useAccountRewards = () => {
+  const router = useRouter();
+  const [state, setState] = useState(rewardsInitialState);
+
+  const handleSetState = useCallback(
+    (stateChange: (prevState: AccountRewardsState) => AccountRewardsState) => {
+      setState((prevState) => {
+        const newState = stateChange(prevState);
+        return R.equals(prevState, newState) ? prevState : newState;
+      });
+    },
+    []
+  );
+  const address = Array.isArray(router.query.address)
+    ? router.query.address[0]
+    : router.query.address ?? '';
+
+  const rewards = useRewards(address);
+
+  useEffect(() => {
+    const formattedRawData: {
+      delegationRewards?: (typeof rewards)['delegationRewards'];
+    } = {};
+    formattedRawData.delegationRewards = R.pathOr([], ['delegationRewards'], rewards);
+    const updatedRewards = formatRewards(formattedRawData);
+
+    if (Object.keys(updatedRewards).length > 0) {
+      handleSetState((prevState) => ({
+        ...prevState,
+        rewards: updatedRewards,
+        loading: false,
+      }));
+    }
+  }, [rewards, handleSetState]);
 
   return { state };
 };
-// function useBoundingBalance(_address?: string) {
-//   throw new Error('Function not implemented.');
-// }

@@ -1,4 +1,13 @@
-import * as R from 'ramda';
+interface Params {
+  quorum: string;
+  threshold: string;
+  min_deposit: { denom: string; amount: string }[];
+  voting_period: number;
+  burn_vote_veto: boolean;
+  veto_threshold: string;
+  max_deposit_period: number;
+  min_initial_deposit_ratio: string;
+}
 
 class GovParams {
   public depositParams: {
@@ -19,55 +28,23 @@ class GovParams {
     votingPeriod: number;
   };
 
-  constructor(payload: object) {
-    this.depositParams = R.pathOr(
-      {
-        minDeposit: [],
-        maxDepositPeriod: 0,
-      },
-      ['depositParams'],
-      payload
-    );
-    this.tallyParams = R.pathOr(
-      {
-        quorum: '',
-        threshold: '',
-        vetoThreshold: '',
-      },
-      ['tallyParams'],
-      payload
-    );
-    this.votingParams = R.pathOr(
-      {
-        votingPeriod: 0,
-      },
-      ['votingParams'],
-      payload
-    );
+  constructor(payload: Params) {
+    this.depositParams = {
+      minDeposit: payload.min_deposit,
+      maxDepositPeriod: payload.max_deposit_period,
+    };
+    this.tallyParams = {
+      quorum: payload.quorum,
+      threshold: payload.threshold,
+      vetoThreshold: payload.veto_threshold,
+    };
+    this.votingParams = {
+      votingPeriod: payload.voting_period,
+    };
   }
 
-  static fromJson(data: object): GovParams {
-    return {
-      depositParams: {
-        minDeposit: R.pathOr<GovParams['depositParams']['minDeposit']>(
-          [],
-          ['depositParams', 'min_deposit'],
-          data
-        ).map((x) => ({
-          denom: x.denom,
-          amount: String(x.amount),
-        })),
-        maxDepositPeriod: R.pathOr(0, ['depositParams', 'max_deposit_period'], data),
-      },
-      tallyParams: {
-        quorum: R.pathOr('0', ['depositParams', 'quorum'], data),
-        threshold: R.pathOr('0', ['tallyParams', 'threshold'], data),
-        vetoThreshold: R.pathOr('0', ['tallyParams', 'veto_threshold'], data),
-      },
-      votingParams: {
-        votingPeriod: R.pathOr(0, ['votingParams', 'voting_period'], data),
-      },
-    };
+  static fromJson(data: any): GovParams {
+    return new GovParams(data.params); // Access 'params' object directly
   }
 }
 

@@ -1,18 +1,3 @@
-query ValidatorsAddressList {
-  validator {
-    validatorInfo: validator_info {
-      operatorAddress: operator_address
-      selfDelegateAddress: self_delegate_address
-      consensusAddress: consensus_address
-    }
-    validatorDescriptions: validator_descriptions(limit: 1, order_by: {height: desc}) {
-      moniker
-      identity
-      avatarUrl: avatar_url
-    }
-  }
-}
-
 query ValidatorAddresses {
   validator(where: {validator_info: {operator_address: {_is_null: false}, consensus_address: {_is_null: false}, self_delegate_address: {_is_null: false}}}) {
     validatorInfo: validator_info {
@@ -23,6 +8,27 @@ query ValidatorAddresses {
     validatorDescriptions: validator_descriptions(limit: 1, order_by: {height: desc}) {
       moniker
       avatarUrl: avatar_url
+    }
+  }
+}
+
+query ValidatorConsumerProviderAddresses {
+  ccv_validator(
+    where: {consumer_consensus_address: {_is_null: false}, provider_consensus_address: {_is_null: false}}
+  ) {
+    consumerOperatorAddress: consumer_operator_address
+    providerOperatorAddress: provider_operator_address
+    providerSelfDelegateAddress: provider_self_delegate_address
+    validator {
+      validatorDescriptions: validator_descriptions(
+        limit: 1
+        order_by: {height: desc}
+      ) {
+        moniker
+        avatarUrl: avatar_url
+        details
+        website
+      }
     }
   }
 }

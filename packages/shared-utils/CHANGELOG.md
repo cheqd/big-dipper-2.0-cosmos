@@ -1,5 +1,83 @@
 # shared-utils
 
+## 2.23.0
+
+### Minor Changes
+
+- [#1296](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1296) [`584138bbb`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/584138bbb2443b74d437546ad04327fa2f0dd003) Thanks [@rachelhox](https://github.com/rachelhox)! - feat: add Archway Big Dipper
+
+## 2.22.0
+
+### Minor Changes
+
+- [#1294](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1294) [`99fb1bdf8`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/99fb1bdf8be3e3baa022475903f0ebc8fc9f0619) Thanks [@rachelhox](https://github.com/rachelhox)! - add Jackal Big Dipper
+
+## 2.21.0
+
+### Minor Changes
+
+- [#1293](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1293) [`d6d815915`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/d6d815915a397c857247b32882222918eaef14e5) Thanks [@rachelhox](https://github.com/rachelhox)! - feat: add Coingecko attribution
+
+## 2.20.0
+
+### Minor Changes
+
+- [#1273](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1273) [`4a8dd7a48`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/4a8dd7a480a65aadefd3ea3af6fc1d5280dacbc2) Thanks [@rachelhox](https://github.com/rachelhox)! - add Gitopia Big Dipper
+
+## 2.19.0
+
+### Minor Changes
+
+- [#1258](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1258) [`12079a781`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/12079a78141eb2e5ddee1c9211c5e81bc4e6d0d1) Thanks [@teamchong](https://github.com/teamchong)! - - Integrated `next-sitemap` to auto-generate sitemaps for each Next.js app in the monorepo. This enhancement improves our SEO capabilities and website visibility on search engines. The sitemap will be automatically updated with every build, ensuring it always reflects the current state of the site.
+
+## 2.18.1
+
+### Patch Changes
+
+- [#1256](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1256) [`5654972fd`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/5654972fdf2bb50bcd8566320dc93294301facab) Thanks [@teamchong](https://github.com/teamchong)! - - Restored i18n locale JSON files that were accidentally deleted in a previous pull request. This restoration ensures all necessary translations are available for the application.
+  - Migrated existing code to use a new wrapper function for loading i18n translations, enhancing the efficiency and reliability of our translation loading process.
+  - Fixed an issue with the Next.js standalone build process that was causing complications with Docker deployment, thereby improving the stability of deployments.
+
+## 2.18.0
+
+### Minor Changes
+
+- [#1253](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1253) [`c59a66729`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/c59a66729196471a7adafa23823dc4b1b21e334b) Thanks [@rachelhox](https://github.com/rachelhox)! - add humansai big dipper
+
+- [#1250](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1250) [`3df0639ae`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/3df0639ae1ce872cfd05b535ae55edd9292995b3) Thanks [@rachelhox](https://github.com/rachelhox)! - add kyve Big Dipper
+
+## 2.17.0
+
+### Minor Changes
+
+- [#1248](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1248) [`376b4b356`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/376b4b356b58375f14f004f62a3c2e1a11c8dccf) Thanks [@rachelhox](https://github.com/rachelhox)! - add Coreum Big Dipper
+
+- [#1236](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1236) [`fe24afcda`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/fe24afcdad91cb859ee637f2c61d79d177d8c616) Thanks [@rachelhox](https://github.com/rachelhox)! - fix quicksilver validator moniker display
+
+## 2.16.2
+
+### Patch Changes
+
+- [#1242](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1242) [`66586e088`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/66586e088e49686ef920c00af8035dab1798317e) Thanks [@teamchong](https://github.com/teamchong)! - Shared translations for workspaces
+
+## 2.16.1
+
+### Patch Changes
+
+- [#1225](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1225) [`5316f55cf`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/5316f55cfccc31a44cac4d42de704d0d3f058048) Thanks [@teamchong](https://github.com/teamchong)! - Bump package versions
+
+## 2.16.0
+
+### Minor Changes
+
+- [#1128](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1128) [`1edb0b236`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/1edb0b236d80993a19b11dc598cbcbb44d1905b4) Thanks [@MonikaCat](https://github.com/MonikaCat)! - Added login with Keplr and WalletConnect([\#1128](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1128))
+
+## 2.15.0
+
+### Minor Changes
+
+- [#1233](https://github.com/forbole/big-dipper-2.0-cosmos/pull/1233) [`2949b87b9`](https://github.com/forbole/big-dipper-2.0-cosmos/commit/2949b87b93676df46bfb824ac486e9b96b9a5ba4) Thanks [@rachelhox](https://github.com/rachelhox)! - add Celestia Big Dipper
+
 ## 2.14.0
 
 ### Minor Changes

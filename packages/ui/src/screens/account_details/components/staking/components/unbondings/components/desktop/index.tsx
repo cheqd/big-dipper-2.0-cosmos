@@ -3,7 +3,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { formatNumber } from '@/utils/format_token';
@@ -23,7 +23,9 @@ const UnbondingsRow: FC<UnbondingsRowProps> = ({ item }) => {
   const dateFormat = useRecoilValue(readDate);
   const timeFormat = useRecoilValue(readTimeFormat);
   const formattedItem = {
-    validator: <AvatarName address={address} imageUrl={imageUrl} name={name} />,
+    validator: (
+      <AvatarName address={address} imageUrl={imageUrl} name={name} location="unbondingRow" />
+    ),
     amount: item.amount
       ? `${formatNumber(
           item.amount.value,
@@ -56,7 +58,7 @@ type DesktopProps = {
 };
 
 const Desktop: FC<DesktopProps> = ({ className, items }) => {
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
   return (
     <div className={className}>
       <Table>

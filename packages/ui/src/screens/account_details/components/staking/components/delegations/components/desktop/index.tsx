@@ -3,7 +3,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
 import { formatNumber } from '@/utils/format_token';
 import type { ItemType } from '@/screens/account_details/components/staking/components/delegations/types';
@@ -23,7 +23,9 @@ const DelegationsRow: FC<DelegationsRowProps> = ({ item, i }) => {
   const reward = item.reward ? formatNumber(item.reward.value, item.reward.exponent) : '';
   const formattedItem = {
     identifier: i,
-    validator: <AvatarName name={name} address={address} imageUrl={imageUrl} />,
+    validator: (
+      <AvatarName name={name} address={address} imageUrl={imageUrl} location="delegationRow" />
+    ),
     amount: `${amount} ${item.amount?.displayDenom.toUpperCase()}`,
     commission: `${commission} %`,
     reward: `${reward} ${item.reward?.displayDenom.toUpperCase()}`,
@@ -45,7 +47,7 @@ type DesktopProps = {
 };
 
 const Desktop: FC<DesktopProps> = ({ className, items }) => {
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
 
   return (
     <div className={className}>

@@ -22,12 +22,23 @@ export interface VotingPowerType {
   height: number;
   overall: TokenUnit;
   self: number;
+  validatorStatus: number;
 }
 
-export interface ValidatorDetailsState {
+export interface ValidatorVPState {
+  validatorVPExists: boolean;
+  votingPower: VotingPowerType;
+}
+
+export interface ValidatorOverviewState {
   exists: boolean;
-  desmosProfile: DesmosProfile | null;
   overview: OverviewType;
   status: StatusType;
-  votingPower: VotingPowerType;
+}
+
+export interface ValidatorProfileState {
+  exists: boolean;
+  desmosProfile: DesmosProfile | null;
+  operatorAddress: string;
+  selfDelegateAddress: string;
 }

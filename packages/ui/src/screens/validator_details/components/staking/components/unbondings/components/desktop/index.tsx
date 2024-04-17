@@ -3,7 +3,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { formatNumber } from '@/utils/format_token';
@@ -14,16 +14,18 @@ import { readDate, readTimeFormat } from '@/recoil/settings';
 import { useProfileRecoil } from '@/recoil/profiles/hooks';
 import AvatarName from '@/components/avatar_name';
 
-type UnboundingRowProps = {
+type UnbondingRowProps = {
   item: ItemType;
 };
 
-const UnboundingRow: FC<UnboundingRowProps> = ({ item }) => {
+const UnbondingRow: FC<UnbondingRowProps> = ({ item }) => {
   const { name, address, imageUrl } = useProfileRecoil(item.address);
   const dateFormat = useRecoilValue(readDate);
   const timeFormat = useRecoilValue(readTimeFormat);
   const formattedItem = {
-    address: <AvatarName address={address} imageUrl={imageUrl} name={name} />,
+    address: (
+      <AvatarName address={address} imageUrl={imageUrl} name={name} location="unbondingRow" />
+    ),
     amount: item.amount
       ? `${formatNumber(
           item.amount.value,
@@ -52,7 +54,7 @@ type DesktopProps = {
 };
 
 const Desktop: FC<DesktopProps> = ({ className, items }) => {
-  const { t } = useTranslation('accounts');
+  const { t } = useAppTranslation('accounts');
 
   return (
     <div className={className}>
@@ -73,7 +75,7 @@ const Desktop: FC<DesktopProps> = ({ className, items }) => {
         <TableBody>
           {items?.map((row, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <UnboundingRow key={`${row.address}-${i}`} item={row} />
+            <UnbondingRow key={`${row.address}-${i}`} item={row} />
           ))}
         </TableBody>
       </Table>

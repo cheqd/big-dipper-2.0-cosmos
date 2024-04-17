@@ -1,6 +1,6 @@
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import useAppTranslation from '@/hooks/useAppTranslation';
 import numeral from 'numeral';
 import { FC } from 'react';
 import Loading from '@/components/loading';
@@ -19,7 +19,7 @@ type BlockBoxProps = {
 
 const BlockBox: FC<BlockBoxProps> = ({ i, item, state }) => {
   const { address, imageUrl, name } = useProfileRecoil(item.proposer);
-  const { t } = useTranslation('validators');
+  const { t } = useAppTranslation('validators');
   const { classes, cx } = useStyles();
   return (
     <Tooltip
@@ -69,19 +69,26 @@ const BlockBox: FC<BlockBoxProps> = ({ i, item, state }) => {
   );
 };
 
-const Blocks: FC<ComponentDefault> = ({ className }) => {
-  const { t } = useTranslation('validators');
-  const { state, loading } = useBlocks();
+type BlocksProps = ComponentDefault & {
+  address?: string;
+};
+
+const Blocks: FC<BlocksProps> = ({ className, address }) => {
+  const { t } = useAppTranslation('validators');
+  const { state, loading } = useBlocks(address);
   const { classes, cx } = useStyles();
   return (
     <Box className={cx(classes.root, className)}>
       <Typography variant="h2">{t('lastBlocks')}</Typography>
-      {loading && <Loading />}
-      <div className={classes.blocks}>
-        {state.map((x, i) => (
-          <BlockBox key={x.height} i={i} item={x} state={state} />
-        ))}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className={classes.blocks}>
+          {state.map((x, i) => (
+            <BlockBox key={x.height} i={i} item={x} state={state} />
+          ))}
+        </div>
+      )}
     </Box>
   );
 };

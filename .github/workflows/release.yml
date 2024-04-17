@@ -66,8 +66,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=min
           build-args: |
-            BASE_PATH="/"
-            NODE_ENV="production"
+            BASE_PATH=/
+            NODE_ENV=production
             NEXT_PUBLIC_CHAIN_TYPE=testnet
             NEXT_PUBLIC_GRAPHQL_URL="https://testnet-gql.cheqd.io/v1/graphql"
             NEXT_PUBLIC_GRAPHQL_WS="wss://testnet-gql.cheqd.io/v1/graphql"

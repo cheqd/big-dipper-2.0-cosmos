@@ -13,13 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: ${{ github.repository }}
-      BASE_PATH: "/"
-      NODE_ENV: "production"
-      NEXT_PUBLIC_CHAIN_TYPE: testnet
-      NEXT_PUBLIC_GRAPHQL_URL: "https://testnet-gql.cheqd.io/v1/graphql"
-      NEXT_PUBLIC_GRAPHQL_WS: "wss://testnet-gql.cheqd.io/v1/graphql"
-      NEXT_PUBLIC_RPC_WEBSOCKET: "wss://rpc.cheqd.network/websocket"
-      PROJECT_NAME: web-cheqd
 
     steps:
       - uses: actions/checkout@v3
@@ -72,6 +65,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=min
+          build-args: |
+            BASE_PATH="/"
+            NODE_ENV="production"
+            NEXT_PUBLIC_CHAIN_TYPE=testnet
+            NEXT_PUBLIC_GRAPHQL_URL="https://testnet-gql.cheqd.io/v1/graphql"
+            NEXT_PUBLIC_GRAPHQL_WS="wss://testnet-gql.cheqd.io/v1/graphql"
+            NEXT_PUBLIC_RPC_WEBSOCKET="wss://rpc.cheqd.network/websocket"
+            PROJECT_NAME=web-cheqd
 
       - name: Push BigDipper image
         run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}

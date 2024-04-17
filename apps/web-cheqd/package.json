@@ -63,6 +63,7 @@
     "recharts": "^2.5.0",
     "recoil": "^0.7.7",
     "shared-utils": "workspace:*",
+    "sharp": "^0.33.3",
     "subscriptions-transport-ws": "^0.11.0",
     "tsconfig": "workspace:*",
     "tslib": "^2.5.0",

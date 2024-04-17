@@ -1,3 +1,4 @@
+# hadolint global ignore=DL3025
 ARG PROJECT_NAME=web-cheqd
 
 # This is a multiple stage Dockerfile.

@@ -29,11 +29,10 @@ const useValidatorConsensusAddressesList = (validator: string): providerAddressP
   });
   const [profile, setProfile] = useState<Profile>();
   const setAvatarName = useRecoilCallback(
-    ({ set }) =>
-      (address: string, avatarName: AvatarName | null) =>
-        set(writeProfile(address), (prevState) =>
-          R.equals(prevState, avatarName) ? prevState : avatarName
-        ),
+    ({ set }) => (address: string, avatarName: AvatarName | null) =>
+      set(writeProfile(address), prevState =>
+        R.equals(prevState, avatarName) ? prevState : avatarName
+      ),
     []
   );
   useEffect(() => {

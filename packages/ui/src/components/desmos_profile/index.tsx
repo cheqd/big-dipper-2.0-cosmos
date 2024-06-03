@@ -15,7 +15,7 @@ type DesmosProfileProps = {
   loading?: boolean;
 } & Omit<DesmosProfile, 'address'>;
 
-const DesmosProfile: FC<DesmosProfileProps> = (props) => {
+const DesmosProfile: FC<DesmosProfileProps> = props => {
   const { t } = useAppTranslation('accounts');
   const { classes, cx } = useStyles({ coverUrl: props.coverUrl });
   const { connectionsOpen, handleConnectionsClose, handleConnectionsOpen } = useDesmosProfile();

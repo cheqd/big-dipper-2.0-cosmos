@@ -20,11 +20,7 @@ function CCVConsumerParams(payload?: CCVConsumerParamsPayload) {
     softOptOutThreshold: R.pathOr('0', ['soft_opt_out_threshold'], payload),
     transferTimeoutPeriod: R.pathOr(0, ['transfer_timeout_period'], payload),
     consumerRedistributionFraction: R.pathOr('0', ['consumer_redistribution_fraction'], payload),
-    blocksPerDistributionTransmission: R.pathOr(
-      0,
-      ['blocks_per_distribution_transmission'],
-      payload
-    ),
+    blocksPerDistributionTransmission: R.pathOr(0, ['blocks_per_distribution_transmission'], payload),
   };
 }
 

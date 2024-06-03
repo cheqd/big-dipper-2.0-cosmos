@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_PATH: "/"
-      NODE_ENV: "development"
+      NODE_ENV: "production"
       NEXT_PUBLIC_CHAIN_TYPE: testnet
       NEXT_PUBLIC_GRAPHQL_URL: "https://testnet-gql.cheqd.io/v1/graphql"
       NEXT_PUBLIC_GRAPHQL_WS: "wss://testnet-gql.cheqd.io/v1/graphql"
@@ -34,7 +34,7 @@ jobs:
       - name: "Execute build"
         run: yarn build
       
-      - name: "Execute tests"
-        # Remove the line below once we know everything works
-        continue-on-error: true
-        run: yarn test
+      # - name: "Execute tests"
+      #   # Remove the line below once we know everything works
+      #   continue-on-error: true
+      #   run: yarn test

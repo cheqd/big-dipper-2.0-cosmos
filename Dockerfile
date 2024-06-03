@@ -4,9 +4,11 @@ ARG PROJECT_NAME=web-cheqd
 # This is a multiple stage Dockerfile.
 # - Stage 1: starter (base image with Node.js 18 and the turbo package installed globally)
 
-# - Stage 2: builder (adds dependencies, environment variables, and builds the project using yarn)
+# - Stage 2: pruner (copies all necessary files and sets up yarn configurations, runs turbo prune)
 
-# - Stage 3: runner (final image for the web project, sets environment variables, starts the server)
+# - Stage 3: builder (adds dependencies, environment variables, and builds the project using yarn)
+
+# - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
 FROM node:18-alpine3.18 AS starter
@@ -31,7 +33,9 @@ RUN yarn config set nodeLinker node-modules \
 FROM starter AS builder
 
 ### First install the dependencies (as they change less often)
-COPY . .
+COPY .yarnrc.yml ./
+COPY .yarn/ ./.yarn/
+COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
 
 ## Setting up the environment variables for the docker container.
 ARG NODE_ENV=production

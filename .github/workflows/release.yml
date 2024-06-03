@@ -10,7 +10,7 @@ jobs:
 
   release-docker-testnet:
     name: "BigDipper Testnet Docker image"
-    runs-on: ubuntu-
+    runs-on: ubuntu-latest
     if:  ${{ github.ref_name == 'chains/cheqd/testnet' }}
     env:
       IMAGE_NAME: ${{ github.repository }}

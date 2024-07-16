@@ -26,11 +26,11 @@ class MsgWithdrawValidatorCommission {
 
   static getWithdrawalAmount(log?: Log) {
     const withdrawEvents =
-      log?.events ?? [].filter((x: { type: string }) => x.type === 'withdraw_commission');
+      log?.events?.filter((x: { type?: string }) => x.type === 'withdraw_commission') ?? [];
     const withdrawAmounts =
-      withdrawEvents?.[0]?.attributes?.filter((x: { key?: string }) => x.key === 'amount') ?? [];
+      withdrawEvents[0]?.attributes?.filter((x: { key?: string }) => x.key === 'amount') ?? [];
 
-    const amounts = (withdrawAmounts?.[0]?.value ?? '0').split(',').map((x) => {
+    const amounts = (withdrawAmounts[0]?.value ?? '0').split(',').map((x) => {
       const [amount, denom = primaryTokenUnit] = x.match(/[a-z]+|[^a-z]+/gi) ?? [];
       return formatToken(amount, denom);
     });

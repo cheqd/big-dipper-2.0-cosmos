@@ -157,25 +157,19 @@ export const useStaking = (
       offset: delegationsPage * ROWS_PER_PAGE,
     },
   });
+
+  const [delegationsPagination, setDelegationsPagination] = useState<number | undefined>();
+
   useEffect(() => {
-    if (delegationsLoading) return;
     if (delegationsError) {
       delegationsRefetch({ pagination: false });
     }
-  }, [delegationsError, delegationsLoading, delegationsRefetch]);
-  useAccountDelegationsQuery({
-    variables: {
-      address,
-      limit: ROWS_PER_PAGE,
-      offset: (delegationsPage + 1) * ROWS_PER_PAGE,
-    },
-  });
+  }, [delegationsError, delegationsRefetch]);
 
-  const [delegationsPagination, setDelegationsPagination] = useState<number | undefined>();
   const {
-    data: dData,
-    error: dError,
-    refetch: dRefetch,
+    data: paginationData,
+    error: paginationError,
+    refetch: paginationRefetch,
   } = useAccountDelegationsQuery({
     variables: {
       address,
@@ -185,13 +179,15 @@ export const useStaking = (
     },
     skip: delegationsPagination !== undefined,
   });
+
   useEffect(() => {
-    if (dError) {
-      dRefetch();
-    } else if (dData) {
-      setDelegationsPagination(dData?.delegations?.pagination?.total ?? 0);
+    if (paginationError) {
+      console.error('Error fetching pagination data:', paginationError);
+      paginationRefetch();
+    } else if (paginationData) {
+      setDelegationsPagination(paginationData?.delegations?.pagination?.total ?? 0);
     }
-  }, [dData, dError, dRefetch]);
+  }, [paginationData, paginationError, paginationRefetch]);
 
   // =====================================
   // redelegations
@@ -208,25 +204,20 @@ export const useStaking = (
       offset: redelegationsPage * ROWS_PER_PAGE,
     },
   });
-  useEffect(() => {
-    if (redelegationsLoading) return;
-    if (redelegationsError) {
-      redelegationsRefetch({ pagination: false });
-    }
-  }, [redelegationsError, redelegationsLoading, redelegationsRefetch]);
-  useAccountRedelegationsQuery({
-    variables: {
-      address,
-      limit: ROWS_PER_PAGE,
-      offset: (redelegationsPage + 1) * ROWS_PER_PAGE,
-    },
-  });
 
   const [redelegationsPagination, setRedelegationsPagination] = useState<number | undefined>();
+
+  useEffect(() => {
+    if (redelegationsError) {
+      console.error('Error fetching redelegations:', redelegationsError);
+      redelegationsRefetch({ pagination: false });
+    }
+  }, [redelegationsError, redelegationsRefetch]);
+
   const {
-    data: rData,
-    error: rError,
-    refetch: rRefetch,
+    data: redelegationsPaginationData,
+    error: redelegationsPaginationError,
+    refetch: redelegationsPaginationRefetch,
   } = useAccountRedelegationsQuery({
     variables: {
       address,
@@ -236,13 +227,17 @@ export const useStaking = (
     },
     skip: redelegationsPagination !== undefined,
   });
+
   useEffect(() => {
-    if (rError) {
-      rRefetch();
-    } else if (rData) {
-      setRedelegationsPagination(rData?.redelegations?.pagination?.total ?? 0);
+    if (redelegationsPaginationError) {
+      console.error('Error fetching redelegations pagination data:', redelegationsPaginationError);
+      redelegationsPaginationRefetch();
+    } else if (redelegationsPaginationData) {
+      setRedelegationsPagination(
+        redelegationsPaginationData?.redelegations?.pagination?.total ?? 0
+      );
     }
-  }, [rData, rError, rRefetch]);
+  }, [redelegationsPaginationData, redelegationsPaginationError, redelegationsPaginationRefetch]);
 
   // =====================================
   // unbondings
@@ -259,25 +254,20 @@ export const useStaking = (
       offset: unbondingsPage * ROWS_PER_PAGE,
     },
   });
-  useEffect(() => {
-    if (undelegationsLoading) return;
-    if (undelegationsError) {
-      undelegationsRefetch({ pagination: false });
-    }
-  }, [undelegationsError, undelegationsLoading, undelegationsRefetch]);
-  useAccountUndelegationsQuery({
-    variables: {
-      address,
-      limit: ROWS_PER_PAGE,
-      offset: (unbondingsPage + 1) * ROWS_PER_PAGE,
-    },
-  });
 
   const [undelegationsPagination, setUndelegationsPagination] = useState<number | undefined>();
+
+  useEffect(() => {
+    if (undelegationsError) {
+      console.error('Error fetching undelegations:', undelegationsError);
+      undelegationsRefetch({ pagination: false });
+    }
+  }, [undelegationsError, undelegationsRefetch]);
+
   const {
-    data: uData,
-    error: uError,
-    refetch: uRefetch,
+    data: undelegationsPaginationData,
+    error: undelegationsPaginationError,
+    refetch: undelegationsPaginationRefetch,
   } = useAccountUndelegationsQuery({
     variables: {
       address,
@@ -287,14 +277,19 @@ export const useStaking = (
     },
     skip: undelegationsPagination !== undefined,
   });
-  useEffect(() => {
-    if (uError) {
-      uRefetch();
-    } else if (uData) {
-      setUndelegationsPagination(uData?.undelegations?.pagination?.total ?? 0);
-    }
-  }, [uData, uError, uRefetch]);
 
+  useEffect(() => {
+    if (undelegationsPaginationError) {
+      console.error('Error fetching undelegations pagination data:', undelegationsPaginationError);
+      undelegationsPaginationRefetch();
+    } else if (undelegationsPaginationData) {
+      setUndelegationsPagination(
+        undelegationsPaginationData?.undelegations?.pagination?.total ?? 0
+      );
+    }
+  }, [undelegationsPaginationData, undelegationsPaginationError, undelegationsPaginationRefetch]);
+
+  // Handle tab change
   const handleTabChange = useCallback(
     (_event: SyntheticEvent<Element, globalThis.Event>, newValue: number) => {
       setState((prevState) => {

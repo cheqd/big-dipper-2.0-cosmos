@@ -53,18 +53,12 @@ const Staking: FC<StakingProps> = ({ className }) => {
 
   return (
     <Box className={cx(classes.root, className)}>
-      {state.loading ? (
-        <Loading />
-      ) : (
-        <>
-          <Tabs tab={stakingState.tab} handleTabChange={handleTabChange} tabs={tabs} />
-          {tabs.map((x) => (
-            <TabPanel key={x.id} index={x.id} value={stakingState.tab}>
-              {x.component}
-            </TabPanel>
-          ))}
-        </>
-      )}
+      <Tabs tab={stakingState.tab} handleTabChange={handleTabChange} tabs={tabs} />
+      {tabs.map((x) => (
+        <TabPanel key={x.id} index={x.id} value={stakingState.tab}>
+          {x.component}
+        </TabPanel>
+      ))}
     </Box>
   );
 };

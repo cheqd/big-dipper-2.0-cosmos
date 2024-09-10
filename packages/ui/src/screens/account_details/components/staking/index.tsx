@@ -8,7 +8,6 @@ import Unbondings from '@/screens/account_details/components/staking/components/
 import { useStaking } from '@/screens/account_details/components/staking/hooks';
 import useStyles from '@/screens/account_details/components/staking/styles';
 import { formatCount } from '@/screens/validator_details/components/staking';
-import Loading from '@/components/loading';
 import { useAccountRewards } from '@/screens/account_details/hooks';
 
 type StakingProps = {
@@ -53,18 +52,12 @@ const Staking: FC<StakingProps> = ({ className }) => {
 
   return (
     <Box className={cx(classes.root, className)}>
-      {state.loading ? (
-        <Loading />
-      ) : (
-        <>
-          <Tabs tab={stakingState.tab} handleTabChange={handleTabChange} tabs={tabs} />
-          {tabs.map((x) => (
-            <TabPanel key={x.id} index={x.id} value={stakingState.tab}>
-              {x.component}
-            </TabPanel>
-          ))}
-        </>
-      )}
+      <Tabs tab={stakingState.tab} handleTabChange={handleTabChange} tabs={tabs} />
+      {tabs.map((x) => (
+        <TabPanel key={x.id} index={x.id} value={stakingState.tab}>
+          {x.component}
+        </TabPanel>
+      ))}
     </Box>
   );
 };

@@ -8,7 +8,6 @@ import Unbondings from '@/screens/account_details/components/staking/components/
 import { useStaking } from '@/screens/account_details/components/staking/hooks';
 import useStyles from '@/screens/account_details/components/staking/styles';
 import { formatCount } from '@/screens/validator_details/components/staking';
-import Loading from '@/components/loading';
 import { useAccountRewards } from '@/screens/account_details/hooks';
 
 type StakingProps = {

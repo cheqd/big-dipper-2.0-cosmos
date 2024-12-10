@@ -2841,7 +2841,7 @@ export type Proposal_Validator_Status_Snapshot = {
   /** An object relationship */
   validator: Validator;
   validator_address: Scalars['String'];
-  voting_power: Scalars['bigint'];
+  voting_power: Scalars['String'];
 };
 
 /** order by aggregate values of table "proposal_validator_status_snapshot" */
@@ -2864,7 +2864,6 @@ export type Proposal_Validator_Status_Snapshot_Avg_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "proposal_validator_status_snapshot". All fields are combined with a logical 'AND'. */
@@ -2879,7 +2878,7 @@ export type Proposal_Validator_Status_Snapshot_Bool_Exp = {
   status?: InputMaybe<Int_Comparison_Exp>;
   validator?: InputMaybe<Validator_Bool_Exp>;
   validator_address?: InputMaybe<String_Comparison_Exp>;
-  voting_power?: InputMaybe<Bigint_Comparison_Exp>;
+  voting_power?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** order by max() on columns of table "proposal_validator_status_snapshot" */
@@ -2933,7 +2932,6 @@ export type Proposal_Validator_Status_Snapshot_Stddev_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** order by stddev_pop() on columns of table "proposal_validator_status_snapshot" */
@@ -2941,7 +2939,6 @@ export type Proposal_Validator_Status_Snapshot_Stddev_Pop_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** order by stddev_samp() on columns of table "proposal_validator_status_snapshot" */
@@ -2949,7 +2946,6 @@ export type Proposal_Validator_Status_Snapshot_Stddev_Samp_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "proposal_validator_status_snapshot" */
@@ -2967,7 +2963,7 @@ export type Proposal_Validator_Status_Snapshot_Stream_Cursor_Value_Input = {
   proposal_id?: InputMaybe<Scalars['Int']>;
   status?: InputMaybe<Scalars['Int']>;
   validator_address?: InputMaybe<Scalars['String']>;
-  voting_power?: InputMaybe<Scalars['bigint']>;
+  voting_power?: InputMaybe<Scalars['String']>;
 };
 
 /** order by sum() on columns of table "proposal_validator_status_snapshot" */
@@ -2975,7 +2971,6 @@ export type Proposal_Validator_Status_Snapshot_Sum_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** order by var_pop() on columns of table "proposal_validator_status_snapshot" */
@@ -2983,7 +2978,6 @@ export type Proposal_Validator_Status_Snapshot_Var_Pop_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** order by var_samp() on columns of table "proposal_validator_status_snapshot" */
@@ -2991,7 +2985,6 @@ export type Proposal_Validator_Status_Snapshot_Var_Samp_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** order by variance() on columns of table "proposal_validator_status_snapshot" */
@@ -2999,7 +2992,6 @@ export type Proposal_Validator_Status_Snapshot_Variance_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
-  voting_power?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */

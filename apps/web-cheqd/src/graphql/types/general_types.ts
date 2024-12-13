@@ -1456,6 +1456,42 @@ export type Gov_ParamsParamsArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
 
+/** aggregated selection of "gov_params" */
+export type Gov_Params_Aggregate = {
+  __typename?: 'gov_params_aggregate';
+  aggregate?: Maybe<Gov_Params_Aggregate_Fields>;
+  nodes: Array<Gov_Params>;
+};
+
+/** aggregate fields of "gov_params" */
+export type Gov_Params_Aggregate_Fields = {
+  __typename?: 'gov_params_aggregate_fields';
+  avg?: Maybe<Gov_Params_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Gov_Params_Max_Fields>;
+  min?: Maybe<Gov_Params_Min_Fields>;
+  stddev?: Maybe<Gov_Params_Stddev_Fields>;
+  stddev_pop?: Maybe<Gov_Params_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Gov_Params_Stddev_Samp_Fields>;
+  sum?: Maybe<Gov_Params_Sum_Fields>;
+  var_pop?: Maybe<Gov_Params_Var_Pop_Fields>;
+  var_samp?: Maybe<Gov_Params_Var_Samp_Fields>;
+  variance?: Maybe<Gov_Params_Variance_Fields>;
+};
+
+
+/** aggregate fields of "gov_params" */
+export type Gov_Params_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Gov_Params_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Gov_Params_Avg_Fields = {
+  __typename?: 'gov_params_avg_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
 /** Boolean expression to filter rows from the table "gov_params". All fields are combined with a logical 'AND'. */
 export type Gov_Params_Bool_Exp = {
   _and?: InputMaybe<Array<Gov_Params_Bool_Exp>>;
@@ -1464,6 +1500,18 @@ export type Gov_Params_Bool_Exp = {
   height?: InputMaybe<Bigint_Comparison_Exp>;
   one_row_id?: InputMaybe<Boolean_Comparison_Exp>;
   params?: InputMaybe<Jsonb_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Gov_Params_Max_Fields = {
+  __typename?: 'gov_params_max_fields';
+  height?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate min on columns */
+export type Gov_Params_Min_Fields = {
+  __typename?: 'gov_params_min_fields';
+  height?: Maybe<Scalars['bigint']>;
 };
 
 /** Ordering options when selecting data from "gov_params". */
@@ -1483,6 +1531,24 @@ export enum Gov_Params_Select_Column {
   Params = 'params'
 }
 
+/** aggregate stddev on columns */
+export type Gov_Params_Stddev_Fields = {
+  __typename?: 'gov_params_stddev_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Gov_Params_Stddev_Pop_Fields = {
+  __typename?: 'gov_params_stddev_pop_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Gov_Params_Stddev_Samp_Fields = {
+  __typename?: 'gov_params_stddev_samp_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
 /** Streaming cursor of the table "gov_params" */
 export type Gov_Params_Stream_Cursor_Input = {
   /** Stream column input with initial value */
@@ -1496,6 +1562,30 @@ export type Gov_Params_Stream_Cursor_Value_Input = {
   height?: InputMaybe<Scalars['bigint']>;
   one_row_id?: InputMaybe<Scalars['Boolean']>;
   params?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate sum on columns */
+export type Gov_Params_Sum_Fields = {
+  __typename?: 'gov_params_sum_fields';
+  height?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate var_pop on columns */
+export type Gov_Params_Var_Pop_Fields = {
+  __typename?: 'gov_params_var_pop_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Gov_Params_Var_Samp_Fields = {
+  __typename?: 'gov_params_var_samp_fields';
+  height?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Gov_Params_Variance_Fields = {
+  __typename?: 'gov_params_variance_fields';
+  height?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "inflation" */
@@ -3246,6 +3336,8 @@ export type Query_Root = {
   genesis: Array<Genesis>;
   /** fetch data from the table: "gov_params" */
   gov_params: Array<Gov_Params>;
+  /** fetch aggregated fields from the table: "gov_params" */
+  gov_params_aggregate: Gov_Params_Aggregate;
   /** fetch data from the table: "gov_params" using primary key columns */
   gov_params_by_pk?: Maybe<Gov_Params>;
   /** fetch data from the table: "inflation" */
@@ -3582,6 +3674,15 @@ export type Query_RootGenesisArgs = {
 
 
 export type Query_RootGov_ParamsArgs = {
+  distinct_on?: InputMaybe<Array<Gov_Params_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gov_Params_Order_By>>;
+  where?: InputMaybe<Gov_Params_Bool_Exp>;
+};
+
+
+export type Query_RootGov_Params_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Gov_Params_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -4560,6 +4661,8 @@ export type Subscription_Root = {
   genesis_stream: Array<Genesis>;
   /** fetch data from the table: "gov_params" */
   gov_params: Array<Gov_Params>;
+  /** fetch aggregated fields from the table: "gov_params" */
+  gov_params_aggregate: Gov_Params_Aggregate;
   /** fetch data from the table: "gov_params" using primary key columns */
   gov_params_by_pk?: Maybe<Gov_Params>;
   /** fetch data from the table in a streaming manner: "gov_params" */
@@ -4971,6 +5074,15 @@ export type Subscription_RootGenesis_StreamArgs = {
 
 
 export type Subscription_RootGov_ParamsArgs = {
+  distinct_on?: InputMaybe<Array<Gov_Params_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gov_Params_Order_By>>;
+  where?: InputMaybe<Gov_Params_Bool_Exp>;
+};
+
+
+export type Subscription_RootGov_Params_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Gov_Params_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;

@@ -12,7 +12,6 @@ import {
   PROPOSALS,
   TRANSACTIONS,
   VALIDATORS,
-  ACCOUNTS,
 } from '@/utils/go_to_page';
 
 export const getMenuItems = () => {
@@ -51,11 +50,6 @@ export const getMenuItems = () => {
       key: 'params',
       url: PARAMS,
       icon: <ParamIcon {...iconProps} />,
-    },
-    {
-      key: 'top_accounts',
-      url: ACCOUNTS,
-      icon: <AccountsIcon {...iconProps} />,
     },
   ];
 };

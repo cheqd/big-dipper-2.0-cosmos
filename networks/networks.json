@@ -1,0 +1,20 @@
+[
+{
+    "name": "Cheqd",
+    "chainName": "cheqd",
+    "logo": "https://raw.githubusercontent.com/cheqd/big-dipper-2.0-cosmos/refs/heads/chains/cheqd/testnet/networks/logos/cheqd.svg?sanitize=true",
+    "cover": "https://raw.githubusercontent.com/cheqd/big-dipper-2.0-cosmos/refs/heads/chains/cheqd/testnet/networks/covers/cheqd.png?sanitize=true",
+    "links": [
+      {
+        "name": "Mainnet",
+        "chain_id": "cheqd-mainnet-1",
+        "url": "https://explorer.cheqd.io"
+      },
+      {
+        "name": "Testnet",
+        "chain_id": "cheqd-testnet-6",
+        "url": "https://testnet-explorer.cheqd.io"
+      }
+    ]
+  }
+]

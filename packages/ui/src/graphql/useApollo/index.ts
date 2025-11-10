@@ -102,7 +102,7 @@ export function profileApi() {
   return 'https://gql.mainnet.desmos.network/v1/graphql';
 }
 
-export const BIG_DIPPER_NETWORKS = 'https://raw.githubusercontent.com/forbole/big-dipper-networks/main/';
+export const BIG_DIPPER_NETWORKS = 'https://raw.githubusercontent.com/cheqd/big-dipper-2.0-cosmos/refs/heads/chains/cheqd/testnet/networks/';
 
 /**
  * It creates a new Apollo Client, and sets the default options for it

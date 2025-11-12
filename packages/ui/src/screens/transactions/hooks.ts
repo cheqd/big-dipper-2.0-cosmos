@@ -18,8 +18,9 @@ import { readFilter } from '@/recoil/transactions_filter';
  * and sorts by height in case it bugs out
  */
 const uniqueAndSort = R.pipe(
-  R.uniqBy((r: Transactions) => r?.hash),
-  R.sort(R.descend((r) => r?.height))
+  // Transactions type was not defined here; derive the item type from TransactionsState
+  R.uniqBy((r: TransactionsState['items'][number]) => r?.hash),
+  R.sort(R.descend((r: TransactionsState['items'][number]) => r?.height))
 );
 
 const formatTransactions = (
@@ -66,7 +67,7 @@ export const useTransactions = () => {
 
   const handleSetState = useCallback(
     (stateChange: (prevState: TransactionsState) => TransactionsState) => {
-      setState((prevState) => {
+      setState((prevState: TransactionsState) => {
         const newState = stateChange(prevState);
         return R.equals(prevState, newState) ? prevState : newState;
       });
@@ -75,7 +76,7 @@ export const useTransactions = () => {
   );
 
   useEffect(() => {
-    handleSetState((prevState) => ({
+    handleSetState((prevState: TransactionsState) => ({
       ...prevState,
       loading: true,
       items: [],
@@ -90,12 +91,12 @@ export const useTransactions = () => {
     variables: {
       types: msgTypes ?? '{}',
     },
-    onData: (data) => {
+    onData: (data: any) => {
       const newItems = uniqueAndSort([
         ...(data?.data?.data ? formatTransactions(data.data.data) : []),
         ...state.items,
       ]);
-      handleSetState((prevState) => ({
+      handleSetState((prevState: TransactionsState) => ({
         ...prevState,
         loading: false,
         items: newItems,
@@ -110,16 +111,16 @@ export const useTransactions = () => {
   const transactionQuery = useMessagesByTypesQuery({
     variables: {
       limit: LIMIT,
-      offset: 1,
+      offset: 0,
       types: msgTypes ?? '{}',
     },
     onError: () => {
-      handleSetState((prevState) => ({ ...prevState, loading: false }));
+      handleSetState((prevState: TransactionsState) => ({ ...prevState, loading: false }));
     },
-    onCompleted: (data) => {
+    onCompleted: (data: any) => {
       const itemsLength = data.messagesByTypes.length;
       const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
-      handleSetState((prevState) => ({
+      handleSetState((prevState: TransactionsState) => ({
         ...prevState,
         loading: false,
         items: newItems,
@@ -130,19 +131,20 @@ export const useTransactions = () => {
   });
 
   const loadNextPage = async () => {
-    handleSetState((prevState) => ({ ...prevState, isNextPageLoading: true }));
+  handleSetState((prevState: TransactionsState) => ({ ...prevState, isNextPageLoading: true }));
     // refetch query
     await transactionQuery
       .fetchMore({
         variables: {
           offset: state.items.length,
           limit: LIMIT,
+          types: msgTypes ?? '{}',
         },
       })
-      .then(({ data }) => {
+      .then(({ data }: any) => {
         const itemsLength = data?.messagesByTypes.length;
         const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
-        handleSetState((prevState) => ({
+        handleSetState((prevState: TransactionsState) => ({
           ...prevState,
           items: newItems,
           isNextPageLoading: false,

@@ -110,7 +110,7 @@ export const useTransactions = () => {
   const transactionQuery = useMessagesByTypesQuery({
     variables: {
       limit: LIMIT,
-      offset: 1,
+      offset: 0,
       types: msgTypes ?? '{}',
     },
     onError: () => {
@@ -137,6 +137,7 @@ export const useTransactions = () => {
         variables: {
           offset: state.items.length,
           limit: LIMIT,
+          types: msgTypes ?? '{}',
         },
       })
       .then(({ data }) => {

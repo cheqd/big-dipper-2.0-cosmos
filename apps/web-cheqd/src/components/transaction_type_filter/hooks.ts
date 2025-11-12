@@ -187,14 +187,14 @@ export const useTransactionTypeFilter = () => {
   // Handle filtering transactions based on selected filters
   const handleFilterTxs = () => {
     // Some labels have multiple types (e.g., "cosmos.gov.v1.MsgSubmitProposal and cosmos.gov.v1beta1.MsgSubmitProposal")
-    // We need to split comma-separated types and normalize each one
+    // Split comma-separated types and normalize each one
     const allTypes: string[] = [];
     selectedFilters.forEach((filter) => {
       // Split by comma in case the filter contains multiple types (merged by label)
       const types = filter.split(',').map((type) => type.trim()).filter((type) => type.length > 0);
       types.forEach((type) => {
         // Newer transactions are stored as "/cosmos.gov.v1.MsgSubmitProposal" and older ones as "cosmos.gov.v1.MsgSubmitProposal"
-        // Handle both formats: with and without leading slash
+        // Handle both formats
         const trimmedType = type.trim();
         if (!trimmedType) return; // Skip empty types
         

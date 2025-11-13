@@ -44,7 +44,7 @@ const useStyles = makeStyles()((theme) => ({
       alignItems: 'center',
       justifyContent: 'space-between',
       marginTop: 0,
-      width: '70%',
+      width: '80%',
       padding: theme.spacing(1, 3),
       flexWrap: 'nowrap',
     },

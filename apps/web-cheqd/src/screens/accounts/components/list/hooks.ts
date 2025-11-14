@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 const { primaryTokenUnit, tokenUnits } = chainConfig();
-const { exponent } = tokenUnits[primaryTokenUnit] ?? {};
+const { exponent = 0 } = tokenUnits[primaryTokenUnit] ?? {};
 
 /**
  * `useAccounts` is a custom hook that will be used to fetch the top accounts.
@@ -50,15 +50,16 @@ export const useAccounts = (): UseAccountsState => {
           rank: 1 + offset + i,
           address: row.address,
           balance: row.sum ?? 0,
-          percentage: row.sum
-            ? Big(row.sum)
-                .mul(100)
-                .div(10 ** exponent)
-                .div(supply.value)
-                .toNumber()
-            : 0,
+          percentage:
+            row.sum && supply?.value && Big(supply.value).gt(0)
+              ? Big(row.sum)
+                  .mul(100)
+                  .div(10 ** exponent)
+                  .div(supply.value)
+                  .toNumber()
+              : 0,
         })),
-    [data?.top_accounts, offset, supply.value]
+    [data?.top_accounts, offset, supply?.value, exponent]
   );
 
   const exists = useMemo(() => loading || !!items?.length, [loading, items]);

@@ -105,7 +105,7 @@ describe('screen: Transactions', () => {
                 result: mockTransactionsListenerDocument,
               },
               {
-                request: { query: TransactionsDocument, variables: { limit: 51, offset: 1 } },
+                request: { query: TransactionsDocument, variables: { limit: 20, offset: 0 } },
                 result: mockTransactionsDocument,
               },
             ]}

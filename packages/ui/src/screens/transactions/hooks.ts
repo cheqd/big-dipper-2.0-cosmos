@@ -28,8 +28,9 @@ const formatTransactions = (
   if (!data?.messagesByTypes) return [];
 
   let formattedData = data.messagesByTypes;
-  if (data.messagesByTypes.length === 51) {
-    formattedData = data.messagesByTypes.slice(0, 51);
+  // This check is for the subscription which may return more items
+  if (data.messagesByTypes.length > 50) {
+    formattedData = data.messagesByTypes.slice(0, 50);
   }
 
   return formattedData.map((x) => {
@@ -106,7 +107,7 @@ export const useTransactions = () => {
   // ================================
   // tx query
   // ================================
-  const LIMIT = 51;
+  const LIMIT = 20;
   const transactionQuery = useMessagesByTypesQuery({
     variables: {
       limit: LIMIT,
@@ -123,7 +124,7 @@ export const useTransactions = () => {
         ...prevState,
         loading: false,
         items: newItems,
-        hasNextPage: itemsLength === 51,
+        hasNextPage: itemsLength === LIMIT,
         isNextPageLoading: false,
       }));
     },
@@ -147,7 +148,7 @@ export const useTransactions = () => {
           ...prevState,
           items: newItems,
           isNextPageLoading: false,
-          hasNextPage: itemsLength === 51,
+          hasNextPage: itemsLength === LIMIT,
         }));
       });
   };

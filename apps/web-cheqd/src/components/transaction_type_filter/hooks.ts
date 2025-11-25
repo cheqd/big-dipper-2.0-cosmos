@@ -186,7 +186,33 @@ export const useTransactionTypeFilter = () => {
 
   // Handle filtering transactions based on selected filters
   const handleFilterTxs = () => {
-    const str = selectedFilters.join(',');
+    // Some labels have multiple types (e.g., "cosmos.gov.v1.MsgSubmitProposal and cosmos.gov.v1beta1.MsgSubmitProposal")
+    // Split comma-separated types and normalize each one
+    const allTypes: string[] = [];
+    selectedFilters.forEach((filter) => {
+      // Split by comma in case the filter contains multiple types (merged by label)
+      const types = filter.split(',').map((type) => type.trim()).filter((type) => type.length > 0);
+      types.forEach((type) => {
+        // Newer transactions are stored as "/cosmos.gov.v1.MsgSubmitProposal" and older ones as "cosmos.gov.v1.MsgSubmitProposal"
+        // Handle both formats
+        const trimmedType = type.trim();
+        if (!trimmedType) return; // Skip empty types
+        
+        const baseType = trimmedType.startsWith('/') ? trimmedType.substring(1) : trimmedType;
+        const typeWithSlash = `/${baseType}`;
+        const typeWithoutSlash = baseType;
+        
+        // Add both formats to ensure we catch all transactions
+        if (typeWithSlash && !allTypes.includes(typeWithSlash)) {
+          allTypes.push(typeWithSlash);
+        }
+        // Also add version without slash to catch transactions stored in that format
+        if (typeWithoutSlash && !allTypes.includes(typeWithoutSlash)) {
+          allTypes.push(typeWithoutSlash);
+        }
+      });
+    });
+    const str = allTypes.join(',');
     const query = `{${str}}`;
     setFilter(query);
     setSelectedFilters(selectedFilters);

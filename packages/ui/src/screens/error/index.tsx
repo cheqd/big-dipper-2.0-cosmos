@@ -9,7 +9,7 @@ import generalConfig from 'shared-utils/configs/general.json';
 
 const Error: FC = () => {
   const { classes } = useStyles();
-  const { t } = useAppTranslation();
+  const { t } = useAppTranslation('common');
   const router = useRouter();
   const handleHomeClick = useCallback(() => {
     router.replace(HOME);

@@ -9,6 +9,8 @@ function getBaseConfig(basePath, chainName) {
     },
     poweredByHeader: false,
     basePath,
+    // Enable standalone output for Docker builds
+    ...(process.env.BUILD_STANDALONE === '1' && { output: 'standalone' }),
     webpack: webpackConfig,
     eslint: {
       // to speed up the build task

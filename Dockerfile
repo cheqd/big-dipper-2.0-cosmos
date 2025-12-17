@@ -34,7 +34,8 @@ FROM starter AS builder
 
 ### First install the dependencies (as they change less often)
 COPY .yarnrc.yml ./
-COPY .yarn/ ./.yarn/
+# Only copy necessary .yarn subdirectories
+COPY .yarn/releases ./.yarn/releases
 COPY --from=pruner /app/out/json/ /app/out/yarn.lock ./
 
 ## Setting up the environment variables for the docker container.
@@ -61,14 +62,15 @@ ARG NEXT_PUBLIC_RPC_WEBSOCKET
 ENV NEXT_PUBLIC_RPC_WEBSOCKET=${NEXT_PUBLIC_RPC_WEBSOCKET}
 
 RUN corepack enable && yarn -v \
-  && yarn config set supportedArchitectures --json '{}' \
+  && yarn config set supportedArchitectures --json '{"os":["linux"],"cpu":["x64"],"libc":["musl"]}' \
   && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install --inline-builds
 
 ## Build the project
 COPY --from=pruner /app/out/full/ ./
 RUN yarn node packages/shared-utils/configs/sentry/install.js \
   && yarn workspace ${PROJECT_NAME} add sharp \
-  && yarn workspace ${PROJECT_NAME} run build
+  && yarn workspace ${PROJECT_NAME} run build \
+  && rm -rf node_modules/.cache .yarn/cache
 
 ################################################################################
 
@@ -96,26 +98,27 @@ ARG PROJECT_NAME=web-cheqd
 ENV PROJECT_NAME=${PROJECT_NAME}
 
 
-WORKDIR /app/apps/${PROJECT_NAME}
+WORKDIR /app
 
 RUN addgroup --system --gid 1001 nodejs \
-  && adduser --system --uid 1001 nextjs \
-  && chown -R nextjs:nodejs /home/nextjs /app
+  && adduser --system --uid 1001 nextjs
 
+# Copy Next.js standalone build output
 COPY --chown=nextjs:nodejs --from=builder \
-  /app/package.json /app/.pnp.* /app/.yarnrc.yml /app/yarn.lock \
-  ../../
-COPY --chown=nextjs:nodejs --from=builder \
-  /app/.yarn/ \
-  ../../.yarn/
-COPY --chown=nextjs:nodejs --from=builder \
-  /app/apps/${PROJECT_NAME}/ /app/apps/${PROJECT_NAME}/ \
+  /app/apps/${PROJECT_NAME}/.next/standalone/ \
   ./
+
+# Copy static files and public assets
 COPY --chown=nextjs:nodejs --from=builder \
-  /app/packages/ /app/packages/
-COPY --chown=nextjs:nodejs --from=builder /app/node_modules/ /app/node_modules/
+  /app/apps/${PROJECT_NAME}/.next/static \
+  ./apps/${PROJECT_NAME}/.next/static
+COPY --chown=nextjs:nodejs --from=builder \
+  /app/apps/${PROJECT_NAME}/public \
+  ./apps/${PROJECT_NAME}/public
+
+WORKDIR /app/apps/${PROJECT_NAME}
 
 # Don't run production as root
 USER nextjs
 
-CMD yarn next start -p ${PORT}
+CMD ["node", "server.js"]

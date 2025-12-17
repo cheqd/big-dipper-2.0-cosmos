@@ -12,7 +12,8 @@
         "NEXT_PUBLIC_MATOMO_SITE_ID",
         "NEXT_PUBLIC_MATOMO_URL",
         "NEXT_PUBLIC_RPC_WEBSOCKET",
-        "SITE_URL"
+        "SITE_URL",
+        "BUILD_STANDALONE"
       ]
     },
     "clean": {

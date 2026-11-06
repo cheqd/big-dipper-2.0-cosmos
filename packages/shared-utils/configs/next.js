@@ -12,10 +12,6 @@ function getBaseConfig(basePath, chainName) {
     // Enable standalone output for Docker builds
     ...(process.env.BUILD_STANDALONE === '1' && { output: 'standalone' }),
     webpack: webpackConfig,
-    eslint: {
-      // to speed up the build task
-      ignoreDuringBuilds: true,
-    },
     redirects: async () => [
       {
         source: '/account/:path*',

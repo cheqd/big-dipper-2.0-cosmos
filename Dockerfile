@@ -23,7 +23,8 @@ COPY ./ ./
 
 ARG PROJECT_NAME=web-cheqd
 ENV PROJECT_NAME=${PROJECT_NAME}
-RUN yarn config set nodeLinker node-modules \
+RUN corepack enable \
+  && yarn config set nodeLinker node-modules \
   && yarn config set supportedArchitectures --json '{}' \
   && turbo prune --scope=${PROJECT_NAME} --docker
 

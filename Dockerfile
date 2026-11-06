@@ -14,7 +14,12 @@ ARG PROJECT_NAME=web-cheqd
 FROM node:26-alpine AS starter
 
 WORKDIR /app
-RUN npm i -g turbo
+# Node 26's Alpine image no longer ships corepack, so install it explicitly
+# before any stage can `corepack enable` to get yarn. Pin turbo to match the
+# version in package.json -- an unpinned install picks up turbo 2.x, which
+# resolves .yarnrc.yml's packageExtensions-injected deps differently and
+# breaks `turbo prune` ("Unable to find any locator for prop-types@*").
+RUN npm i -g turbo@^1.9.3 corepack
 
 # Stage: pruner
 FROM starter AS pruner

@@ -14,7 +14,10 @@ ARG PROJECT_NAME=web-cheqd
 FROM node:26-alpine AS starter
 
 WORKDIR /app
-RUN npm i -g turbo
+# Node.js 26 images no longer bundle Yarn, and Node.js 25+ no longer ships corepack.
+# Install corepack explicitly so `yarn` resolves to the version in package.json#packageManager.
+RUN npm i -g turbo corepack@0.36.0 \
+  && corepack enable
 
 # Stage: pruner
 FROM starter AS pruner

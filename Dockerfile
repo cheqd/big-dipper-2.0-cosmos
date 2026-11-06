@@ -2,7 +2,7 @@
 ARG PROJECT_NAME=web-cheqd
 
 # This is a multiple stage Dockerfile.
-# - Stage 1: starter (base image with Node.js 18 and the turbo package installed globally)
+# - Stage 1: starter (base image with Node.js 26 and the turbo package installed globally)
 
 # - Stage 2: pruner (copies all necessary files and sets up yarn configurations, runs turbo prune)
 
@@ -11,7 +11,7 @@ ARG PROJECT_NAME=web-cheqd
 # - Stage 4: runner (final image for the web project, sets environment variables, starts the server)
 
 # Stage: starter
-FROM node:18-alpine3.18 AS starter
+FROM node:26-alpine AS starter
 
 WORKDIR /app
 RUN npm i -g turbo
@@ -75,7 +75,7 @@ RUN yarn node packages/shared-utils/configs/sentry/install.js \
 ################################################################################
 
 # Stage: runner
-FROM node:18-alpine3.18 AS runner
+FROM node:26-alpine AS runner
  
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
